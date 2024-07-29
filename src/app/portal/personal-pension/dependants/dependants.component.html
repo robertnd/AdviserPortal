@@ -1,0 +1,196 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Dependant's Particulars</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <div class="highlight-1">Dependant</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="dependantSurname">Surname</label>
+                    <input type="text" id="dependantSurname" formControlName="dependantSurname" />
+                    <div *ngIf="submitted && f['dependantSurname'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantSurname'].errors['conditionalRequired']">
+                            Surname is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="dependantForenames">Forenames</label>
+                    <input type="text" id="dependantForenames" formControlName="dependantForenames" />
+                    <div *ngIf="submitted && f['dependantForenames'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantForenames'].errors['conditionalRequired']">
+                            Forenames are required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="dependantIdDocument">Identification Document</label>
+                    <select id="dependantIdDocument" formControlName="dependantIdDocument">
+                        <option></option>
+                        <option>National ID</option>
+                        <option>Passport</option>
+                        <option>Foreign ID</option>
+                        <option>Military ID</option>
+                    </select>
+                    <div *ngIf="submitted && f['dependantIdDocument'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantIdDocument'].errors['required']">
+                            Identification Document is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="dependantDocNumber">Document Number</label>
+                    <input type="text" id="dependantDocNumber" formControlName="dependantDocNumber" />
+                    <div *ngIf="submitted && f['dependantDocNumber'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantDocNumber'].errors['required']">
+                            Document Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="dependantMobileNo">Mobile Number</label>
+                    <input type="text" id="dependantMobileNo" formControlName="dependantMobileNo" />
+                    <div *ngIf="submitted && f['dependantMobileNo'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantMobileNo'].errors['conditionalRequired']">
+                            Mobile Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="dependantEmail">Email</label>
+                    <input type="text" id="dependantEmail" formControlName="dependantEmail" />
+                    <div *ngIf="submitted && f['dependantEmail'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantEmail'].errors['conditionalRequired']">
+                            Email is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="dependantSpouse">Spouse</label>
+                    <select id="dependantSpouse" formControlName="dependantSpouse">
+                        <option></option>
+                        <option>Husband</option>
+                        <option>Wife</option>
+                    </select>
+                    <div *ngIf="submitted && f['dependantSpouse'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantSpouse'].errors['required']">
+                            Spouse is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <div class="highlight-1">Children</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="dependantChildNames">Names of Child</label>
+                    <input type="text" id="dependantChildNames" formControlName="dependantChildNames" />
+                    <div *ngIf="f['dependantChildNames'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantChildNames'].errors['conditionalRequired']">
+                            Names of Child are required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="dependantChildGender">Daughter / Son</label>
+                    <select id="dependantChildGender" formControlName="dependantChildGender">
+                        <option></option>
+                        <option>Daughter</option>
+                        <option>Son</option>
+                    </select>
+                    <div *ngIf="f['dependantChildGender'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantChildGender'].errors['conditionalRequired']">
+                            Gender is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="dependantChildDoB">Date of Birth</label>
+                    <input type="date" id="dependantChildDoB" formControlName="dependantChildDoB" />
+                    <div *ngIf="f['dependantChildDoB'].errors" class="invalid-input">
+                        <div *ngIf="f['dependantChildDoB'].errors['required']">
+                          Date of Birth is required
+                        </div>
+                        <div *ngIf="f['dependantChildDoB'].errors['futureDate']">
+                          Future date is not valid
+                        </div>
+                        <div *ngIf="f['dependantChildDoB'].errors['invalidValue']">
+                          Date value is not valid
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg">
+                    <button class="ombutton ombutton-sm with-icon" type="button" (click)="addChild()">
+                        <i class="fas fa-plus"></i>
+                        Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <table class="data-table" *ngIf="children.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Names</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of children | keyvalue">
+                            <td><i class="fa fa-child fa-lg m-3"></i></td>
+                            <td>{{c.value.names}}</td>
+                            <td>{{c.value.gender}}</td>
+                            <td>{{c.value.dob}}</td>
+                            <td>
+                                <button class="ombutton-link" type="button" (click)="removeChild(c.key)">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

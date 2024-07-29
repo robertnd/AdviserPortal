@@ -1,0 +1,264 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Emergency Contact / Next of Kin</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokFirstName">First Name</label>
+                    <input type="text" id="nokFirstName" formControlName="nokFirstName" />
+                    <div *ngIf="submitted && f['nokFirstName'].errors" class="invalid-input">
+                        <div *ngIf="f['nokFirstName'].errors['required']">
+                            First Name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokSurname">Surname</label>
+                    <input type="text" id="nokSurname" formControlName="nokSurname" />
+                    <div *ngIf="submitted && f['nokSurname'].errors" class="invalid-input">
+                        <div *ngIf="f['nokSurname'].errors['required']">
+                            Surname is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokNationality">Nationality</label>
+                    <select id="nokNationality" formControlName="nokNationality">
+                        <option></option>
+                        <option *ngFor="let country of countries" [selected]="this.f['nokNationality'].value===country">{{
+                            country }}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && f['nokNationality'].errors" class="invalid-input">
+                        <div *ngIf="f['nokNationality'].errors['required']">
+                            Nationality is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokTitle">Title</label>
+                    <select id="nokTitle" formControlName="nokTitle">
+                        <option></option>
+                        <option>Mr</option>
+                        <option>Mrs</option>
+                        <option>Ms</option>
+                        <option>Miss</option>
+                        <option>Prof</option>
+                        <option>Dr</option>
+                        <option>Hon</option>
+                        <option>Rev</option>
+                        <option>Fr</option>
+                        <option>Other</option>
+                    </select>
+                    <div *ngIf="submitted && f['nokTitle'].errors" class="invalid-input">
+                        <div *ngIf="f['nokTitle'].errors['required']">
+                            Please select a Title
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokTitleOther">If "Other" specify</label>
+                    <input type="text" id="nokTitleOther" formControlName="nokTitleOther" />
+                    <div *ngIf="submitted && f['nokTitleOther'].errors" class="invalid-input">
+                        <div *ngIf="f['nokTitleOther'].errors['conditionalRequired']">
+                            Please provide a Title description
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokIdDocument">Identification Document</label>
+                    <select id="nokIdDocument" formControlName="nokIdDocument">
+                        <option></option>
+                        <option>National ID</option>
+                        <option>Passport</option>
+                        <option>Foreign ID</option>
+                        <option>Military ID</option>
+                    </select>
+                    <div *ngIf="submitted && f['nokIdDocument'].errors" class="invalid-input">
+                        <div *ngIf="f['nokIdDocument'].errors['required']">
+                            Identification Document is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokDocNumber">Document Number</label>
+                    <input type="text" id="nokDocNumber" formControlName="nokDocNumber" />
+                    <div *ngIf="submitted && f['nokDocNumber'].errors" class="invalid-input">
+                        <div *ngIf="f['nokDocNumber'].errors['required']">
+                            Document Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokDateOfBirth">Date of Birth</label>
+                    <input type="date" id="nokDateOfBirth" formControlName="nokDateOfBirth" />
+                    <div *ngIf="submitted && f['nokDateOfBirth'].errors" class="invalid-input">
+                        <div *ngIf="f['nokDateOfBirth'].errors['required']">
+                            Date of Birth is required
+                        </div>
+                        <div *ngIf="f['nokDateOfBirth'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['nokDateOfBirth'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokMaritalStatus">Marital Status</label>
+                    <select id="nokMaritalStatus" formControlName="nokMaritalStatus">
+                        <option></option>
+                        <option>Divorced</option>
+                        <option>Married</option>
+                        <option>Separated</option>
+                        <option>Single</option>
+                        <option>Widow</option>
+                        <option>Widower</option>
+                    </select>
+                    <div *ngIf="submitted && f['nokMaritalStatus'].errors" class="invalid-input">
+                        <div *ngIf="f['nokMaritalStatus'].errors['required']">
+                            Marital Status is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokPIN">PIN</label>
+                    <input type="text" id="nokPIN" formControlName="nokPIN" />
+                    <div *ngIf="submitted && f['nokPIN'].errors" class="invalid-input">
+                        <div *ngIf="f['nokPIN'].errors['required']">PIN is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokPostalAddress">Postal Address</label>
+                    <input type="text" id="nokPostalAddress" formControlName="nokPostalAddress" />
+                    <div *ngIf="submitted && f['nokPostalAddress'].errors" class="invalid-input">
+                        <div *ngIf="f['nokPostalAddress'].errors['required']">Postal Address is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokPostalCode">Postal Code</label>
+                    <input type="text" id="nokPostalCode" formControlName="nokPostalCode" />
+                    <div *ngIf="submitted && f['nokPostalCode'].errors" class="invalid-input">
+                        <div *ngIf="f['nokPostalCode'].errors['required']">PostalCode is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokCityOrTown">City / Town</label>
+                    <input type="text" id="nokCityOrTown" formControlName="nokCityOrTown" />
+                    <div *ngIf="submitted && f['nokCityOrTown'].errors" class="invalid-input">
+                        <div *ngIf="f['nokCityOrTown'].errors['required']">City / Town is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokPhysicalAddress">Physical Address</label>
+                    <input type="text" id="nokPhysicalAddress" formControlName="nokPhysicalAddress" />
+                    <div *ngIf="submitted && f['nokPhysicalAddress'].errors" class="invalid-input">
+                        <div *ngIf="f['nokPhysicalAddress'].errors['required']">Physical Address is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokCountryOfResidence">Country of Residence</label>
+                    <select id="nokCountryOfResidence" formControlName="nokCountryOfResidence">
+                        <option></option>
+                        <option *ngFor="let country of countries"
+                            [selected]="this.f['nokCountryOfResidence'].value===country">{{
+                            country }}</option>
+                    </select>
+                    <div *ngIf="submitted && f['nokCountryOfResidence'].errors" class="invalid-input">
+                        <div *ngIf="f['nokCountryOfResidence'].errors['required']">
+                            Country of Residence is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokOccupationOrBusiness">Occupation/Business</label>
+                    <input type="text" id="nokOccupationOrBusiness" formControlName="nokOccupationOrBusiness" />
+                    <div *ngIf="submitted && f['nokOccupationOrBusiness'].errors" class="invalid-input">
+                        <div *ngIf="f['nokOccupationOrBusiness'].errors['required']">Occupation / Business is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokPlaceOfWork">Place of Work</label>
+                    <input type="text" id="nokPlaceOfWork" formControlName="nokPlaceOfWork" />
+                    <div *ngIf="submitted && f['nokPlaceOfWork'].errors" class="invalid-input">
+                        <div *ngIf="f['nokPlaceOfWork'].errors['required']">Place Of Work is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokPhoneNo">Telephone Number (Work)</label>
+                    <input type="text" id="nokPhoneNo" formControlName="nokPhoneNo" />
+                    <div *ngIf="submitted && f['nokPhoneNo'].errors" class="invalid-input">
+                        <div *ngIf="f['nokPhoneNo'].errors['required']">Telephone Number (Work) is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokMobileNo">Mobile Number</label>
+                    <input type="text" id="nokMobileNo" formControlName="nokMobileNo" />
+                    <div *ngIf="submitted && f['nokMobileNo'].errors" class="invalid-input">
+                        <div *ngIf="f['nokMobileNo'].errors['required']">Mobile Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokEMail">EMail</label>
+                    <input type="text" id="nokEMail" formControlName="nokEMail" />
+                    <div *ngIf="submitted && f['nokEMail'].errors" class="invalid-input">
+                        <div *ngIf="f['nokEMail'].errors['required']">EMail is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

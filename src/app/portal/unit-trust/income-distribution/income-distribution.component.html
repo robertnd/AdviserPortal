@@ -1,0 +1,613 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Income Distribution</h1>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">Please send income distribution amounts to my bank account on file if it is
+                    above
+                    Kshs 1000 (Please tick where applicable)
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="checkBoxGroup">
+                    <input type="checkbox" id="moneyMarket" value="moneyMarket" formControlName="moneyMarket" />
+                    <label for="moneyMarket">Old Mutual Money Market (Monthly)</label>
+                    <input type="checkbox" id="equityFund" value="equityFund" formControlName="equityFund" />
+                    <label for="equityFund">Old Mutual Equity Fund (Semi Annual)</label>
+                    <input type="checkbox" id="balancedFund" value="balancedFund" formControlName="balancedFund" />
+                    <label for="balancedFund">Old Mutual Balanced Fund (Quarterly)</label>
+                    <input type="checkbox" id="bondFund" value="bondFund" formControlName="bondFund" />
+                    <label for="bondFund">Old Mutual Bond Fund (Quarterly)</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1 collapsible">FUND DETAILS <i
+                        [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true" (click)="toggle()"></i>
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">Old Mutual Money Market Fund
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    The objective of the Old Mutual Money Market Fund is to generate total return through investing in a
+                    range of securities such as Government of Kenya Treasury Bills, fixed deposit, instruments and near
+                    casj
+                    in the Kenyan market while proc=viding the most conservative risk exposure to investors. Minimum
+                    investment amount is Kshs 1,000. This fund is suitable for an investor who would like a safe parking
+                    place for their funds. The client is advised to invest their money for at least a year
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    No initial fee is chargeable on the Money Market Fund
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Old Mutual Equity Fund
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    The objective of the Old Mutual Money Market Fund is to generate long-term capital groath through
+                    active
+                    management investing principally. in a well diversified portfolio of equities i.e stocks and shares
+                    across several sectors of the Kenyan economy, in earnings of corporations and assets with a medium
+                    high
+                    risk profile. Minimum investing amount is Kshs 50,000. This fund is suitable for investors seeking
+                    uperior returns over the medium to long term and who have a tolerance for fluctuations in capital
+                    value.
+                    The recommended investment period is 4-7 years
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Old Mutual Balanced Fund
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    The objective of the Old Balanced Fund is to achieve steady regular income from the money market
+                    portion
+                    of the fund and capital growth in the medium to long term from the equity portion while carryong
+                    only a
+                    medium level of risk. Minimum investment amounr is Kshs 50,000. This fund is suitable for the medium
+                    risk investor who is looking for a mixture of safety, income and capital appreciation. The
+                    recommended
+                    investment period is 3-5 years
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Toboa Investment Plan
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    The Toboa investmetn plan is a facility that allows investors to make monthly contributions /
+                    investments of Kshs 1,000 into the Balanced Fund. The fund is suitable for the medium risk investor
+                    who
+                    is looking for a mixture of safety, income and capital appreciation. The recommended investment
+                    period
+                    is 3-5 years
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Old Mutual Bond Fund
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    The objective of the Old Mutual Bond Fund is to achieve a reasonable level of current income and
+                    steady
+                    growth of capital by investing primarily in a well-diversified portfolio of fixed income securities
+                    issued by the Kenyan government and corporations with some offshore element while carrying a low -
+                    medium level of risk. Minimum investment amount is Kshs 50,000. This fun is suitable for a low to
+                    medium
+                    risk investor who is seeking a reasonable level of current income or a steady growth of capital from
+                    the
+                    reinvestment of the distribution income
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Fund Charges
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    A service fee of 1% per annum + VAT os applicable to the Money Market Fund, a service fee of 3.37%
+                    per
+                    annum + VAT is applicable to Equity, Balance and Toboa Funds and a service fee of 3% per annum + VAT
+                    is
+                    applicable to the Bond Fund
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="PIN">Name of Fund</label>
+
+                </div>
+                <div class="text-input-intg">Amount (Kshs)</div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="imoneyMarketFund">Old Mutual Money Market Fund</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="imoneyMarketFund" formControlName="imoneyMarketFund" />
+                    <div *ngIf="submitted && f['imoneyMarketFund'].errors" class="invalid-input">
+                        <div *ngIf="f['imoneyMarketFund'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="iequityFund">Old Mutual Equity Fund</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="iequityFund" formControlName="iequityFund" />
+                    <div *ngIf="submitted && f['iequityFund'].errors" class="invalid-input">
+                        <div *ngIf="f['iequityFund'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="ibalancedFund">Old Mutual Balanced Fund / Toboa Investment Plan</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="ibalancedFund" formControlName="ibalancedFund" />
+                    <div *ngIf="submitted && f['ibalancedFund'].errors" class="invalid-input">
+                        <div *ngIf="f['ibalancedFund'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="ibondFund">Old Mutual Bond Fund</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="ibondFund" formControlName="ibondFund" />
+                    <div *ngIf="submitted && f['ibondFund'].errors" class="invalid-input">
+                        <div *ngIf="f['ibondFund'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="totalInvested">Total Amount Invested</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="totalInvested" formControlName="totalInvested" />
+                    <div *ngIf="submitted && f['totalInvested'].errors" class="invalid-input">
+                        <div *ngIf="f['totalInvested'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="totalInvestedWords">Total Amount Invested (in words)</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="totalInvestedWords" formControlName="totalInvestedWords" />
+                    <div *ngIf="submitted && f['totalInvestedWords'].errors" class="invalid-input">
+                        <div *ngIf="f['totalInvestedWords'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1 collapsible" [hidden]="!displayed">
+                    DISCLAIMER <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true"
+                        (click)="toggle()"></i>
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    DO NOT GIVE CASH TO ANY OLD MUTUAL AGENT OR OFFICER. FOR BANKERS, PERSONAL & CORPORATE CHEQUES,
+                    KINDLY ENSURE THAT YOU ADD YOUR NAME NEXT TO THE FUND NAME
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Payment Method
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="checkBoxGroup">
+                    <input type="checkbox" id="cheque" value="cheque" formControlName="cheque" />
+                    <label for="cheque">Cheque</label>
+                    <input type="checkbox" id="directCash" value="directCash" formControlName="directCash" />
+                    <label for="directCash">Direct Cash Deposit (Max Kshs 250,000)</label>
+                    <input type="checkbox" id="eftRtgs" value="eftRtgs" formControlName="eftRtgs" />
+                    <label for="eftRtgs">EFT / RTGS</label>
+                    <input type="checkbox" id="internationalTransfer" value="internationalTransfer"
+                        formControlName="internationalTransfer" />
+                    <label for="internationalTransfer">International Transfer</label>
+                    <input type="checkbox" id="postaPay" value="postaPay" formControlName="postaPay" />
+                    <label for="postaPay">Posta Pay Mpesa (Paybill 600500)</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Old Mutual accepts personal / corporate and bankers cheques payable to the ACCOUNT NAME of the fund
+                    in which you intend to invest in. NO THIRD PARTY CHEQUES will be accepted. The Bank Account details
+                    are listed below. After allocation of a Client Account Number, payments can be made directly into
+                    the inflow account in which case the Client Account Number must be clearly stated to enable
+                    allocation. The deposit confirmation details should also be delivered to Old Mutual Investment
+                    Group. Please note that the bank deposit> slip will be deemed a receipt but not as value by Old
+                    Mutual Investment Group. Please use the OMK-KCB customized deposit slips for all your deposits at
+                    any KCB branches to ensure that your investement is allocated to your respective account timeously
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    BANK DETAILS: Kenya Commercial Bank, Custody Service Branch
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Investments in Old Mutual Money Market Fund<br>
+                    Account Name: Old Mutual Money Market Fund<br>
+                    Account No: 110-236-970-5<br>
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Investments in Old Mutual Balanced Fund<br>
+                    Account Name: Old Mutual Balanced Fund<br>
+                    Account No: 110-237-044-4<br>
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Investments in Old Mutual Equity Fund<br>
+                    Account Name: Old Mutual Equity Fund<br>
+                    Account No: 110-237-075-4<br>
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    Investments in Old Mutual Bond Fund<br>
+                    Account Name: Old Mutual Bond Fund<br>
+                    Account No: 110-240-075-0<br>
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    International Investments Swift Code: KCBLKENX
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1 collapsible" [hidden]="!displayed">
+                    TERMS AND CONDITIONS <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true"
+                        (click)="toggle()"></i>
+                </p>
+            </div>
+
+            <ol class="form-list1" [hidden]="!displayed">
+                <li>Units are traded at the daily ruling prices and will be repurchased by Old Mutual Investment Group
+                    in accordance with the Capital Markets (Collective Investment Schemes) Regulations 2001 and on terms
+                    and conditions set out in the Trust Deed</li>
+                <li>Unit Prices may go up as well as down</li>
+                <li>Complete application forms and notification of deposits / cleared funds must be received for the
+                    investment to be executed Subsscription monies in cleared finds received will be dealt with on the
+                    next Dealing Day</li>
+                <li>The investor and his / her financial adviser shsall at all times be responsible for ensuring that
+                    the Old Mutual Investment Group and its representatives receive any instructions from the investor
+                    and / or financial adviser, whether by facsimile, email, or sms and that such instructionsare
+                    complete and correct in all respects</li>
+                <li>Investors are reminded that in certain specified circumstances their right to redeem units may be
+                    suspended</li>
+                <li>No third party cheques are allowed. Payments made by a third party on behalf of an investor will
+                    need to be supported by further documentation from the source of the funds account owner</li>
+                <li>Once an account has been opened, a statement of investment will be sent by post or email to the
+                    investor on a monthly basis</li>
+                <li>All transaction charges on purchasing securities shall be borneby the Fund and not the Fund Manager
+                </li>
+                <li>Old Mutual Investment Group may at any time revise the service fees and initial fees but shall give
+                    a 30-day prior notice for changes to fees provided that such revision is within limits set out in
+                    the trust deed and information memorandum</li>
+                <li>You can make one free withdrawl in a month to a loclaaccount. Subsequent withdrawals will attract a
+                    frquency charge of Kshs 800 (All international transfers will attract a Swift charge)</li>
+                <li>We may amend these Terms from time to time. Usage of the Sccount after we have posted an amendment
+                    verion of these terms on Old Mutual Investment Group's website, shall amount to conceding to be
+                    bound by the amended terms and conditions of the Agreement</li>
+                <li>If you wish to lodge a complaint, please notify us in writing of this by completing our Feedback
+                    Form. We will provide you with a reference number and respond to your complain as soon as possible
+                    after we receive your Feedback Form</li>
+                <li>Old Mutual Investment Group may request additional information from the customer when required in
+                    establishing relationship, carrying out a transaction and during the business relationship</li>
+            </ol>
+
+            <div class="form-row">
+                <p class="form-paragraph1 collapsible" [hidden]="!displayed">
+                    DECLARATION <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true"
+                        (click)="toggle()"></i>
+                </p>
+            </div>
+
+            <ol class="form-list1" [hidden]="!displayed">
+                <li>The information provided in this application is true and accurate and that the money used for this
+                    investment does not arise from the proceeds of any money laundering or other illicit activities</li>
+                <li>I / We confirm that where this information is signed in a representative capacity, I / We have the
+                    necessary authority to do so</li>
+                <li>I / We hereby consent to Old Mutual Investment Group verifying the information provided with others
+                </li>
+                <li>I / We have read and fully understand the objectives, risk levels, income distribution and the
+                    applicable charges for the Fund selected and agree to the terms</li>
+                <li> I / We confirm that my / our application to subscribe to the Old Mutual Unit Trust Funds is made in
+                    the basis and terms of conditions contained in the information memeorandum and the Trust Deed</li>
+                <li> I / We agree to accept the number of units bought by virtue of this application and warrant that
+                    I/We have full power and authority to enter into and conclude this transaction</li>
+                <li>I / We confirm that the units are not being acquired either directly or indirectly by or on behalf
+                    of any person restricted by law if any relevant jurisdiction from acquiring the units</li>
+                <li>I/We hereby irrevocably and unconditionally agree that all fax, internet, electroninc mails and
+                    scanned copies of any documentation and / or instructions issued by us in respect of our account()
+                    or dealings with the Fund Manager shall be be binding and enforceable against us. We further agree
+                    to fully indemnify Old Mutual Investment group against any liabilities whatsoever which may be made
+                    against or incurred by the Fund maganer by reason of the FUnd Manager acceoting the fax, internet,
+                    electronic mails, scakked copies of the documentation annd/or instructions</li>
+                <li>I/We consent to the disclosure of information regarding my / out investment to the companies within
+                    Old Mutual Group and to any regulator oe tax authority establishing tax liabilities</li>
+                <li>I confirm that I have read and understood this declaration and its implications</li>
+                <li>I / We confirm that I/We have issued payments towards investments i the following funds</li>
+                <li> I/We confirm that I/We have not given any cash to any Old Mutual Agent or Officer and in the event
+                    that I / We have given the cash to any of them, I / We agree that Old Mutual will not be liable in
+                    the event of any loss arising therefrom
+                </li>
+                <li>I/We conset and agree that Old Mutual Investment Group mau withhold amounts in any account at any
+                    time. If ay foreign or domestinc government agency and/or tax authority requires them to do so, or
+                    they otherwise required by law pursuant to agreements with any foreing or domestic government agency
+                    and/or tax authority to do so, or if they need to complywith internal policies or with any
+                    applicable order or sanction of a domestic or non-dmoestic government agency and/or tax authority
+                </li>
+                <li>I/We authorise Old Mutual Investment Group to disclose any information relating to my / our account
+                    (s) to amy Foreign or Domestic Regulator, Tax Authority, Credit Reference Agency or any other
+                    Institution or third party as required by the laws of any country and as they deem necessary</li>
+            </ol>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="PIN">Name of Fund</label>
+
+                </div>
+                <div class="text-input-intg">Amount (Kshs)</div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="imoneyMarketFund_1">Old Mutual Money Market Fund</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="imoneyMarketFund_1" formControlName="imoneyMarketFund_1" />
+                    <div *ngIf="submitted && f['imoneyMarketFund_1'].errors" class="invalid-input">
+                        <div *ngIf="f['imoneyMarketFund_1'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="iequityFund_1">Old Mutual Equity Fund</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="iequityFund_1" formControlName="iequityFund_1" />
+                    <div *ngIf="submitted && f['iequityFund_1'].errors" class="invalid-input">
+                        <div *ngIf="f['iequityFund_1'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="ibalancedFund_1">Old Mutual Balanced Fund / Toboa Investment Plan</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="ibalancedFund_1" formControlName="ibalancedFund_1" />
+                    <div *ngIf="submitted && f['ibalancedFund_1'].errors" class="invalid-input">
+                        <div *ngIf="f['ibalancedFund_1'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="ibondFund_1">Old Mutual Bond Fund</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="ibondFund_1" formControlName="ibondFund_1" />
+                    <div *ngIf="submitted && f['ibondFund_1'].errors" class="invalid-input">
+                        <div *ngIf="f['ibondFund_1'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="totalInvested_1">Total Amount Invested</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="totalInvested_1" formControlName="totalInvested_1" />
+                    <div *ngIf="submitted && f['totalInvested_1'].errors" class="invalid-input">
+                        <div *ngIf="f['totalInvested_1'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="totalInvestedWords_1">Total Amount Invested (in words)</label>
+                </div>
+                <div class="text-input-intg">
+                    <input type="text" id="totalInvestedWords_1" formControlName="totalInvestedWords_1" />
+                    <div *ngIf="submitted && f['totalInvestedWords_1'].errors" class="invalid-input">
+                        <div *ngIf="f['totalInvestedWords_1'].errors['conditionalRequired']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    DOCUMENTS REQUIRED
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    Individual Applicants
+                </p>
+            </div>
+
+
+            <div class="form-row">
+                <table class="data-table" [hidden]="!displayed">          
+                    <thead>
+                        <tr>
+                            <th>Documentation Required</th>
+                            <th>Primary Holder</th>
+                            <th>Secondary Holder</th>
+                            <th>Official Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Certified copy of ID/Passport are attached for all the applicants and nominees
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Cheque, Bank transfer confirmation, Direct deposit slip or any other applicable proof of investment is attached
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Original bank statement for, the last 6 months, certified copy of a void / cancelled cheque or a certified photocopy of an ATM card
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                Signed Banker's cheque, commitment form
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Customer's declaration form (Individual)
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Risk assessment form (Individual)
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                KRA PIN Number
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

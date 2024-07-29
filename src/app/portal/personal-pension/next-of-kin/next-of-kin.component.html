@@ -1,0 +1,106 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Next of Kin</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokSurname">Surname</label>
+                    <input type="text" id="nokSurname" formControlName="nokSurname" />
+                    <div *ngIf="submitted && f['nokSurname'].errors" class="invalid-input">
+                        <div *ngIf="f['nokSurname'].errors['conditionalRequired']">
+                            Surname is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokForenames">Forenames</label>
+                    <input type="text" id="nokForenames" formControlName="nokForenames" />
+                    <div *ngIf="submitted && f['nokForenames'].errors" class="invalid-input">
+                        <div *ngIf="f['nokForenames'].errors['conditionalRequired']">
+                            Forenames are required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokDoB">Date of Birth</label>
+                    <input type="date" id="nokDoB" formControlName="nokDoB" />
+                    <div *ngIf="submitted && f['nokDoB'].errors" class="invalid-input">
+                        <div *ngIf="f['nokDoB'].errors['conditionalRequired']">
+                            Date of Birth is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokIdDocument">Identification Document</label>
+                    <select id="nokIdDocument" formControlName="nokIdDocument">
+                        <option></option>
+                        <option>National ID</option>
+                        <option>Passport</option>
+                        <option>Foreign ID</option>
+                        <option>Military ID</option>
+                    </select>
+                    <div *ngIf="submitted && f['nokIdDocument'].errors" class="invalid-input">
+                        <div *ngIf="f['nokIdDocument'].errors['required']">
+                            Identification Document is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokDocNumber">Document Number</label>
+                    <input type="text" id="nokDocNumber" formControlName="nokDocNumber" />
+                    <div *ngIf="submitted && f['nokDocNumber'].errors" class="invalid-input">
+                        <div *ngIf="f['nokDocNumber'].errors['required']">
+                            Document Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokMobileNo">Mobile Number</label>
+                    <input type="text" id="nokMobileNo" formControlName="nokMobileNo" />
+                    <div *ngIf="submitted && f['nokMobileNo'].errors" class="invalid-input">
+                        <div *ngIf="f['nokMobileNo'].errors['conditionalRequired']">
+                            Mobile Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nokEmail">Email</label>
+                    <input type="text" id="nokEmail" formControlName="nokEmail" />
+                    <div *ngIf="submitted && f['nokEmail'].errors" class="invalid-input">
+                        <div *ngIf="f['nokEmail'].errors['conditionalRequired']">
+                            Email is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+            
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

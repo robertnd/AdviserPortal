@@ -1,0 +1,88 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Bank Details</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="accountHolder">Account Holder</label>
+                    <input type="text" id="accountHolder" formControlName="accountHolder" />
+                    <div *ngIf="submitted && f['accountHolder'].errors" class="invalid-input">
+                        <div *ngIf="f['accountHolder'].errors['required']">
+                            Account Holder is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="accountNo">Account Number</label>
+                    <input type="text" id="accountNo" formControlName="accountNo" />
+                    <div *ngIf="submitted && f['accountNo'].errors" class="invalid-input">
+                        <div *ngIf="f['accountNo'].errors['required']">
+                            Account Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="accountType">Account Type</label>
+                    <select id="accountType" formControlName="accountType">
+                        <option></option>
+                        <option>Current</option>
+                        <option>Savings</option>
+                      </select>
+                    <div *ngIf="submitted && f['accountType'].errors" class="invalid-input">
+                        <div *ngIf="f['accountType'].errors['required']">
+                            Account Type is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="bankName">Bank</label>
+                    <input type="text" id="bankName" formControlName="bankName" />
+                    <div *ngIf="submitted && f['bankName'].errors" class="invalid-input">
+                        <div *ngIf="f['bankName'].errors['required']">
+                            Bank is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="branch">Branch</label>
+                    <input type="text" id="branch" formControlName="branch" />
+                    <div *ngIf="submitted && f['branch'].errors" class="invalid-input">
+                        <div *ngIf="f['branch'].errors['required']">
+                            Branch is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">Any change in the bank details above must be provided in writing with adequate proof and signed by the authorised signatories according to the mandate provided. No payments will be made to a third party's bank account</p>
+            </div>
+
+            
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

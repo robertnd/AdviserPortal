@@ -1,0 +1,319 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Secondary Account Holder (for joint account holders only)</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <p class="overview__subheading__infotext">To be filled by applicant who would like to be joint holders to the
+                    above account</p>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahRelationship">Relationship between joint holders?</label>
+                    <select id="jahRelationship" formControlName="jahRelationship">
+                        <option></option>
+                        <option>Spouses</option>
+                        <option>Business Partners</option>
+                    </select>
+                    <div *ngIf="submitted && f['jahRelationship'].errors" class="invalid-input">
+                        <div *ngIf="f['jahRelationship'].errors['required']">
+                            Account holder relationship is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahRelationshipOther">Other (specify)</label>
+                    <input type="text" id="jahRelationshipOther" formControlName="jahRelationshipOther" />
+                </div>
+                <div class="text-input-intg">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahCanGetBeneficialOwnership">
+                        In the event of a death of a joint holder, should the surviving joint holder have beneficial
+                        ownership of the joint account?
+                    </label>
+                    <select id="jahCanGetBeneficialOwnership" formControlName="jahCanGetBeneficialOwnership">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['jahCanGetBeneficialOwnership'].errors" class="invalid-input">
+                        <div *ngIf="f['jahCanGetBeneficialOwnership'].errors['required']">
+                            Beneficial ownership information is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahSignatories">Transaction to be signed by?</label>
+                    <select id="jahSignatories" formControlName="jahSignatories">
+                        <option></option>
+                        <option>Either holder</option>
+                        <option>All holders</option>
+                    </select>
+                    <div *ngIf="submitted && f['jahSignatories'].errors" class="invalid-input">
+                        <div *ngIf="f['jahSignatories'].errors['required']">
+                            Signatory information is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahSignatoriesOther">Other (specify)</label>
+                    <input type="text" id="jahSignatoriesOther" formControlName="jahSignatoriesOther" />
+                </div>
+                <div class="text-input-intg">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahFirstName">First Name</label>
+                    <input type="text" id="jahFirstName" formControlName="jahFirstName" />
+                    <div *ngIf="submitted && f['jahFirstName'].errors" class="invalid-input">
+                        <div *ngIf="f['jahFirstName'].errors['required']">
+                            First Name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahSurname">Surname</label>
+                    <input type="text" id="jahSurname" formControlName="jahSurname" />
+                    <div *ngIf="submitted && f['jahSurname'].errors" class="invalid-input">
+                        <div *ngIf="f['jahSurname'].errors['required']">
+                            Surname is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahTitle">Title</label>
+                    <select id="jahTitle" formControlName="jahTitle">
+                        <option></option>
+                        <option>Mr</option>
+                        <option>Mrs</option>
+                        <option>Ms</option>
+                        <option>Miss</option>
+                        <option>Prof</option>
+                        <option>Dr</option>
+                        <option>Hon</option>
+                        <option>Rev</option>
+                        <option>Fr</option>
+                        <option>Other</option>
+                    </select>
+                    <div *ngIf="submitted && f['jahTitle'].errors" class="invalid-input">
+                        <div *ngIf="f['jahTitle'].errors['required']">
+                            Please select a Title
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahTitleOther">Title (if other)</label>
+                    <input type="text" id="jahTitleOther" formControlName="jahTitleOther" />
+                    <div *ngIf="submitted && f['jahTitleOther'].errors" class="invalid-input">
+                        <div *ngIf="f['jahTitleOther'].errors['conditionalRequired']">
+                            Please provide a Title description
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahIdDocument">Identification Document</label>
+                    <select id="jahIdDocument" formControlName="jahIdDocument">
+                        <option></option>
+                        <option>National ID</option>
+                        <option>Passport</option>
+                        <option>Foreign ID</option>
+                        <option>Military ID</option>
+                    </select>
+                    <div *ngIf="submitted && f['jahIdDocument'].errors" class="invalid-input">
+                        <div *ngIf="f['jahIdDocument'].errors['required']">
+                            Identification Document is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahDocNumber">Document Number</label>
+                    <input type="text" id="jahDocNumber" formControlName="jahDocNumber" />
+                    <div *ngIf="submitted && f['jahDocNumber'].errors" class="invalid-input">
+                        <div *ngIf="f['jahDocNumber'].errors['required']">
+                            Document Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahDateOfBirth">Date of Birth</label>
+                    <input type="date" id="jahDateOfBirth" formControlName="jahDateOfBirth" />
+                    <div *ngIf="submitted && f['jahDateOfBirth'].errors" class="invalid-input">
+                        <div *ngIf="f['jahDateOfBirth'].errors['required']">
+                            Date of Birth is required
+                        </div>
+                        <div *ngIf="f['jahDateOfBirth'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['jahDateOfBirth'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahMaritalStatus">Marital Status</label>
+                    <select id="jahMaritalStatus" formControlName="jahMaritalStatus">
+                        <option></option>
+                        <option>Divorced</option>
+                        <option>Married</option>
+                        <option>Separated</option>
+                        <option>Single</option>
+                        <option>Widow</option>
+                        <option>Widower</option>
+                    </select>
+                    <div *ngIf="submitted && f['jahMaritalStatus'].errors" class="invalid-input">
+                        <div *ngIf="f['jahMaritalStatus'].errors['required']">
+                            Marital Status is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahPIN">PIN</label>
+                    <input type="text" id="jahPIN" formControlName="jahPIN" />
+                    <div *ngIf="submitted && f['jahPIN'].errors" class="invalid-input">
+                        <div *ngIf="f['jahPIN'].errors['required']">PIN is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahPostalAddress">Postal Address</label>
+                    <input type="text" id="jahPostalAddress" formControlName="jahPostalAddress" />
+                    <div *ngIf="submitted && f['jahPostalAddress'].errors" class="invalid-input">
+                        <div *ngIf="f['jahPostalAddress'].errors['required']">Postal Address is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahPostalCode">Postal Code</label>
+                    <input type="text" id="jahPostalCode" formControlName="jahPostalCode" />
+                    <div *ngIf="submitted && f['jahPostalCode'].errors" class="invalid-input">
+                        <div *ngIf="f['jahPostalCode'].errors['required']">PostalCode is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahCityOrTown">City / Town</label>
+                    <input type="text" id="jahCityOrTown" formControlName="jahCityOrTown" />
+                    <div *ngIf="submitted && f['jahCityOrTown'].errors" class="invalid-input">
+                        <div *ngIf="f['jahCityOrTown'].errors['required']">City / Town is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahPhysicalAddress">Physical Address</label>
+                    <input type="text" id="jahPhysicalAddress" formControlName="jahPhysicalAddress" />
+                    <div *ngIf="submitted && f['jahPhysicalAddress'].errors" class="invalid-input">
+                        <div *ngIf="f['jahPhysicalAddress'].errors['required']">Physical Address is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahCountryOfResidence">Country of Residence</label>
+                    <select id="jahCountryOfResidence" formControlName="jahCountryOfResidence">
+                        <option></option>
+                        <option *ngFor="let country of countries"
+                            [selected]="this.f['jahCountryOfResidence'].value===country">{{
+                            country }}</option>
+                    </select>
+                    <div *ngIf="submitted && f['jahCountryOfResidence'].errors" class="invalid-input">
+                        <div *ngIf="f['jahCountryOfResidence'].errors['required']">
+                            Country of Residence is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahOccupationOrBusiness">Occupation/Business</label>
+                    <input type="text" id="jahOccupationOrBusiness" formControlName="jahOccupationOrBusiness" />
+                    <div *ngIf="submitted && f['jahOccupationOrBusiness'].errors" class="invalid-input">
+                        <div *ngIf="f['jahOccupationOrBusiness'].errors['required']">Occupation / Business is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahPlaceOfWork">Place of Work</label>
+                    <input type="text" id="jahPlaceOfWork" formControlName="jahPlaceOfWork" />
+                    <div *ngIf="submitted && f['jahPlaceOfWork'].errors" class="invalid-input">
+                        <div *ngIf="f['jahPlaceOfWork'].errors['required']">Place Of Work is required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="jahPhoneNo">Telephone Number (Work)</label>
+                    <input type="text" id="jahPhoneNo" formControlName="jahPhoneNo" />
+                    <div *ngIf="submitted && f['jahPhoneNo'].errors" class="invalid-input">
+                        <div *ngIf="f['jahPhoneNo'].errors['required']">Telephone Number (Work) is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahMobileNo">Mobile Number</label>
+                    <input type="text" id="jahMobileNo" formControlName="jahMobileNo" />
+                    <div *ngIf="submitted && f['jahMobileNo'].errors" class="invalid-input">
+                        <div *ngIf="f['jahMobileNo'].errors['required']">Mobile Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="jahEMail">EMail</label>
+                    <input type="text" id="jahEMail" formControlName="jahEMail" />
+                    <div *ngIf="submitted && f['jahEMail'].errors" class="invalid-input">
+                        <div *ngIf="f['jahEMail'].errors['required']">EMail is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+                    prev
+                  </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

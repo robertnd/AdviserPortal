@@ -1,0 +1,35 @@
+<div class="login-container">
+  <div class="login-card centered">
+    <div id="bannerLogo">
+      <img src="../assets/img/adviserPortal.png" width="212" height="47" alt="Advisers portal logo"
+        style="margin-left: 15px" />
+      <!-- <img src="../assets/img/logo.png" alt="trillo logo" class="logo" /> -->
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input class="login-input centered" type="text" formControlName="username" placeholder="Username"
+          value="supervisor@nosuchmail.org" />
+      </div>
+      <div *ngIf="submitted && f.username.errors">
+        <p class="ctrl-notification" *ngIf="f.username.errors.required">
+          Username is required
+        </p>
+      </div>
+      <div class="input-group">
+        <input class="login-input centered" type="password" formControlName="password" placeholder="Password"
+          value="supervisor" />
+      </div>
+      <div *ngIf="submitted && f.password.errors">
+        <p class="ctrl-notification" *ngIf="f.password.errors.required">
+          Password is required
+        </p>
+      </div>
+      <div class="input-group">
+        <button class="ombutton centered with-icon" type="submit">
+          SIGN IN
+          <img src="../assets/img/arrow-right-light.svg" alt="" />
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

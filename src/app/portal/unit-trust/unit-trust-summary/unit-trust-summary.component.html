@@ -1,0 +1,1844 @@
+<div class="detail">
+    <div class="summary-container">
+        <div class="summary-row">
+            <img src="../../assets/img/OMformLogo.png" alt="">
+        </div>
+        <div class="summary-row">
+            <div class="address-items">
+                <p>Old Mutual Life Assurance Kenya Limited</p>
+                <p>Old Mutual Tower, Upper Hill Road, Upper Hill, Nairobi | P.O. Box 23842 00100, Nairobi, Kenya</p>
+                <p>Tel: +254 711 010 000, +254 711 065 000 | Email: life@oldmutual.co.ke</p>
+                <p>oldmutual.co.ke</p>
+            </div>
+        </div>
+        <div class="summary-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }} Summary</h1>
+            </div>
+        </div>
+
+        <div id="personalInfoSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Personal Information</h1>
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>First Name</label>
+                    {{ personalInfo.firstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Middle Name(s)</label>
+                    {{ personalInfo.middleNames }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Last Name</label>
+                    {{ personalInfo.lastName }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date of Birth</label>
+                    {{ personalInfo.dateOfBirth }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ personalInfo.idDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ personalInfo.docNumber }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Gender</label>
+                    {{ personalInfo.gender }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Marital Status</label>
+                    {{ personalInfo.maritalStatus }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title</label>
+                    {{ personalInfo.title }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title (if other)</label>
+                    {{ personalInfo.titleOther }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>PIN</label>
+                    {{ personalInfo.PIN }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Nationality</label>
+                    {{ personalInfo.nationality }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Country of Residence</label>
+                    {{ personalInfo.countryOfResidence }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/personal-info')">
+                        Edit Personal Information
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+
+            </div>
+        </div>
+
+        <div id="contactsSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Contacts</h1>
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Postal Address</label>
+                    {{ contacts.postalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Code</label>
+                    {{ contacts.postalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Last Name</label>
+                    {{ contacts.townCity }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Town / City</label>
+                    {{ contacts.physicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Mobile Number</label>
+                    {{ contacts.mobile }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Home Number</label>
+                    {{ contacts.homeNumber }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Email</label>
+                    {{ contacts.email }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/contacts')">
+                        Edit Contacts
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="occupationSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Occupation</h1>
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Occupation</label>
+                    {{ occupation.typeOfEmployment }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Name of Business or Employer</label>
+                    {{ occupation.nameOfBusiness }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Role</label>
+                    {{ occupation.role }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>(If self-employed, kindly state the nature of business activity including the source of funds
+                        for permiums)</label>
+                    {{ occupation.natureOfBusiness }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Postal Address (Work)</label>
+                    {{ occupation.workPostalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Code</label>
+                    {{ occupation.workPostalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Town / City</label>
+                    {{ occupation.workTownOrCity }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Physical Address (Work)</label>
+                    {{ occupation.workPhysicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Phone (Work)</label>
+                    {{ occupation.workPhone }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Email (Work)</label>
+                    {{ occupation.workEmail }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/occupation')">
+                        Edit Occupation
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="jointApplicantSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Secondary Account Holder</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Relationship between joint holders?</label>
+                    {{ jointAccountHolder.jahRelationship }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Other (specify)</label>
+                    {{ jointAccountHolder.jahRelationshipOther }}
+                </div>
+                <div class="text-intg-summary">
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>
+                        In the event of a death of a joint holder, should the surviving joint holder have beneficial
+                        ownership of the joint account?
+                    </label>
+                    {{ jointAccountHolder.jahCanGetBeneficialOwnership }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Transaction to be signed by?</label>
+                    {{ jointAccountHolder.jahSignatories }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Other (specify)</label>
+                    {{ jointAccountHolder.jahSignatoriesOther }}
+                </div>
+                <div class="text-intg-summary">
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>First Name</label>
+                    {{ jointAccountHolder.jahFirstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Surname</label>
+                    {{ jointAccountHolder.jahSurname }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Title</label>
+                    {{ jointAccountHolder.jahTitle }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title (if other)</label>
+                    {{ jointAccountHolder.jahTitleOther }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ jointAccountHolder.jahIdDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ jointAccountHolder.jahDocNumber }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date of Birth</label>
+                    {{ jointAccountHolder.jahDateOfBirth }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Marital Status</label>
+                    {{ jointAccountHolder.jahMaritalStatus }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>PIN</label>
+                    {{ jointAccountHolder.jahPIN }}
+                </div>
+                <div class="text-intg-summary">
+
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Postal Address</label>
+                    {{ jointAccountHolder.jahPostalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Code</label>
+                    {{ jointAccountHolder.jahPostalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>City / Town</label>
+                    {{ jointAccountHolder.jahCityOrTown }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Physical Address</label>
+                    {{ jointAccountHolder.jahPhysicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Country of Residence</label>
+                    {{ jointAccountHolder.jahCountryOfResidence }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Occupation/Business</label>
+                    {{ jointAccountHolder.jahOccupationOrBusiness }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Place of Work</label>
+                    {{ jointAccountHolder.jahPlaceOfWork }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Telephone Number (Work)</label>
+                    {{ jointAccountHolder.jahPhoneNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Mobile Number</label>
+                    {{ jointAccountHolder.jahMobileNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>EMail</label>
+                    {{ jointAccountHolder.jahEMail }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/unit-trust/joint-applicant')">
+                        Edit Secondary Account Holder
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="nextOfKinSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Emergecny Contact / Next of Kin</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>First Name</label>
+                    {{ nextOfKin.nokFirstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Surname</label>
+                    {{ nextOfKin.nokFirstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Nationality</label>
+                    {{ nextOfKin.nokNationality }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Title</label>
+                    {{ nextOfKin.nokTitle }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>If "Other" specify</label>
+                    {{ nextOfKin.nokTitleOther }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ nextOfKin.nokIdDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ nextOfKin.nokDocNumber }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date of Birth</label>
+                    {{ nextOfKin.nokDateOfBirth }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Marital Status</label>
+                    {{ nextOfKin.nokMaritalStatus }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>PIN</label>
+                    {{ nextOfKin.nokPIN }}
+                </div>
+                <div class="text-intg-summary">
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Postal Address</label>
+                    {{ nextOfKin.nokPostalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Code</label>
+                    {{ nextOfKin.nokPostalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>City / Town</label>
+                    {{ nextOfKin.nokCityOrTown }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Physical Address</label>
+                    {{ nextOfKin.nokPhysicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Country of Residence</label>
+                    {{ nextOfKin.nokCountryOfResidence }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Occupation/Business</label>
+                    {{ nextOfKin.nokOccupationOrBusiness }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Place of Work</label>
+                    {{ nextOfKin.nokPlaceOfWork }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Telephone Number (Work)</label>
+                    {{ nextOfKin.nokPhoneNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Mobile Number</label>
+                    {{ nextOfKin.nokMobileNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>EMail</label>
+                    {{ nextOfKin.nokEMail }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/unit-trust/contact-or-kin')">
+                        Edit Emergecny Contact / Next of Kin
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="lifeWrapperSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Life Wrapper</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">Life Wrapper Benefit: This is a benefit accessible to your beneficiaries in
+                    the unfortunate event of
+                    your passing on.
+                    It supports them in covering the resultant expenses of paying their last respects. The cover valued
+                    at Kshs 50,000 payable within 48 hours
+                    of filing a claim from and submission of an original ID/certified ID copy of the deceased and
+                    nominated beneficiary and a burial permit
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="overview__subheading2 ">
+                    Terms and conditions
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <ul class="form-list1">
+                    <li>Must hold at least one of the following unit trusts accounts: Equity fund, Money Market Fund,
+                        Balanced Fund, Toboa Investment Plan & Bond Fund</li>
+                    <li>Must have a minimum bakance of KES 200,000.00 at the end of every month</li>
+                    <li>Minimum age 18 years (age last birthday) and maximum age 74 years (age last birthday) of the
+                        account holder</li>
+                    <li>Only eligible to individual clients and not corporate clients. For joint accounts, only one
+                        holder will be covered</li>
+                    <li>Exclusions: Benefit shall not be payable if death is brought about or accelerated by: Suicide
+                        (whether sane or insane):
+                        <ul class="form-list2">
+                            <li>The influence of alcohol</li>
+                            <li>Engaging in aviation except as a passenger on a recognized airline</li>
+                            <li>Participants in any hazardous sport or pursuit including rock climbing, scuba diving,
+                                hang-gliding and aided speed contests of any kind
+                            </li>
+                            <li>Committing a felony</li>
+                            <li>An unsound mind</li>
+                            <li>Any biological and chemical incidents</li>
+                            <li>Use of illegal drugs</li>
+                            <li>Nuclear and radiation disaster</li>
+                        </ul>
+                    <li>Cession: You may NOT cede your Contract in any way</li>
+                    <li>Only amendment allowd to the policy is change in the beneficiary</li>
+                </ul>
+
+            </div>
+
+            <div class="summary-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Beneficiary Nomination</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>First Name</label>
+                    {{ lifeWrapper.lwBNFirstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Surname</label>
+                    {{ lifeWrapper.lwBNSurname }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>ID / Passport Number</label>
+                    {{ lifeWrapper.lwBNIDorPassportNo }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Relationship</label>
+                    {{ lifeWrapper.lwBNRelationship }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Address</label>
+                    {{ lifeWrapper.lwBNPostalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Mobile Number</label>
+                    {{ lifeWrapper.lwBNMobileNo }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>EMail</label>
+                    {{ lifeWrapper.lwBNEMail }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="overview">
+                    <p class="overview__subheading2_ital">Note: If the beneficiary is a minor, please nominate a
+                        guardian</p>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Guardian</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>First Name</label>
+                    {{ lifeWrapper.lwGuardianFirstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Surname</label>
+                    {{ lifeWrapper.lwGuardianSurname }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>ID / Passport Number</label>
+                    {{ lifeWrapper.lwGuardianIDorPassportNo }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Relationship</label>
+                    {{ lifeWrapper.lwGuardianRelationship }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Address</label>
+                    {{ lifeWrapper.lwGuardianPostalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Mobile Number</label>
+                    {{ lifeWrapper.lwGuardianMobileNo }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>EMail</label>
+                    {{ lifeWrapper.lwGuardianEMail }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/unit-trust/life-wrapper')">
+                        Edit Life Wrapper
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="lifeWrapperConsentSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Life Wrapper Consent Summary</h1>
+                </div>
+            </div>
+
+
+            <div class="summary-row">
+                <p class="overview__subheading2">
+                    CONSENT FOR PROCESSING PERSONAL DATA RELATING TO A CHILD
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    In completing this section, you may be required to provide personal data relating to a child for
+                    instance where providing details of your beneficiaries/next of kin. Please note that a child is a
+                    person under the age of 18 years. In order for us to process any personal data relating to a child,
+                    we require your consent as the child's parent or legal guardian and proof of the child's age.
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    By signing below, you confirm that you are the parent or legal guardian of the child whose personal
+                    data is being provided to us and that you have read and understood the Privacy Notice above and our
+                    Privacy Policy and you hereby consent to our processing of the child's personal data in or outside
+                    Kenya.
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name</label>
+                    {{ lifeWrapperConsent.lwcDataForChildName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ lifeWrapperConsent.lwcDataForChildDate }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <p class="overview__subheading2 collapsible">
+                    CONSENT FOR OBTAINING YOUR INFORMATION FROM THIRD PARTIES
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    In some instances, it may be necessay that we obtain your personal data from third parties or
+                    publicly available sources. The reasons for this include verifying the information you have provided
+                    to us, assessing whether you are eligible for our products and services, complying with our legal or
+                    regulatory obligations or where it is necessary for our legitimate interests and for such other
+                    purposes as set out in our Privacy Policy. Where you seel to obtain an insurabce/lofe assurance
+                    policy from us, we may require your medical information from your medical practitioner in order to
+                    effect your policy and/or process your claim
+                    Please note that if you do not provide us with your consent for our processing of your personal data
+                    or if you withdraw your conset for such processing, we may not be able to provide our products and
+                    services to you. Such withdrawal of consent will not however affect the lawfulness of our processing
+                    of your personal data prior to the withdrawal.
+                    By signing below, you authorise us to obtain and process your personal data from third parties in
+                    accordance with our Privacy Policy
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name</label>
+                    {{ lifeWrapperConsent.lwc3rdPartyName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ lifeWrapperConsent.lwc3rdPartyDate }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <p class="overview__subheading2 collapsible">
+                    CONSENT FOR COMMERCIAL USE OF DATA
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    We may use your information for commercial purposes such as carrying out analytics/market research
+                    about our products and services. Where we use your personal data for such commercial purposes, we
+                    will anonymise the data where possible in such a manner as to ensure that you are no longer
+                    identifiable.
+                    We may advertise and market to you our latest products and services. Please note that if you do not
+                    wish to receive marketing information you may opt-out by contacting us at any time
+                    Please select the relevant option below if you agree to receive marketing information from us:
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ lifeWrapperConsent.lwcAcceptOrNotIdDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ lifeWrapperConsent.lwcAcceptOrNotDate }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    By signing below, you confirm that you are the parent or legal guardian of the child whose personal
+                    data is being provided to us and that you consent to our processing the child's personal data in
+                    accordance with our Privacy Policy
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name</label>
+                    {{ lifeWrapperConsent.lwcDeclName }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <p class="overview__subheading2 collapsible">
+                    DECLARATION
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    I have read and understood the terms and conditions set out in the Application form and I hereby
+                    apply for admission to the Life Wrapper Scheme and agree to be bound by the rules of the scheme. I
+                    acknowledge that Old Mutual Investment Group Limited has the option to accept or refuse my
+                    application following its assessments.
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    I confirm that I have read and understood the Privacy Notice and the Privacy Policy and that any
+                    queries/concerns I have with regard to the nature and purpose of the processing of personal data
+                    have been adequately addressed
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ lifeWrapperConsent.lwcDeclNameDate }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/unit-trust/life-wrapper-consent')">
+                        Edit Life Wrapper Consent
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="sourceOfFundsSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Source of Funds</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="checkBoxGroup">
+                    {{ sourceOfFunds.salary }}
+                    {{ sourceOfFunds.businessIncome }}
+                    {{ sourceOfFunds.gifts }}
+                    {{ sourceOfFunds.saleOfProperty }}
+                    {{ sourceOfFunds.savings }}
+                    {{ sourceOfFunds.other }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    I do hereby declare that the source of funds I/We shall be depositing is/are (tick as applicable)
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>(Details of other source of funds)</label>
+                    {{ sourceOfFunds.otherSourceOfFunds }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    I/We further confirm that these funds are derived from legitimate sources as stated and that I/we
+                    also provide evidence of the source of funds when required.
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    I/We declare that the above information is true and correct
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/unit-trust/unit-trust-source-of-funds')">
+                        Edit Source of Funds
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="bankInfoSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Bank Details</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Account Holder</label>
+                    {{ bankInfo.accountHolder }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Account Number</label>
+                    {{ bankInfo.accountNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Account Type</label>
+                    {{ bankInfo.accountType }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Bank</label>
+                    {{ bankInfo.bankName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Branch</label>
+                    {{ bankInfo.branch }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">Any change in the bank details above must be provided in writing with
+                    adequate proof and signed by the authorised signatories according to the mandate provided. No
+                    payments will be made to a third party's bank account</p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/unit-trust/bank-info')">
+                        Edit Secondary Account Holder
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="mpesaActivationSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Mpesa Activation</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name</label>
+                    {{ mpesaActivation.mpesaName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>National ID</label>
+                    {{ mpesaActivation.nationalId }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Mpesa Registered Number</label>
+                    {{ mpesaActivation.mpesaNumber }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <table class="data-table" *ngIf="numbers.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>National ID</th>
+                            <th>Mpesa Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let n of numbers | keyvalue">
+                            <td><i class="fa fa-child fa-lg m-3"></i></td>
+                            <td>{{n.value.name}}</td>
+                            <td>{{n.value.nationalId}}</td>
+                            <td>{{n.value.mpesaNo}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    NOTE
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <ul class="form-list1">
+                    <li>In case of a joint account, all holders must sign the MPESA activation section above. However,
+                        the signing mandate on the account applies for future withdrawal instructions to the above
+                        stated mobile number(s)</li>
+                    <li>When making future withdrawal requests, the specific mobile number to which the MPESA payment is
+                        to be made, must be quoted and it should match either of the registered numbers given above</li>
+                    <li>MPESA payment option does not apply to corporate account</li>
+                </ul>
+            </div>
+
+
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/unit-trust/mpesa-activation')">
+                        Edit Mpesa Activation
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="incomeDistributionSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Income Distribution</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">Please send income distribution amounts to my bank account on file if it is
+                    above
+                    Kshs 1000 (Please tick where applicable)
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="checkBoxGroup">
+                    {{ incomeDistribution.moneyMarket }}
+                    {{ incomeDistribution.equityFund }}
+                    {{ incomeDistribution.balancedFund }}
+                    {{ incomeDistribution.bondFund }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1 collapsible">FUND DETAILS </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">Old Mutual Money Market Fund
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    The objective of the Old Mutual Money Market Fund is to generate total return through investing in a
+                    range of securities such as Government of Kenya Treasury Bills, fixed deposit, instruments and near
+                    casj
+                    in the Kenyan market while proc=viding the most conservative risk exposure to investors. Minimum
+                    investment amount is Kshs 1,000. This fund is suitable for an investor who would like a safe parking
+                    place for their funds. The client is advised to invest their money for at least a year
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    No initial fee is chargeable on the Money Market Fund
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Old Mutual Equity Fund
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    The objective of the Old Mutual Money Market Fund is to generate long-term capital groath through
+                    active
+                    management investing principally. in a well diversified portfolio of equities i.e stocks and shares
+                    across several sectors of the Kenyan economy, in earnings of corporations and assets with a medium
+                    high
+                    risk profile. Minimum investing amount is Kshs 50,000. This fund is suitable for investors seeking
+                    uperior returns over the medium to long term and who have a tolerance for fluctuations in capital
+                    value.
+                    The recommended investment period is 4-7 years
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Old Mutual Balanced Fund
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    The objective of the Old Balanced Fund is to ahcieve steady regular income from the money market
+                    portion
+                    of the fund and capital growth in the medium to long term from the equity portion while carryong
+                    only a
+                    medium level of risk. Minimum investment amounr is Kshs 50,000. This fund is suitable for the medium
+                    risk investor who is looking for a mixture of safety, income and capital appreciation. The
+                    recommended
+                    investment period is 3-5 years
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Toboa Investment Plan
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    The Toboa investmetn plan is a facility that allows investors to make monthly contributions /
+                    investments of Kshs 1,000 into the Balanced Fund. The fund is suitable for the medium risk investor
+                    who
+                    is looking for a mixture of safety, income and capital appreciation. The recommended investment
+                    period
+                    is 3-5 years
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Old Mutual Bond Fund
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    The objective of the Old Mutual Bond Fund is to achieve a reasonable level of current income and
+                    steady
+                    growth of capital by investing primarily in a well-diversified portfolio of fixed income securities
+                    issued by the Kenyan government and corporations with some offshore element while carrying a low -
+                    medium level of risk. Minimum investment amount is Kshs 50,000. This fun is suitable for a low to
+                    medium
+                    risk investor who is seeking a reasonable level of current income or a steady growth of capital from
+                    the
+                    reinvestment of the distribution income
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Fund Charges
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    A service fee of 1% per annum + VAT os applicable to the Money Market Fund, a service fee of 3.37%
+                    per
+                    annum + VAT is applicable to Equity, Balance and Toboa Funds and a service fee of 3% per annum + VAT
+                    is
+                    applicable to the Bond Fund
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name of Fund</label>
+
+                </div>
+                <div class="text-intg-summary">Amount (Kshs)</div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Old Mutual Money Market Fund</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.imoneyMarketFund }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Old Mutual Equity Fund</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.iequityFund }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Old Mutual Balanced Fund / Toboa Investment Plan</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.ibalancedFund }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Old Mutual Bond Fund</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.ibondFund }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Total Amount Invested</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.totalInvested }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Total Amount Invested (in words)</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.totalInvestedWords }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1 collapsible">
+                    DISCLAIMER
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    DO NOT GIVE CASH TO ANY OLD MUTUAL AGENT OR OFFICER. FOR BANKERS, PERSONAL & CORPORATE CHEQUES,
+                    KINDLY ENSURE THAT YOU ADD YOUR NAME NEXT TO THE FUND NAME
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Payment Method
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="checkBoxGroup">
+                    {{ incomeDistribution.cheque }}
+                    {{ incomeDistribution.directCash }}
+                    {{ incomeDistribution.eftRtgs }}
+                    {{ incomeDistribution.internationalTransfer }}
+                    {{ incomeDistribution.postaPay }}
+                    {{ incomeDistribution.totalInvestedWords }}
+                    {{ incomeDistribution.totalInvestedWords }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Old Mutual accepts personal / corporate and bankers cheques payable to the ACCOUNT NAME of the fund
+                    in which you intend to invest in. NO THIRD PARTY CHEQUES will be accepted. The Bank Account details
+                    are listed below. After allocation of a Client Account Number, payments can be made directly into
+                    the inflow account in which case the Client Account Number must be clearly stated to enable
+                    allocation. The deposit confirmation details should also be delivered to Old Mutual Investment
+                    Group. Please note that the bank deposit> slip will be deemed a receipt but not as value by Old
+                    Mutual Investment Group. Please use the OMK-KCB customized deposit slips for all your deposits at
+                    any KCB branches to ensure that your investement is allocated to your respective account timeously
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    BANK DETAILS: Kenya Commercial Bank, Custody Service Branch
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Investments in Old Mutual Money Market Fund<br>
+                    Account Name: Old Mutual Money Market Fund<br>
+                    Account No: 110-236-970-5<br>
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Investments in Old Mutual Balanced Fund<br>
+                    Account Name: Old Mutual Balanced Fund<br>
+                    Account No: 110-237-044-4<br>
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Investments in Old Mutual Equity Fund<br>
+                    Account Name: Old Mutual Equity Fund<br>
+                    Account No: 110-237-075-4<br>
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Investments in Old Mutual Bond Fund<br>
+                    Account Name: Old Mutual Bond Fund<br>
+                    Account No: 110-240-075-0<br>
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    International Investments Swift Code: KCBLKENX
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    TERMS AND CONDITIONS
+                </p>
+            </div>
+
+            <ol class="form-list1">
+                <li>Units are traded at the daily ruling prices and will be repurchased by Old Mutual Investment Group
+                    in accordance with the Capital Markets (Collective Investment Schemes) Regulations 2001 and on terms
+                    and conditions set out in the Trust Deed</li>
+                <li>Unit Prices may go up as well as down</li>
+                <li>Complete application forms and notification of deposits / cleared funds must be received for the
+                    investment to be executed Subsscription monies in cleared finds received will be dealt with on the
+                    next Dealing Day</li>
+                <li>The investor and his / her financial adviser shsall at all times be responsible for ensuring that
+                    the Old Mutual Investment Group and its representatives receive any instructions from the investor
+                    and / or financial adviser, whether by facsimile, email, or sms and that such instructionsare
+                    complete and correct in all respects</li>
+                <li>Investors are reminded that in certain specified circumstances their right to redeem units may be
+                    suspended</li>
+                <li>No third party cheques are allowed. Payments made by a third party on behalf of an investor will
+                    need to be supported by further documentation from the source of the funds account owner</li>
+                <li>Once an account has been opened, a statement of investment will be sent by post or email to the
+                    investor on a monthly basis</li>
+                <li>All transaction charges on purchasing securities shall be borneby the Fund and not the Fund Manager
+                </li>
+                <li>Old Mutual Investment Group may at any time revise the service fees and initial fees but shall give
+                    a 30-day prior notice for changes to fees provided that such revision is within limits set out in
+                    the trust deed and information memorandum</li>
+                <li>You can make one free withdrawl in a month to a loclaaccount. Subsequent withdrawals will attract a
+                    frquency charge of Kshs 800 (All international transfers will attract a Swift charge)</li>
+                <li>We may amend these Terms from time to time. Usage of the Sccount after we have posted an amendment
+                    verion of these terms on Old Mutual Investment Group's website, shall amount to conceding to be
+                    bound by the amended terms and conditions of the Agreement</li>
+                <li>If you wish to lodge a complaint, please notify us in writing of this by completing our Feedback
+                    Form. We will provide you with a reference number and respond to your complain as soon as possible
+                    after we receive your Feedback Form</li>
+                <li>Old Mutual Investment Group may request additional information from the customer when required in
+                    establishing relationship, carrying out a transaction and during the business relationship</li>
+            </ol>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    DECLARATION
+                </p>
+            </div>
+
+            <ol class="form-list1">
+                <li>The information provided in this application is true and accurate and that the money used for this
+                    investment does not arise from the proceeds of any money laundering or other illicit activities</li>
+                <li>I / We confirm that where this information is signed in a representative capacity, I / We have the
+                    necessary authority to do so</li>
+                <li>I / We hereby consent to Old Mutual Investment Group verifying the information provided with others
+                </li>
+                <li>I / We have read and fully understand the objectives, risk levels, income distribution and the
+                    applicable charges for the Fund selected and agree to the terms</li>
+                <li> I / We confirm that my / our application to subscribe to the Old Mutual Unit Trust Funds is made in
+                    the basis and terms of conditions contained in the information memeorandum and the Trust Deed</li>
+                <li> I / We agree to accept the number of units bought by virtue of this application and warrant that
+                    I/We have full power and authority to enter into and conclude this transaction</li>
+                <li>I / We confirm that the units are not being acquired either directly or indirectly by or on behalf
+                    of any person restricted by law if any relevant jurisdiction from acquiring the units</li>
+                <li>I/We hereby irrevocably and unconditionally agree that all fax, internet, electroninc mails and
+                    scanned copies of any documentation and / or instructions issued by us in respect of our account()
+                    or dealings with the Fund Manager shall be be binding and enforceable against us. We further agree
+                    to fully indemnify Old Mutual Investment group against any liabilities whatsoever which may be made
+                    against or incurred by the Fund maganer by reason of the FUnd Manager acceoting the fax, internet,
+                    electronic mails, scakked copies of the documentation annd/or instructions</li>
+                <li>I/We consent to the disclosure of information regarding my / out investment to the companies within
+                    Old Mutual Group and to any regulator oe tax authority establishing tax liabilities</li>
+                <li>I confirm that I have read and understood this declaration and its implications</li>
+                <li>I / We confirm that I/We have issued payments towards investments i the following funds</li>
+                <li> I/We confirm that I/We have not given any cash to any Old Mutual Agent or Officer and in the event
+                    that I / We have given the cash to any of them, I / We agree that Old Mutual will not be liable in
+                    the event of any loss arising therefrom
+                </li>
+                <li>I/We conset and agree that Old Mutual Investment Group mau withhold amounts in any account at any
+                    time. If ay foreign or domestinc government agency and/or tax authority requires them to do so, or
+                    they otherwise required by law pursuant to agreements with any foreing or domestic government agency
+                    and/or tax authority to do so, or if they need to complywith internal policies or with any
+                    applicable order or sanction of a domestic or non-dmoestic government agency and/or tax authority
+                </li>
+                <li>I/We authorise Old Mutual Investment Group to disclose any information relating to my / our account
+                    (s) to amy Foreign or Domestic Regulator, Tax Authority, Credit Reference Agency or any other
+                    Institution or third party as required by the laws of any country and as they deem necessary</li>
+            </ol>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name of Fund</label>
+
+                </div>
+                <div class="text-intg-summary">Amount (Kshs)</div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Old Mutual Money Market Fund</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.imoneyMarketFund_1 }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Old Mutual Equity Fund</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.iequityFund_1 }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Old Mutual Balanced Fund / Toboa Investment Plan</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.ibalancedFund_1 }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Old Mutual Bond Fund</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.ibondFund_1 }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Total Amount Invested</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.totalInvested_1 }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Total Amount Invested (in words)</label>
+                </div>
+                <div class="text-intg-summary">
+                    {{ incomeDistribution.totalInvestedWords_1 }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    DOCUMENTS REQUIRED
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Individual Applicants
+                </p>
+            </div>
+
+
+            <div class="summary-row">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Documentation Required</th>
+                            <th>Primary Holder</th>
+                            <th>Secondary Holder</th>
+                            <th>Official Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Certified copy of ID/Passport are attached for all the applicants and nominees
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Cheque, Bank transfer confirmation, Direct deposit slip or any other applicable proof of
+                                investment is attached
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Original bank statement for, the last 6 months, certified copy of a void / cancelled
+                                cheque or a certified photocopy of an ATM card
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Signed Banker's cheque, commitment form
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Customer's declaration form (Individual)
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Risk assessment form (Individual)
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                KRA PIN Number
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/unit-trust/income-distribution')">
+                        Edit Income Distribution
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="riskAssessmentSummary">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Risk Assessment</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What is your current age?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.ageGroup }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Have you ever invested in any of the following? (Shares / Treasury Bills and
+                        Bonds / Offshores / Property)</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.investedPicks }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What type of savings / investments do you currently hold? (Unit Trust /
+                        Business / Shares / Offshore / Property)?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.holdings }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What do you expect of your income in the next 3-5 years?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.projectedIncome }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Approximately what portion of your total investment portfolio will this
+                        investment represent (please exclude your permanent residence)</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.portion }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>How familiar are you with the investment markets and the concept of Risk vs
+                        Return?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.knowledge }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What returns would you reasonably expect to achieve from your investment
+                        compared to the current returns from the bank deposits</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.returns }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>If you took a loss of 25% or above from your investment, how would you
+                        handle it?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.onLoss }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What attracts me to an investment?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.attracts }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Do you have savings set aside to provide for an unexpected
+                        emergency?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.savings }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>When do you expect to need most of your money from this investment?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.projectedWithdrawal }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What is your monthly range of income?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.monthlyIncomeRange }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What are your monthly sources of income?</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    {{ riskAssessment.monthlyIncomeSource }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>DECLARATION</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>I warrant that the above statements made by me or on my behalf are true and
+                        complete to the best of my knowledge and belief and I agree that this proposal shall be the
+                        basis of the contract between me and the Company. I agree to accept a policy in the Company’s
+                        usual form forthis class of insurance. I/we confirm that I/we have read and understood the above
+                        Privacy Notice and the Privacy Policy and that any queries/ concerns I/we have with regard to
+                        the nature and purpose of the processing of personal data have been adequately
+                        addressed.</label>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ riskAssessment.dateOfDecl }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+            
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/unit-trust/risk-assessment')">
+                        Edit Risk Assessment
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

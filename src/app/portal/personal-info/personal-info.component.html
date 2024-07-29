@@ -1,0 +1,199 @@
+<div class="detail">
+  <div class="form-container">
+    <div class="form-row">
+      <div class="overview" id="formTitle">
+        <h1 class="functional__heading">{{ journey }}</h1>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="overview">
+        <h1 class="overview__subheading">Personal Information</h1>
+      </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" formControlName="firstName" />
+          <div *ngIf="submitted && f['firstName'].errors" class="invalid-input">
+            <div *ngIf="f['firstName'].errors['required']">
+              First Name is required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="middlenames">Middle Name(s)</label>
+          <input type="text" id="middleNames" formControlName="middleNames" />
+        </div>
+        <div class="text-input-intg">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" formControlName="lastName" />
+          <div *ngIf="submitted && f['lastName'].errors" class="invalid-input">
+            <div *ngIf="f['lastName'].errors['required']">
+              Last Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="dateOfBirth">Date of Birth</label>
+          <input type="date" id="dateOfBirth" formControlName="dateOfBirth" />
+          <div *ngIf="submitted && f['dateOfBirth'].errors" class="invalid-input">
+            <div *ngIf="f['dateOfBirth'].errors['required']">
+              Date of Birth is required
+            </div>
+            <div *ngIf="f['dateOfBirth'].errors['futureDate']">
+              Future date is not valid
+            </div>
+            <div *ngIf="f['dateOfBirth'].errors['invalidValue']">
+              Date value is not valid
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg"></div>
+        <div class="text-input-intg"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="idDocument">Identification Document</label>
+          <select id="idDocument" formControlName="idDocument">
+            <option></option>
+            <option>National ID</option>
+            <option>Passport</option>
+            <option>Foreign ID</option>
+            <option>Military ID</option>
+          </select>
+          <div *ngIf="submitted && f['idDocument'].errors" class="invalid-input">
+            <div *ngIf="f['idDocument'].errors['required']">
+              Identification Document is required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="docNumber">Document Number</label>
+          <input type="text" id="docNumber" formControlName="docNumber" />
+          <div *ngIf="submitted && f['docNumber'].errors" class="invalid-input">
+            <div *ngIf="f['docNumber'].errors['required']">
+              Document Number is required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="gender">Gender</label>
+          <select id="gender" formControlName="gender">
+            <option></option>
+            <option>Female</option>
+            <option>Male</option>
+          </select>
+          <div *ngIf="submitted && f['gender'].errors" class="invalid-input">
+            <div *ngIf="f['gender'].errors['required']">Gender is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="maritalStatus">Marital Status</label>
+          <select id="maritalStatus" formControlName="maritalStatus">
+            <option></option>
+            <option>Divorced</option>
+            <option>Married</option>
+            <option>Separated</option>
+            <option>Single</option>
+            <option>Widow</option>
+            <option>Widower</option>
+          </select>
+          <div *ngIf="submitted && f['maritalStatus'].errors" class="invalid-input">
+            <div *ngIf="f['maritalStatus'].errors['required']">
+              Marital Status is required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="title">Title</label>
+          <select id="title" formControlName="title">
+            <option></option>
+            <option>Mr</option>
+            <option>Mrs</option>
+            <option>Ms</option>
+            <option>Miss</option>
+            <option>Prof</option>
+            <option>Dr</option>
+            <option>Hon</option>
+            <option>Rev</option>
+            <option>Fr</option>
+            <option>Other</option>
+          </select>
+          <div *ngIf="submitted && f['title'].errors" class="invalid-input">
+            <div *ngIf="f['title'].errors['required']">
+              Please select a Title
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="title">Title (if other)</label>
+          <input type="text" id="titleOther" formControlName="titleOther" />
+          <div *ngIf="submitted && f['titleOther'].errors" class="invalid-input">
+            <div *ngIf="f['titleOther'].errors['conditionalRequired']">
+              Please provide a Title description
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="PIN">PIN</label>
+          <input type="text" id="PIN" formControlName="PIN" />
+          <div *ngIf="submitted && f['PIN'].errors" class="invalid-input">
+            <div *ngIf="f['PIN'].errors['required']">PIN is required</div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="nationality">Nationality</label>
+          <select id="nationality" formControlName="nationality">
+            <option></option>
+            <option *ngFor="let country of countries" [selected]="this.f['nationality'].value===country">{{ country }}
+            </option>
+          </select>
+          <div *ngIf="submitted && f['nationality'].errors" class="invalid-input">
+            <div *ngIf="f['nationality'].errors['required']">
+              Nationality is required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="countryOfResidence">Country of Residence</label>
+          <select id="countryOfResidence" formControlName="countryOfResidence">
+            <option></option>
+            <option *ngFor="let country of countries" [selected]="this.f['countryOfResidence'].value===country">{{
+              country }}</option>
+          </select>
+          <div *ngIf="submitted && f['countryOfResidence'].errors" class="invalid-input">
+            <div *ngIf="f['countryOfResidence'].errors['required']">
+              Country of Residence is required
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+          next
+          <img src="../assets/img/arrow-right-light.svg" alt="" />
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="form-row">
+      <div class="text-input-intg">
+        <label for="summary">Professional Summary</label>
+        <textarea rows="3"></textarea>
+      </div>
+    </div> -->

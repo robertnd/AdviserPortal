@@ -1,0 +1,152 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Nomination of Beneficiaries</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="beneficiariesFullname">Full Name</label>
+                    <input type="text" id="beneficiariesFullname" formControlName="beneficiariesFullname" />
+                    <div *ngIf="f['beneficiariesFullname'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesFullname'].errors['conditionalRequired']">
+                            Full Name is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="beneficiariesRelationship">Relationship to member</label>
+                    <input type="text" id="beneficiariesRelationship" formControlName="beneficiariesRelationship" />
+                    <div *ngIf="f['beneficiariesRelationship'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesRelationship'].errors['conditionalRequired']">
+                            Relationship to member is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="beneficiariesAddrAndCode">Postal Address and Area Code</label>
+                    <input type="text" id="beneficiariesAddrAndCode" formControlName="beneficiariesAddrAndCode" />
+                    <div *ngIf="f['beneficiariesAddrAndCode'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesAddrAndCode'].errors['conditionalRequired']">
+                            Postal Address and Area Code is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="beneficiariesPhoneNo">Phone Number</label>
+                    <input type="text" id="beneficiariesPhoneNo" formControlName="beneficiariesPhoneNo" />
+                    <div *ngIf="f['beneficiariesPhoneNo'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesPhoneNo'].errors['conditionalRequired']">
+                            Phone Number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="beneficiariesDoB">Date of Birth</label>
+                    <input type="date" id="beneficiariesDoB" formControlName="beneficiariesDoB" />
+                    <div *ngIf="f['beneficiariesDoB'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesDoB'].errors['conditionalRequired']">
+                            Date of Birth is required
+                        </div>
+                        <div *ngIf="f['beneficiariesDoB'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['beneficiariesDoB'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="beneficiariesBenefitShare">% of total benefit to be paid to each beneficiary</label>
+                    <input type="text" id="beneficiariesBenefitShare" formControlName="beneficiariesBenefitShare" />
+                    <div *ngIf="f['beneficiariesBenefitShare'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesBenefitShare'].errors['conditionalRequired']">
+                            Total benefit is required
+                        </div>
+                        <div *ngIf="f['beneficiariesBenefitShare'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['beneficiariesBenefitShare'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg">
+                    <button class="ombutton ombutton-sm with-icon" type="button" (click)="addBeneficiary()">
+                        <i class="fas fa-plus"></i>
+                        Add
+                    </button>
+                </div>
+            </div>
+            <div class="form-row">
+                <table class="data-table" *ngIf="beneficiaries.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Full Name</th>
+                            <th>Relationship</th>
+                            <th>Address & Code</th>
+                            <th>PhoneNo</th>
+                            <th>Date of Birth</th>
+                            <th>Beneficiary Share(%)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let b of beneficiaries | keyvalue">
+                            <td><i class="fa fa-users fa-lg m-3"></i></td>
+                            <td>{{b.value.fullname}}</td>
+                            <td>{{b.value.relationship}}</td>
+                            <td>{{b.value.addressAndCode}}</td>
+                            <td>{{b.value.phoneNo}}</td>
+                            <td>{{b.value.dob}}</td>
+                            <td>{{b.value.benefitShare}}</td>
+                            <td>
+                                <button class="ombutton-link" type="button" (click)="removeBeneficiary(b.key)">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
