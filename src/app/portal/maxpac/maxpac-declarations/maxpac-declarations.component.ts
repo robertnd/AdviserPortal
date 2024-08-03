@@ -17,7 +17,25 @@ export class MaxpacDeclarationsComponent {
   pageTitle = 'Declarations'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    paymentMode: new FormControl(''),
+    hasHeldAccidentPolicy: new FormControl(''),
+    insurance: new FormControl(''),
+    branch: new FormControl(''),
+    address: new FormControl(''),
+    policyNo: new FormControl(''),
+    deferredOrDeclined: new FormControl(''),
+    refusedRenewal: new FormControl(''),
+    terminated: new FormControl(''),
+    increasedPremium: new FormControl(''),
+    specialConditions: new FormControl(''),
+    detailsOnYes: new FormControl(''),
+    additionalInsurance: new FormControl(''),
+    noOfOtherPolicies: new FormControl(''),
+    totalDeathBenefit: new FormControl(''),
+    totalPremium: new FormControl(''),
+    directOrIntermediaries: new FormControl(''),
+    marketingConsent: new FormControl(''),
+    dateOfEntry: new FormControl('')
   })
 
   constructor(
@@ -29,15 +47,31 @@ export class MaxpacDeclarationsComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+      paymentMode: [''],
+      hasHeldAccidentPolicy: [''],
+      insurance: [''],
+      branch: [''],
+      address: [''],
+      policyNo: [''],
+      deferredOrDeclined: [''],
+      refusedRenewal: [''],
+      terminated: [''],
+      increasedPremium: [''],
+      specialConditions: [''],
+      detailsOnYes: [''],
+      additionalInsurance: [''],
+      noOfOtherPolicies: [''],
+      totalDeathBenefit: [''],
+      totalPremium: [''],
+      directOrIntermediaries: [''],
+      marketingConsent: [''],
+      dateOfEntry: ['']
       })
 
     // this will load entries on back navigation or prefill

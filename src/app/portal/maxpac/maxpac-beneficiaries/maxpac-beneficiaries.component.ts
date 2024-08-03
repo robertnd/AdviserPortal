@@ -17,6 +17,16 @@ export class MaxpacBeneficiariesComponent {
   pageTitle = 'Beneficiary'
   submitted = false;
   form: FormGroup = new FormGroup({
+      pobox: new FormControl(''),
+      town: new FormControl(''),
+      telephoneNo: new FormControl(''),
+      mobileNo: new FormControl(''),
+      idDocument: new FormControl(''),
+      docNumber: new FormControl(''),
+      email: new FormControl(''),
+      accountNo: new FormControl(''),
+      insuredFrom: new FormControl(''),
+      insuredTo: new FormControl('')
     // firstName: new FormControl(''),
   })
 
@@ -29,15 +39,22 @@ export class MaxpacBeneficiariesComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+        pobox: [''],
+        town: [''],
+        telephoneNo: [''],
+        mobileNo: [''],
+        idDocument: [''],
+        docNumber: [''],
+        email: [''],
+        accountNo: [''],
+        insuredFrom: [''],
+        insuredTo: ['']
       })
 
     // this will load entries on back navigation or prefill

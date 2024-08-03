@@ -13,6 +13,166 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="form-paragraph1">
+                    <a href="#" (click)="toggle()">Show / Hide</a>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div [hidden]="!displayed">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Benefit</th>
+                                <th>Plan 1</th>
+                                <th>Plan 2</th>
+                                <th>Plan 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Accidental Death</td>
+                                <td>50,000</td>
+                                <td>75,000</td>
+                                <td>100,000</td>
+                            </tr>
+                            <tr>
+                                <td>Permanent disabilities</td>
+                                <td>50,000</td>
+                                <td>75,000</td>
+                                <td>100,000</td>
+                            </tr>
+                            <tr>
+                                <td>Accidental dental treatment</td>
+                                <td>50,000</td>
+                                <td>75,000</td>
+                                <td>100,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-paragraph1" [hidden]="!displayed">
+                    <p>The following activities are NOT covered:</p>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div [hidden]="!displayed">
+                    <ul class="form-list1">
+                        <li>Football except amateur football</li>
+                        <li>Parachuting</li>
+                        <li>Boxing, soccer, polo, water ski-jumping</li>
+                        <li>Power-boating</li>
+                        <li>Professional wrestling and martial arts</li>
+                        <li>Motor competitions</li>
+                        <li>Racing and unarmed combat</li>
+                        <li>Flying except airtravel</li>
+                        <li>Motorcycling - over 250 c.c.</li>
+                        <li>Show-jumping</li>
+                        <li>Yatching outside territorial waters</li>
+                        <li>Any pre-existing physical defect or infirmity</li>
+                        <li>Child birth or pregnancy of the insured</li>
+                        <li>Bodily injury sustained while the insured is insane</li>
+                        <li>War, invasion, act of foreign enemy hostilities (whether war be declared or not) civil war,r
+                            ebellion, revolution, insurrection,
+                            military or usurped power, terrorist attack, political risks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="childFullName">Child's Full Name</label>
+                    <input type="text" id="childFullName" formControlName="childFullName" />
+                    <div *ngIf="submitted && f['childFullName'].errors" class="invalid-input">
+                        <div *ngIf="f['childFullName'].errors['conditionalRequired']">
+                            Child's Full Name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="dateOfBirth">Date of Birth</label>
+                    <input type="date" id="dateOfBirth" formControlName="dateOfBirth" />
+                    <div *ngIf="submitted && f['dateOfBirth'].errors" class="invalid-input">
+                        <div *ngIf="f['dateOfBirth'].errors['conditionalRequired']">
+                            Date of Birth is required
+                        </div>
+                        <div *ngIf="f['dateOfBirth'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['dateOfBirth'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="coverForChild">Indicate Selected Cover Option For Child</label>
+                    <input type="text" id="coverForChild" formControlName="coverForChild" />
+                    <div *ngIf="submitted && f['coverForChild'].errors" class="invalid-input">
+                        <div *ngIf="f['coverForChild'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="childPremiumAmount">Premium Amount</label>
+                    <input type="text" id="childPremiumAmount" formControlName="childPremiumAmount" />
+                    <div *ngIf="submitted && f['childPremiumAmount'].errors" class="invalid-input">
+                        <div *ngIf="f['childPremiumAmount'].errors['conditionalRequired']">
+                            Premium Amount required
+                        </div>
+                        <div *ngIf="f['childPremiumAmount'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['childPremiumAmount'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <button class="ombutton-link" type="button" (click)="addChild()">
+                        Add
+                    </button>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <table class="data-table" *ngIf="children.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Child's Full Name</th>
+                            <th>Date of Birth</th>
+                            <th>Indicate Selected Cover Option For Child</th>
+                            <th>Premium Amount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of children | keyvalue">
+                            <td><i class="fa fa-child fa-lg m-3"></i></td>
+                            <td>{{c.value.fullName}}</td>
+                            <td>{{c.value.dateOfBirth}}</td>
+                            <td>{{c.value.cover}}</td>
+                            <td>{{c.value.premiumAmount}}</td>
+                            <td>
+                                <button class="ombutton-link" type="button" (click)="removeChild(c.key)">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

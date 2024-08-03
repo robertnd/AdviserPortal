@@ -15,8 +15,19 @@ export class MaxpacSpouseComponent {
 
   journey = ''
   pageTitle = 'Spouse'
-  submitted = false;
+  submitted = false
+  displayed = true
   form: FormGroup = new FormGroup({
+    idDocument: new FormControl(''),
+    docNumber: new FormControl(''),
+    pinNo: new FormControl(''),
+    occupation: new FormControl(''),
+    mobileNo: new FormControl(''),
+    dateOfBirth: new FormControl(''),
+    coverOptionForInsured: new FormControl(''),
+    premiumAmountInsured: new FormControl(''),
+    coverOptionForSpouse: new FormControl(''),
+    premiumAmountSpouse: new FormControl('')
     // firstName: new FormControl(''),
   })
 
@@ -36,6 +47,16 @@ export class MaxpacSpouseComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
+      idDocument: [''],
+      docNumber: [''],
+      pinNo: [''],
+      occupation: [''],
+      mobileNo: [''],
+      dateOfBirth: [''],
+      coverOptionForInsured: [''],
+      premiumAmountInsured: [''],
+      coverOptionForSpouse: [''],
+      premiumAmountSpouse: ['']
         // firstName: ['', Validators.required],
         // dateOfBirth: ['', [Validators.required, validateDate()]],
       })
@@ -57,6 +78,10 @@ export class MaxpacSpouseComponent {
 
   previous() {
     this.router.navigate(['/portal/maxpac/maxpac-beneficiaries'])
+  }
+
+  toggle() {
+    this.displayed = !this.displayed
   }
 
 }

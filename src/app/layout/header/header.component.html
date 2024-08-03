@@ -10,8 +10,8 @@
   <!-- <img src="assets/img/logo.png" alt="trillo logo" class="logo" /> -->
 
   <nav class="user-nav">
-    <div class="user-nav__user">
-      <span class="user-nav__user-name">{{ user?.profileName || 'Guest' }}</span>
+    <div>
+      <span class="user-nav-username">{{ user?.profileName || 'Guest' }}</span>
       <!-- <button (click)="logout()">Logout</button> -->
       <a class="user-nav__signout" role="button" (click)="logout()">
         <i class="fas fa-sign-out-alt fa-lg"></i> Sign Out

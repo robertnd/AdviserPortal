@@ -249,6 +249,10 @@ body {
   align-items: center;
 }
 
+.user-nav-username {
+  margin-right: 3rem;
+}
+
 .side-nav {
   font-size: 1.2rem;
   list-style: none;

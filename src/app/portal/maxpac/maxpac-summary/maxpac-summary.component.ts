@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
 import { validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
+import { MaxpacChildren } from '@app/_models'
 
 @Component({
   selector: 'app-maxpac-summary',
@@ -16,6 +17,14 @@ export class MaxpacSummaryComponent {
   journey = ''
   pageTitle = 'Summary'
   submitted = false;
+  personalInfo: any = null
+  contacts: any = null
+  occupation: any = null
+  beneficiary: any = null
+  spouse: any = null
+  declarations: any = null
+  children: Map<string, MaxpacChildren> = new Map<string, MaxpacChildren>()
+  
   form: FormGroup = new FormGroup({
     // firstName: new FormControl(''),
   })
@@ -29,20 +38,21 @@ export class MaxpacSummaryComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
-    this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
-      })
+    this.journey = this.utilService.getCurrentJourney() || ''
+    this.utilService.setCurrentPage(this.pageTitle)
 
-    // this will load entries on back navigation or prefill
-    var pageData = this.fs.getPageData(this.pageTitle)
-    this.form.patchValue(JSON.parse(pageData))
+    this.personalInfo = JSON.parse(this.fs.getPageData('Personal Info'))
+    this.contacts = JSON.parse(this.fs.getPageData('Contacts'))
+    this.occupation = JSON.parse(this.fs.getPageData('Occupation'))
+    this.beneficiary = JSON.parse(this.fs.getPageData('Beneficiary'))
+    this.spouse = JSON.parse(this.fs.getPageData('Spouse'))
+    this.declarations = JSON.parse(this.fs.getPageData('Declarations'))
+    
   }
 
   onSubmit() {
@@ -58,6 +68,10 @@ export class MaxpacSummaryComponent {
 
   previous() {
     this.router.navigate(['/portal/maxpac/maxpac-declarations'])
+  }
+
+  navigate(link: string) {
+    this.router.navigate([link])
   }
 
 }

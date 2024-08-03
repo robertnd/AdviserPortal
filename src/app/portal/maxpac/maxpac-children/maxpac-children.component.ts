@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
 import { validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
+import { MaxpacChildren } from '@app/_models'
 
 @Component({
   selector: 'app-maxpac-children',
@@ -15,9 +16,15 @@ export class MaxpacChildrenComponent {
 
   journey = ''
   pageTitle = 'Children'
-  submitted = false;
+  submitted = false
+  displayed = true
+  children: Map<string, MaxpacChildren> = new Map<string, MaxpacChildren>()
+
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    childFullName: new FormControl(''),
+    dateOfBirth: new FormControl(''),
+    coverForChild: new FormControl(''),
+    childPremiumAmount: new FormControl('')
   })
 
   constructor(
@@ -29,16 +36,17 @@ export class MaxpacChildrenComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
-      })
+      childFullName: [''],
+      dateOfBirth: [''],
+      coverForChild: [''],
+      childPremiumAmount: ['']
+    })
 
     // this will load entries on back navigation or prefill
     var pageData = this.fs.getPageData(this.pageTitle)
@@ -57,6 +65,49 @@ export class MaxpacChildrenComponent {
 
   previous() {
     this.router.navigate(['/portal/maxpac/maxpac-spouse'])
+  }
+
+  toggle() {
+    this.displayed = !this.displayed
+  }
+
+  addChild() {
+    let fErrors = false
+    if (!this.f['childFullName'].value) {
+      this.f['childFullName'].setErrors({ 'conditionalRequired': true })
+      fErrors = true
+    }
+    if (!this.f['dateOfBirth'].value) {
+      this.f['dateOfBirth'].setErrors({ 'conditionalRequired': true })
+      fErrors = true
+    }
+    if (!this.f['coverForChild'].value) {
+      this.f['coverForChild'].setErrors({ 'conditionalRequired': true })
+      fErrors = true
+    }
+    if (!this.f['childPremiumAmount'].value) {
+      this.f['childPremiumAmount'].setErrors({ 'conditionalRequired': true })
+      fErrors = true
+    }
+
+    if (fErrors) {
+      return
+    } else {
+      var fullName = this.f['childFullName'].value
+      var child: MaxpacChildren = {
+        fullName: this.f['childFullName'].value,
+        dateOfBirth: this.f['dateOfBirth'].value,
+        cover: this.f['cover'].value,
+        premiumAmount: this.f['premiumAmount'].value,
+      }
+      this.children.set(fullName, child)
+    }
+  }
+
+  removeChild(key: string) {
+    if (this.children.has(key)) {
+      this.children.delete(key)
+    }
   }
 
 }
