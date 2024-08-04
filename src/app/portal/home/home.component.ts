@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
+    this.utilService.unsetJourney()
   }
 
   ngOnDestroy() { }

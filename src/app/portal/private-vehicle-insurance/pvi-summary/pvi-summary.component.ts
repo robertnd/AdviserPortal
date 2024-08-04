@@ -27,7 +27,16 @@ export class PviSummaryComponent {
   policy: any = null
   
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    extraWindscreenCover: new FormControl(''),
+    extraRadioCassetteLimit: new FormControl(''),
+    riotStrikePoliticalViolence: new FormControl(''),
+    carHire: new FormControl(''),
+    forcedATMWithdrawal10K: new FormControl(''),
+    forcedATMWithdrawal7500: new FormControl(''),
+    lossOfSpareWheel10K: new FormControl(''),
+    lossOfSpareWheel7500: new FormControl(''),
+    trackingDevices: new FormControl(''),
+    excessWaiver: new FormControl('')
   })
 
   constructor(

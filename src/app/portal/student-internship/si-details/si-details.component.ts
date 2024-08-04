@@ -50,7 +50,6 @@ export class SiDetailsComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''

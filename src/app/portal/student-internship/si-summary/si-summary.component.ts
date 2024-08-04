@@ -14,9 +14,22 @@ import { FormStateService } from '@app/_services/form-state.service'
 export class SiSummaryComponent {
   journey = ''
   pageTitle = 'Summary'
-  submitted = false;
+  submitted = false
+  personalInfo: any = null
+  contacts: any = null
+  occupation: any = null
+  consent: any = null
+  details: any = null
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    fireworksExplosives: new FormControl(''),
+    sinkingWells: new FormControl(''),
+    dams: new FormControl(''),
+    airOrBoatCrew: new FormControl(''),
+    racing: new FormControl(''),
+    uniformedForces: new FormControl(''),
+    proSport: new FormControl(''),
+    diving: new FormControl(''),
+    mining: new FormControl('')
   })
 
   constructor(
@@ -28,20 +41,15 @@ export class SiSummaryComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
-
-    this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
-      })
-
-    // this will load entries on back navigation or prefill
-    var pageData = this.fs.getPageData(this.pageTitle)
-    this.form.patchValue(JSON.parse(pageData))
+    this.personalInfo = JSON.parse(this.fs.getPageData('Personal Info'))
+    this.contacts = JSON.parse(this.fs.getPageData('Contacts'))
+    this.occupation = JSON.parse(this.fs.getPageData('Occupation'))
+    this.consent = JSON.parse(this.fs.getPageData('Consent'))
+    this.details = JSON.parse(this.fs.getPageData('Details'))
   }
 
   onSubmit() {
@@ -56,6 +64,10 @@ export class SiSummaryComponent {
 
   previous() {
     this.router.navigate(['/portal/student-internship/si-details'])
+  }
+
+  navigate(link: string) {
+    this.router.navigate([link])
   }
 
 }

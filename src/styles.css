@@ -845,3 +845,7 @@ tr:hover {
   padding-left: 2.5em;
   padding-top: 1em;
 }
+
+small {
+  margin-right: 2rem;
+}

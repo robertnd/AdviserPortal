@@ -553,77 +553,79 @@
             </div>
         
             <div class="summary-row">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1. Extra Windscreen Cover above Kshs 30,000</td>
-                            <td><input type="checkbox" id="extraWindscreenCover" value="extraWindscreenCover"
-                                    formControlName="extraWindscreenCover"></td>
-                            <td>Limit 10% of the extra limit</td>
-                        </tr>
-                        <tr>
-                            <td>2. Extra Radio Cassette Limit above Kshs 30,000</td>
-                            <td><input type="checkbox" id="extraRadioCassetteLimit" value="extraRadioCassetteLimit"
-                                    formControlName="extraRadioCassetteLimit"></td>
-                            <td>Limit 10% of the extra limit</td>
-                        </tr>
-                        <tr>
-                            <td>3. Riot, Strike & Political violence</td>
-                            <td><input type="checkbox" id="riotStrikePoliticalViolence"
-                                    value="riotStrikePoliticalViolence" formControlName="riotStrikePoliticalViolence">
-                            </td>
-                            <td>Additional premium of 0.25% of vehicle value</td>
-                        </tr>
-                        <tr>
-                            <td>4. Car Hire - Cash Benefit up to Kshs 30,000 (Vehicles above Kshs. 1 million only)</td>
-                            <td><input type="checkbox" id="carHire" value="carHire" formControlName="carHire"></td>
-                            <td>Additional premium of Kshs 3,000 per vehicle</td>
-                        </tr>
-                        <tr>
-                            <td>5. Forced ATM withdrawal - Up to Kshs 10,000</td>
-                            <td><input type="checkbox" id="forcedATMWithdrawal10K" value="forcedATMWithdrawal10K"
-                                    formControlName="forcedATMWithdrawal10K"></td>
-                            <td>Additional premium of Kshs 1,000 per vehicle</td>
-                        </tr>
-                        <tr>
-                            <td>5. Forced ATM withdrawal - Up to Kshs 7,500</td>
-                            <td><input type="checkbox" id="forcedATMWithdrawal7500" value="forcedATMWithdrawal7500"
-                                    formControlName="forcedATMWithdrawal7500"></td>
-                            <td>Additional premium of Kshs 750 per vehicle</td>
-                        </tr>
-                        <tr>
-                            <td>7. Loss of spare wheel (vehicles above Kshs 1 million only)</td>
-                            <td><input type="checkbox" id="lossOfSpareWheel10K" value="lossOfSpareWheel10K"
-                                    formControlName="lossOfSpareWheel10K"></td>
-                            <td>Additional premium of Kshs 1,000 per vehicle</td>
-                        </tr>
-                        <tr>
-                            <td>8. Loss of spare wheel (vehicles above Kshs 1 million only)</td>
-                            <td><input type="checkbox" id="lossOfSpareWheel7500" value="lossOfSpareWheel7500"
-                                    formControlName="lossOfSpareWheel7500"></td>
-                            <td>Additional premium of Kshs 750 per vehicle</td>
-                        </tr>
-                        <tr>
-                            <td>9. Tracking Devices</td>
-                            <td><input type="checkbox" id="trackingDevices" value="trackingDevices"
-                                    formControlName="trackingDevices"></td>
-                            <td>Additional premium of Kshs 25,000 per vehicle</td>
-                        </tr>
-                        <tr>
-                            <td>10. Excess Waiver</td>
-                            <td><input type="checkbox" id="excessWaiver" value="excessWaiver"
-                                    formControlName="excessWaiver"></td>
-                            <td>Additional premium of 0.25% of vehicle value</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form [formGroup]="form">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Extra Windscreen Cover above Kshs 30,000</td>
+                                <td><input type="checkbox" id="extraWindscreenCover" value="extraWindscreenCover"
+                                        formControlName="extraWindscreenCover"></td>
+                                <td>Limit 10% of the extra limit</td>
+                            </tr>
+                            <tr>
+                                <td>2. Extra Radio Cassette Limit above Kshs 30,000</td>
+                                <td><input type="checkbox" id="extraRadioCassetteLimit" value="extraRadioCassetteLimit"
+                                        formControlName="extraRadioCassetteLimit"></td>
+                                <td>Limit 10% of the extra limit</td>
+                            </tr>
+                            <tr>
+                                <td>3. Riot, Strike & Political violence</td>
+                                <td><input type="checkbox" id="riotStrikePoliticalViolence"
+                                        value="riotStrikePoliticalViolence" formControlName="riotStrikePoliticalViolence">
+                                </td>
+                                <td>Additional premium of 0.25% of vehicle value</td>
+                            </tr>
+                            <tr>
+                                <td>4. Car Hire - Cash Benefit up to Kshs 30,000 (Vehicles above Kshs. 1 million only)</td>
+                                <td><input type="checkbox" id="carHire" value="carHire" formControlName="carHire"></td>
+                                <td>Additional premium of Kshs 3,000 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>5. Forced ATM withdrawal - Up to Kshs 10,000</td>
+                                <td><input type="checkbox" id="forcedATMWithdrawal10K" value="forcedATMWithdrawal10K"
+                                        formControlName="forcedATMWithdrawal10K"></td>
+                                <td>Additional premium of Kshs 1,000 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>5. Forced ATM withdrawal - Up to Kshs 7,500</td>
+                                <td><input type="checkbox" id="forcedATMWithdrawal7500" value="forcedATMWithdrawal7500"
+                                        formControlName="forcedATMWithdrawal7500"></td>
+                                <td>Additional premium of Kshs 750 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>7. Loss of spare wheel (vehicles above Kshs 1 million only)</td>
+                                <td><input type="checkbox" id="lossOfSpareWheel10K" value="lossOfSpareWheel10K"
+                                        formControlName="lossOfSpareWheel10K"></td>
+                                <td>Additional premium of Kshs 1,000 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>8. Loss of spare wheel (vehicles above Kshs 1 million only)</td>
+                                <td><input type="checkbox" id="lossOfSpareWheel7500" value="lossOfSpareWheel7500"
+                                        formControlName="lossOfSpareWheel7500"></td>
+                                <td>Additional premium of Kshs 750 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>9. Tracking Devices</td>
+                                <td><input type="checkbox" id="trackingDevices" value="trackingDevices"
+                                        formControlName="trackingDevices"></td>
+                                <td>Additional premium of Kshs 25,000 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>10. Excess Waiver</td>
+                                <td><input type="checkbox" id="excessWaiver" value="excessWaiver"
+                                        formControlName="excessWaiver"></td>
+                                <td>Additional premium of 0.25% of vehicle value</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
             </div>
         
             <div class="summary-row">
