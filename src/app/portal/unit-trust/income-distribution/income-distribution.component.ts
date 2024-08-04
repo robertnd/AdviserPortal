@@ -14,6 +14,7 @@ export class IncomeDistributionComponent {
   journey = ''
   pageTitle = 'Income Distribution'
   displayed = true
+  displayText = 'FUND DETAILS -'
   form: FormGroup
   
 
@@ -79,6 +80,11 @@ export class IncomeDistributionComponent {
 
   toggle() {
     this.displayed = !this.displayed
+    if (this.displayText === 'FUND DETAILS -') {
+      this.displayText = 'FUND DETAILS +'
+    } else {
+      this.displayText = 'FUND DETAILS -'
+    }
   }
 
   get f() { return this.form.controls }

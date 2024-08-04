@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
 import { validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
+import { Beneficiary } from '@app/_models'
 
 @Component({
   selector: 'app-individual-retirement-summary',
@@ -15,9 +16,18 @@ export class IndividualRetirementSummaryComponent {
 
   journey = ''
   pageTitle = 'Summary'
-  submitted = false;
+  submitted = false
+  personalInfo: any = null
+  contacts: any = null
+  occupation: any = null
+  beneficiariesInfo: any = null
+  consent: any = null
+  modeOfPayment: any = null
+  beneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    standingOrder: new FormControl(''),
+    debitOrder: new FormControl(''),
+    employerCheckOff: new FormControl(''),
   })
 
   constructor(
@@ -29,20 +39,16 @@ export class IndividualRetirementSummaryComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
-
-    this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
-      })
-
-    // this will load entries on back navigation or prefill
-    var pageData = this.fs.getPageData(this.pageTitle)
-    this.form.patchValue(JSON.parse(pageData))
+    this.personalInfo = JSON.parse(this.fs.getPageData('Personal Info'))
+    this.contacts = JSON.parse(this.fs.getPageData('Contacts'))
+    this.occupation = JSON.parse(this.fs.getPageData('Occupation'))
+    this.beneficiariesInfo = JSON.parse(this.fs.getPageData('Beneficiaries'))
+    this.consent = JSON.parse(this.fs.getPageData('Consent'))
+    this.modeOfPayment = JSON.parse(this.fs.getPageData('Mode of Payment'))
   }
 
   onSubmit() {
@@ -58,6 +64,10 @@ export class IndividualRetirementSummaryComponent {
 
   previous() {
     this.router.navigate(['/portal/individual-retirement/consent'])
+  }
+
+  navigate(link: string) {
+    this.router.navigate([link])
   }
 
 }

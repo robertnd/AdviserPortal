@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Beneficiary } from '@app/_models';
-import { AlertService, UtilService } from '@app/_services';
-import { FormStateService } from '@app/_services/form-state.service';
-import { validateDate } from '@app/_helpers';
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router'
+import { Beneficiary } from '@app/_models'
+import { AlertService, UtilService } from '@app/_services'
+import { FormStateService } from '@app/_services/form-state.service'
+import { validateDate } from '@app/_helpers'
 
 @Component({
   selector: 'app-beneficiaries',

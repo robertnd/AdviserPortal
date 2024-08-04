@@ -63,6 +63,7 @@ body {
 
 .collapsible {
   font-size: inherit;
+  cursor: pointer;
 }
 
 .collapsible i {
@@ -708,6 +709,15 @@ body {
   border-bottom: 2px solid var(--color-om-darkblue);
 }
 
+.text-input-highlight {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 230px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1em;
+}
+
 .alert {
   display: flex;
   justify-content: space-between;
@@ -821,6 +831,8 @@ body {
   background-color: #d3c8c8;
   font-size: 110%;
   border-radius: 8px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
 
 .data-table {

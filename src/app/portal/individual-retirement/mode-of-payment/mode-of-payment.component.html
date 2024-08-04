@@ -13,6 +13,27 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="checkBoxGroup">
+                    <input type="checkbox" id="standingOrder" value="standingOrder" formControlName="standingOrder" />
+                    <label for="standingOrder">Standing Order</label>
+                    <input type="checkbox" id="debitOrder" value="debitOrder" formControlName="debitOrder" />
+                    <label for="debitOrder">Debit Order</label>
+                    <input type="checkbox" id="employerCheckOff" value="employerCheckOff"
+                        formControlName="employerCheckOff" />
+                    <label for="employerCheckOff">Employer Check Off</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="benefitsBreakdown">Please indicate the breakdown between benefits secured by employee
+                        and employer contributions, if any</label>
+                    <textarea rows="2" id="benefitsBreakdown" formControlName="benefitsBreakdown"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

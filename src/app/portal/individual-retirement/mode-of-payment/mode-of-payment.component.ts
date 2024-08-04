@@ -17,7 +17,10 @@ export class ModeOfPaymentComponent {
   pageTitle = 'Mode of Payment'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+      standingOrder: new FormControl(''),
+      debitOrder: new FormControl(''),
+      employerCheckOff: new FormControl(''),
+      benefitsBreakdown: new FormControl('')
   })
 
   constructor(
@@ -29,15 +32,16 @@ export class ModeOfPaymentComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+          standingOrder: [''],
+          debitOrder: [''],
+          employerCheckOff: [''],
+          benefitsBreakdown: ['']
       })
 
     // this will load entries on back navigation or prefill

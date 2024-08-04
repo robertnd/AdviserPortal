@@ -13,8 +13,20 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Plan Benefits Per Child (Below 18 years)</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    (19-25 Year-Evidence from parents or Guardian that the child is under care of the same and in school)
+                </p>
+            </div>
+
+            <div class="form-row">
                 <div class="form-paragraph1">
-                    <a href="#" (click)="toggle()">Show / Hide</a>
+                    <a href="#" (click)="toggle()">{{ displayText }}</a>
                 </div>
             </div>
 
@@ -54,10 +66,16 @@
             </div>
 
             <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">The following activities are NOT covered</div>
+                </div>
+            </div>
+
+            <!-- <div class="form-row">
                 <div class="form-paragraph1" [hidden]="!displayed">
                     <p>The following activities are NOT covered:</p>
                 </div>
-            </div>
+            </div> -->
 
             <div class="form-row">
                 <div [hidden]="!displayed">

@@ -22,10 +22,18 @@
                 </p>
             </div>
 
-            <div class="form-row">
+            <!-- <div class="form-row">
                 <p class="overview__subheading2 collapsible">
                     Terms and conditions <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true" (click)="toggle()"></i>
                 </p>
+            </div> -->
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="collapsible highlight-1" (click)="toggle()">
+                        {{ displayText }}
+                    </div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -58,8 +66,8 @@
             </div>
 
             <div class="form-row">
-                <div class="overview">
-                    <h1 class="overview__subheading">Beneficiary Nomination</h1>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Beneficiary Nomination</div>
                 </div>
             </div>
 
@@ -145,8 +153,8 @@
             </div>
 
             <div class="form-row">
-                <div class="overview">
-                    <h1 class="overview__subheading">Guardian</h1>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Guardian</div>
                 </div>
             </div>
 

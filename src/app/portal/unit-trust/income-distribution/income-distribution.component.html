@@ -32,17 +32,23 @@
                 </div>
             </div>
 
-            <div class="form-row">
+            <!-- <div class="form-row">
                 <p class="form-paragraph1 collapsible">FUND DETAILS <i
                         [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true" (click)="toggle()"></i>
                 </p>
+            </div> -->
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1 collapsible" (click)="toggle()">{{ displayText }}</div>
+                </div>
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1">Old Mutual Money Market Fund
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1">Old Mutual Money Market Fund</div>
+                </div>
             </div>
-
+            
             <div class="form-row">
                 <p class="form-paragraph1" [hidden]="!displayed">
                     The objective of the Old Mutual Money Market Fund is to generate total return through investing in a
@@ -61,9 +67,9 @@
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1" [hidden]="!displayed">
-                    Old Mutual Equity Fund
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1">Old Mutual Equity Fund</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -81,9 +87,9 @@
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1" [hidden]="!displayed">
-                    Old Mutual Balanced Fund
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1"> Old Mutual Balanced Fund</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -100,9 +106,9 @@
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1" [hidden]="!displayed">
-                    Toboa Investment Plan
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1">Toboa Investment Plan</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -117,9 +123,9 @@
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1" [hidden]="!displayed">
-                    Old Mutual Bond Fund
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1">Old Mutual Bond Fund</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -137,9 +143,9 @@
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1" [hidden]="!displayed">
-                    Fund Charges
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1">Fund Charges</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -289,9 +295,9 @@
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1" [hidden]="!displayed">
-                    BANK DETAILS: Kenya Commercial Bank, Custody Service Branch
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1">BANK DETAILS: Kenya Commercial Bank, Custody Service Branch</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -333,11 +339,11 @@
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1 collapsible" [hidden]="!displayed">
-                    TERMS AND CONDITIONS <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true"
-                        (click)="toggle()"></i>
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1">TERMS AND CONDITIONS</div>
+                </div>
             </div>
+            
 
             <ol class="form-list1" [hidden]="!displayed">
                 <li>Units are traded at the daily ruling prices and will be repurchased by Old Mutual Investment Group
@@ -375,10 +381,9 @@
             </ol>
 
             <div class="form-row">
-                <p class="form-paragraph1 collapsible" [hidden]="!displayed">
-                    DECLARATION <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true"
-                        (click)="toggle()"></i>
-                </p>
+                <div class="text-input-highlight" [hidden]="!displayed">
+                    <div class="highlight-1">DECLARATION</div>
+                </div>
             </div>
 
             <ol class="form-list1" [hidden]="!displayed">
@@ -509,13 +514,13 @@
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1">
-                    DOCUMENTS REQUIRED
-                </p>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">DOCUMENTS REQUIRED</div>
+                </div>
             </div>
 
             <div class="form-row">
-                <p class="form-paragraph1">
+                <p class="form-paragraph1" [hidden]="!displayed">
                     Individual Applicants
                 </p>
             </div>

@@ -61,10 +61,11 @@ export class PensionSourceOfFundsComponent implements OnInit {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
+    // sourceOfFunds: ['', Validators.required],
     this.form = this.fb.group({
-      sourceOfFunds: ['', Validators.required],
+      sourceOfFunds: [''],
       sourceOfFundsOther: [''],
-      remittance: ['', Validators.required],
+      remittance: [''],
       selfEmployed_Contribution: [''],
       selfEmployed_MoR: [''],
       selfEmployed_Frequency: [''],

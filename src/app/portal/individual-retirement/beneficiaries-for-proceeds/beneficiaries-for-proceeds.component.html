@@ -13,6 +13,113 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="beneficiariesNames">Names</label>
+                    <input type="text" id="beneficiariesNames" formControlName="beneficiariesNames" />
+                    <div *ngIf="f['beneficiariesNames'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesNames'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="beneficiariesRelationship">Relationship to Life Assured</label>
+                    <input type="text" id="beneficiariesRelationship" formControlName="beneficiariesRelationship" />
+                    <div *ngIf="f['beneficiariesRelationship'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesRelationship'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="beneficiariesDoB">Date of Birth</label>
+                    <input type="date" id="beneficiariesDoB" formControlName="beneficiariesDoB" />
+                    <div *ngIf="f['beneficiariesDoB'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesDoB'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                        <div *ngIf="f['beneficiariesDoB'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['beneficiariesDoB'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="phoneAndAddress">Telephone No & Residential Addresss</label>
+                    <input type="text" id="phoneAndAddress" formControlName="phoneAndAddress" />
+                    <div *ngIf="f['phoneAndAddress'].errors" class="invalid-input">
+                        <div *ngIf="f['phoneAndAddress'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="beneficiariesShare">% of Share</label>
+                    <input type="text" id="beneficiariesShare" formControlName="beneficiariesShare" />
+                    <div *ngIf="f['beneficiariesShare'].errors" class="invalid-input">
+                        <div *ngIf="f['beneficiariesShare'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                        <div *ngIf="f['beneficiariesShare'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['beneficiariesShare'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <button class="ombutton ombutton-sm with-icon" type="button" (click)="addBeneficiary()">
+                        <i class="fas fa-plus"></i>
+                        Add
+                    </button>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <table class="data-table" *ngIf="beneficiaries.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Names</th>
+                            <th>Relationship</th>
+                            <th>Date of Birth</th>
+                            <th>Phone & Address</th>
+                            <th>Share(%)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let b of beneficiaries | keyvalue">
+                            <td><i class="fa fa-users fa-lg m-3"></i></td>
+                            <td>{{b.value.fullname}}</td>
+                            <td>{{b.value.relationship}}</td>
+                            <td>{{b.value.addressAndCode}}</td>
+                            <td>{{b.value.phoneNo}}</td>
+                            <td>{{b.value.dob}}</td>
+                            <td>{{b.value.benefitShare}}</td>
+                            <td>
+                                <button class="ombutton-link" type="button" (click)="removeBeneficiary(b.key)">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

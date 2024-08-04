@@ -17,6 +17,7 @@ export class MaxpacSpouseComponent {
   pageTitle = 'Spouse'
   submitted = false
   displayed = true
+  displayText ='Hide Options'
   form: FormGroup = new FormGroup({
     idDocument: new FormControl(''),
     docNumber: new FormControl(''),
@@ -82,6 +83,11 @@ export class MaxpacSpouseComponent {
 
   toggle() {
     this.displayed = !this.displayed
+    if (this.displayText === 'Hide Options') {
+      this.displayText = 'Show Options'
+    } else {
+      this.displayText = 'Hide Options'
+    }
   }
 
 }

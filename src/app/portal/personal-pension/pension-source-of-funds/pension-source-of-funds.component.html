@@ -1,329 +1,338 @@
 <div class="detail">
-    <div class="form-container">
-      <div class="form-row">
-        <div class="overview" id="formTitle">
-          <h1 class="functional__heading">{{ journey }}</h1>
-        </div>
+  <div class="form-container">
+    <div class="form-row">
+      <div class="overview" id="formTitle">
+        <h1 class="functional__heading">{{ journey }}</h1>
       </div>
-      <div class="form-row">
-        <div class="overview">
-          <h1 class="overview__subheading">Source of Funds Information</h1>
-        </div>
-      </div>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="form-row">
-          <div class="text-input-intg">
-            <label for="firstName">Source of Funds</label>
-            <select id="sourceOfFunds" formControlName="sourceOfFunds">
-              <option></option>
-              <option>Employment</option>
-              <option>Savings</option>
-              <option>Gift</option>
-              <option>Inheritance</option>
-              <option>Disposal of Property</option>
-              <option>Other</option>
-            </select>
-            <div *ngIf="submitted && f['sourceOfFunds'].errors" class="invalid-input">
-              <div *ngIf="f['sourceOfFunds'].errors['required']">
-                Please select a Source of Funds
-              </div>
-            </div>
-          </div>
-          <div class="text-input-intg"></div>
-          <div class="text-input-intg"></div>
-        </div>
-        <div class="form-row">
-          <div class="text-input-intg">
-            <label for="sourceOfFundsOther">If "Other" please specify</label>
-            <textarea rows="3" id="sourceOfFundsOther" formControlName="sourceOfFundsOther"></textarea>
-            <div *ngIf="submitted && f['sourceOfFundsOther'].errors" class="invalid-input">
-              <div *ngIf="f['sourceOfFundsOther'].errors['conditionalRequired']">
-                Please provide details for Source of Funds
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="text-input-intg">
-            <label for="remittance">Remittance</label>
-            <select (change)="onRemitSelect()" id="remittance" formControlName="remittance">
-              <option></option>
-              <option>Self</option>
-              <option>Employment</option>
-              <option>Self & Employment</option>
-            </select>
-            <div *ngIf="submitted && f['remittance'].errors" class="invalid-input">
-              <div *ngIf="f['remittance'].errors['required']">
-                Please select Remittance
-              </div>
-            </div>
-          </div>
-          <div class="text-input-intg"></div>
-          <div class="text-input-intg"></div>
-        </div>
-  
-        <div *ngIf="showSelf" id="SoF_Self">
-  
-          <div class="form-row">
-            <div class="text-input-intg">
-              <div class="highlight-1">Self</div>
-            </div>
-          </div>
-  
-          <div class="form-row">
-            <div class="text-input-intg">
-              <label for="selfEmployed_Contribution">Contribution (Kshs)</label>
-              <input type="text" id="selfEmployed_Contribution" formControlName="selfEmployed_Contribution" />
-              <div *ngIf="submitted && f['selfEmployed_Contribution'].errors" class="invalid-input">
-                <div *ngIf="f['selfEmployed_Contribution'].errors['conditionalRequired']">
-                  Contribution is required
-                </div>
-                <div *ngIf="f['selfEmployed_Contribution'].errors['mustBeNumber']">
-                  Must be a valid number
-                </div>
-                <div *ngIf="f['selfEmployed_Contribution'].errors['mustBePositiveNumber']">
-                  Must be a positive number
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="selfEmployed_MoR">Mode of Remittance</label>
-              <select id="selfEmployed_MoR" formControlName="selfEmployed_MoR">
-                <option></option>
-                <option>Standing Order</option>
-                <option>EFT</option>
-                <option>Cheque / Cash</option>
-                <option>Transfer</option>
-              </select>
-              <div *ngIf="submitted && f['selfEmployed_MoR'].errors" class="invalid-input">
-                <div *ngIf="f['selfEmployed_MoR'].errors['conditionalRequired']">
-                  Mode of Remittance is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="selfEmployed_Frequency">Frequency</label>
-              <select id="selfEmployed_Frequency" formControlName="selfEmployed_Frequency">
-                <option></option>
-                <option>Monthly</option>
-                <option>Quarterly</option>
-                <option>Half Yearly</option>
-                <option>Yearly</option>
-                <option>Lump Sum / One Off</option>
-              </select>
-              <div *ngIf="submitted && f['selfEmployed_Frequency'].errors" class="invalid-input">
-                <div *ngIf="f['selfEmployed_Frequency'].errors['conditionalRequired']">
-                  Frequency is required
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="text-input-intg">
-              <label for="selfEmployed_Bank">Name of Bank</label>
-              <input type="text" id="selfEmployed_Bank" formControlName="selfEmployed_Bank" />
-              <div *ngIf="submitted && f['selfEmployed_Bank'].errors" class="invalid-input">
-                <div *ngIf="f['selfEmployed_Bank'].errors['conditionalRequired']">
-                  Name of Bank is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="workPostalCode">Branch</label>
-              <input type="text" id="selfEmployed_Branch" formControlName="selfEmployed_Branch" />
-              <div *ngIf="submitted && f['selfEmployed_Branch'].errors" class="invalid-input">
-                <div *ngIf="f['selfEmployed_Branch'].errors['conditionalRequired']">
-                  Branch name is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="selfEmployed_AccName">Account Name</label>
-              <input type="text" id="selfEmployed_AccName" formControlName="selfEmployed_AccName" />
-              <div *ngIf="submitted && f['selfEmployed_AccName'].errors" class="invalid-input">
-                <div *ngIf="f['selfEmployed_AccName'].errors['conditionalRequired']">
-                  Account Name is required
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="text-input-intg">
-              <label for="selfEmployed_AccNo">Account Number</label>
-              <input type="text" id="selfEmployed_AccNo" formControlName="selfEmployed_AccNo" />
-              <div *ngIf="submitted && f['selfEmployed_AccNo'].errors" class="invalid-input">
-                <div *ngIf="f['selfEmployed_AccNo'].errors['conditionalRequired']">
-                  Account Number is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg"></div>
-            <div class="text-input-intg"></div>
-          </div>
-          <div class="form-row">
-          </div>
-        </div>
-  
-        <div *ngIf="showEmployed"  id="SoF_Employed">
-          <div class="form-row">
-            <div class="text-input-intg">
-              <div class="highlight-1">Employed Member (filled by employer)</div>
-              As the Employer of the above named member, hereby undertake to make compulsory Employer Contributions for
-              the
-              member at the rate (specified below at A1 or A2) for as long as the Employed Member
-              continues to be an Employee. <br>
-              The member shall make compulsory contributions at the rate (specified below at
-              B1) of his/her pensionable salary. We undertake to deduct and remit to the Scheme the
-              contributions due by the employee upon and following their admittance to membership of the Scheme
-            </div>
-          </div>
-  
-          <div class="form-row">
-            <div class="text-input-intg">
-              <label for="employed_A1Contribution">(A1) Contribution</label>
-              <input type="text" id="employed_A1Contribution" formControlName="employed_A1Contribution" />
-              <div *ngIf="submitted && f['employed_A1Contribution'].errors" class="invalid-input">
-                <div *ngIf="f['employed_A1Contribution'].errors['conditionalRequired']">
-                  (A1) Contribution is required
-                </div>
-                <div *ngIf="f['employed_A1Contribution'].errors['mustBeNumber']">
-                  Must be a valid number
-                </div>
-                <div *ngIf="f['employed_A1Contribution'].errors['mustBePositiveNumber']">
-                  Must be a positive number
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="employed_A2Contribution">or (A2) Contribution (percentage of salary)</label>
-              <input type="text" min="0" max="100" id="employed_A2Contribution" formControlName="employed_A2Contribution" />
-              <div *ngIf="submitted && f['employed_A2Contribution'].errors" class="invalid-input">
-                <div *ngIf="f['employed_A2Contribution'].errors['conditionalRequired']">
-                  (A2) Contribution is required
-                </div>
-                <div *ngIf="f['employed_A2Contribution'].errors['mustBeNumber']">
-                  Must be a valid number
-                </div>
-                <div *ngIf="f['employed_A2Contribution'].errors['mustBePositiveNumber']">
-                  Must be a positive number
-                </div>
-                <div *ngIf="f['employed_A2Contribution'].errors['mustBeLessThan100']">
-                  Must be less than 100%
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg"></div>
-          </div>
-          <div class="form-row">
-            <div class="text-input-intg">
-              <label for="employed_B1Contribution">(B1) Contribution</label>
-              <input type="text" id="employed_B1Contribution" formControlName="employed_B1Contribution" />
-              <div *ngIf="submitted && f['employed_B1Contribution'].errors" class="invalid-input">
-                <div *ngIf="f['employed_B1Contribution'].errors['conditionalRequired']">
-                  (B1) Contribution is required
-                </div>
-                <div *ngIf="f['employed_B1Contribution'].errors['mustBeNumber']">
-                  Must be a valid number
-                </div>
-                <div *ngIf="f['employed_B1Contribution'].errors['mustBePositiveNumber']">
-                  Must be a positive number
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="employed_MoR">Mode of Remittance</label>
-              <select id="employed_MoR" formControlName="employed_MoR">
-                <option></option>
-                <option>Standing Order</option>
-                <option>EFT</option>
-                <option>Cheque / Cash</option>
-                <option>Transfer</option>
-              </select>
-              <div *ngIf="submitted && f['employed_MoR'].errors" class="invalid-input">
-                <div *ngIf="f['employed_MoR'].errors['conditionalRequired']">
-                  Mode of Remittance is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg"></div>
-          </div>
-          <div class="form-row">
-            <div class="text-input-intg">
-              <label for="employed_Bank">Name of Bank</label>
-              <input type="text" id="employed_Bank" formControlName="employed_Bank" />
-              <div *ngIf="submitted && f['employed_Bank'].errors" class="invalid-input">
-                <div *ngIf="f['employed_Bank'].errors['conditionalRequired']">
-                  Name of Bank is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="employed_Branch">Branch</label>
-              <input type="text" id="employed_Branch" formControlName="employed_Branch" />
-              <div *ngIf="submitted && f['employed_Branch'].errors" class="invalid-input">
-                <div *ngIf="f['employed_Branch'].errors['conditionalRequired']">
-                  Branch name is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="employed_AccName">Account Name</label>
-              <input type="text" id="employed_AccName" formControlName="employed_AccName" />
-              <div *ngIf="submitted && f['employed_AccName'].errors" class="invalid-input">
-                <div *ngIf="f['employed_AccName'].errors['conditionalRequired']">
-                  Account Name is required
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="text-input-intg">
-              <label for="employed_AccNo">Account Number</label>
-              <input type="text" id="employed_AccNo" formControlName="employed_AccNo" />
-              <div *ngIf="submitted && f['employed_AccNo'].errors" class="invalid-input">
-                <div *ngIf="f['employed_AccNo'].errors['conditionalRequired']">
-                  Account Number is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg"></div>
-            <div class="text-input-intg"></div>
-          </div>
-          <div class="form-row">
-            <div class="text-input-intg">
-              <label for="employed_Designation">Designation</label>
-              <input type="text" id="employed_Designation" formControlName="employed_Designation" />
-              <div *ngIf="submitted && f['employed_Designation'].errors" class="invalid-input">
-                <div *ngIf="f['employed_Designation'].errors['conditionalRequired']">
-                  Designation is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg">
-              <label for="employed_Date">Date</label>
-              <input type="date" id="employed_Date" formControlName="employed_Date" />
-              <div *ngIf="submitted && f['employed_Date'].errors" class="invalid-input">
-                <div *ngIf="f['employed_Date'].errors['conditionalRequired']">
-                  Date is required
-                </div>
-              </div>
-            </div>
-            <div class="text-input-intg"></div>
-          </div>
-          <div class="form-row">
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
-            <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
-            prev
-          </button>
-          <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
-            next
-            <img src="../../assets/img/arrow-right-light.svg" alt />
-          </button>
-        </div>
-      </form>
     </div>
+    <div class="form-row">
+      <div class="overview">
+        <h1 class="overview__subheading">Source of Funds Information</h1>
+      </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="firstName">Source of Funds</label>
+          <select id="sourceOfFunds" formControlName="sourceOfFunds">
+            <option></option>
+            <option>Employment</option>
+            <option>Savings</option>
+            <option>Gift</option>
+            <option>Inheritance</option>
+            <option>Disposal of Property</option>
+            <option>Other</option>
+          </select>
+          <div *ngIf="submitted && f['sourceOfFunds'].errors" class="invalid-input">
+            <div *ngIf="f['sourceOfFunds'].errors['required']">
+              Please select a Source of Funds
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg"></div>
+        <div class="text-input-intg"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="sourceOfFundsOther">If "Other" please specify</label>
+          <textarea rows="3" id="sourceOfFundsOther" formControlName="sourceOfFundsOther"></textarea>
+          <div *ngIf="submitted && f['sourceOfFundsOther'].errors" class="invalid-input">
+            <div *ngIf="f['sourceOfFundsOther'].errors['conditionalRequired']">
+              Please provide details for Source of Funds
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="remittance">Remittance</label>
+          <select (change)="onRemitSelect()" id="remittance" formControlName="remittance">
+            <option></option>
+            <option>Self</option>
+            <option>Employment</option>
+            <option>Self & Employment</option>
+          </select>
+          <div *ngIf="submitted && f['remittance'].errors" class="invalid-input">
+            <div *ngIf="f['remittance'].errors['required']">
+              Please select Remittance
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg"></div>
+        <div class="text-input-intg"></div>
+      </div>
+
+      <div *ngIf="showSelf" id="SoF_Self">
+
+        <div class="form-row">
+          <div class="text-input-highlight">
+            <div class="highlight-1">Self</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="selfEmployed_Contribution">Contribution (Kshs)</label>
+            <input type="text" id="selfEmployed_Contribution" formControlName="selfEmployed_Contribution" />
+            <div *ngIf="submitted && f['selfEmployed_Contribution'].errors" class="invalid-input">
+              <div *ngIf="f['selfEmployed_Contribution'].errors['conditionalRequired']">
+                Contribution is required
+              </div>
+              <div *ngIf="f['selfEmployed_Contribution'].errors['mustBeNumber']">
+                Must be a valid number
+              </div>
+              <div *ngIf="f['selfEmployed_Contribution'].errors['mustBePositiveNumber']">
+                Must be a positive number
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="selfEmployed_MoR">Mode of Remittance</label>
+            <select id="selfEmployed_MoR" formControlName="selfEmployed_MoR">
+              <option></option>
+              <option>Standing Order</option>
+              <option>EFT</option>
+              <option>Cheque / Cash</option>
+              <option>Transfer</option>
+            </select>
+            <div *ngIf="submitted && f['selfEmployed_MoR'].errors" class="invalid-input">
+              <div *ngIf="f['selfEmployed_MoR'].errors['conditionalRequired']">
+                Mode of Remittance is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="selfEmployed_Frequency">Frequency</label>
+            <select id="selfEmployed_Frequency" formControlName="selfEmployed_Frequency">
+              <option></option>
+              <option>Monthly</option>
+              <option>Quarterly</option>
+              <option>Half Yearly</option>
+              <option>Yearly</option>
+              <option>Lump Sum / One Off</option>
+            </select>
+            <div *ngIf="submitted && f['selfEmployed_Frequency'].errors" class="invalid-input">
+              <div *ngIf="f['selfEmployed_Frequency'].errors['conditionalRequired']">
+                Frequency is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="selfEmployed_Bank">Name of Bank</label>
+            <input type="text" id="selfEmployed_Bank" formControlName="selfEmployed_Bank" />
+            <div *ngIf="submitted && f['selfEmployed_Bank'].errors" class="invalid-input">
+              <div *ngIf="f['selfEmployed_Bank'].errors['conditionalRequired']">
+                Name of Bank is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="workPostalCode">Branch</label>
+            <input type="text" id="selfEmployed_Branch" formControlName="selfEmployed_Branch" />
+            <div *ngIf="submitted && f['selfEmployed_Branch'].errors" class="invalid-input">
+              <div *ngIf="f['selfEmployed_Branch'].errors['conditionalRequired']">
+                Branch name is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="selfEmployed_AccName">Account Name</label>
+            <input type="text" id="selfEmployed_AccName" formControlName="selfEmployed_AccName" />
+            <div *ngIf="submitted && f['selfEmployed_AccName'].errors" class="invalid-input">
+              <div *ngIf="f['selfEmployed_AccName'].errors['conditionalRequired']">
+                Account Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="selfEmployed_AccNo">Account Number</label>
+            <input type="text" id="selfEmployed_AccNo" formControlName="selfEmployed_AccNo" />
+            <div *ngIf="submitted && f['selfEmployed_AccNo'].errors" class="invalid-input">
+              <div *ngIf="f['selfEmployed_AccNo'].errors['conditionalRequired']">
+                Account Number is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg"></div>
+          <div class="text-input-intg"></div>
+        </div>
+        <div class="form-row">
+        </div>
+      </div>
+
+      <div *ngIf="showEmployed" id="SoF_Employed">
+        <div class="form-row">
+          <div class="text-input-highlight">
+            <div class="highlight-1">Employed Member (filled by employer)</div>
+            As the Employer of the above named member, hereby undertake to make compulsory Employer Contributions for
+            the
+            member at the rate (specified below at A1 or A2) for as long as the Employed Member
+            continues to be an Employee. <br>
+            The member shall make compulsory contributions at the rate (specified below at
+            B1) of his/her pensionable salary. We undertake to deduct and remit to the Scheme the
+            contributions due by the employee upon and following their admittance to membership of the Scheme
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="employed_A1Contribution">(A1) Contribution</label>
+            <input type="text" id="employed_A1Contribution" formControlName="employed_A1Contribution" />
+            <div *ngIf="submitted && f['employed_A1Contribution'].errors" class="invalid-input">
+              <div *ngIf="f['employed_A1Contribution'].errors['conditionalRequired']">
+                (A1) Contribution is required
+              </div>
+              <div *ngIf="f['employed_A1Contribution'].errors['mustBeNumber']">
+                Must be a valid number
+              </div>
+              <div *ngIf="f['employed_A1Contribution'].errors['mustBePositiveNumber']">
+                Must be a positive number
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="employed_A2Contribution">or (A2) Contribution (percentage of salary)</label>
+            <input type="text" min="0" max="100" id="employed_A2Contribution"
+              formControlName="employed_A2Contribution" />
+            <div *ngIf="submitted && f['employed_A2Contribution'].errors" class="invalid-input">
+              <div *ngIf="f['employed_A2Contribution'].errors['conditionalRequired']">
+                (A2) Contribution is required
+              </div>
+              <div *ngIf="f['employed_A2Contribution'].errors['mustBeNumber']">
+                Must be a valid number
+              </div>
+              <div *ngIf="f['employed_A2Contribution'].errors['mustBePositiveNumber']">
+                Must be a positive number
+              </div>
+              <div *ngIf="f['employed_A2Contribution'].errors['mustBeLessThan100']">
+                Must be less than 100%
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="employed_B1Contribution">(B1) Contribution</label>
+            <input type="text" id="employed_B1Contribution" formControlName="employed_B1Contribution" />
+            <div *ngIf="submitted && f['employed_B1Contribution'].errors" class="invalid-input">
+              <div *ngIf="f['employed_B1Contribution'].errors['conditionalRequired']">
+                (B1) Contribution is required
+              </div>
+              <div *ngIf="f['employed_B1Contribution'].errors['mustBeNumber']">
+                Must be a valid number
+              </div>
+              <div *ngIf="f['employed_B1Contribution'].errors['mustBePositiveNumber']">
+                Must be a positive number
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="employed_MoR">Mode of Remittance</label>
+            <select id="employed_MoR" formControlName="employed_MoR">
+              <option></option>
+              <option>Standing Order</option>
+              <option>EFT</option>
+              <option>Cheque / Cash</option>
+              <option>Transfer</option>
+            </select>
+            <div *ngIf="submitted && f['employed_MoR'].errors" class="invalid-input">
+              <div *ngIf="f['employed_MoR'].errors['conditionalRequired']">
+                Mode of Remittance is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="employed_Bank">Name of Bank</label>
+            <input type="text" id="employed_Bank" formControlName="employed_Bank" />
+            <div *ngIf="submitted && f['employed_Bank'].errors" class="invalid-input">
+              <div *ngIf="f['employed_Bank'].errors['conditionalRequired']">
+                Name of Bank is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="employed_Branch">Branch</label>
+            <input type="text" id="employed_Branch" formControlName="employed_Branch" />
+            <div *ngIf="submitted && f['employed_Branch'].errors" class="invalid-input">
+              <div *ngIf="f['employed_Branch'].errors['conditionalRequired']">
+                Branch name is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="employed_AccName">Account Name</label>
+            <input type="text" id="employed_AccName" formControlName="employed_AccName" />
+            <div *ngIf="submitted && f['employed_AccName'].errors" class="invalid-input">
+              <div *ngIf="f['employed_AccName'].errors['conditionalRequired']">
+                Account Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="employed_AccNo">Account Number</label>
+            <input type="text" id="employed_AccNo" formControlName="employed_AccNo" />
+            <div *ngIf="submitted && f['employed_AccNo'].errors" class="invalid-input">
+              <div *ngIf="f['employed_AccNo'].errors['conditionalRequired']">
+                Account Number is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg"></div>
+          <div class="text-input-intg"></div>
+        </div>
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="employed_Designation">Designation</label>
+            <input type="text" id="employed_Designation" formControlName="employed_Designation" />
+            <div *ngIf="submitted && f['employed_Designation'].errors" class="invalid-input">
+              <div *ngIf="f['employed_Designation'].errors['conditionalRequired']">
+                Designation is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="employed_Date">Date</label>
+            <input type="date" id="employed_Date" formControlName="employed_Date" />
+            <div *ngIf="submitted && f['employed_Date'].errors" class="invalid-input">
+              <div *ngIf="f['employed_Date'].errors['conditionalRequired']">
+                Date is required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg"></div>
+        </div>
+        <div class="form-row">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+          <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+          prev
+        </button>
+        <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+          next
+          <img src="../../assets/img/arrow-right-light.svg" alt />
+        </button>
+      </div>
+    </form>
   </div>
+</div>

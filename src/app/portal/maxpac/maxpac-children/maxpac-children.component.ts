@@ -18,6 +18,7 @@ export class MaxpacChildrenComponent {
   pageTitle = 'Children'
   submitted = false
   displayed = true
+  displayText = 'Hide Plans'
   children: Map<string, MaxpacChildren> = new Map<string, MaxpacChildren>()
 
   form: FormGroup = new FormGroup({
@@ -69,6 +70,11 @@ export class MaxpacChildrenComponent {
 
   toggle() {
     this.displayed = !this.displayed
+    if (this.displayText === 'Hide Plans') {
+      this.displayText = 'Show Plans'
+    } else {
+      this.displayText = 'Hide Plans'
+    }
   }
 
   addChild() {

@@ -14,6 +14,7 @@ export class LifeWrapperComponent {
   journey = ''
   pageTitle = 'Life Wrapper'
   displayed = true
+  displayText = 'Terms and Conditions -'
   form: FormGroup = new FormGroup({
     lwBNFirstName: new FormControl(''),
     lwBNSurname: new FormControl(''),
@@ -65,6 +66,11 @@ export class LifeWrapperComponent {
 
   toggle() {
     this.displayed = !this.displayed
+    if (this.displayText === 'Terms and Conditions -') {
+      this.displayText = 'Terms and Conditions +'
+    } else {
+      this.displayText = 'Terms and Conditions -'
+    }
   }
 
   onSubmit() {
