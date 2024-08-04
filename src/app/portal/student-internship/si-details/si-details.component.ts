@@ -16,7 +16,29 @@ export class SiDetailsComponent {
   pageTitle = 'Details'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    coverSelected: new FormControl(''),
+    currentInternship: new FormControl(''),
+    periodFrom: new FormControl(''),
+    periodTo: new FormControl(''),
+    heldPreviousAccidentPolicy: new FormControl(''),
+    heldPreviousAccidentPolicyDetails: new FormControl(''),
+    freeOfDisability: new FormControl(''),
+    freeOfDisabilityDetails: new FormControl(''),
+    accidentsInLast5Years: new FormControl(''),
+    inExcludedActivities: new FormControl(''),
+    fireworksExplosives: new FormControl(''),
+    sinkingWells: new FormControl(''),
+    dams: new FormControl(''),
+    airOrBoatCrew: new FormControl(''),
+    racing: new FormControl(''),
+    uniformedForces: new FormControl(''),
+    proSport: new FormControl(''),
+    diving: new FormControl(''),
+    mining: new FormControl(''),
+    extensionCover: new FormControl(''),
+    declarationDate: new FormControl(''),
+    byName: new FormControl(''),
+    agency: new FormControl('')
   })
 
   constructor(
@@ -35,9 +57,30 @@ export class SiDetailsComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
-      })
+      coverSelected: [''],
+      currentInternship: [''],
+      periodFrom: [''],
+      periodTo: [''],
+      heldPreviousAccidentPolicy: [''],
+      heldPreviousAccidentPolicyDetails: [''],
+      freeOfDisability: [''],
+      freeOfDisabilityDetails: [''],
+      accidentsInLast5Years: [''],
+      inExcludedActivities: [''],
+      fireworksExplosives: [''],
+      sinkingWells: [''],
+      dams: [''],
+      airOrBoatCrew: [''],
+      racing: [''],
+      uniformedForces: [''],
+      proSport: [''],
+      diving: [''],
+      mining: [''],
+      extensionCover: [''],
+      declarationDate: [''],
+      byName: [''],
+      agency: ['']
+    })
 
     // this will load entries on back navigation or prefill
     var pageData = this.fs.getPageData(this.pageTitle)

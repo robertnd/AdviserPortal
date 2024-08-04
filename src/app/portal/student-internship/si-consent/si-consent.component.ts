@@ -16,7 +16,15 @@ export class SiConsentComponent {
   pageTitle = 'Consent'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    personalDataConsentName: new FormControl(''),
+    personalDataConsentDate: new FormControl(''),
+    childDataConsentName: new FormControl(''),
+    childDataConsentDate: new FormControl(''),
+    marketingDataConsentName: new FormControl(''),
+    marketingDataConsentDate: new FormControl(''),
+    consentChoice: new FormControl(''),
+    declarationName: new FormControl(''),
+    declarationDate: new FormControl('')
   })
 
   constructor(
@@ -35,8 +43,15 @@ export class SiConsentComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+        personalDataConsentName: [''],
+        personalDataConsentDate: [''],
+        childDataConsentName: [''],
+        childDataConsentDate: [''],
+        marketingDataConsentName: [''],
+        marketingDataConsentDate: [''],
+        consentChoice: [''],
+        declarationName: [''],
+        declarationDate: ['']
       })
 
     // this will load entries on back navigation or prefill

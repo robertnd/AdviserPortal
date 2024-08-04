@@ -24,7 +24,9 @@ export class PviConsentComponent {
     childDataConsentDate: new FormControl(''),
     marketingDataConsentName: new FormControl(''),
     marketingDataConsentDate: new FormControl(''),
-    consentChoice: new FormControl('')
+    consentChoice: new FormControl(''),
+    declarationName: new FormControl(''),
+    declarationDate: new FormControl('')
   })
 
   constructor(
@@ -48,8 +50,10 @@ export class PviConsentComponent {
       childDataConsentDate: [''],
       marketingDataConsentName: [''],
       marketingDataConsentDate: [''],
-      consentChoice: ['']
-      })
+      consentChoice: [''],
+      declarationName: [''],
+      declarationDate: ['']
+    })
 
     // this will load entries on back navigation or prefill
     var pageData = this.fs.getPageData(this.pageTitle)

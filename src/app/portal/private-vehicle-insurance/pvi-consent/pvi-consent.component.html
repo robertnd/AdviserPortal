@@ -165,7 +165,33 @@
                 </p>
             </div>
 
-
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="declarationName">Name</label>
+                    <input type="text" id="declarationName" formControlName="declarationName" />
+                    <div *ngIf="submitted && f['declarationName'].errors" class="invalid-input">
+                        <div *ngIf="f['declarationName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="declarationDate">Date</label>
+                    <input type="date" id="declarationDate" formControlName="declarationDate" />
+                    <div *ngIf="submitted && f['declarationDate'].errors" class="invalid-input">
+                        <div *ngIf="f['declarationDate'].errors['required']">
+                            Date is required
+                        </div>
+                        <div *ngIf="f['declarationDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['declarationDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
 
             <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">

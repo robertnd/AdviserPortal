@@ -13,6 +13,366 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading2">Cover Details</h1>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Plan A</th>
+                                <th>Plan B</th>
+                                <th>Plan C</th>
+                                <th>Plan D</th>
+                                <th>Excess/Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Accidental Death</td>
+                                <td>200,000</td>
+                                <td>250,000</td>
+                                <td>300,000</td>
+                                <td>400,000</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Accidental Disablement</td>
+                                <td>200,000</td>
+                                <td>250,000</td>
+                                <td>300,000</td>
+                                <td>400,000</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Accidental Medical</td>
+                                <td>20,000</td>
+                                <td>25,000</td>
+                                <td>30,000</td>
+                                <td>40,000</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Reimbursement</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Annual Premiums</td>
+                                <td>1,000</td>
+                                <td>1,200</td>
+                                <td>1,500</td>
+                                <td>2,000</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Semi-Annual Premiums</td>
+                                <td>500</td>
+                                <td>600</td>
+                                <td>750</td>
+                                <td>1,000</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="coverSelected">Cover Selected</label>
+                    <select id="coverSelected" formControlName="coverSelected">
+                        <option></option>
+                        <option>Plan A</option>
+                        <option>Plan B</option>
+                        <option>Plan C</option>
+                        <option>Plan D</option>
+                    </select>
+                    <div *ngIf="submitted && f['coverSelected'].errors" class="invalid-input">
+                        <div *ngIf="f['coverSelected'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="currentInternship">Current Internship</label>
+                    <input type="text" id="currentInternship" formControlName="currentInternship" />
+                    <div *ngIf="f['currentInternship'].errors" class="invalid-input">
+                        <div *ngIf="f['currentInternship'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading2">General Questions</h1>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="periodFrom">Period of insurance From</label>
+                    <input type="date" id="periodFrom" formControlName="periodFrom" />
+                    <div *ngIf="submitted && f['periodFrom'].errors" class="invalid-input">
+                        <div *ngIf="f['periodFrom'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['periodFrom'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['periodFrom'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="periodTo">Period of insurance To</label>
+                    <input type="date" id="periodTo" formControlName="periodTo" />
+                    <div *ngIf="submitted && f['periodTo'].errors" class="invalid-input">
+                        <div *ngIf="f['periodTo'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['periodTo'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="heldPreviousAccidentPolicy">Have you previously held a personal Accident Policy?</label>
+                    <select id="heldPreviousAccidentPolicy" formControlName="heldPreviousAccidentPolicy">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="f['heldPreviousAccidentPolicy'].errors" class="invalid-input">
+                        <div *ngIf="f['heldPreviousAccidentPolicy'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="heldPreviousAccidentPolicyDetails">If "yes" name of the insurer</label>
+                    <textarea rows="3" id="heldPreviousAccidentPolicyDetails"
+                        formControlName="heldPreviousAccidentPolicyDetails"></textarea>
+                    <div *ngIf="submitted && f['heldPreviousAccidentPolicyDetails'].errors" class="invalid-input">
+                        <div *ngIf="f['heldPreviousAccidentPolicyDetails'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="freeOfDisability">Are you free from physical disability or mental illness to the best of
+                        your knowledge?</label>
+                    <select id="freeOfDisability" formControlName="freeOfDisability">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="f['freeOfDisability'].errors" class="invalid-input">
+                        <div *ngIf="f['freeOfDisability'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="freeOfDisabilityDetails">If "no" give details</label>
+                    <textarea rows="3" id="freeOfDisabilityDetails"
+                        formControlName="freeOfDisabilityDetails"></textarea>
+                    <div *ngIf="submitted && f['freeOfDisabilityDetails'].errors" class="invalid-input">
+                        <div *ngIf="f['freeOfDisabilityDetails'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="accidentsInLast5Years">Give details of all accidents which you have sustained during the
+                        last five (5) years</label>
+                    <textarea rows="3" id="accidentsInLast5Years" formControlName="accidentsInLast5Years"></textarea>
+                    <div *ngIf="submitted && f['accidentsInLast5Years'].errors" class="invalid-input">
+                        <div *ngIf="f['accidentsInLast5Years'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="inExcludedActivities">Are you engaged in any of the excluded activities/occupations
+                        mentioned below?</label>
+                    <select id="inExcludedActivities" formControlName="inExcludedActivities">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="f['inExcludedActivities'].errors" class="invalid-input">
+                        <div *ngIf="f['inExcludedActivities'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <table class="data-table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="fireworksExplosives" value="fireworksExplosives"
+                                    formControlName="fireworksExplosives">
+                                <small>Manufacture of fire works or explosives</small>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="sinkingWells" value="sinkingWells"
+                                    formControlName="sinkingWells">
+                                <small>Sinking of air, water, or gas wells</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="dams" value="dams" formControlName="dams">
+                                <small>Construction and maintenance of dams</small>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="airOrBoatCrew" value="airOrBoatCrew"
+                                    formControlName="airOrBoatCrew">
+                                <small>Airline crew & ship or boat crew</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="racing" value="racing" formControlName="racing">
+                                <small>Racing, Rallies and speed testing</small>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="uniformedForces" value="uniformedForces"
+                                    formControlName="uniformedForces">
+                                <small>Naval, military, police or Airforce operations</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="proSport" value="proSport" formControlName="proSport">
+                                <small>Professional sports</small>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="diving" value="diving" formControlName="diving">
+                                <small>Diving</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="mining" value="mining" formControlName="mining">
+                                <small>Mining</small>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="extensionCover">If yes, would you like an extension of cover (at 25% of the basic
+                        premium) while engaged in these activities?</label>
+                    <select id="extensionCover" formControlName="extensionCover">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="f['extensionCover'].errors" class="invalid-input">
+                        <div *ngIf="f['extensionCover'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <h1 class="overview__subheading2">DECLARATION</h1>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    I/We warrant that the above statements are true, and that I/We have not withheld or concealed
+                    anything affecting the proposed insurance, and I/We agree that this proposal shall be the basis of
+                    the contract between me/us and the company. I/We agree also to accept the Company's Policy
+                    applicable to the insurance. I/We confirm that I/we have read and understood the above Privacy
+                    Notice and the Privacy Policy and that any queries/concerns I/we have with regard to the nature and
+                    purpose of the processing of personal data have been adequately addressed
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    I agree to accept a policy in the company's usual form for this class of insurance.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="declarationDate">Date</label>
+                    <input type="date" id="declarationDate" formControlName="declarationDate" />
+                    <div *ngIf="submitted && f['declarationDate'].errors" class="invalid-input">
+                        <div *ngIf="f['declarationDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['declarationDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['declarationDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="byName">By</label>
+                    <input type="text" id="byName" formControlName="byName" />
+                    <div *ngIf="f['byName'].errors" class="invalid-input">
+                        <div *ngIf="f['byName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="agency">Agency</label>
+                    <input type="text" id="agency" formControlName="agency" />
+                    <div *ngIf="f['agency'].errors" class="invalid-input">
+                        <div *ngIf="f['agency'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev
