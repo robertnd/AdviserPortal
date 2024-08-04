@@ -24,7 +24,7 @@
                     <input type="text" id="dependantSurname" formControlName="dependantSurname" />
                     <div *ngIf="submitted && f['dependantSurname'].errors" class="invalid-input">
                         <div *ngIf="f['dependantSurname'].errors['conditionalRequired']">
-                            Surname is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     </select>
                     <div *ngIf="submitted && f['dependantIdDocument'].errors" class="invalid-input">
                         <div *ngIf="f['dependantIdDocument'].errors['required']">
-                            Identification Document is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <input type="text" id="dependantDocNumber" formControlName="dependantDocNumber" />
                     <div *ngIf="submitted && f['dependantDocNumber'].errors" class="invalid-input">
                         <div *ngIf="f['dependantDocNumber'].errors['required']">
-                            Document Number is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     <input type="text" id="dependantMobileNo" formControlName="dependantMobileNo" />
                     <div *ngIf="submitted && f['dependantMobileNo'].errors" class="invalid-input">
                         <div *ngIf="f['dependantMobileNo'].errors['conditionalRequired']">
-                            Mobile Number is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                     <input type="text" id="dependantEmail" formControlName="dependantEmail" />
                     <div *ngIf="submitted && f['dependantEmail'].errors" class="invalid-input">
                         <div *ngIf="f['dependantEmail'].errors['conditionalRequired']">
-                            Email is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                     </select>
                     <div *ngIf="submitted && f['dependantSpouse'].errors" class="invalid-input">
                         <div *ngIf="f['dependantSpouse'].errors['required']">
-                            Spouse is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     </select>
                     <div *ngIf="f['dependantChildGender'].errors" class="invalid-input">
                         <div *ngIf="f['dependantChildGender'].errors['conditionalRequired']">
-                            Gender is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                     <input type="date" id="dependantChildDoB" formControlName="dependantChildDoB" />
                     <div *ngIf="f['dependantChildDoB'].errors" class="invalid-input">
                         <div *ngIf="f['dependantChildDoB'].errors['required']">
-                          Date of Birth is required
+                            Required
                         </div>
                         <div *ngIf="f['dependantChildDoB'].errors['futureDate']">
                           Future date is not valid

@@ -367,7 +367,7 @@
                     <input type="date" id="dateOfDecl" formControlName="dateOfDecl" />
                     <div *ngIf="submitted && f['dateOfDecl'].errors" class="invalid-input">
                         <div *ngIf="f['dateOfDecl'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['dateOfDecl'].errors['futureDate']">
                             Future date is not valid

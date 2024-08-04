@@ -107,7 +107,7 @@
                     <input type="text" id="childFullName" formControlName="childFullName" />
                     <div *ngIf="submitted && f['childFullName'].errors" class="invalid-input">
                         <div *ngIf="f['childFullName'].errors['conditionalRequired']">
-                            Child's Full Name is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                     <input type="date" id="dateOfBirth" formControlName="dateOfBirth" />
                     <div *ngIf="submitted && f['dateOfBirth'].errors" class="invalid-input">
                         <div *ngIf="f['dateOfBirth'].errors['conditionalRequired']">
-                            Date of Birth is required
+                            Required
                         </div>
                         <div *ngIf="f['dateOfBirth'].errors['futureDate']">
                             Future date is not valid

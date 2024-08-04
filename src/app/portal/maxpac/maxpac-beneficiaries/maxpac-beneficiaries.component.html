@@ -18,7 +18,7 @@
                     <input type="text" id="pobox" formControlName="pobox" />
                     <div *ngIf="submitted && f['pobox'].errors" class="invalid-input">
                         <div *ngIf="f['pobox'].errors['required']">
-                            P.O Box is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <input type="text" id="telephoneNo" formControlName="telephoneNo" />
                     <div *ngIf="submitted && f['telephoneNo'].errors" class="invalid-input">
                         <div *ngIf="f['telephoneNo'].errors['required']">
-                            Telephone No is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <input type="text" id="mobileNo" formControlName="mobileNo" />
                     <div *ngIf="submitted && f['mobileNo'].errors" class="invalid-input">
                         <div *ngIf="f['mobileNo'].errors['required']">
-                            Mobile No is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     </select>
                     <div *ngIf="submitted && f['idDocument'].errors" class="invalid-input">
                         <div *ngIf="f['idDocument'].errors['required']">
-                            Identification Document is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                     <input type="text" id="docNumber" formControlName="docNumber" />
                     <div *ngIf="submitted && f['docNumber'].errors" class="invalid-input">
                         <div *ngIf="f['docNumber'].errors['required']">
-                            Document Number is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                     <input type="text" id="email" formControlName="email" />
                     <div *ngIf="submitted && f['email'].errors" class="invalid-input">
                         <div *ngIf="f['email'].errors['required']">
-                            EMail is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                     <input type="text" id="accountNo" formControlName="accountNo" />
                     <div *ngIf="submitted && f['accountNo'].errors" class="invalid-input">
                         <div *ngIf="f['accountNo'].errors['required']">
-                            Account No is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                     <input type="date" id="insuredFrom" formControlName="insuredFrom" />
                     <div *ngIf="submitted && f['insuredFrom'].errors" class="invalid-input">
                         <div *ngIf="f['insuredFrom'].errors['required']">
-                            Period of Insurance From is required
+                            Required
                         </div>
                         <div *ngIf="f['insuredFrom'].errors['futureDate']">
                             Period of Insurance From is not valid
@@ -126,7 +126,7 @@
                     <input type="date" id="insuredTo" formControlName="insuredTo" />
                     <div *ngIf="submitted && f['insuredTo'].errors" class="invalid-input">
                         <div *ngIf="f['insuredTo'].errors['required']">
-                            Insured To is required
+                            Required
                         </div>
                         <div *ngIf="f['insuredTo'].errors['invalidValue']">
                             Insured To value is not valid

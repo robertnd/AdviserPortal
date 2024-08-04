@@ -43,7 +43,7 @@
                     <input type="date" id="personalDataConsentDate" formControlName="personalDataConsentDate" />
                     <div *ngIf="submitted && f['personalDataConsentDate'].errors" class="invalid-input">
                         <div *ngIf="f['personalDataConsentDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['personalDataConsentDate'].errors['futureDate']">
                             Future date is not valid
@@ -86,7 +86,7 @@
                     <input type="date" id="childDataConsentDate" formControlName="childDataConsentDate" />
                     <div *ngIf="submitted && f['childDataConsentDate'].errors" class="invalid-input">
                         <div *ngIf="f['childDataConsentDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['childDataConsentDate'].errors['futureDate']">
                             Future date is not valid
@@ -128,7 +128,7 @@
                     <input type="date" id="marketingDataConsentDate" formControlName="marketingDataConsentDate" />
                     <div *ngIf="submitted && f['marketingDataConsentDate'].errors" class="invalid-input">
                         <div *ngIf="f['marketingDataConsentDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['marketingDataConsentDate'].errors['futureDate']">
                             Future date is not valid
@@ -188,7 +188,7 @@
                     <input type="date" id="declarationDate" formControlName="declarationDate" />
                     <div *ngIf="submitted && f['declarationDate'].errors" class="invalid-input">
                         <div *ngIf="f['declarationDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['declarationDate'].errors['futureDate']">
                             Future date is not valid

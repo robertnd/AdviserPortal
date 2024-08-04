@@ -18,7 +18,7 @@
           <input type="text" id="firstName" formControlName="firstName" />
           <div *ngIf="submitted && f['firstName'].errors" class="invalid-input">
             <div *ngIf="f['firstName'].errors['required']">
-              First Name is required
+              Required
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
           <input type="text" id="lastName" formControlName="lastName" />
           <div *ngIf="submitted && f['lastName'].errors" class="invalid-input">
             <div *ngIf="f['lastName'].errors['required']">
-              Last Name is required
+              Required
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
           <input type="date" id="dateOfBirth" formControlName="dateOfBirth" />
           <div *ngIf="submitted && f['dateOfBirth'].errors" class="invalid-input">
             <div *ngIf="f['dateOfBirth'].errors['required']">
-              Date of Birth is required
+              Required
             </div>
             <div *ngIf="f['dateOfBirth'].errors['futureDate']">
               Future date is not valid
@@ -69,7 +69,7 @@
           </select>
           <div *ngIf="submitted && f['idDocument'].errors" class="invalid-input">
             <div *ngIf="f['idDocument'].errors['required']">
-              Identification Document is required
+              Required
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@
           <input type="text" id="docNumber" formControlName="docNumber" />
           <div *ngIf="submitted && f['docNumber'].errors" class="invalid-input">
             <div *ngIf="f['docNumber'].errors['required']">
-              Document Number is required
+              Required
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@
             <option>Male</option>
           </select>
           <div *ngIf="submitted && f['gender'].errors" class="invalid-input">
-            <div *ngIf="f['gender'].errors['required']">Gender is required</div>
+            <div *ngIf="f['gender'].errors['required']">Required</div>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@
           </select>
           <div *ngIf="submitted && f['maritalStatus'].errors" class="invalid-input">
             <div *ngIf="f['maritalStatus'].errors['required']">
-              Marital Status is required
+              Required
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@
           <label for="PIN">PIN</label>
           <input type="text" id="PIN" formControlName="PIN" />
           <div *ngIf="submitted && f['PIN'].errors" class="invalid-input">
-            <div *ngIf="f['PIN'].errors['required']">PIN is required</div>
+            <div *ngIf="f['PIN'].errors['required']">Required</div>
           </div>
         </div>
         <div class="text-input-intg">
@@ -162,7 +162,7 @@
           </select>
           <div *ngIf="submitted && f['nationality'].errors" class="invalid-input">
             <div *ngIf="f['nationality'].errors['required']">
-              Nationality is required
+              Required
             </div>
           </div>
         </div>
@@ -175,7 +175,7 @@
           </select>
           <div *ngIf="submitted && f['countryOfResidence'].errors" class="invalid-input">
             <div *ngIf="f['countryOfResidence'].errors['required']">
-              Country of Residence is required
+              Required
             </div>
           </div>
         </div>

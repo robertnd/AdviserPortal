@@ -43,7 +43,7 @@
                     <input type="date" id="personalDataConsentDate" formControlName="personalDataConsentDate" />
                     <div *ngIf="submitted && f['personalDataConsentDate'].errors" class="invalid-input">
                         <div *ngIf="f['personalDataConsentDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['personalDataConsentDate'].errors['futureDate']">
                             Future date is not valid
@@ -86,7 +86,7 @@
                     <input type="date" id="childDataConsentDate" formControlName="childDataConsentDate" />
                     <div *ngIf="submitted && f['childDataConsentDate'].errors" class="invalid-input">
                         <div *ngIf="f['childDataConsentDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['childDataConsentDate'].errors['futureDate']">
                             Future date is not valid
@@ -128,7 +128,7 @@
                     <input type="date" id="marketingDataConsentDate" formControlName="marketingDataConsentDate" />
                     <div *ngIf="submitted && f['marketingDataConsentDate'].errors" class="invalid-input">
                         <div *ngIf="f['marketingDataConsentDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['marketingDataConsentDate'].errors['futureDate']">
                             Future date is not valid
@@ -146,8 +146,10 @@
                     <label for="consentChoice">Consent: Please Select</label>
                     <select id="consentChoice" formControlName="consentChoice">
                         <option></option>
-                        <option>Yes, I consent to receiving all marketing information and communications about all new products and services</option>
-                        <option>Yes, I consent to receiving all marketing information and communications about all new products and services which relate to my current</option>
+                        <option>Yes, I consent to receiving all marketing information and communications about all new
+                            products and services</option>
+                        <option>Yes, I consent to receiving all marketing information and communications about all new
+                            products and services which relate to my current</option>
                         <option>I do not wish to receive any marketing information</option>
                     </select>
                     <div *ngIf="submitted && f['consentChoice'].errors" class="invalid-input">
@@ -157,7 +159,7 @@
                 <div class="text-input-intg"></div>
                 <div class="text-input-intg"></div>
             </div>
-            
+
             <div class="form-row">
                 <div class="text-input-highlight">
                     <div class="highlight-1">DECLARATION</div>
