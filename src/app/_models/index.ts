@@ -4,3 +4,4 @@ export * from './page';
 export * from './child';
 export * from './beneficiary';
 export * from './maxpacChildren'
+export * from './vehicle'

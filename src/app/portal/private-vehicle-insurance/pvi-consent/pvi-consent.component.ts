@@ -18,7 +18,13 @@ export class PviConsentComponent {
   pageTitle = 'Consent'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    personalDataConsentName: new FormControl(''),
+    personalDataConsentDate: new FormControl(''),
+    childDataConsentName: new FormControl(''),
+    childDataConsentDate: new FormControl(''),
+    marketingDataConsentName: new FormControl(''),
+    marketingDataConsentDate: new FormControl(''),
+    consentChoice: new FormControl('')
   })
 
   constructor(
@@ -30,15 +36,19 @@ export class PviConsentComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+      personalDataConsentName: [''],
+      personalDataConsentDate: [''],
+      childDataConsentName: [''],
+      childDataConsentDate: [''],
+      marketingDataConsentName: [''],
+      marketingDataConsentDate: [''],
+      consentChoice: ['']
       })
 
     // this will load entries on back navigation or prefill
@@ -57,7 +67,7 @@ export class PviConsentComponent {
   }
 
   previous() {
-    this.router.navigate(['/portal/private-vehicle-insurance/pvi-private-notice'])
+    this.router.navigate(['/portal/private-vehicle-insurance/pvi-privacy-notice'])
   }
 
 }
