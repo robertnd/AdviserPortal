@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
 import { validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
+import { Vehicle } from '@app/_models'
 
 @Component({
   selector: 'app-pvi-summary',
@@ -16,6 +17,13 @@ export class PviSummaryComponent {
   journey = ''
   pageTitle = 'Summary'
   submitted = false;
+  vehicles: Map<string, Vehicle> = new Map<string, Vehicle>()
+  personalInfo: any = null
+  contacts: any = null
+  occupation: any = null
+  consent: any = null
+  vehiclesInfo: any = null
+  
   form: FormGroup = new FormGroup({
     // firstName: new FormControl(''),
   })
@@ -34,15 +42,12 @@ export class PviSummaryComponent {
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
-
-    this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
-      })
-
-    // this will load entries on back navigation or prefill
-    var pageData = this.fs.getPageData(this.pageTitle)
-    this.form.patchValue(JSON.parse(pageData))
+    this.personalInfo = JSON.parse(this.fs.getPageData('Personal Info'))
+    this.contacts = JSON.parse(this.fs.getPageData('Contacts'))
+    this.occupation = JSON.parse(this.fs.getPageData('Occupation'))
+    this.consent = JSON.parse(this.fs.getPageData('Consent'))
+    this.vehiclesInfo = JSON.parse(this.fs.getPageData('Vehicles'))
+    
   }
 
   onSubmit() {
@@ -57,6 +62,10 @@ export class PviSummaryComponent {
 
   previous() {
     this.router.navigate(['/portal/private-vehicle-insurance/pvi-policy-summary'])
+  }
+
+  navigate(link: string) {
+    this.router.navigate([link])
   }
 
 }

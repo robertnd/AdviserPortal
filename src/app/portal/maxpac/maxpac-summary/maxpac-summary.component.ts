@@ -42,21 +42,17 @@ export class MaxpacSummaryComponent {
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
-
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
-
     this.personalInfo = JSON.parse(this.fs.getPageData('Personal Info'))
     this.contacts = JSON.parse(this.fs.getPageData('Contacts'))
     this.occupation = JSON.parse(this.fs.getPageData('Occupation'))
     this.beneficiary = JSON.parse(this.fs.getPageData('Beneficiary'))
     this.spouse = JSON.parse(this.fs.getPageData('Spouse'))
     this.declarations = JSON.parse(this.fs.getPageData('Declarations'))
-    
   }
 
   onSubmit() {
-    // this.router.navigate(['/portal/contacts'])
     this.submitted = true
     if (this.form.invalid) {
       return
