@@ -17,7 +17,12 @@ export class PviPolicySummaryComponent {
   pageTitle = 'Policy'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    policyType: new FormControl(''),
+    product: new FormControl(''),
+    premium: new FormControl(''),
+    sumInsured: new FormControl(''),
+    periodFrom: new FormControl(''),
+    periodTo: new FormControl('')
   })
 
   constructor(
@@ -36,8 +41,12 @@ export class PviPolicySummaryComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+          policyType: [''],
+          product: [''],
+          premium: [''],
+          sumInsured: [''],
+          periodFrom: [''],
+          periodTo: ['']
       })
 
     // this will load entries on back navigation or prefill

@@ -17,7 +17,30 @@ export class PviDrivingAndClaimExperienceComponent {
   pageTitle = 'Driving and Claims'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+      hasDrivingLicense: new FormControl(''),
+      classOfLicense: new FormControl(''),
+      licenseYear: new FormControl(''),
+      hasHadAccidentLast5Years: new FormControl(''),
+      dateOfAccident: new FormControl(''),
+      natureOfAccident: new FormControl(''),
+      lossEstimate: new FormControl(''),
+      hasOffenceConviction: new FormControl(''),
+      hasOffenceConvictionDetails: new FormControl(''),
+      vehiclesInsured: new FormControl(''),
+      vehiclesInsuredDetails: new FormControl(''),
+      coverRequired: new FormControl(''),
+      extraWindscreenCover: new FormControl(''),
+      extraRadioCassetteLimit: new FormControl(''),
+      riotStrikePoliticalViolence: new FormControl(''),
+      carHire: new FormControl(''),
+      forcedATMWithdrawal10K: new FormControl(''),
+      forcedATMWithdrawal7500: new FormControl(''),
+      lossOfSpareWheel10K: new FormControl(''),
+      lossOfSpareWheel7500: new FormControl(''),
+      trackingDevices: new FormControl(''),
+      excessWaiver: new FormControl(''),
+      dateOfCompletion: new FormControl(''),
+      personCompletingProposal: new FormControl('')
   })
 
   constructor(
@@ -29,15 +52,36 @@ export class PviDrivingAndClaimExperienceComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+          hasDrivingLicense: [''],
+          classOfLicense: [''],
+          licenseYear: [''],
+          hasHadAccidentLast5Years: [''],
+          dateOfAccident: [''],
+          natureOfAccident: [''],
+          lossEstimate: [''],
+          hasOffenceConviction: [''],
+          hasOffenceConvictionDetails: [''],
+          vehiclesInsured: [''],
+          vehiclesInsuredDetails: [''],
+          coverRequired: [''],
+          extraWindscreenCover: [''],
+          extraRadioCassetteLimit: [''],
+          riotStrikePoliticalViolence: [''],
+          carHire: [''],
+          forcedATMWithdrawal10K: [''],
+          forcedATMWithdrawal7500: [''],
+          lossOfSpareWheel10K: [''],
+          lossOfSpareWheel7500: [''],
+          trackingDevices: [''],
+          excessWaiver: [''],
+          dateOfCompletion: [''],
+          personCompletingProposal: ['']
       })
 
     // this will load entries on back navigation or prefill
@@ -57,7 +101,6 @@ export class PviDrivingAndClaimExperienceComponent {
 
   previous() {
     this.router.navigate(['/portal/private-vehicle-insurance/pvi-vehicles'])
-    
   }
 
 }
