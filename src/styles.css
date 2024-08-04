@@ -115,6 +115,17 @@ body {
   display: flex;
 }
 
+.line-row {
+  display: flex;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.line-row .text-intg-summary {
+  border-bottom: 1px solid var(--color-om-darkblue);
+  padding-top: 0.1em;
+}
+
 .form-row input[type="checkbox"] {
   accent-color: blue;
   margin-left: 2rem;
