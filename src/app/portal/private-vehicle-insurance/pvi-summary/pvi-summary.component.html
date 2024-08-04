@@ -449,5 +449,286 @@
             </div>
         </div>
 
+        <div id="drivingAndClaimsSummary">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Driving and Claims</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Do you hold a driving license?</label>
+                    {{ claims.hasDrivingLicense }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Which class of license?</label>
+                    {{ claims.classOfLicense }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Year license was attained</label>
+                    {{ claims.licenseYear }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Have you ever had a motor vehicle accident or loss during the
+                        past five years?</label>
+                    {{ claims.hasHadAccidentLast5Years }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>When?</label>
+                    {{ claims.dateOfAccident }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Nature of Accident</label>
+                    {{ claims.natureOfAccident }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Estimated amount of loss</label>
+                    {{ claims.lossEstimate }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Have you ever been convicted of any motoring offence?</label>
+                    {{ claims.hasOffenceConviction }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>If "yes", provide details</label>
+                    {{ claims.hasOffenceConvictionDetails }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Have you been insured in respect of the above vehicle(s)?</label>
+                    {{ claims.vehiclesInsured }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>If "yes", by which company?</label>
+                    {{ claims.vehiclesInsuredDetails }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What type of cover do you require?</label>
+                    {{ claims.coverRequired }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <p class="overview__subheading2_ital">
+                    Extra Benefits available at an additional premium (Comprehensive Vehicles only)
+                </p>
+            </div>
+        
+            <div class="summary-row">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Extra Windscreen Cover above Kshs 30,000</td>
+                            <td><input type="checkbox" id="extraWindscreenCover" value="extraWindscreenCover"
+                                    formControlName="extraWindscreenCover"></td>
+                            <td>Limit 10% of the extra limit</td>
+                        </tr>
+                        <tr>
+                            <td>2. Extra Radio Cassette Limit above Kshs 30,000</td>
+                            <td><input type="checkbox" id="extraRadioCassetteLimit" value="extraRadioCassetteLimit"
+                                    formControlName="extraRadioCassetteLimit"></td>
+                            <td>Limit 10% of the extra limit</td>
+                        </tr>
+                        <tr>
+                            <td>3. Riot, Strike & Political violence</td>
+                            <td><input type="checkbox" id="riotStrikePoliticalViolence"
+                                    value="riotStrikePoliticalViolence" formControlName="riotStrikePoliticalViolence">
+                            </td>
+                            <td>Additional premium of 0.25% of vehicle value</td>
+                        </tr>
+                        <tr>
+                            <td>4. Car Hire - Cash Benefit up to Kshs 30,000 (Vehicles above Kshs. 1 million only)</td>
+                            <td><input type="checkbox" id="carHire" value="carHire" formControlName="carHire"></td>
+                            <td>Additional premium of Kshs 3,000 per vehicle</td>
+                        </tr>
+                        <tr>
+                            <td>5. Forced ATM withdrawal - Up to Kshs 10,000</td>
+                            <td><input type="checkbox" id="forcedATMWithdrawal10K" value="forcedATMWithdrawal10K"
+                                    formControlName="forcedATMWithdrawal10K"></td>
+                            <td>Additional premium of Kshs 1,000 per vehicle</td>
+                        </tr>
+                        <tr>
+                            <td>5. Forced ATM withdrawal - Up to Kshs 7,500</td>
+                            <td><input type="checkbox" id="forcedATMWithdrawal7500" value="forcedATMWithdrawal7500"
+                                    formControlName="forcedATMWithdrawal7500"></td>
+                            <td>Additional premium of Kshs 750 per vehicle</td>
+                        </tr>
+                        <tr>
+                            <td>7. Loss of spare wheel (vehicles above Kshs 1 million only)</td>
+                            <td><input type="checkbox" id="lossOfSpareWheel10K" value="lossOfSpareWheel10K"
+                                    formControlName="lossOfSpareWheel10K"></td>
+                            <td>Additional premium of Kshs 1,000 per vehicle</td>
+                        </tr>
+                        <tr>
+                            <td>8. Loss of spare wheel (vehicles above Kshs 1 million only)</td>
+                            <td><input type="checkbox" id="lossOfSpareWheel7500" value="lossOfSpareWheel7500"
+                                    formControlName="lossOfSpareWheel7500"></td>
+                            <td>Additional premium of Kshs 750 per vehicle</td>
+                        </tr>
+                        <tr>
+                            <td>9. Tracking Devices</td>
+                            <td><input type="checkbox" id="trackingDevices" value="trackingDevices"
+                                    formControlName="trackingDevices"></td>
+                            <td>Additional premium of Kshs 25,000 per vehicle</td>
+                        </tr>
+                        <tr>
+                            <td>10. Excess Waiver</td>
+                            <td><input type="checkbox" id="excessWaiver" value="excessWaiver"
+                                    formControlName="excessWaiver"></td>
+                            <td>Additional premium of 0.25% of vehicle value</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="summary-row">
+                <h1 class="overview__subheading">DECLARATION</h1>
+            </div>
+        
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    I/we declare that to my/our knowledge the answers and particulars given in this proposal are true
+                    and complete that I/we have not withheld any material information and that the vehicle(s) described
+                    is/are in good condition. I/we further agree that this proposal and declaration shall be the basis
+                    of the contract between me/us and Old Mutual whose policy is applicable to this insurance, I/we
+                    agree to accept. I/we confirm that I/we have read and understood the above Privacy Notice and the
+                    Privacy Policy and that any queries/concerns I/we have with regard to the nature and purpose of the
+                    processing of personal data have been adequately addressed
+                </p>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date of completion of proposal</label>
+                    {{ claims.dateOfCompletion }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Name of person completing proposal</label>
+                    {{ claims.personCompletingProposal }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/private-vehicle-insurance/pvi-driving-and-claim-experience')">
+                        Edit Driving & Claim Experience
+                    </button>
+                </div>
+            </div>
+            
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="policySummary">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Policy Summary</h1>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Policy Type</label>
+                    {{ policy.policyType }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Product</label>
+                    {{ policy.product }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Premium</label>
+                    {{ policy.premium }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Sum Insured</label>
+                    {{ policy.sumInsured }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Period From</label>
+                    {{ policy.periodFrom }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Period To</label>
+                    {{ policy.periodTo }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/private-vehicle-insurance/pvi-policy-summary')">
+                        Edit Policy Summary
+                    </button>
+                </div>
+            </div>
+            
+            <div class="summary-row">
+            </div>
+
+            <div class="summary-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <!-- <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button> -->
+            </div>
+
+            <div class="summary-row">
+            </div>
+
+        </div>
     </div>
 </div>

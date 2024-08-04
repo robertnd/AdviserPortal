@@ -23,6 +23,8 @@ export class PviSummaryComponent {
   occupation: any = null
   consent: any = null
   vehiclesInfo: any = null
+  claims: any = null
+  policy: any = null
   
   form: FormGroup = new FormGroup({
     // firstName: new FormControl(''),
@@ -37,7 +39,6 @@ export class PviSummaryComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
@@ -47,7 +48,8 @@ export class PviSummaryComponent {
     this.occupation = JSON.parse(this.fs.getPageData('Occupation'))
     this.consent = JSON.parse(this.fs.getPageData('Consent'))
     this.vehiclesInfo = JSON.parse(this.fs.getPageData('Vehicles'))
-    
+    this.claims = JSON.parse(this.fs.getPageData('Driving and Claims'))
+    this.policy = JSON.parse(this.fs.getPageData('Policy'))
   }
 
   onSubmit() {
