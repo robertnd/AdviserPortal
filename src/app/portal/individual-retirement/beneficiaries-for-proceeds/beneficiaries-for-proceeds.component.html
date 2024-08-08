@@ -39,7 +39,7 @@
                     <label for="beneficiariesDoB">Date of Birth</label>
                     <input type="date" id="beneficiariesDoB" formControlName="beneficiariesDoB" />
                     <div *ngIf="f['beneficiariesDoB'].errors" class="invalid-input">
-                        <div *ngIf="f['beneficiariesDoB'].errors['conditionalRequired']">
+                        <div *ngIf="f['beneficiariesDoB'].errors['required']">
                             Required
                         </div>
                         <div *ngIf="f['beneficiariesDoB'].errors['futureDate']">

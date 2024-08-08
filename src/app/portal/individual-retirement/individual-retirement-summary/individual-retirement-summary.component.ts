@@ -28,6 +28,8 @@ export class IndividualRetirementSummaryComponent {
     standingOrder: new FormControl(''),
     debitOrder: new FormControl(''),
     employerCheckOff: new FormControl(''),
+    benefitsBreakdown: new FormControl(''),
+
   })
 
   constructor(
@@ -48,7 +50,30 @@ export class IndividualRetirementSummaryComponent {
     this.occupation = JSON.parse(this.fs.getPageData('Occupation'))
     this.beneficiariesInfo = JSON.parse(this.fs.getPageData('Beneficiaries'))
     this.consent = JSON.parse(this.fs.getPageData('Consent'))
-    this.modeOfPayment = JSON.parse(this.fs.getPageData('Mode of Payment'))
+
+    // this.modeOfPayment = JSON.parse(this.fs.getPageData('Mode of Payment'))
+    this.modeOfPayment = this.fs.getPageData('Mode of Payment')
+    this.form.patchValue(JSON.parse(this.modeOfPayment))
+
+    var beneficiariesJSON = this.fs.getPageData('Beneficiaries_beneficiaries') || '{}'
+    var beneficiariesObj = JSON.parse(beneficiariesJSON)
+    Object.keys(beneficiariesObj).forEach((key: string) => {
+      var b = beneficiariesObj[key]
+      this.beneficiaries.set(
+        key,
+        new Beneficiary(
+          b.fullname,
+          b.relationship,
+          b.dob,
+          b.addressAndCode,
+          b.addressAndCode,
+          b.benefitShare
+        ))
+    }
+    )
+
+    // var pageData = this.fs.getPageData(this.pageTitle)
+    // this.form.patchValue(JSON.parse(pageData))
   }
 
   onSubmit() {

@@ -14,7 +14,7 @@
 
             <div class="form-row">
                 <div class="checkBoxGroup">
-                    <input type="checkbox" id="standingOrder" value="standingOrder" formControlName="standingOrder" />
+                    <input type="checkbox" id="standingOrder" value="standingOrder" formControlName="standingOrder" (click)="selectionCheck()"/>
                     <label for="standingOrder">Standing Order</label>
                     <input type="checkbox" id="debitOrder" value="debitOrder" formControlName="debitOrder" />
                     <label for="debitOrder">Debit Order</label>

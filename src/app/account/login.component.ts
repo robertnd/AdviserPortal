@@ -38,17 +38,18 @@ export class LoginComponent implements OnInit {
             .subscribe({
                 next: user => {
                     // get return url from query parameters or default to home page
-                    console.log(`Newly SIMULATED: ${JSON.stringify(user)}`)
+                    console.log(`SIMULATED: ${JSON.stringify(user)}`)
                     if (user.authenticated) {
                         const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
                         this.router.navigateByUrl(returnUrl)
                     } else {
-                        this.alertService.error(user.message || '')
+                        this.alertService.error(JSON.stringify(user.message) || '')
                         this.loading = false
                     }
                 },
                 error: error => {
-                    this.alertService.error(error)
+                    console.log(`Error: ${JSON.stringify(error)}`)
+                    this.alertService.error(JSON.stringify(error))
                     this.loading = false
                 }
             })

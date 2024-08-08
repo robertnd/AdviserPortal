@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
+import { validateDate } from '@app/_helpers'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 
@@ -44,7 +45,7 @@ export class PensionSourceOfFundsComponent implements OnInit {
 
   sofControlsEmployed = ['employed_A1Contribution',
     'employed_A2Contribution', 'employed_B1Contribution', 'employed_MoR', 'employed_Bank', 'employed_Branch',
-    'employed_AccName', 'employed_AccNo', 'employed_Designation', 'employed_Date']
+    'employed_AccName', 'employed_AccNo', 'employed_Designation']
 
 
   constructor(
@@ -63,9 +64,9 @@ export class PensionSourceOfFundsComponent implements OnInit {
 
     // sourceOfFunds: ['', Validators.required],
     this.form = this.fb.group({
-      sourceOfFunds: [''],
+      sourceOfFunds: ['', Validators.required],
       sourceOfFundsOther: [''],
-      remittance: [''],
+      remittance: ['', Validators.required],
       selfEmployed_Contribution: [''],
       selfEmployed_MoR: [''],
       selfEmployed_Frequency: [''],
@@ -143,12 +144,12 @@ export class PensionSourceOfFundsComponent implements OnInit {
         }
         // check if control should only contain a number
         if (mustBeNumber.indexOf(controlId) > -1) {
-          if ( isNaN(+this.f[controlId].value) ) {
+          if (isNaN(+this.f[controlId].value)) {
             this.f[controlId].setErrors({ 'mustBeNumber': true })
             hasErrors = true
           }
           // a +ve number
-          if ( Number(this.f[controlId].value) < 0 ) {
+          if (Number(this.f[controlId].value) < 0) {
             this.f[controlId].setErrors({ 'mustBePositiveNumber': true })
             hasErrors = true
           }
@@ -165,24 +166,34 @@ export class PensionSourceOfFundsComponent implements OnInit {
         }
         // check if control should only contain a number
         if (mustBeNumber.indexOf(controlId) > -1) {
-          if ( isNaN(+this.f[controlId].value) ) {
+          if (isNaN(+this.f[controlId].value)) {
             this.f[controlId].setErrors({ 'mustBeNumber': true })
             hasErrors = true
           }
           // a +ve number
-          if ( Number(this.f[controlId].value) < 0 ) {
+          if (Number(this.f[controlId].value) < 0) {
             this.f[controlId].setErrors({ 'mustBePositiveNumber': true })
             hasErrors = true
           }
           // employed_A2Contribution should be between 1 and 100
-          if ( controlId === 'employed_A2Contribution' && Number(this.f[controlId].value) >= 100 ) {
+          if (controlId === 'employed_A2Contribution' && Number(this.f[controlId].value) >= 100) {
             this.f[controlId].setErrors({ 'mustBeLessThan100': true })
             hasErrors = true
           }
         }
       })
+
+      let dateErrors = validateDate()(this.f['employed_Date'])
+      if (dateErrors != null) {
+        this.f['employed_Date'].setErrors(dateErrors)
+        hasErrors = true
+      }
     }
+    
     if (hasErrors) return
+    // TODO: if the user changes their mind between Self and Employment, any earlier captured information
+    // remains cached in the state, and hence it is important to unset any unrequired data before sending it across to the
+    // OM backend
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate(['/portal/personal-pension/residential-address'])
   }

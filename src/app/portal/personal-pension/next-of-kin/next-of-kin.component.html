@@ -11,12 +11,13 @@
             </div>
         </div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="nokSurname">Surname</label>
                     <input type="text" id="nokSurname" formControlName="nokSurname" />
                     <div *ngIf="submitted && f['nokSurname'].errors" class="invalid-input">
-                        <div *ngIf="f['nokSurname'].errors['conditionalRequired']">
+                        <div *ngIf="f['nokSurname'].errors['required']">
                             Required
                         </div>
                     </div>
@@ -25,21 +26,34 @@
                     <label for="nokForenames">Forenames</label>
                     <input type="text" id="nokForenames" formControlName="nokForenames" />
                     <div *ngIf="submitted && f['nokForenames'].errors" class="invalid-input">
-                        <div *ngIf="f['nokForenames'].errors['conditionalRequired']">
-                            Forenames are required
-                        </div>
-                    </div>
-                </div>
-                <div class="text-input-intg">
-                    <label for="nokDoB">Date of Birth</label>
-                    <input type="date" id="nokDoB" formControlName="nokDoB" />
-                    <div *ngIf="submitted && f['nokDoB'].errors" class="invalid-input">
-                        <div *ngIf="f['nokDoB'].errors['conditionalRequired']">
+                        <div *ngIf="f['nokForenames'].errors['required']">
                             Required
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
             </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="nokDoB">Date of Birth</label>
+                    <input type="date" id="nokDoB" formControlName="nokDoB" />
+                    <div *ngIf="submitted && f['nokDoB'].errors" class="invalid-input">
+                        <div *ngIf="f['nokDoB'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['nokDoB'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['nokDoB'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="nokIdDocument">Identification Document</label>
@@ -73,7 +87,7 @@
                     <label for="nokMobileNo">Mobile Number</label>
                     <input type="text" id="nokMobileNo" formControlName="nokMobileNo" />
                     <div *ngIf="submitted && f['nokMobileNo'].errors" class="invalid-input">
-                        <div *ngIf="f['nokMobileNo'].errors['conditionalRequired']">
+                        <div *ngIf="f['nokMobileNo'].errors['required']">
                             Required
                         </div>
                     </div>
@@ -89,7 +103,7 @@
                 </div>
                 <div class="text-input-intg"></div>
             </div>
-            
+
             <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
@@ -100,7 +114,7 @@
                     <img src="../../assets/img/arrow-right-light.svg" alt="" />
                 </button>
             </div>
-        </form>
 
+        </form>
     </div>
 </div>

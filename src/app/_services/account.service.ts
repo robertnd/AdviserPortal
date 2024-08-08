@@ -5,9 +5,9 @@ import { Router } from '@angular/router'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { User } from '@app/_models'
 
-const AUTH_API = 'http://localhost:9085/api/v1/user/';
-// const AUTH_API = 'http://3.238.14.60:9085/api/v1/user/';
-// const AUTH_API = 'https://oldmutual.vergeinteractivelabs.com:9085/api/v1/user/';
+const AUTH_API = 'http://localhost:9085/api/v1/user/'
+// const AUTH_API = 'http://35.170.68.225:9085/api/v1/user/'
+// const AUTH_API = 'https://oldmutual.vergeinteractivelabs.com:9085/api/v1/user/'
 
 const dummyUser: User = {
     "message": "Login successful",

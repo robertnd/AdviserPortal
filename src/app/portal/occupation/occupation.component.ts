@@ -62,9 +62,9 @@ export class OccupationComponent implements OnInit {
   onSubmit() {
 
     // short circuit
-    let dd = this.utilService.getCurrentJourney()
+    let journey = this.utilService.getCurrentJourney()
     var destination = ''
-    switch (dd) {
+    switch (journey) {
       case 'Unit Trusts': {
         destination = '/portal/unit-trust/joint-applicant'
         break
@@ -113,22 +113,7 @@ export class OccupationComponent implements OnInit {
     }
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
 
-
-    // let journey = this.utilService.getCurrentJourney()
-    // switch (journey) {
-    //   case 'Unit Trusts': {
-    //     this.router.navigate(['/portal/unit-trust/sof'])
-    //     break
-    //   }
-    //   case 'Personal Pension Plan': {
-    //     this.router.navigate(['/portal/personal-pension/sof'])
-    //     break
-    //   }
-    //   default: {
-    //     this.router.navigate(['/portal/personal-pension/sof'])
-    //     break
-    //   }
-    // }
+    
   }
 
   previous() {

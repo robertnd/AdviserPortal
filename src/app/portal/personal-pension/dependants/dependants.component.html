@@ -23,7 +23,7 @@
                     <label for="dependantSurname">Surname</label>
                     <input type="text" id="dependantSurname" formControlName="dependantSurname" />
                     <div *ngIf="submitted && f['dependantSurname'].errors" class="invalid-input">
-                        <div *ngIf="f['dependantSurname'].errors['conditionalRequired']">
+                        <div *ngIf="f['dependantSurname'].errors['required']">
                             Required
                         </div>
                     </div>
@@ -32,8 +32,8 @@
                     <label for="dependantForenames">Forenames</label>
                     <input type="text" id="dependantForenames" formControlName="dependantForenames" />
                     <div *ngIf="submitted && f['dependantForenames'].errors" class="invalid-input">
-                        <div *ngIf="f['dependantForenames'].errors['conditionalRequired']">
-                            Forenames are required
+                        <div *ngIf="f['dependantForenames'].errors['required']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <label for="dependantMobileNo">Mobile Number</label>
                     <input type="text" id="dependantMobileNo" formControlName="dependantMobileNo" />
                     <div *ngIf="submitted && f['dependantMobileNo'].errors" class="invalid-input">
-                        <div *ngIf="f['dependantMobileNo'].errors['conditionalRequired']">
+                        <div *ngIf="f['dependantMobileNo'].errors['required']">
                             Required
                         </div>
                     </div>
@@ -86,6 +86,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="dependantSpouse">Spouse</label>
                     <select id="dependantSpouse" formControlName="dependantSpouse">
@@ -99,7 +103,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
+
             <div class="form-row">
                 <div class="text-input-highlight">
                     <div class="highlight-1">Children</div>

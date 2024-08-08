@@ -275,6 +275,7 @@
                     {{ sof.sourceOfFundsOther }}
                 </div>
             </div>
+
             <div class="summary-row">
                 <div class="text-intg-summary">
                     <label>Remittance</label>
@@ -283,112 +284,125 @@
                 <div class="text-intg-summary"></div>
                 <div class="text-intg-summary"></div>
             </div>
-            <div class="form-row">
-                <div class="text-input-highlight">
-                    <div class="highlight-1">Self</div>
+
+            <div *ngIf="sof.remittance === 'Self' || sof.remittance === 'Self & Employment'">
+                <div class="form-row">
+                    <div class="text-input-highlight">
+                        <div class="highlight-1">Self</div>
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Contribution (Kshs)</label>
+                        {{ sof.selfEmployed_Contribution }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Mode of Remittance</label>
+                        {{ sof.selfEmployed_MoR }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Frequency</label>
+                        {{ sof.selfEmployed_Frequency }}
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Name of Bank</label>
+                        {{ sof.selfEmployed_Bank }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Branch</label>
+                        {{ sof.selfEmployed_Branch }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Account Name</label>
+                        {{ sof.selfEmployed_AccName }}
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Account Number</label>
+                        {{ sof.selfEmployed_AccNo }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <!-- for :last-child css directive  -->
                 </div>
             </div>
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>Contribution (Kshs)</label>
-                    {{ sof.selfEmployed_Contribution }}
+
+            <div *ngIf="sof.remittance === 'Employment' || sof.remittance === 'Self & Employment'">
+                <div class="form-row">
+                    <div class="text-input-highlight">
+                        <div class="highlight-1">Employed Member</div>
+                    </div>
                 </div>
-                <div class="text-intg-summary">
-                    <label>Mode of Remittance</label>
-                    {{ sof.selfEmployed_MoR }}
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>(A1) Contribution</label>
+                        {{ sof.employed_A1Contribution }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>or (A2) Conitribution (% of salary)</label>
+                        {{ sof.employed_A2Contribution }}
+                    </div>
+                    <div class="text-intg-summary"></div>
                 </div>
-                <div class="text-intg-summary">
-                    <label>Frequency</label>
-                    {{ sof.selfEmployed_Frequency }}
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>(B1) Contribution</label>
+                        {{ sof.employed_B1Contribution }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Mode of Remittance</label>
+                        {{ sof.employed_MoR }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Name of Bank</label>
+                        {{ sof.employed_Bank }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Branch</label>
+                        {{ sof.employed_Branch }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Account Name</label>
+                        {{ sof.employed_AccName }}
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Account Number</label>
+                        {{ sof.employed_AccNo }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Designation</label>
+                        {{ sof.employed_Designation }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Date</label>
+                        {{ sof.employed_Date }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <!-- for :last-child css directive  -->
                 </div>
             </div>
+            
             <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>Name of Bank</label>
-                    {{ sof.selfEmployed_Bank }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Branch</label>
-                    {{ sof.selfEmployed_Branch }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Account Name</label>
-                    {{ sof.selfEmployed_AccName }}
-                </div>
-            </div>
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>Account Number</label>
-                    {{ sof.selfEmployed_AccNo }}
-                </div>
                 <div class="text-intg-summary"></div>
                 <div class="text-intg-summary"></div>
-            </div>
-            <div class="form-row">
-                <div class="text-input-highlight">
-                    <div class="highlight-1">Employed Member</div>
-                </div>
-            </div>
-            <div class="summary-row">
                 <div class="text-intg-summary">
-                    <label>(A1) Contribution</label>
-                    {{ sof.employed_A1Contribution }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>or (A2) Conitribution (% of salary)</label>
-                    {{ sof.employed_A2Contribution }}
-                </div>
-                <div class="text-intg-summary"></div>
-            </div>
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>(B1) Contribution</label>
-                    {{ sof.employed_B1Contribution }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Mode of Remittance</label>
-                    {{ sof.employed_MoR }}
-                </div>
-                <div class="text-intg-summary"></div>
-            </div>
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>Name of Bank</label>
-                    {{ sof.employed_Bank }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Branch</label>
-                    {{ sof.employed_Branch }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Account Name</label>
-                    {{ sof.employed_AccName }}
-                </div>
-            </div>
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>Account Number</label>
-                    {{ sof.employed_AccNo }}
-                </div>
-                <div class="text-intg-summary"></div>
-                <div class="text-intg-summary"></div>
-            </div>
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>Designation</label>
-                    {{ sof.employed_Designation }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Date</label>
-                    {{ sof.employed_Date }}
-                </div>
-                <div class="text-intg-summary"></div>
-            </div>
-            <div class="summary-row">
-                <div class="text-intg-summary"></div>
-                <div class="text-intg-summary"></div>
-                <div class="text-intg-summary">
-                    <button class="ombutton-link" type="button" (click)="navigate('/portal/personal-pension/sof')">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/personal-pension/pension-source-of-funds')">
                         Edit Source of Funds
                     </button>
                 </div>
@@ -507,7 +521,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="text-input-highlight">
+                <div class="text-input-highlight" *ngIf="dependant_children.size > 0">
                     <div class="highlight-1">Children</div>
                 </div>
             </div>

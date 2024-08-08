@@ -49,10 +49,24 @@ export class ModeOfPaymentComponent {
     this.form.patchValue(JSON.parse(pageData))
   }
 
+  selectionCheck() {
+    if (this.f['standingOrder'].value || this.f['debitOrder'].value || this.f['employerCheckOff'].value) {
+      if (this.form.hasError('mustHavePaymentMethod')) {
+        this.form.setErrors({'mustHavePaymentMethod': null})
+      }
+    }
+
+  }
+
   onSubmit() {
-    this.router.navigate(['/portal/contacts'])
     this.submitted = true
     if (this.form.invalid) {
+      return
+    }
+
+    if (!this.f['standingOrder'].value && !this.f['debitOrder'].value && !this.f['employerCheckOff'].value) {
+      this.alertService.error('At least one payment method is required')
+      this.form.setErrors({ 'mustHavePaymentMethod': true })
       return
     }
 

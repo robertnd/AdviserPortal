@@ -22,11 +22,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-input-intg"></div>
-                <div class="text-input-intg"></div>
-            </div>
-
-            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="beneficiariesRelationship">Relationship to member</label>
                     <input type="text" id="beneficiariesRelationship" formControlName="beneficiariesRelationship" />
@@ -36,7 +31,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-input-intg"></div>
                 <div class="text-input-intg"></div>
             </div>
 
@@ -50,11 +44,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-input-intg"></div>
-                <div class="text-input-intg"></div>
-            </div>
-
-            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="beneficiariesPhoneNo">Phone Number</label>
                     <input type="text" id="beneficiariesPhoneNo" formControlName="beneficiariesPhoneNo" />
@@ -64,11 +53,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="beneficiariesDoB">Date of Birth</label>
                     <input type="date" id="beneficiariesDoB" formControlName="beneficiariesDoB" />
                     <div *ngIf="f['beneficiariesDoB'].errors" class="invalid-input">
-                        <div *ngIf="f['beneficiariesDoB'].errors['conditionalRequired']">
+                        <div *ngIf="f['beneficiariesDoB'].errors['required']">
                             Required
                         </div>
                         <div *ngIf="f['beneficiariesDoB'].errors['futureDate']">
@@ -79,6 +72,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
                 <div class="text-input-intg"></div>
             </div>
 

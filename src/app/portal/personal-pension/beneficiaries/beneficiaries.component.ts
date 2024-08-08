@@ -48,10 +48,9 @@ export class BeneficiariesComponent implements OnInit {
       beneficiariesBenefitShare: ['']
     })
 
-    // var pageData = this.fs.getPageData(this.pageTitle)
-    // this.form.patchValue(JSON.parse(pageData))
-
-    var beneficiariesJSON = this.fs.getPageData(this.pageTitle) || '{}'
+    var pageData = this.fs.getPageData(this.pageTitle)
+    this.form.patchValue(JSON.parse(pageData))
+    var beneficiariesJSON = this.fs.getPageData(`${this.pageTitle}_beneficiaries`) || '{}'
     var beneficiariesObj = JSON.parse(beneficiariesJSON)
     Object.keys(beneficiariesObj).forEach((key: string) => {
       var b = beneficiariesObj[key]
@@ -128,6 +127,9 @@ export class BeneficiariesComponent implements OnInit {
           this.f['beneficiariesDoB'].value,
           this.f['beneficiariesBenefitShare'].value)
       )
+      if (this.form.hasError('mustHaveBeneficiary')) {
+        this.form.setErrors({'mustHaveBeneficiary': null})
+      }
     }
   }
 
@@ -151,14 +153,21 @@ export class BeneficiariesComponent implements OnInit {
       return
     }
 
+    if (this.beneficiaries.size == 0) {
+      this.alertService.error('At least one beneficiary required')
+      this.form.setErrors({ 'mustHaveBeneficiary': true })
+      return
+    }
+
     var beneficiariesSerialized = Object.fromEntries(this.beneficiaries)
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(beneficiariesSerialized))
-
+    var beneficiariesSerialized = Object.fromEntries(this.beneficiaries)
+    this.fs.addOrUpdatePageData(`${this.pageTitle}_beneficiaries`, JSON.stringify(beneficiariesSerialized))
     this.router.navigate(['/portal/personal-pension/pension-summary'])
   }
 
   previous() {
-    this.router.navigate(['/portal/personal-info'])
+    this.router.navigate(['/portal/personal-pension/next-of-kin'])
   }
 
 }

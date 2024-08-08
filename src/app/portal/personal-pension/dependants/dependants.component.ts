@@ -43,13 +43,13 @@ export class DependantsComponent implements OnInit {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      dependantSurname: [''],
-      dependantForenames: [''],
-      dependantIdDocument: [''],
-      dependantDocNumber: [''],
-      dependantMobileNo: [''],
+      dependantSurname: ['', Validators.required],
+      dependantForenames: ['', Validators.required],
+      dependantIdDocument: ['', Validators.required],
+      dependantDocNumber: ['', Validators.required],
+      dependantMobileNo: ['', Validators.required],
       dependantEmail: [''],
-      dependantSpouse: [''],
+      dependantSpouse: ['', Validators.required],
       dependantChildNames: [''],
       dependantChildGender: [''],
       dependantChildDoB: ['']

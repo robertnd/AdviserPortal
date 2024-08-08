@@ -19,11 +19,11 @@ export class BeneficiariesForProceedsComponent {
   submitted = false
   beneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
   form: FormGroup = new FormGroup({
-        beneficiariesNames: new FormControl(''),
-        beneficiariesRelationship: new FormControl(''),
-        beneficiariesDoB: new FormControl(''),
-        phoneAndAddress: new FormControl(''),
-        beneficiariesShare: new FormControl('')
+    beneficiariesNames: new FormControl(''),
+    beneficiariesRelationship: new FormControl(''),
+    beneficiariesDoB: new FormControl(''),
+    phoneAndAddress: new FormControl(''),
+    beneficiariesShare: new FormControl('')
   })
 
   constructor(
@@ -41,26 +41,51 @@ export class BeneficiariesForProceedsComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-          beneficiariesNames: [''],
-          beneficiariesRelationship: [''],
-          beneficiariesDoB: [''],
-          phoneAndAddress: [''],
-          beneficiariesShare: ['']
-      })
+      beneficiariesNames: [''],
+      beneficiariesRelationship: [''],
+      beneficiariesDoB: [''],
+      phoneAndAddress: [''],
+      beneficiariesShare: ['']
+    })
 
     // this will load entries on back navigation or prefill
     var pageData = this.fs.getPageData(this.pageTitle)
     this.form.patchValue(JSON.parse(pageData))
+    var beneficiariesJSON = this.fs.getPageData(`${this.pageTitle}_beneficiaries`) || '{}'
+    var beneficiariesObj = JSON.parse(beneficiariesJSON)
+    Object.keys(beneficiariesObj).forEach((key: string) => {
+      var b = beneficiariesObj[key]
+      this.beneficiaries.set(
+        key,
+        new Beneficiary(
+          b.fullname,
+          b.relationship,
+          b.dob,
+          b.addressAndCode,
+          b.addressAndCode,
+          b.benefitShare
+        ))
+    }
+    )
+    
   }
 
   onSubmit() {
-    this.router.navigate(['/portal/contacts'])
     this.submitted = true
     if (this.form.invalid) {
       return
     }
 
+    if (this.beneficiaries.size == 0) {
+      this.alertService.error('At least one beneficiary required')
+      this.form.setErrors({ 'mustHaveBeneficiary': true })
+      return
+    }
+
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
+    var beneficiariesSerialized = Object.fromEntries(this.beneficiaries)
+    this.fs.addOrUpdatePageData(`${this.pageTitle}_beneficiaries`, JSON.stringify(beneficiariesSerialized))
+
     this.router.navigate(['/portal/individual-retirement/mode-of-payment'])
   }
 
@@ -97,22 +122,22 @@ export class BeneficiariesForProceedsComponent {
       fErrors = true
     }
 
-    if ( isNaN(+this.f['beneficiariesShare'].value) ) {
+    if (isNaN(+this.f['beneficiariesShare'].value)) {
       this.f['beneficiariesShare'].setErrors({ 'mustBeNumber': true })
       fErrors = true
     }
 
-    if ( Number(this.f['beneficiariesShare'].value) <= 0 ) {
+    if (Number(this.f['beneficiariesShare'].value) <= 0) {
       this.f['beneficiariesShare'].setErrors({ 'mustBePositiveNumber': true })
       fErrors = true
     }
 
-    if ( Number(this.f['beneficiariesShare'].value) > 100 ) {
+    if (Number(this.f['beneficiariesShare'].value) > 100) {
       this.f['beneficiariesShare'].setErrors({ 'mustBeLessThan100': true })
       fErrors = true
     }
 
-    if ( this.calculateShareSum() >= 100 || ( this.calculateShareSum() + Number(this.f['beneficiariesShare'].value)) > 100) {
+    if (this.calculateShareSum() >= 100 || (this.calculateShareSum() + Number(this.f['beneficiariesShare'].value)) > 100) {
       fErrors = true
       this.alertService.error('The sum of share benefits cannot exceed 100%')
     }
@@ -130,6 +155,10 @@ export class BeneficiariesForProceedsComponent {
           this.f['phoneAndAddress'].value,
           this.f['beneficiariesShare'].value)
       )
+      // if user clicks "next" before adding a beneficiary the page is stuck by the error flag
+      if (this.form.hasError('mustHaveBeneficiary')) {
+        this.form.setErrors({'mustHaveBeneficiary': null})
+      }
     }
   }
 
@@ -137,7 +166,7 @@ export class BeneficiariesForProceedsComponent {
     var total = 0
     for (let [key, value] of this.beneficiaries) {
       total += Number(value.benefitShare)
-    } 
+    }
     return total
   }
 
