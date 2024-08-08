@@ -23,13 +23,12 @@ export class IndividualRetirementSummaryComponent {
   beneficiariesInfo: any = null
   consent: any = null
   modeOfPayment: any = null
+  benefitsBreakdownText: string = ''
   beneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
   form: FormGroup = new FormGroup({
     standingOrder: new FormControl(''),
     debitOrder: new FormControl(''),
-    employerCheckOff: new FormControl(''),
-    benefitsBreakdown: new FormControl(''),
-
+    employerCheckOff: new FormControl('')
   })
 
   constructor(
@@ -53,9 +52,13 @@ export class IndividualRetirementSummaryComponent {
 
     // this.modeOfPayment = JSON.parse(this.fs.getPageData('Mode of Payment'))
     this.modeOfPayment = this.fs.getPageData('Mode of Payment')
-    this.form.patchValue(JSON.parse(this.modeOfPayment))
+    var modeOfPaymentObj = JSON.parse(this.modeOfPayment)
+    this.benefitsBreakdownText = modeOfPaymentObj.benefitsBreakdown
 
-    var beneficiariesJSON = this.fs.getPageData('Beneficiaries_beneficiaries') || '{}'
+    console.log(JSON.stringify(this.modeOfPayment))
+    this.form.patchValue(modeOfPaymentObj)
+
+    var beneficiariesJSON = this.fs.getPageData('Beneficiaries_irBeneficiaries') || '{}'
     var beneficiariesObj = JSON.parse(beneficiariesJSON)
     Object.keys(beneficiariesObj).forEach((key: string) => {
       var b = beneficiariesObj[key]

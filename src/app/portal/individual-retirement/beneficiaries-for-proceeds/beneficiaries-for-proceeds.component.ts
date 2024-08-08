@@ -17,7 +17,7 @@ export class BeneficiariesForProceedsComponent {
   journey = ''
   pageTitle = 'Beneficiaries'
   submitted = false
-  beneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
+  irBeneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
   form: FormGroup = new FormGroup({
     beneficiariesNames: new FormControl(''),
     beneficiariesRelationship: new FormControl(''),
@@ -51,11 +51,11 @@ export class BeneficiariesForProceedsComponent {
     // this will load entries on back navigation or prefill
     var pageData = this.fs.getPageData(this.pageTitle)
     this.form.patchValue(JSON.parse(pageData))
-    var beneficiariesJSON = this.fs.getPageData(`${this.pageTitle}_beneficiaries`) || '{}'
+    var beneficiariesJSON = this.fs.getPageData(`${this.pageTitle}_irBeneficiaries`) || '{}'
     var beneficiariesObj = JSON.parse(beneficiariesJSON)
     Object.keys(beneficiariesObj).forEach((key: string) => {
       var b = beneficiariesObj[key]
-      this.beneficiaries.set(
+      this.irBeneficiaries.set(
         key,
         new Beneficiary(
           b.fullname,
@@ -76,15 +76,16 @@ export class BeneficiariesForProceedsComponent {
       return
     }
 
-    if (this.beneficiaries.size == 0) {
+    if (this.irBeneficiaries.size == 0) {
       this.alertService.error('At least one beneficiary required')
       this.form.setErrors({ 'mustHaveBeneficiary': true })
+      console.log(`Errors: ${JSON.stringify(this.form.errors)}`)
       return
     }
 
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-    var beneficiariesSerialized = Object.fromEntries(this.beneficiaries)
-    this.fs.addOrUpdatePageData(`${this.pageTitle}_beneficiaries`, JSON.stringify(beneficiariesSerialized))
+    var beneficiariesSerialized = Object.fromEntries(this.irBeneficiaries)
+    this.fs.addOrUpdatePageData(`${this.pageTitle}_irBeneficiaries`, JSON.stringify(beneficiariesSerialized))
 
     this.router.navigate(['/portal/individual-retirement/mode-of-payment'])
   }
@@ -145,7 +146,7 @@ export class BeneficiariesForProceedsComponent {
     if (fErrors) {
       return
     } else {
-      this.beneficiaries.set(
+      this.irBeneficiaries.set(
         this.f['beneficiariesNames'].value,
         new Beneficiary(
           this.f['beneficiariesNames'].value,
@@ -157,22 +158,24 @@ export class BeneficiariesForProceedsComponent {
       )
       // if user clicks "next" before adding a beneficiary the page is stuck by the error flag
       if (this.form.hasError('mustHaveBeneficiary')) {
-        this.form.setErrors({'mustHaveBeneficiary': null})
+        // this.form.setErrors({'mustHaveBeneficiary': null})
+        delete this.form.errors!['mustHaveBeneficiary']
+        this.form.updateValueAndValidity()
       }
     }
   }
 
   calculateShareSum() {
     var total = 0
-    for (let [key, value] of this.beneficiaries) {
+    for (let [key, value] of this.irBeneficiaries) {
       total += Number(value.benefitShare)
     }
     return total
   }
 
   removeBeneficiary(key: string) {
-    if (this.beneficiaries.has(key)) {
-      this.beneficiaries.delete(key)
+    if (this.irBeneficiaries.has(key)) {
+      this.irBeneficiaries.delete(key)
     }
   }
 

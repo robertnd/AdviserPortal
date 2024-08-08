@@ -299,7 +299,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="summary-row">
             </div>
 
@@ -319,10 +319,11 @@
                 <div class="text-intg-summary"></div>
             </div>
 
-            <div class="form-row">
-                <form [formGroup]="form">
+            <form [formGroup]="form">
+                <div class="form-row">
                     <div class="checkBoxGroup">
-                        <input type="checkbox" id="standingOrder" value="standingOrder" formControlName="standingOrder" />
+                        <input type="checkbox" id="standingOrder" value="standingOrder"
+                            formControlName="standingOrder" />
                         <label for="standingOrder">Standing Order</label>
                         <input type="checkbox" id="debitOrder" value="debitOrder" formControlName="debitOrder" />
                         <label for="debitOrder">Debit Order</label>
@@ -330,16 +331,14 @@
                             formControlName="employerCheckOff" />
                         <label for="employerCheckOff">Employer Check Off</label>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
 
             <div class="summary-row">
                 <div class="text-input-intg">
                     <label>Please indicate the breakdown between benefits secured by employee
                         and employer contributions, if any</label>
-                    <input type="text" id="benefitsBreakdown" formControlName="benefitsBreakdown" />
-                    <!-- <label id="benefitsBreakdown" formControlName="benefitsBreakdown"></label> -->
-                    <!-- {{ modeOfPayment.benefitsBreakdown }} -->
+                    {{ benefitsBreakdownText }}
                 </div>
             </div>
 
@@ -353,7 +352,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="summary-row">
             </div>
         </div>
@@ -490,7 +489,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="summary-row">
             </div>
 

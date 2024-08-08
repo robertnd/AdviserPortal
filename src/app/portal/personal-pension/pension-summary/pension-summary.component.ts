@@ -50,7 +50,7 @@ export class PensionSummaryComponent implements OnInit {
     }
     )
     this.nok = JSON.parse(this.fs.getPageData('Next of Kin'))
-    var beneficiariesJSON = this.fs.getPageData('Beneficiaries') || '{}'
+    var beneficiariesJSON = this.fs.getPageData('Beneficiaries_ppBeneficiaries') || '{}'
     var beneficiariesObj = JSON.parse(beneficiariesJSON)
     Object.keys(beneficiariesObj).forEach((key: string) => {
       var b = beneficiariesObj[key]

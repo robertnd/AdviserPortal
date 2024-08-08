@@ -110,7 +110,7 @@
             </div>
 
             <div class="form-row">
-                <table class="data-table" *ngIf="beneficiaries.size > 0">
+                <table class="data-table" *ngIf="ppBeneficiaries.size > 0">
                     <thead>
                         <tr>
                             <th></th>
@@ -124,7 +124,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let b of beneficiaries | keyvalue">
+                        <tr *ngFor="let b of ppBeneficiaries | keyvalue">
                             <td><i class="fa fa-users fa-lg m-3"></i></td>
                             <td>{{b.value.fullname}}</td>
                             <td>{{b.value.relationship}}</td>

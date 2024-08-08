@@ -53,9 +53,10 @@ export class ModeOfPaymentComponent {
     if (this.f['standingOrder'].value || this.f['debitOrder'].value || this.f['employerCheckOff'].value) {
       if (this.form.hasError('mustHavePaymentMethod')) {
         this.form.setErrors({'mustHavePaymentMethod': null})
+        // delete this.form.errors!['mustHavePaymentMethod']
+        this.form.updateValueAndValidity()
       }
     }
-
   }
 
   onSubmit() {

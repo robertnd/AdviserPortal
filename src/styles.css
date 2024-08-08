@@ -84,6 +84,10 @@ body {
   padding-left: 5rem;
 }
 
+.summary-row .input-for-display {
+  border-bottom: none;
+}
+
 .summary-row:last-child {
   padding-top: 1.5rem;
   padding-left: 1.5rem;
@@ -127,7 +131,7 @@ body {
 }
 
 .form-row input[type="checkbox"] {
-  accent-color: blue;
+  accent-color: var(--color-grey-dark-2);
   margin-left: 2rem;
   margin-right: 0.5rem;
 }

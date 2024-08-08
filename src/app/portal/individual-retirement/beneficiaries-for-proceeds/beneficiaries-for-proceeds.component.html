@@ -88,7 +88,7 @@
             </div>
 
             <div class="form-row">
-                <table class="data-table" *ngIf="beneficiaries.size > 0">
+                <table class="data-table" *ngIf="irBeneficiaries.size > 0">
                     <thead>
                         <tr>
                             <th></th>
@@ -101,13 +101,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let b of beneficiaries | keyvalue">
+                        <tr *ngFor="let b of irBeneficiaries | keyvalue">
                             <td><i class="fa fa-users fa-lg m-3"></i></td>
                             <td>{{b.value.fullname}}</td>
                             <td>{{b.value.relationship}}</td>
-                            <td>{{b.value.addressAndCode}}</td>
-                            <td>{{b.value.phoneNo}}</td>
                             <td>{{b.value.dob}}</td>
+                            <td>{{b.value.addressAndCode}}</td>
                             <td>{{b.value.benefitShare}}</td>
                             <td>
                                 <button class="ombutton-link" type="button" (click)="removeBeneficiary(b.key)">
