@@ -104,7 +104,7 @@
                 <div class="text-input-intg">
                     <label for="currentInternship">Current Internship</label>
                     <input type="text" id="currentInternship" formControlName="currentInternship" />
-                    <div *ngIf="f['currentInternship'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['currentInternship'].errors" class="invalid-input">
                         <div *ngIf="f['currentInternship'].errors['required']">
                             Required
                         </div>
@@ -158,7 +158,7 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['heldPreviousAccidentPolicy'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['heldPreviousAccidentPolicy'].errors" class="invalid-input">
                         <div *ngIf="f['heldPreviousAccidentPolicy'].errors['required']">
                             Required
                         </div>
@@ -188,7 +188,7 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['freeOfDisability'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['freeOfDisability'].errors" class="invalid-input">
                         <div *ngIf="f['freeOfDisability'].errors['required']">
                             Required
                         </div>
@@ -231,7 +231,7 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['inExcludedActivities'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['inExcludedActivities'].errors" class="invalid-input">
                         <div *ngIf="f['inExcludedActivities'].errors['required']">
                             Required
                         </div>
@@ -245,18 +245,18 @@
                         <tr>
                             <td>
                                 <input type="checkbox" id="fireworksExplosives" value="fireworksExplosives"
-                                    formControlName="fireworksExplosives">
+                                    formControlName="fireworksExplosives" (click)="selectionCheck()">
                                 <small>Manufacture of fire works or explosives</small>
                             </td>
                             <td>
                                 <input type="checkbox" id="sinkingWells" value="sinkingWells"
-                                    formControlName="sinkingWells">
+                                    formControlName="sinkingWells" (click)="selectionCheck()">
                                 <small>Sinking of air, water, or gas wells</small>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" id="dams" value="dams" formControlName="dams">
+                                <input type="checkbox" id="dams" value="dams" formControlName="dams" (click)="selectionCheck()">
                                 <small>Construction and maintenance of dams</small>
                             </td>
                             <td>
@@ -267,7 +267,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" id="racing" value="racing" formControlName="racing">
+                                <input type="checkbox" id="racing" value="racing" formControlName="racing" (click)="selectionCheck()">
                                 <small>Racing, Rallies and speed testing</small>
                             </td>
                             <td>
@@ -278,17 +278,17 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" id="proSport" value="proSport" formControlName="proSport">
+                                <input type="checkbox" id="proSport" value="proSport" formControlName="proSport" (click)="selectionCheck()">
                                 <small>Professional sports</small>
                             </td>
                             <td>
-                                <input type="checkbox" id="diving" value="diving" formControlName="diving">
+                                <input type="checkbox" id="diving" value="diving" formControlName="diving" (click)="selectionCheck()">
                                 <small>Diving</small>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" id="mining" value="mining" formControlName="mining">
+                                <input type="checkbox" id="mining" value="mining" formControlName="mining" (click)="selectionCheck()">
                                 <small>Mining</small>
                             </td>
                             <td></td>
@@ -306,8 +306,8 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['extensionCover'].errors" class="invalid-input">
-                        <div *ngIf="f['extensionCover'].errors['required']">
+                    <div *ngIf="submitted && f['extensionCover'].errors" class="invalid-input">
+                        <div *ngIf="f['extensionCover'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -356,7 +356,7 @@
                 <div class="text-input-intg">
                     <label for="byName">By</label>
                     <input type="text" id="byName" formControlName="byName" />
-                    <div *ngIf="f['byName'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['byName'].errors" class="invalid-input">
                         <div *ngIf="f['byName'].errors['required']">
                             Required
                         </div>
@@ -365,7 +365,7 @@
                 <div class="text-input-intg">
                     <label for="agency">Agency</label>
                     <input type="text" id="agency" formControlName="agency" />
-                    <div *ngIf="f['agency'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['agency'].errors" class="invalid-input">
                         <div *ngIf="f['agency'].errors['required']">
                             Required
                         </div>

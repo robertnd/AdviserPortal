@@ -442,10 +442,10 @@
             </div>
         
             <div class="summary-row">
-                <div class="text-intg-summary">
+                <div class="text-intg-summary" *ngIf="vehiclesInfo.ownerOfVehicles === 'No' ">
                     <label>If you are not the owner, state the name of the owner and his/her
                         address. (Attach a copy of the log book)</label>
-                    {{ vehiclesInfo.reotherOwnergNo }}
+                    {{ vehiclesInfo.otherOwner }}
                 </div>
             </div>
         
@@ -457,7 +457,7 @@
             </div>
         
             <div class="summary-row">
-                <div class="text-intg-summary">
+                <div class="text-intg-summary" *ngIf="vehiclesInfo.otherPartyInterest === 'Yes' ">
                     <label>If "Yes" please state name and address</label>
                     {{ vehiclesInfo.otherPartyInterestDetails }}
                 </div>
@@ -520,7 +520,7 @@
                 </div>
             </div>
         
-            <div class="summary-row">
+            <div class="summary-row" *ngIf=" claims.hasDrivingLicense === 'Yes' ">
                 <div class="text-intg-summary">
                     <label>Which class of license?</label>
                     {{ claims.classOfLicense }}
@@ -540,7 +540,7 @@
                 </div>
             </div>
         
-            <div class="summary-row">
+            <div class="summary-row" *ngIf=" claims.hasHadAccidentLast5Years === 'Yes' ">
                 <div class="text-intg-summary">
                     <label>When?</label>
                     {{ claims.dateOfAccident }}
@@ -562,7 +562,7 @@
                 </div>
             </div>
         
-            <div class="summary-row">
+            <div class="summary-row" *ngIf="claims.hasOffenceConviction === 'Yes'">
                 <div class="text-intg-summary">
                     <label>If "yes", provide details</label>
                     {{ claims.hasOffenceConvictionDetails }}
@@ -576,7 +576,7 @@
                 </div>
             </div>
         
-            <div class="summary-row">
+            <div class="summary-row" *ngIf="claims.vehiclesInsured === 'Yes'">
                 <div class="text-intg-summary">
                     <label>If "yes", by which company?</label>
                     {{ claims.vehiclesInsuredDetails }}

@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { mustBePositiveNumber, validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 
 @Component({
@@ -58,18 +58,18 @@ export class PviDrivingAndClaimExperienceComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-          hasDrivingLicense: [''],
+          hasDrivingLicense: ['', Validators.required],
           classOfLicense: [''],
           licenseYear: [''],
-          hasHadAccidentLast5Years: [''],
+          hasHadAccidentLast5Years: ['', Validators.required],
           dateOfAccident: [''],
           natureOfAccident: [''],
           lossEstimate: [''],
-          hasOffenceConviction: [''],
+          hasOffenceConviction: ['', Validators.required],
           hasOffenceConvictionDetails: [''],
-          vehiclesInsured: [''],
+          vehiclesInsured: ['', Validators.required],
           vehiclesInsuredDetails: [''],
-          coverRequired: [''],
+          coverRequired: ['', Validators.required],
           extraWindscreenCover: [''],
           extraRadioCassetteLimit: [''],
           riotStrikePoliticalViolence: [''],
@@ -80,8 +80,8 @@ export class PviDrivingAndClaimExperienceComponent {
           lossOfSpareWheel7500: [''],
           trackingDevices: [''],
           excessWaiver: [''],
-          dateOfCompletion: [''],
-          personCompletingProposal: ['']
+          dateOfCompletion: ['', [Validators.required, validateDate()]],
+          personCompletingProposal: ['', Validators.required]
       })
 
     // this will load entries on back navigation or prefill
@@ -94,6 +94,70 @@ export class PviDrivingAndClaimExperienceComponent {
     if (this.form.invalid) {
       return
     }
+
+    var hasErrors = false
+    var verrors: any
+
+    if (this.f['hasDrivingLicense'].value === 'Yes') {
+      if (!this.f['classOfLicense'].value) {
+        this.f['classOfLicense'].setErrors({ 'conditionalRequired': true })
+        hasErrors = true
+      }
+
+      if (!this.f['licenseYear'].value) {
+        this.f['licenseYear'].setErrors({ 'conditionalRequired': true })
+        hasErrors = true
+      }
+      verrors = mustBePositiveNumber()(this.f['licenseYear'])
+      if (verrors != null) {
+        this.f['licenseYear'].setErrors(verrors)
+        hasErrors = true
+      }
+    }
+
+    if (this.f['hasHadAccidentLast5Years'].value === 'Yes') {
+
+      if (!this.f['dateOfAccident'].value) {
+        this.f['dateOfAccident'].setErrors({ 'conditionalRequired': true })
+        hasErrors = true
+      }
+      verrors = validateDate()(this.f['dateOfAccident'])
+      if (verrors != null) {
+        this.f['dateOfAccident'].setErrors(verrors)
+        hasErrors = true
+      }
+
+      if (!this.f['natureOfAccident'].value) {
+        this.f['natureOfAccident'].setErrors({ 'conditionalRequired': true })
+        hasErrors = true
+      }
+
+      if (!this.f['lossEstimate'].value) {
+        this.f['lossEstimate'].setErrors({ 'conditionalRequired': true })
+        hasErrors = true
+      }
+      verrors = mustBePositiveNumber()(this.f['lossEstimate'])
+      if (verrors != null) {
+        this.f['lossEstimate'].setErrors(verrors)
+        hasErrors = true
+      }
+    }
+
+    if (this.f['hasOffenceConviction'].value === 'Yes') {
+      if (!this.f['hasOffenceConvictionDetails'].value) {
+        this.f['hasOffenceConvictionDetails'].setErrors({ 'conditionalRequired': true })
+        hasErrors = true
+      }
+    }
+
+    if (this.f['vehiclesInsured'].value === 'Yes') {
+      if (!this.f['vehiclesInsuredDetails'].value) {
+        this.f['vehiclesInsuredDetails'].setErrors({ 'conditionalRequired': true })
+        hasErrors = true
+      }
+    }
+
+    if (hasErrors) return
 
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate(['/portal/private-vehicle-insurance/pvi-policy-summary'])

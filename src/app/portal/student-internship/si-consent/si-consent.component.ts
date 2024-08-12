@@ -36,22 +36,21 @@ export class SiConsentComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        personalDataConsentName: [''],
-        personalDataConsentDate: [''],
-        childDataConsentName: [''],
-        childDataConsentDate: [''],
-        marketingDataConsentName: [''],
-        marketingDataConsentDate: [''],
-        consentChoice: [''],
-        declarationName: [''],
-        declarationDate: ['']
+        personalDataConsentName: ['', Validators.required],
+        personalDataConsentDate: ['', [Validators.required, validateDate()]],
+        childDataConsentName: ['', Validators.required],
+        childDataConsentDate: ['', [Validators.required, validateDate()]],
+        marketingDataConsentName: ['', Validators.required],
+        marketingDataConsentDate: ['', [Validators.required, validateDate()]],
+        consentChoice: ['', Validators.required],
+        declarationName: ['', Validators.required],
+        declarationDate: ['', [Validators.required, validateDate()]]
       })
 
     // this will load entries on back navigation or prefill

@@ -53,25 +53,25 @@ export class MaxpacDeclarationsComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      paymentMode: [''],
-      hasHeldAccidentPolicy: [''],
+      paymentMode: ['', Validators.required],
+      hasHeldAccidentPolicy: ['', Validators.required],
       insurance: [''],
       branch: [''],
       address: [''],
       policyNo: [''],
-      deferredOrDeclined: [''],
-      refusedRenewal: [''],
-      terminated: [''],
-      increasedPremium: [''],
-      specialConditions: [''],
+      deferredOrDeclined: ['', Validators.required],
+      refusedRenewal: ['', Validators.required],
+      terminated: ['', Validators.required],
+      increasedPremium: ['', Validators.required],
+      specialConditions: ['', Validators.required],
       detailsOnYes: [''],
-      additionalInsurance: [''],
+      additionalInsurance: ['', Validators.required],
       noOfOtherPolicies: [''],
       totalDeathBenefit: [''],
       totalPremium: [''],
-      directOrIntermediaries: [''],
-      marketingConsent: [''],
-      dateOfEntry: ['']
+      directOrIntermediaries: ['', Validators.required],
+      marketingConsent: ['', Validators.required],
+      dateOfEntry: ['', [Validators.required, validateDate()]]
       })
 
     // this will load entries on back navigation or prefill
@@ -81,8 +81,87 @@ export class MaxpacDeclarationsComponent {
 
   onSubmit() {
     this.submitted = true
-    if (this.form.invalid) {
-      return
+    let hasError = false
+    if (this.form.invalid) return
+
+    if (this.f['hasHeldAccidentPolicy'].value === 'Yes') {
+      if (!this.f['insurance'].value) {
+        this.f['insurance'].setErrors({ 'conditionalRequired': true })
+        hasError = true
+      }
+      if (!this.f['branch'].value) {
+        this.f['branch'].setErrors({ 'conditionalRequired': true })
+        hasError = true
+      }
+      if (!this.f['address'].value) {
+        this.f['address'].setErrors({ 'conditionalRequired': true })
+        hasError = true
+      }
+      if (!this.f['policyNo'].value) {
+        this.f['policyNo'].setErrors({ 'conditionalRequired': true })
+        hasError = true
+      }
+
+      if (hasError) return
+    }
+
+    // special conditional processing
+    if (
+      this.f['deferredOrDeclined'].value === 'Yes' ||
+      this.f['refusedRenewal'].value === 'Yes' ||
+      this.f['terminated'].value === 'Yes' ||
+      this.f['increasedPremium'].value === 'Yes' ||
+      this.f['specialConditions'].value === 'Yes' 
+    ) {
+      if (!this.f['detailsOnYes'].value) {
+        this.f['detailsOnYes'].setErrors({ 'conditionalRequired': true }) 
+        return
+      }
+    }
+
+    // additionalInsurance conditional processing
+    if (this.f['additionalInsurance'].value === 'Yes') {
+      if (!this.f['noOfOtherPolicies'].value) {
+        this.f['noOfOtherPolicies'].setErrors({ 'conditionalRequired': true }) 
+        hasError = true
+      }
+      if (isNaN(+this.f['noOfOtherPolicies'].value)) {
+        this.f['noOfOtherPolicies'].setErrors({ 'mustBeNumber': true })
+        hasError = true
+      }
+  
+      if (Number(this.f['noOfOtherPolicies'].value) <= 0) {
+        this.f['noOfOtherPolicies'].setErrors({ 'mustBePositiveNumber': true })
+        hasError = true
+      }
+
+      if (!this.f['totalDeathBenefit'].value) {
+        this.f['totalDeathBenefit'].setErrors({ 'conditionalRequired': true }) 
+        hasError = true
+      }
+      if (isNaN(+this.f['totalDeathBenefit'].value)) {
+        this.f['totalDeathBenefit'].setErrors({ 'mustBeNumber': true })
+        hasError = true
+      }
+      if (Number(this.f['totalDeathBenefit'].value) <= 0) {
+        this.f['totalDeathBenefit'].setErrors({ 'mustBePositiveNumber': true })
+        hasError = true
+      }
+
+      if (!this.f['totalPremium'].value) {
+        this.f['totalPremium'].setErrors({ 'conditionalRequired': true }) 
+        hasError = true
+      }
+      if (isNaN(+this.f['totalPremium'].value)) {
+        this.f['totalPremium'].setErrors({ 'mustBeNumber': true })
+        hasError = true
+      }
+      if (Number(this.f['totalPremium'].value) <= 0) {
+        this.f['totalPremium'].setErrors({ 'mustBePositiveNumber': true })
+        hasError = true
+      }
+
+      if (hasError) return
     }
 
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))

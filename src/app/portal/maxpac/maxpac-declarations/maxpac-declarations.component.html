@@ -58,8 +58,8 @@
                 <div class="text-input-intg">
                     <label for="insurance">Name of the insurance</label>
                     <input type="text" id="insurance" formControlName="insurance" />
-                    <div *ngIf="submitted && f['insurance'].errors" class="invalid-input">
-                        <div *ngIf="f['insurance'].errors['required']">
+                    <div *ngIf="f['insurance'].errors" class="invalid-input">
+                        <div *ngIf="f['insurance'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -67,8 +67,8 @@
                 <div class="text-input-intg">
                     <label for="branch">Branch</label>
                     <input type="text" id="branch" formControlName="branch" />
-                    <div *ngIf="submitted && f['branch'].errors" class="invalid-input">
-                        <div *ngIf="f['branch'].errors['required']">
+                    <div *ngIf="f['branch'].errors" class="invalid-input">
+                        <div *ngIf="f['branch'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -76,8 +76,8 @@
                 <div class="text-input-intg">
                     <label for="address">Address</label>
                     <input type="text" id="address" formControlName="address" />
-                    <div *ngIf="submitted && f['address'].errors" class="invalid-input">
-                        <div *ngIf="f['address'].errors['required']">
+                    <div *ngIf="f['address'].errors" class="invalid-input">
+                        <div *ngIf="f['address'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -88,8 +88,8 @@
                 <div class="text-input-intg">
                     <label for="policyNo">Policy Number</label>
                     <input type="text" id="policyNo" formControlName="policyNo" />
-                    <div *ngIf="submitted && f['policyNo'].errors" class="invalid-input">
-                        <div *ngIf="f['policyNo'].errors['required']">
+                    <div *ngIf="f['policyNo'].errors" class="invalid-input">
+                        <div *ngIf="f['policyNo'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -175,9 +175,13 @@
             </div>
 
             <div class="form-row">
+                <h1 class="overview__subheading2_ital">If yes, give details</h1>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
-                    <label for="detailsOnYes">If "yes", give details</label>
-                    <textarea rows="2" id="detailsOnYes" formControlName="detailsOnYes"></textarea>
+                    <!-- <label for="detailsOnYes">If "yes", give details</label> -->
+                    <textarea rows="1" id="detailsOnYes" formControlName="detailsOnYes"></textarea>
                     <div *ngIf="submitted && f['detailsOnYes'].errors" class="invalid-input">
                         <div *ngIf="f['detailsOnYes'].errors['conditionalRequired']">
                             Required
@@ -215,6 +219,12 @@
                         <div *ngIf="f['noOfOtherPolicies'].errors['conditionalRequired']">
                             Required
                         </div>
+                        <div *ngIf="f['noOfOtherPolicies'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['noOfOtherPolicies'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
                     </div>
                 </div>
                 <div class="text-input-intg">
@@ -224,12 +234,14 @@
                         <div *ngIf="f['totalDeathBenefit'].errors['conditionalRequired']">
                             Required
                         </div>
+                        <div *ngIf="f['totalDeathBenefit'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['totalDeathBenefit'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
                     </div>
                 </div>
-                <div class="text-input-intg"></div>
-            </div>
-
-            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="totalPremium">Total Premium (Kshs)</label>
                     <input type="text" id="totalPremium" formControlName="totalPremium" />
@@ -245,6 +257,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="directOrIntermediaries">Are dealing with Old Mutual</label>
                     <select id="directOrIntermediaries" formControlName="directOrIntermediaries">
@@ -253,11 +268,12 @@
                         <option>Intermediaries</option>
                     </select>
                     <div *ngIf="submitted && f['directOrIntermediaries'].errors" class="invalid-input">
-                        <div *ngIf="f['directOrIntermediaries'].errors['conditionalRequired']">
+                        <div *ngIf="f['directOrIntermediaries'].errors['required']">
                             Required
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
                 <div class="text-input-intg"></div>
             </div>
 
@@ -279,6 +295,8 @@
                 <h1 class="overview__subheading2_ital">Please select the relevant choice below if you agree to receive marketing information from us</h1>
             </div>
 
+            <div class="form-row"></div>
+
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="marketingConsent">Consent</label>
@@ -288,7 +306,7 @@
                         <option>I do not consent to receiving marketing information</option>
                     </select>
                     <div *ngIf="submitted && f['marketingConsent'].errors" class="invalid-input">
-                        <div *ngIf="f['marketingConsent'].errors['conditionalRequired']">
+                        <div *ngIf="f['marketingConsent'].errors['required']">
                             Required
                         </div>
                     </div>
@@ -317,7 +335,7 @@
                     <label for="dateOfEntry">Date</label>
                     <input type="date" id="dateOfEntry" formControlName="dateOfEntry" />
                     <div *ngIf="submitted && f['dateOfEntry'].errors" class="invalid-input">
-                        <div *ngIf="f['dateOfEntry'].errors['conditionalRequired']">
+                        <div *ngIf="f['dateOfEntry'].errors['required']">
                             Required
                         </div>
                         <div *ngIf="f['dateOfEntry'].errors['futureDate']">

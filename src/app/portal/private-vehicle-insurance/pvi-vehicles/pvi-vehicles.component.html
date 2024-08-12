@@ -17,7 +17,7 @@
                     <label for="regNo">Registration Number</label>
                     <input type="text" id="regNo" formControlName="regNo" />
                     <div *ngIf="f['regNo'].errors" class="invalid-input">
-                        <div *ngIf="f['regNo'].errors['required']">
+                        <div *ngIf="f['regNo'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                     <label for="chassisNo">Chassis Number</label>
                     <input type="text" id="chassisNo" formControlName="chassisNo" />
                     <div *ngIf="f['chassisNo'].errors" class="invalid-input">
-                        <div *ngIf="f['chassisNo'].errors['required']">
+                        <div *ngIf="f['chassisNo'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     <label for="engineNo">Engine Number</label>
                     <input type="text" id="engineNo" formControlName="engineNo" />
                     <div *ngIf="f['engineNo'].errors" class="invalid-input">
-                        <div *ngIf="f['engineNo'].errors['required']">
+                        <div *ngIf="f['engineNo'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                     <label for="vehicleMake">Make of Vehicle</label>
                     <input type="text" id="vehicleMake" formControlName="vehicleMake" />
                     <div *ngIf="f['vehicleMake'].errors" class="invalid-input">
-                        <div *ngIf="f['vehicleMake'].errors['required']">
+                        <div *ngIf="f['vehicleMake'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <label for="bodyType">Type of Body</label>
                     <input type="text" id="bodyType" formControlName="bodyType" />
                     <div *ngIf="f['bodyType'].errors" class="invalid-input">
-                        <div *ngIf="f['bodyType'].errors['required']">
+                        <div *ngIf="f['bodyType'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <label for="cc">Cubic Capacity</label>
                     <input type="text" id="cc" formControlName="cc" />
                     <div *ngIf="f['cc'].errors" class="invalid-input">
-                        <div *ngIf="f['cc'].errors['required']">
+                        <div *ngIf="f['cc'].errors['conditionalRequired']">
                             Required
                         </div>
                         <div *ngIf="f['cc'].errors['mustBeNumber']">
@@ -83,7 +83,7 @@
                     <label for="yom">Year of Manufacture</label>
                     <input type="text" id="cc" formControlName="yom" />
                     <div *ngIf="f['yom'].errors" class="invalid-input">
-                        <div *ngIf="f['yom'].errors['required']">
+                        <div *ngIf="f['yom'].errors['conditionalRequired']">
                             Required
                         </div>
                         <div *ngIf="f['yom'].errors['mustBeNumber']">
@@ -98,7 +98,7 @@
                     <label for="estimatedValue">Estimate of present value (incl duty)</label>
                     <input type="text" id="estimatedValue" formControlName="estimatedValue" />
                     <div *ngIf="f['estimatedValue'].errors" class="invalid-input">
-                        <div *ngIf="f['estimatedValue'].errors['required']">
+                        <div *ngIf="f['estimatedValue'].errors['conditionalRequired']">
                             Required
                         </div>
                         <div *ngIf="f['estimatedValue'].errors['mustBeNumber']">
@@ -123,7 +123,7 @@
                         <option>For any other purpose - please specify</option>
                     </select>
                     <div *ngIf="f['purposeOfVehicle'].errors" class="invalid-input">
-                        <div *ngIf="f['purposeOfVehicle'].errors['required']">
+                        <div *ngIf="f['purposeOfVehicle'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -203,8 +203,8 @@
                 <div class="text-input-intg">
                     <label for="otherOwner">If you are not the owner, state the name of the owner and his/her
                         address. (Attach a copy of the log book)</label>
-                    <textarea rows="3" id="otherOwner" formControlName="otherOwner"></textarea>
-                    <div *ngIf="submitted && f['otherOwner'].errors" class="invalid-input">
+                    <textarea rows="1" id="otherOwner" formControlName="otherOwner"></textarea>
+                    <div *ngIf="f['otherOwner'].errors" class="invalid-input">
                         <div *ngIf="f['otherOwner'].errors['conditionalRequired']">
                             Required
                         </div>
@@ -231,7 +231,7 @@
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="otherPartyInterestDetails">If "Yes" please state name and address</label>
-                    <textarea rows="3" id="otherPartyInterestDetails" formControlName="otherPartyInterestDetails"></textarea>
+                    <textarea rows="1" id="otherPartyInterestDetails" formControlName="otherPartyInterestDetails"></textarea>
                     <div *ngIf="submitted && f['otherPartyInterestDetails'].errors" class="invalid-input">
                         <div *ngIf="f['otherPartyInterestDetails'].errors['conditionalRequired']">
                             Required
@@ -259,7 +259,7 @@
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="dutyPaid">Has customs duty been paid in full in respect of the above vehicle? (Duty Clause is applicable if Custom Duty has not been paid in full)</label>
-                    <select id="dutyPaid" formControlName="leftHandDrive">
+                    <select id="dutyPaid" formControlName="dutyPaid">
                         <option></option>
                         <option>Yes</option>
                         <option>No</option>
@@ -275,7 +275,7 @@
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="fittedWithAntiTheft">Is/are the vehicle(s) fitted with anti-theft devices? (Provide copy of Installation certificate) (Theft excess of 25% of vehicle)</label>
-                    <select id="fittedWithAntiTheft" formControlName="leftHandDrive">
+                    <select id="fittedWithAntiTheft" formControlName="fittedWithAntiTheft">
                         <option></option>
                         <option>Yes</option>
                         <option>No</option>
@@ -287,7 +287,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">

@@ -24,6 +24,7 @@ export class PviSummaryComponent {
   consent: any = null
   vehiclesInfo: any = null
   claims: any = null
+  extras: any = null
   policy: any = null
   
   form: FormGroup = new FormGroup({
@@ -59,6 +60,29 @@ export class PviSummaryComponent {
     this.vehiclesInfo = JSON.parse(this.fs.getPageData('Vehicles'))
     this.claims = JSON.parse(this.fs.getPageData('Driving and Claims'))
     this.policy = JSON.parse(this.fs.getPageData('Policy'))
+
+    var vehiclesJSON = this.fs.getPageData('Vehicles_vehicles') || '{}'
+    var vehiclesObj = JSON.parse(vehiclesJSON)
+    Object.keys(vehiclesObj).forEach(
+      (key: string) => {
+        var v = vehiclesObj[key]
+        this.vehicles.set(key,
+          new Vehicle(
+            v.regNo,
+            v.chassisNo,
+            v.engineNo,
+            v.make,
+            v.bodyType,
+            v.cc,
+            v.yom,
+            v.purpose,
+            v.estValue
+          )
+        )
+      }
+    )
+
+    this.form.patchValue(this.claims)
   }
 
   onSubmit() {

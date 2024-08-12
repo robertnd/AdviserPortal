@@ -50,6 +50,19 @@ export class MaxpacSummaryComponent {
     this.beneficiary = JSON.parse(this.fs.getPageData('Beneficiary'))
     this.spouse = JSON.parse(this.fs.getPageData('Spouse'))
     this.declarations = JSON.parse(this.fs.getPageData('Declarations'))
+    var childrenJSON = this.fs.getPageData('Children_children') || '{}'
+    var childrenObj = JSON.parse(childrenJSON)
+    Object.keys(childrenObj).forEach((key: string) => {
+      var c = childrenObj[key]
+      var child: MaxpacChildren = {
+        fullName: c.fullName,
+        dateOfBirth: c.dateOfBirth,
+        cover: c.cover,
+        premiumAmount: c.premiumAmount
+      }
+      this.children.set(key, child)
+    }
+    )
   }
 
   onSubmit() {

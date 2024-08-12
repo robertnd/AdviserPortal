@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { nowOrFutureDate, validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 
 @Component({
@@ -56,16 +56,16 @@ export class SiDetailsComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      coverSelected: [''],
-      currentInternship: [''],
-      periodFrom: [''],
-      periodTo: [''],
-      heldPreviousAccidentPolicy: [''],
+      coverSelected: ['', Validators.required],
+      currentInternship: ['', Validators.required],
+      periodFrom: ['', [Validators.required, validateDate()]],
+      periodTo: ['', [Validators.required, nowOrFutureDate()]],
+      heldPreviousAccidentPolicy: ['', Validators.required],
       heldPreviousAccidentPolicyDetails: [''],
-      freeOfDisability: [''],
+      freeOfDisability: ['', Validators.required],
       freeOfDisabilityDetails: [''],
-      accidentsInLast5Years: [''],
-      inExcludedActivities: [''],
+      accidentsInLast5Years: ['', Validators.required],
+      inExcludedActivities: ['', Validators.required],
       fireworksExplosives: [''],
       sinkingWells: [''],
       dams: [''],
@@ -76,9 +76,9 @@ export class SiDetailsComponent {
       diving: [''],
       mining: [''],
       extensionCover: [''],
-      declarationDate: [''],
-      byName: [''],
-      agency: ['']
+      declarationDate: ['', [Validators.required, validateDate()]],
+      byName: ['', Validators.required],
+      agency: ['', Validators.required]
     })
 
     // this will load entries on back navigation or prefill
@@ -86,9 +86,49 @@ export class SiDetailsComponent {
     this.form.patchValue(JSON.parse(pageData))
   }
 
+  selectionCheck() {
+    if (
+      this.f['fireworksExplosives'].value || 
+      this.f['sinkingWells'].value || 
+      this.f['dams'].value || 
+      this.f['racing'].value || 
+      this.f['uniformedForces'].value || 
+      this.f['proSport'].value || 
+      this.f['diving'].value || 
+      this.f['mining'].value
+    ) {
+      if (this.form.hasError('noExcludedActivitySelected')) {
+        this.form.setErrors({'noExcludedActivitySelected': null})
+        // delete this.form.errors!['mustHavePaymentMethod']
+        this.form.updateValueAndValidity()
+      }
+    }
+  }
+
   onSubmit() {
     this.submitted = true
     if (this.form.invalid) {
+      return
+    }
+
+    if (
+      this.f['inExcludedActivities'].value === 'Yes' &&
+      !this.f['fireworksExplosives'].value && 
+      !this.f['sinkingWells'].value && 
+      !this.f['dams'].value && 
+      !this.f['racing'].value && 
+      !this.f['uniformedForces'].value && 
+      !this.f['proSport'].value && 
+      !this.f['diving'].value && 
+      !this.f['mining'].value
+    ) {
+      this.alertService.error('Please select an excluded activity from the options provided')
+      this.form.setErrors({ 'noExcludedActivitySelected': true })
+      return
+    }
+
+    if (this.f['inExcludedActivities'].value === 'Yes' && !this.f['extensionCover'].value) {
+      this.f['extensionCover'].setErrors({ 'conditionalRequired': true })
       return
     }
 

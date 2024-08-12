@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { nowOrFutureDate, validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 
 @Component({
@@ -45,16 +45,16 @@ export class MaxpacBeneficiariesComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        pobox: [''],
-        town: [''],
+        pobox: ['', Validators.required],
+        town: ['', Validators.required],
         telephoneNo: [''],
-        mobileNo: [''],
-        idDocument: [''],
-        docNumber: [''],
+        mobileNo: ['', Validators.required],
+        idDocument: ['', Validators.required],
+        docNumber: ['', Validators.required],
         email: [''],
-        accountNo: [''],
-        insuredFrom: [''],
-        insuredTo: ['']
+        accountNo: ['', Validators.required],
+        insuredFrom: ['', [Validators.required, validateDate()]],
+        insuredTo: ['', [Validators.required, nowOrFutureDate()]],
       })
 
     // this will load entries on back navigation or prefill

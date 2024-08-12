@@ -45,7 +45,7 @@
                         <option>F</option>
                     </select>
                     <div *ngIf="f['classOfLicense'].errors" class="invalid-input">
-                        <div *ngIf="f['classOfLicense'].errors['required']">
+                        <div *ngIf="f['classOfLicense'].errors['conditionalRequired']">
                             Required
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                     <label for="licenseYear">Year license was attained</label>
                     <input type="text" id="licenseYear" formControlName="licenseYear" />
                     <div *ngIf="f['licenseYear'].errors" class="invalid-input">
-                        <div *ngIf="f['licenseYear'].errors['required']">
+                        <div *ngIf="f['licenseYear'].errors['conditionalRequired']">
                             Required
                         </div>
                         <div *ngIf="f['licenseYear'].errors['mustBeNumber']">
@@ -90,7 +90,7 @@
                     <label for="dateOfAccident">When?</label>
                     <input type="date" id="dateOfAccident" formControlName="dateOfAccident" />
                     <div *ngIf="submitted && f['dateOfAccident'].errors" class="invalid-input">
-                        <div *ngIf="f['dateOfAccident'].errors['required']">
+                        <div *ngIf="f['dateOfAccident'].errors['conditionalRequired']">
                             Required
                         </div>
                         <div *ngIf="f['dateOfAccident'].errors['futureDate']">
@@ -146,8 +146,7 @@
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="hasOffenceConvictionDetails">If "yes", provide details</label>
-                    <textarea rows="3" id="hasOffenceConvictionDetails"
-                        formControlName="hasOffenceConvictionDetails"></textarea>
+                    <textarea rows="1" id="hasOffenceConvictionDetails" formControlName="hasOffenceConvictionDetails"></textarea>
                     <div *ngIf="submitted && f['hasOffenceConvictionDetails'].errors" class="invalid-input">
                         <div *ngIf="f['hasOffenceConvictionDetails'].errors['conditionalRequired']">
                             Required
@@ -189,7 +188,7 @@
                     <label for="coverRequired">What type of cover do you require?</label>
                     <select id="coverRequired" formControlName="coverRequired">
                         <option></option>
-                        <option>Conprehensive</option>
+                        <option>Comprehensive</option>
                         <option>Third Party, Fire and Theft</option>
                         <option>Third Party only</option>
                     </select>

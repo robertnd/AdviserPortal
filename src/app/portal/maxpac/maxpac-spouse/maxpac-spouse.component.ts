@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { mustBePositiveNumber, validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 
 @Component({
@@ -29,7 +29,6 @@ export class MaxpacSpouseComponent {
     premiumAmountInsured: new FormControl(''),
     coverOptionForSpouse: new FormControl(''),
     premiumAmountSpouse: new FormControl('')
-    // firstName: new FormControl(''),
   })
 
   constructor(
@@ -48,18 +47,16 @@ export class MaxpacSpouseComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      idDocument: [''],
-      docNumber: [''],
-      pinNo: [''],
-      occupation: [''],
-      mobileNo: [''],
-      dateOfBirth: [''],
-      coverOptionForInsured: [''],
-      premiumAmountInsured: [''],
-      coverOptionForSpouse: [''],
-      premiumAmountSpouse: ['']
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+      idDocument: ['', Validators.required],
+      docNumber: ['', Validators.required],
+      pinNo: ['', Validators.required],
+      occupation: ['', Validators.required],
+      mobileNo: ['', Validators.required],
+      dateOfBirth: ['', [Validators.required, validateDate()]],
+      coverOptionForInsured: ['', Validators.required],
+      premiumAmountInsured: ['', [Validators.required, mustBePositiveNumber()]],
+      coverOptionForSpouse: ['', Validators.required],
+      premiumAmountSpouse: ['', [Validators.required, mustBePositiveNumber()]]
       })
 
     // this will load entries on back navigation or prefill

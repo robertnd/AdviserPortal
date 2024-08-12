@@ -71,12 +71,6 @@
                 </div>
             </div>
 
-            <!-- <div class="form-row">
-                <div class="form-paragraph1" [hidden]="!displayed">
-                    <p>The following activities are NOT covered:</p>
-                </div>
-            </div> -->
-
             <div class="form-row">
                 <div [hidden]="!displayed">
                     <ul class="form-list1">
@@ -105,7 +99,7 @@
                 <div class="text-input-intg">
                     <label for="childFullName">Child's Full Name</label>
                     <input type="text" id="childFullName" formControlName="childFullName" />
-                    <div *ngIf="submitted && f['childFullName'].errors" class="invalid-input">
+                    <div *ngIf="f['childFullName'].errors" class="invalid-input">
                         <div *ngIf="f['childFullName'].errors['conditionalRequired']">
                             Required
                         </div>
@@ -114,8 +108,8 @@
                 <div class="text-input-intg">
                     <label for="dateOfBirth">Date of Birth</label>
                     <input type="date" id="dateOfBirth" formControlName="dateOfBirth" />
-                    <div *ngIf="submitted && f['dateOfBirth'].errors" class="invalid-input">
-                        <div *ngIf="f['dateOfBirth'].errors['conditionalRequired']">
+                    <div *ngIf="f['dateOfBirth'].errors" class="invalid-input">
+                        <div *ngIf="f['dateOfBirth'].errors['required']">
                             Required
                         </div>
                         <div *ngIf="f['dateOfBirth'].errors['futureDate']">
@@ -128,8 +122,14 @@
                 </div>
                 <div class="text-input-intg">
                     <label for="coverForChild">Indicate Selected Cover Option For Child</label>
-                    <input type="text" id="coverForChild" formControlName="coverForChild" />
-                    <div *ngIf="submitted && f['coverForChild'].errors" class="invalid-input">
+                    <!-- <input type="text" id="coverForChild" formControlName="coverForChild" /> -->
+                    <select id="coverForChild" formControlName="coverForChild">
+                        <option></option>
+                        <option>Plan 1</option>
+                        <option>Plan 2</option>
+                        <option>Plan 3</option>
+                    </select>
+                    <div *ngIf="f['coverForChild'].errors" class="invalid-input">
                         <div *ngIf="f['coverForChild'].errors['conditionalRequired']">
                             Required
                         </div>
@@ -141,9 +141,9 @@
                 <div class="text-input-intg">
                     <label for="childPremiumAmount">Premium Amount</label>
                     <input type="text" id="childPremiumAmount" formControlName="childPremiumAmount" />
-                    <div *ngIf="submitted && f['childPremiumAmount'].errors" class="invalid-input">
+                    <div *ngIf="f['childPremiumAmount'].errors" class="invalid-input">
                         <div *ngIf="f['childPremiumAmount'].errors['conditionalRequired']">
-                            Premium Amount required
+                            Required
                         </div>
                         <div *ngIf="f['childPremiumAmount'].errors['mustBeNumber']">
                             Must be a valid number

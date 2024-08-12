@@ -158,7 +158,19 @@
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="coverOptionForInsured">Indicate Selected Cover Option for Insured</label>
-                    <input type="text" id="coverOptionForInsured" formControlName="coverOptionForInsured" />
+                    <select id="coverOptionForInsured" formControlName="coverOptionForInsured">
+                        <option></option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                    </select>
+                    <!-- <input type="text" id="coverOptionForInsured" formControlName="coverOptionForInsured" /> -->
                     <div *ngIf="submitted && f['coverOptionForInsured'].errors" class="invalid-input">
                         <div *ngIf="f['coverOptionForInsured'].errors['required']">
                             Required
@@ -168,8 +180,8 @@
                 <div class="text-input-intg">
                     <label for="premiumAmountInsured">Premium Amount</label>
                     <input type="text" id="premiumAmountInsured" formControlName="premiumAmountInsured" />
-                    <div *ngIf="f['premiumAmountInsured'].errors" class="invalid-input">
-                        <div *ngIf="f['premiumAmountInsured'].errors['required']">
+                    <div *ngIf="submitted && f['premiumAmountInsured'].errors" class="invalid-input">
+                        <div *ngIf="submitted && f['premiumAmountInsured'].errors['required']">
                             Required
                         </div>
                         <div *ngIf="f['premiumAmountInsured'].errors['mustBeNumber']">
@@ -186,7 +198,19 @@
             <div class="form-row">
                 <div class="text-input-intg">
                     <label for="coverOptionForSpouse">Indicate Selected Cover Option for Spouse</label>
-                    <input type="text" id="coverOptionForSpouse" formControlName="coverOptionForSpouse" />
+                    <!-- <input type="text" id="coverOptionForSpouse" formControlName="coverOptionForSpouse" /> -->
+                    <select id="coverOptionForSpouse" formControlName="coverOptionForSpouse">
+                        <option></option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                    </select>
                     <div *ngIf="submitted && f['coverOptionForSpouse'].errors" class="invalid-input">
                         <div *ngIf="f['coverOptionForSpouse'].errors['required']">
                             Required
@@ -196,7 +220,7 @@
                 <div class="text-input-intg">
                     <label for="premiumAmountSpouse">Premium Amount</label>
                     <input type="text" id="premiumAmountSpouse" formControlName="premiumAmountSpouse" />
-                    <div *ngIf="f['premiumAmountSpouse'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['premiumAmountSpouse'].errors" class="invalid-input">
                         <div *ngIf="f['premiumAmountSpouse'].errors['required']">
                             Required
                         </div>

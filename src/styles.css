@@ -88,6 +88,10 @@ body {
   border-bottom: none;
 }
 
+.summary-row .overview__subheading2_ital {
+  padding-left: 0.5em;
+} 
+
 .summary-row:last-child {
   padding-top: 1.5rem;
   padding-left: 1.5rem;
@@ -131,6 +135,12 @@ body {
 }
 
 .form-row input[type="checkbox"] {
+  accent-color: var(--color-grey-dark-2);
+  margin-left: 2rem;
+  margin-right: 0.5rem;
+}
+
+.summary-row input[type="checkbox"] {
   accent-color: var(--color-grey-dark-2);
   margin-left: 2rem;
   margin-right: 0.5rem;
@@ -402,13 +412,15 @@ body {
 }
 
 .overview__subheading2_ital {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 300;
   font-style: italic;
-  padding-left: 1.5em;
+  padding-left: 2.5em;
   padding-top: 1em;
-  padding-bottom: 0.5em;
+  /* padding-bottom: -1.5em; */
 }
+
+
 
 .form-paragraph1 {
   font-size: 1em;

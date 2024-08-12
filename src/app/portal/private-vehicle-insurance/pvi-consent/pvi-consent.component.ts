@@ -44,15 +44,15 @@ export class PviConsentComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      personalDataConsentName: [''],
-      personalDataConsentDate: [''],
-      childDataConsentName: [''],
-      childDataConsentDate: [''],
-      marketingDataConsentName: [''],
-      marketingDataConsentDate: [''],
-      consentChoice: [''],
-      declarationName: [''],
-      declarationDate: ['']
+      personalDataConsentName: ['', Validators.required],
+      personalDataConsentDate: ['', [Validators.required, validateDate()]],
+      childDataConsentName: ['', Validators.required],
+      childDataConsentDate: ['', [Validators.required, validateDate()]],
+      marketingDataConsentName: ['', Validators.required],
+      marketingDataConsentDate: ['', [Validators.required, validateDate()]],
+      consentChoice: ['', Validators.required],
+      declarationName: ['', Validators.required],
+      declarationDate: ['', [Validators.required, validateDate()]],
     })
 
     // this will load entries on back navigation or prefill
@@ -62,6 +62,7 @@ export class PviConsentComponent {
 
   onSubmit() {
     this.submitted = true
+    this.router.navigate(['/portal/private-vehicle-insurance/pvi-vehicles'])
     if (this.form.invalid) {
       return
     }

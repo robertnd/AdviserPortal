@@ -54,8 +54,6 @@ export class IndividualRetirementSummaryComponent {
     this.modeOfPayment = this.fs.getPageData('Mode of Payment')
     var modeOfPaymentObj = JSON.parse(this.modeOfPayment)
     this.benefitsBreakdownText = modeOfPaymentObj.benefitsBreakdown
-
-    console.log(JSON.stringify(this.modeOfPayment))
     this.form.patchValue(modeOfPaymentObj)
 
     var beneficiariesJSON = this.fs.getPageData('Beneficiaries_irBeneficiaries') || '{}'
@@ -74,9 +72,6 @@ export class IndividualRetirementSummaryComponent {
         ))
     }
     )
-
-    // var pageData = this.fs.getPageData(this.pageTitle)
-    // this.form.patchValue(JSON.parse(pageData))
   }
 
   onSubmit() {
