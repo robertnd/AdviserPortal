@@ -184,6 +184,14 @@
             </div>
 
             <div class="form-row">
+                <div *ngIf="submitted && form.errors && form.errors['mustHaveVehicle']" class="invalid-input data-table-error">
+                    <div *ngIf="form.errors && form.errors['mustHaveVehicle']">
+                        At least one vehicle required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="ownerOfVehicles">Are you the owner of the above vehicle(s)?</label>
                     <select id="ownerOfVehicles" formControlName="ownerOfVehicles">

@@ -111,7 +111,14 @@ export class BeneficiariesComponent implements OnInit {
 
     if ( this.calculateShareSum() >= 100 || ( this.calculateShareSum() + Number(this.f['beneficiariesBenefitShare'].value)) > 100) {
       fErrors = true
-      this.alertService.error('The sum of share benefits cannot exceed 100%')
+      this.form.setErrors({ 'allMustBeLessThan100': true })
+      return
+    } else {
+      // remove error if it was present
+      if (this.form.hasError('allMustBeLessThan100')) {
+        this.form.setErrors({'allMustBeLessThan100': null})
+        this.form.updateValueAndValidity()
+      }
     }
 
     if (fErrors) {
@@ -155,7 +162,6 @@ export class BeneficiariesComponent implements OnInit {
     }
 
     if (this.ppBeneficiaries.size == 0) {
-      this.alertService.error('At least one beneficiary required')
       this.form.setErrors({ 'mustHaveBeneficiary': true })
       return
     }

@@ -382,14 +382,14 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="summary-row">
             </div>
 
         </div>
 
         <div id="detailsSummary">
-            
+
             <div class="form-row">
                 <div class="overview">
                     <h1 class="overview__subheading">Details</h1>
@@ -551,65 +551,67 @@
                 </div>
             </div>
 
-            <div class="form-row">
-                <form [formGroup]="form">
+            <form [formGroup]="form">
+                <div class="form-row">
                     <table class="data-table">
                         <tbody>
                             <tr>
                                 <td>
                                     <input type="checkbox" id="fireworksExplosives" value="fireworksExplosives"
-                                        formControlName="fireworksExplosives">
+                                        formControlName="fireworksExplosives" readonly>
                                     <small>Manufacture of fire works or explosives</small>
                                 </td>
                                 <td>
                                     <input type="checkbox" id="sinkingWells" value="sinkingWells"
-                                        formControlName="sinkingWells">
+                                        formControlName="sinkingWells" readonly>
                                     <small>Sinking of air, water, or gas wells</small>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="dams" value="dams" formControlName="dams">
+                                    <input type="checkbox" id="dams" value="dams" formControlName="dams" readonly>
                                     <small>Construction and maintenance of dams</small>
                                 </td>
                                 <td>
                                     <input type="checkbox" id="airOrBoatCrew" value="airOrBoatCrew"
-                                        formControlName="airOrBoatCrew">
+                                        formControlName="airOrBoatCrew" readonly>
                                     <small>Airline crew & ship or boat crew</small>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="racing" value="racing" formControlName="racing">
+                                    <input type="checkbox" id="racing" value="racing" formControlName="racing" readonly>
                                     <small>Racing, Rallies and speed testing</small>
                                 </td>
                                 <td>
                                     <input type="checkbox" id="uniformedForces" value="uniformedForces"
-                                        formControlName="uniformedForces">
+                                        formControlName="uniformedForces" readonly>
                                     <small>Naval, military, police or Airforce operations</small>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="proSport" value="proSport" formControlName="proSport">
+                                    <input type="checkbox" id="proSport" value="proSport" formControlName="proSport"
+                                        readonly>
                                     <small>Professional sports</small>
                                 </td>
                                 <td>
-                                    <input type="checkbox" id="diving" value="diving" formControlName="diving">
+                                    <input type="checkbox" id="diving" value="diving" formControlName="diving" readonly>
                                     <small>Diving</small>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="mining" value="mining" formControlName="mining">
+                                    <input type="checkbox" id="mining" value="mining" formControlName="mining" readonly>
                                     <small>Mining</small>
                                 </td>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
-                </form>
-            </div>
+                </div>
+            </form>
+
 
             <div class="summary-row">
                 <div class="text-intg-summary">
@@ -679,11 +681,11 @@
 
             <div class="summary-row">
             </div>
-            
+
             <div class="summary-row">
             </div>
 
         </div>
-        
+
     </div>
 </div>

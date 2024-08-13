@@ -209,7 +209,6 @@ export class PviVehiclesComponent {
     }
 
     if (this.vehicles.size == 0) {
-      this.alertService.error('At least one vehicle required')
       this.form.setErrors({ 'mustHaveVehicle': true })
       return
     }

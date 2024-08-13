@@ -11,7 +11,7 @@ import { FormStateService } from '@app/_services/form-state.service'
   templateUrl: './si-consent.component.html',
   styleUrls: ['./si-consent.component.css']
 })
-export class SiConsentComponent {
+export class SiConsentComponent implements OnInit {
   journey = ''
   pageTitle = 'Consent'
   submitted = false;
@@ -71,5 +71,4 @@ export class SiConsentComponent {
   previous() {
     this.router.navigate(['/portal/student-internship/si-privacy-notice'])
   }
-
 }

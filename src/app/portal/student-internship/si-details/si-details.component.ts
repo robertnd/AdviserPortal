@@ -11,7 +11,7 @@ import { FormStateService } from '@app/_services/form-state.service'
   templateUrl: './si-details.component.html',
   styleUrls: ['./si-details.component.css']
 })
-export class SiDetailsComponent {
+export class SiDetailsComponent implements OnInit {
   journey = ''
   pageTitle = 'Details'
   submitted = false;
@@ -64,7 +64,7 @@ export class SiDetailsComponent {
       heldPreviousAccidentPolicyDetails: [''],
       freeOfDisability: ['', Validators.required],
       freeOfDisabilityDetails: [''],
-      accidentsInLast5Years: ['', Validators.required],
+      accidentsInLast5Years: [''],
       inExcludedActivities: ['', Validators.required],
       fireworksExplosives: [''],
       sinkingWells: [''],
@@ -111,6 +111,16 @@ export class SiDetailsComponent {
       return
     }
 
+    if (this.f['heldPreviousAccidentPolicy'].value === 'Yes' && !this.f['heldPreviousAccidentPolicyDetails'].value) {
+      this.f['heldPreviousAccidentPolicyDetails'].setErrors({ 'conditionalRequired': true })
+      return
+    }
+
+    if (this.f['freeOfDisability'].value === 'No' && !this.f['freeOfDisabilityDetails'].value) {
+      this.f['freeOfDisabilityDetails'].setErrors({ 'conditionalRequired': true })
+      return
+    }
+
     if (
       this.f['inExcludedActivities'].value === 'Yes' &&
       !this.f['fireworksExplosives'].value && 
@@ -120,9 +130,7 @@ export class SiDetailsComponent {
       !this.f['uniformedForces'].value && 
       !this.f['proSport'].value && 
       !this.f['diving'].value && 
-      !this.f['mining'].value
-    ) {
-      this.alertService.error('Please select an excluded activity from the options provided')
+      !this.f['mining'].value) {
       this.form.setErrors({ 'noExcludedActivitySelected': true })
       return
     }

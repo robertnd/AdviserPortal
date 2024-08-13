@@ -198,7 +198,7 @@
 
             <div class="form-row">
                 <div class="text-input-intg">
-                    <label for="freeOfDisabilityDetails">If "no" give details</label>
+                    <label for="freeOfDisabilityDetails">If "No" give details</label>
                     <textarea rows="3" id="freeOfDisabilityDetails"
                         formControlName="freeOfDisabilityDetails"></textarea>
                     <div *ngIf="submitted && f['freeOfDisabilityDetails'].errors" class="invalid-input">
@@ -295,6 +295,14 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="form-row">
+                <div *ngIf="submitted && form.errors && form.errors['noExcludedActivitySelected']" class="invalid-input data-table-error">
+                    <div *ngIf="form.errors && form.errors['noExcludedActivitySelected']">
+                        Please select an excluded activity from the options provided
+                    </div>
+                </div>
             </div>
 
             <div class="form-row">

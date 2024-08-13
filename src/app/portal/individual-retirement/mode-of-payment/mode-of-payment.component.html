@@ -25,6 +25,14 @@
             </div>
 
             <div class="form-row">
+                <div *ngIf="submitted && form.errors && form.errors['mustHavePaymentMethod']" class="invalid-input data-table-error">
+                    <div *ngIf="form.errors && form.errors['mustHavePaymentMethod']">
+                        At least one payment method is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="benefitsBreakdown">Please indicate the breakdown between benefits secured by employee
                         and employer contributions, if any</label>

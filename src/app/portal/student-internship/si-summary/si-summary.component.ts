@@ -50,6 +50,8 @@ export class SiSummaryComponent {
     this.occupation = JSON.parse(this.fs.getPageData('Occupation'))
     this.consent = JSON.parse(this.fs.getPageData('Consent'))
     this.details = JSON.parse(this.fs.getPageData('Details'))
+
+    this.form.patchValue(this.details)
   }
 
   onSubmit() {

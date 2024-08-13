@@ -66,7 +66,6 @@ export class ModeOfPaymentComponent {
     }
 
     if (!this.f['standingOrder'].value && !this.f['debitOrder'].value && !this.f['employerCheckOff'].value) {
-      this.alertService.error('At least one payment method is required')
       this.form.setErrors({ 'mustHavePaymentMethod': true })
       return
     }

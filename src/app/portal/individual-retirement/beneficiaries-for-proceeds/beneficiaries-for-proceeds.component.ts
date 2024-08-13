@@ -77,9 +77,7 @@ export class BeneficiariesForProceedsComponent {
     }
 
     if (this.irBeneficiaries.size == 0) {
-      this.alertService.error('At least one beneficiary required')
       this.form.setErrors({ 'mustHaveBeneficiary': true })
-      console.log(`Errors: ${JSON.stringify(this.form.errors)}`)
       return
     }
 
@@ -140,7 +138,13 @@ export class BeneficiariesForProceedsComponent {
 
     if (this.calculateShareSum() >= 100 || (this.calculateShareSum() + Number(this.f['beneficiariesShare'].value)) > 100) {
       fErrors = true
-      this.alertService.error('The sum of share benefits cannot exceed 100%')
+      this.form.setErrors({ 'allMustBeLessThan100': true })
+    } else {
+      // remove error if it was present
+      if (this.form.hasError('allMustBeLessThan100')) {
+        this.form.setErrors({'allMustBeLessThan100': null})
+        this.form.updateValueAndValidity()
+      }
     }
 
     if (fErrors) {
