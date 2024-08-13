@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
+import { validateDate } from '@app/_helpers'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 
@@ -56,30 +57,30 @@ export class JointApplicantComponent {
 
     this.form = this.fb.group({
 
-      jahRelationship: [''],
+      jahRelationship: ['', Validators.required],
       jahRelationshipOther: [''],
-      jahCanGetBeneficialOwnership: [''],
-      jahSignatories: [''],
+      jahCanGetBeneficialOwnership: ['', Validators.required],
+      jahSignatories: ['', Validators.required],
       jahSignatoriesOther: [''],
-      jahFirstName: [''],
-      jahSurname: [''],
-      jahTitle: [''],
+      jahFirstName: ['', Validators.required],
+      jahSurname: ['', Validators.required],
+      jahTitle: ['', Validators.required],
       jahTitleOther: [''],
-      jahIdDocument: [''],
-      jahDocNumber: [''],
-      jahDateOfBirth: [''],
-      jahMaritalStatus: [''],
-      jahPIN: [''],
-      jahPostalAddress: [''],
-      jahPostalCode: [''],
-      jahCityOrTown: [''],
-      jahPhysicalAddress: [''],
-      jahCountryOfResidence: [''],
-      jahOccupationOrBusiness: [''],
-      jahPlaceOfWork: [''],
-      jahPhoneNo: [''],
-      jahMobileNo: [''],
-      jahEMail: ['']
+      jahIdDocument: ['', Validators.required],
+      jahDocNumber: ['', Validators.required],
+      jahDateOfBirth: ['', [Validators.required, validateDate()]],
+      jahMaritalStatus: ['', Validators.required],
+      jahPIN: ['', Validators.required],
+      jahPostalAddress: ['', Validators.required],
+      jahPostalCode: ['', Validators.required],
+      jahCityOrTown: ['', Validators.required],
+      jahPhysicalAddress: ['', Validators.required],
+      jahCountryOfResidence: ['', Validators.required],
+      jahOccupationOrBusiness: ['', Validators.required],
+      jahPlaceOfWork: ['', Validators.required],
+      jahPhoneNo: ['', Validators.required],
+      jahMobileNo: ['', Validators.required],
+      jahEMail: ['', Validators.required],
     })
 
     var pageData = this.fs.getPageData(this.pageTitle)
@@ -89,6 +90,21 @@ export class JointApplicantComponent {
   onSubmit() {
     this.submitted = true;
     if (this.form.invalid) {
+      return
+    }
+
+    if (this.f['jahRelationship'].value === 'Other' && !this.f['jahRelationshipOther'].value) {
+      this.f['jahRelationshipOther'].setErrors({ 'conditionalRequired': true })
+      return
+    }
+
+    if (this.f['jahSignatories'].value === 'Other' && !this.f['jahSignatoriesOther'].value) {
+      this.f['jahSignatoriesOther'].setErrors({ 'conditionalRequired': true })
+      return
+    }
+
+    if (this.f['jahTitle'].value === 'Other' && !this.f['jahTitleOther'].value) {
+      this.f['jahTitleOther'].setErrors({ 'conditionalRequired': true })
       return
     }
 

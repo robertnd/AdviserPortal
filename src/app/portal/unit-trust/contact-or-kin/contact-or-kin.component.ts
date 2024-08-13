@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
+import { validateDate } from '@app/_helpers'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 
@@ -49,26 +50,26 @@ export class ContactOrKinComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      nokFirstName: [''],
-      nokSurname: [''],
-      nokNationality: [''],
-      nokTitle: [''],
+      nokFirstName: ['', Validators.required],
+      nokSurname: ['', Validators.required],
+      nokNationality: ['', Validators.required],
+      nokTitle: ['', Validators.required],
       nokTitleOther: [''],
-      nokIdDocument: [''],
-      nokDocNumber: [''],
-      nokDateOfBirth: [''],
-      nokMaritalStatus: [''],
-      nokPIN: [''],
-      nokPostalAddress: [''],
-      nokPostalCode: [''],
-      nokCityOrTown: [''],
-      nokPhysicalAddress: [''],
-      nokCountryOfResidence: [''],
-      nokOccupationOrBusiness: [''],
-      nokPlaceOfWork: [''],
-      nokPhoneNo: [''],
-      nokMobileNo: [''],
-      nokEMail: ['']
+      nokIdDocument: ['', Validators.required],
+      nokDocNumber: ['', Validators.required],
+      nokDateOfBirth: ['', [Validators.required, validateDate()]],
+      nokMaritalStatus: ['', Validators.required],
+      nokPIN: ['', Validators.required],
+      nokPostalAddress: ['', Validators.required],
+      nokPostalCode: ['', Validators.required],
+      nokCityOrTown: ['', Validators.required],
+      nokPhysicalAddress: ['', Validators.required],
+      nokCountryOfResidence: ['', Validators.required],
+      nokOccupationOrBusiness: ['', Validators.required],
+      nokPlaceOfWork: ['', Validators.required],
+      nokPhoneNo: ['', Validators.required],
+      nokMobileNo: ['', Validators.required],
+      nokEMail: ['', Validators.required],
     })
 
     var pageData = this.fs.getPageData(this.pageTitle)
@@ -78,6 +79,11 @@ export class ContactOrKinComponent {
   onSubmit() {
     this.submitted = true;
     if (this.form.invalid) {
+      return
+    }
+
+    if (this.f['nokTitle'].value === 'Other' && !this.f['nokTitleOther'].value) {
+      this.f['nokTitleOther'].setErrors({ 'conditionalRequired': true })
       return
     }
 

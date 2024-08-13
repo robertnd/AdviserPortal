@@ -9,7 +9,7 @@ import { FormStateService } from '@app/_services/form-state.service'
   templateUrl: './unit-trust-source-of-funds.component.html',
   styleUrls: ['./unit-trust-source-of-funds.component.css']
 })
-export class UnitTrustSourceOfFundsComponent {
+export class UnitTrustSourceOfFundsComponent implements OnInit {
   submitted: boolean = false
   journey = ''
   pageTitle = 'Source of Funds'
@@ -33,24 +33,52 @@ export class UnitTrustSourceOfFundsComponent {
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
-
-    // this.form = this.fb.group({
-
-    //   otherSourceOfFunds: [''],
-    // })
-
     var pageData = this.fs.getPageData(this.pageTitle)
     this.form.patchValue(JSON.parse(pageData))
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.form.invalid) {
+    if (
+      !this.f['salary'].value && 
+      !this.f['businessIncome'].value && 
+      !this.f['gifts'].value && 
+      !this.f['saleOfProperty'].value && 
+      !this.f['savings'].value && 
+      !this.f['other'].value ) {
+      this.form.setErrors({ 'mustHaveSourceOfFunds': true })
+      return
+    }
+
+    if (this.f['other'].value && !this.f['otherSourceOfFunds'].value) {
+      this.f['otherSourceOfFunds'].setErrors({ 'conditionalRequired': true })
       return
     }
 
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate(['/portal/unit-trust/bank-info'])
+  }
+
+  selectionCheck() {
+    if (!this.f['other'].value && this.f['otherSourceOfFunds'].errors) {
+      // unset this error
+      this.f['otherSourceOfFunds'].setErrors({'conditionalRequired': null})
+      this.form.updateValueAndValidity()
+    }
+
+    if (
+      this.f['salary'].value || 
+      this.f['businessIncome'].value || 
+      this.f['gifts'].value || 
+      this.f['saleOfProperty'].value || 
+      this.f['savings'].value || 
+      this.f['other'].value ) {
+      if (this.form.hasError('mustHaveSourceOfFunds')) {
+        this.form.setErrors({'mustHaveSourceOfFunds': null})
+        // delete this.form.errors!['mustHavePaymentMethod']
+        this.form.updateValueAndValidity()
+      }
+    }
   }
 
   previous() {

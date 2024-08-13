@@ -17,7 +17,6 @@ export class IncomeDistributionComponent {
   displayText = 'FUND DETAILS -'
   form: FormGroup
   
-
   constructor(
     private fb: FormBuilder,
     private alertService: AlertService,
@@ -55,10 +54,6 @@ export class IncomeDistributionComponent {
       totalInvestedWords_1: new FormControl('')
     })
 
-    // this.form = this.fb.group({
-
-    // })
-
     var pageData = this.fs.getPageData(this.pageTitle)
     this.form.patchValue(JSON.parse(pageData))
   }
@@ -75,7 +70,6 @@ export class IncomeDistributionComponent {
 
   previous() {
     this.router.navigate(['/portal/unit-trust/mpesa-activation'])
-
   }
 
   toggle() {

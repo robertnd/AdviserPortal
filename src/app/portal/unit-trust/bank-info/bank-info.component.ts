@@ -33,11 +33,11 @@ export class BankInfoComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      accountHolder: [''],
-      accountNo: [''],
-      accountType: [''],
-      bankName: [''],
-      branch: ['']
+      accountHolder: ['', Validators.required],
+      accountNo: ['', Validators.required],
+      accountType: ['', Validators.required],
+      bankName: ['', Validators.required],
+      branch: ['', Validators.required]
     })
 
     var pageData = this.fs.getPageData(this.pageTitle)

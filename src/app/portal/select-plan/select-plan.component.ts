@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AlertService, UtilService } from '@app/_services'
+import { FormStateService } from '@app/_services/form-state.service'
 
 @Component({
   selector: 'app-select-plan',
@@ -16,6 +17,7 @@ export class SelectPlanComponent implements OnInit {
     private fb: FormBuilder,
     private alertService: AlertService,
     private utilService: UtilService,
+    private fs: FormStateService,
     private router: Router
   ) { }
 
@@ -33,6 +35,7 @@ export class SelectPlanComponent implements OnInit {
       return
     }
     let selectedOption = this.form.value["planselector"] || ''
+    this.fs.unset() // clear the state map
     this.utilService.setCurrentJourney(selectedOption)
     this.router.navigate(['/portal/personal-info'])
   }

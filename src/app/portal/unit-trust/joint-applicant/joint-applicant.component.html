@@ -25,6 +25,7 @@
                         <option></option>
                         <option>Spouses</option>
                         <option>Business Partners</option>
+                        <option>Other</option>
                     </select>
                     <div *ngIf="submitted && f['jahRelationship'].errors" class="invalid-input">
                         <div *ngIf="f['jahRelationship'].errors['required']">
@@ -35,6 +36,11 @@
                 <div class="text-input-intg">
                     <label for="jahRelationshipOther">Other (specify)</label>
                     <input type="text" id="jahRelationshipOther" formControlName="jahRelationshipOther" />
+                    <div *ngIf="submitted && f['jahRelationshipOther'].errors" class="invalid-input">
+                        <div *ngIf="f['jahRelationshipOther'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
                 </div>
                 <div class="text-input-intg">
                 </div>
@@ -57,6 +63,8 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">
@@ -66,6 +74,7 @@
                         <option></option>
                         <option>Either holder</option>
                         <option>All holders</option>
+                        <option>Other</option>
                     </select>
                     <div *ngIf="submitted && f['jahSignatories'].errors" class="invalid-input">
                         <div *ngIf="f['jahSignatories'].errors['required']">
@@ -76,6 +85,11 @@
                 <div class="text-input-intg">
                     <label for="jahSignatoriesOther">Other (specify)</label>
                     <input type="text" id="jahSignatoriesOther" formControlName="jahSignatoriesOther" />
+                    <div *ngIf="submitted && f['jahSignatoriesOther'].errors" class="invalid-input">
+                        <div *ngIf="f['jahSignatoriesOther'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
                 </div>
                 <div class="text-input-intg">
                 </div>
@@ -130,7 +144,7 @@
                     <input type="text" id="jahTitleOther" formControlName="jahTitleOther" />
                     <div *ngIf="submitted && f['jahTitleOther'].errors" class="invalid-input">
                         <div *ngIf="f['jahTitleOther'].errors['conditionalRequired']">
-                            Please provide a Title description
+                            Required
                         </div>
                     </div>
                 </div>
@@ -162,6 +176,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="jahDateOfBirth">Date of Birth</label>
                     <input type="date" id="jahDateOfBirth" formControlName="jahDateOfBirth" />
@@ -177,6 +195,8 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">
@@ -204,9 +224,7 @@
                         <div *ngIf="f['jahPIN'].errors['required']">Required</div>
                     </div>
                 </div>
-                <div class="text-input-intg">
-
-                </div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">
@@ -224,6 +242,10 @@
                         <div *ngIf="f['jahPostalCode'].errors['required']">Required</div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="jahCityOrTown">City / Town</label>
                     <input type="text" id="jahCityOrTown" formControlName="jahCityOrTown" />
@@ -231,6 +253,8 @@
                         <div *ngIf="f['jahCityOrTown'].errors['required']">Required</div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">
@@ -294,6 +318,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="jahEMail">EMail</label>
                     <input type="text" id="jahEMail" formControlName="jahEMail" />
@@ -302,6 +330,8 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">

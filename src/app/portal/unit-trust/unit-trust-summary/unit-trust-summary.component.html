@@ -270,7 +270,7 @@
                     <label>Relationship between joint holders?</label>
                     {{ jointAccountHolder.jahRelationship }}
                 </div>
-                <div class="text-intg-summary">
+                <div class="text-intg-summary" *ngIf="jointAccountHolder.jahRelationship === 'Other' ">
                     <label>Other (specify)</label>
                     {{ jointAccountHolder.jahRelationshipOther }}
                 </div>
@@ -293,7 +293,7 @@
                     <label>Transaction to be signed by?</label>
                     {{ jointAccountHolder.jahSignatories }}
                 </div>
-                <div class="text-intg-summary">
+                <div class="text-intg-summary" *ngIf="jointAccountHolder.jahSignatories === 'Other' ">
                     <label>Other (specify)</label>
                     {{ jointAccountHolder.jahSignatoriesOther }}
                 </div>
@@ -318,7 +318,7 @@
                     <label>Title</label>
                     {{ jointAccountHolder.jahTitle }}
                 </div>
-                <div class="text-intg-summary">
+                <div class="text-intg-summary" *ngIf="jointAccountHolder.jahTitle === 'Other' ">
                     <label>Title (if other)</label>
                     {{ jointAccountHolder.jahTitleOther }}
                 </div>
@@ -426,7 +426,7 @@
 
             <div class="form-row">
                 <div class="overview">
-                    <h1 class="overview__subheading">Emergecny Contact / Next of Kin</h1>
+                    <h1 class="overview__subheading">Emergency Contact / Next of Kin</h1>
                 </div>
             </div>
 
@@ -443,7 +443,7 @@
                 </div>
                 <div class="text-intg-summary">
                     <label>Surname</label>
-                    {{ nextOfKin.nokFirstName }}
+                    {{ nextOfKin.nokSurname }}
                 </div>
                 <div class="text-intg-summary">
                     <label>Nationality</label>
@@ -456,7 +456,7 @@
                     <label>Title</label>
                     {{ nextOfKin.nokTitle }}
                 </div>
-                <div class="text-intg-summary">
+                <div class="text-intg-summary" *ngIf="nextOfKin.nokTitle === 'Other' ">
                     <label>If "Other" specify</label>
                     {{ nextOfKin.nokTitleOther }}
                 </div>
@@ -615,7 +615,6 @@
                     <li>Cession: You may NOT cede your Contract in any way</li>
                     <li>Only amendment allowd to the policy is change in the beneficiary</li>
                 </ul>
-
             </div>
 
             <div class="summary-row">
@@ -659,58 +658,69 @@
                     <label>EMail</label>
                     {{ lifeWrapper.lwBNEMail }}
                 </div>
-                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <label>Is the beneficiary a minor?</label>
+                    {{ lifeWrapper.lwIsMinor }}
+                </div>
                 <div class="text-intg-summary"></div>
             </div>
 
-            <div class="summary-row">
+            <!-- <div class="summary-row">
                 <div class="overview">
                     <p class="overview__subheading2_ital">Note: If the beneficiary is a minor, please nominate a
                         guardian</p>
                 </div>
+            </div> -->
+
+            <div *ngIf="lifeWrapper.lwIsMinor === 'Yes' ">
+                <div class="summary-row">
+                    <div class="overview">
+                        <h1 class="overview__subheading">Guardian</h1>
+                    </div>
+                </div>
+    
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>First Name</label>
+                        {{ lifeWrapper.lwGuardianFirstName }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Surname</label>
+                        {{ lifeWrapper.lwGuardianSurname }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>ID / Passport Number</label>
+                        {{ lifeWrapper.lwGuardianIDorPassportNo }}
+                    </div>
+                </div>
+    
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Relationship</label>
+                        {{ lifeWrapper.lwGuardianRelationship }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Postal Address</label>
+                        {{ lifeWrapper.lwGuardianPostalAddress }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Mobile Number</label>
+                        {{ lifeWrapper.lwGuardianMobileNo }}
+                    </div>
+                </div>
+    
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>EMail</label>
+                        {{ lifeWrapper.lwGuardianEMail }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                    <div class="text-intg-summary"></div>
+                </div>
             </div>
 
             <div class="summary-row">
-                <div class="overview">
-                    <h1 class="overview__subheading">Guardian</h1>
-                </div>
-            </div>
-
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>First Name</label>
-                    {{ lifeWrapper.lwGuardianFirstName }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Surname</label>
-                    {{ lifeWrapper.lwGuardianSurname }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>ID / Passport Number</label>
-                    {{ lifeWrapper.lwGuardianIDorPassportNo }}
-                </div>
-            </div>
-
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>Relationship</label>
-                    {{ lifeWrapper.lwGuardianRelationship }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Postal Address</label>
-                    {{ lifeWrapper.lwGuardianPostalAddress }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Mobile Number</label>
-                    {{ lifeWrapper.lwGuardianMobileNo }}
-                </div>
-            </div>
-
-            <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>EMail</label>
-                    {{ lifeWrapper.lwGuardianEMail }}
-                </div>
+                <div class="text-intg-summary"></div>
                 <div class="text-intg-summary"></div>
                 <div class="text-intg-summary"></div>
             </div>
@@ -724,6 +734,7 @@
                     </button>
                 </div>
             </div>
+
             <div class="summary-row">
             </div>
         </div>
@@ -921,26 +932,34 @@
                 <div class="text-intg-summary"></div>
             </div>
 
-            <div class="summary-row">
-                <div class="checkBoxGroup">
-                    {{ sourceOfFunds.salary }}
-                    {{ sourceOfFunds.businessIncome }}
-                    {{ sourceOfFunds.gifts }}
-                    {{ sourceOfFunds.saleOfProperty }}
-                    {{ sourceOfFunds.savings }}
-                    {{ sourceOfFunds.other }}
+            <form [formGroup]="form1">
+                <div class="form-row">
+                    <div class="checkBoxGroup">
+                        <input type="checkbox" id="salary" value="salary" formControlName="salary" readonly />
+                        <label for="salary">Salary</label>
+                        <input type="checkbox" id="businessIncome" value="businessIncome" formControlName="businessIncome" readonly />
+                        <label for="businessIncome">Business Income</label>
+                        <input type="checkbox" id="gifts" value="gifts" formControlName="gifts" readonly />
+                        <label for="gifts">Gift(s)</label>
+                        <input type="checkbox" id="saleOfProperty" value="saleOfProperty" formControlName="saleOfProperty" readonly />
+                        <label for="saleOfProperty">Sale of Property</label>
+                        <input type="checkbox" id="savings" value="savings" formControlName="savings" readonly />
+                        <label for="savings">Savings</label>
+                        <input type="checkbox" id="other" value="other" formControlName="other" readonly />
+                        <label for="other">Other (please specify)</label>
+                    </div>
                 </div>
-            </div>
+            </form>
 
-            <div class="summary-row">
+            <!-- <div class="summary-row">
                 <p class="form-paragraph1">
                     I do hereby declare that the source of funds I/We shall be depositing is/are (tick as applicable)
                 </p>
-            </div>
+            </div> -->
 
             <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>(Details of other source of funds)</label>
+                <div class="text-intg-summary" *ngIf="sourceOfFunds.other">
+                    <label>Details of other source of funds</label>
                     {{ sourceOfFunds.otherSourceOfFunds }}
                 </div>
             </div>
@@ -1047,21 +1066,6 @@
             </div>
 
             <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>Name</label>
-                    {{ mpesaActivation.mpesaName }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>National ID</label>
-                    {{ mpesaActivation.nationalId }}
-                </div>
-                <div class="text-intg-summary">
-                    <label>Mpesa Registered Number</label>
-                    {{ mpesaActivation.mpesaNumber }}
-                </div>
-            </div>
-
-            <div class="summary-row">
                 <table class="data-table" *ngIf="numbers.size > 0">
                     <thead>
                         <tr>
@@ -1136,14 +1140,20 @@
                 </p>
             </div>
 
-            <div class="summary-row">
-                <div class="checkBoxGroup">
-                    {{ incomeDistribution.moneyMarket }}
-                    {{ incomeDistribution.equityFund }}
-                    {{ incomeDistribution.balancedFund }}
-                    {{ incomeDistribution.bondFund }}
+            <form [formGroup]="form2">
+                <div class="form-row">
+                    <div class="checkBoxGroup">
+                        <input type="checkbox" id="moneyMarket" value="moneyMarket" formControlName="moneyMarket" readonly />
+                        <label for="moneyMarket">Old Mutual Money Market (Monthly)</label>
+                        <input type="checkbox" id="equityFund" value="equityFund" formControlName="equityFund" readonly />
+                        <label for="equityFund">Old Mutual Equity Fund (Semi Annual)</label>
+                        <input type="checkbox" id="balancedFund" value="balancedFund" formControlName="balancedFund" readonly />
+                        <label for="balancedFund">Old Mutual Balanced Fund (Quarterly)</label>
+                        <input type="checkbox" id="bondFund" value="bondFund" formControlName="bondFund" readonly />
+                        <label for="bondFund">Old Mutual Bond Fund (Quarterly)</label>
+                    </div>
                 </div>
-            </div>
+            </form>
 
             <div class="summary-row">
                 <p class="form-paragraph1 collapsible">FUND DETAILS </p>
@@ -1351,17 +1361,22 @@
                 </p>
             </div>
 
-            <div class="summary-row">
-                <div class="checkBoxGroup">
-                    {{ incomeDistribution.cheque }}
-                    {{ incomeDistribution.directCash }}
-                    {{ incomeDistribution.eftRtgs }}
-                    {{ incomeDistribution.internationalTransfer }}
-                    {{ incomeDistribution.postaPay }}
-                    {{ incomeDistribution.totalInvestedWords }}
-                    {{ incomeDistribution.totalInvestedWords }}
+            <form [formGroup]="form3">
+                <div class="form-row">
+                    <div class="checkBoxGroup">
+                        <input type="checkbox" id="cheque" value="cheque" formControlName="cheque" readonly />
+                        <label for="cheque">Cheque</label>
+                        <input type="checkbox" id="directCash" value="directCash" formControlName="directCash" readonly />
+                        <label for="directCash">Direct Cash Deposit (Max Kshs 250,000)</label>
+                        <input type="checkbox" id="eftRtgs" value="eftRtgs" formControlName="eftRtgs" readonly />
+                        <label for="eftRtgs">EFT / RTGS</label>
+                        <input type="checkbox" id="internationalTransfer" value="internationalTransfer" formControlName="internationalTransfer" readonly />
+                        <label for="internationalTransfer">International Transfer</label>
+                        <input type="checkbox" id="postaPay" value="postaPay" formControlName="postaPay" readonly />
+                        <label for="postaPay">Posta Pay Mpesa (Paybill 600500)</label>
+                    </div>
                 </div>
-            </div>
+            </form>
 
             <div class="summary-row">
                 <p class="form-paragraph1">

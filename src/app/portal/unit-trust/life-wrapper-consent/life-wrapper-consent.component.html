@@ -136,14 +136,14 @@
 
             <div class="form-row">
                 <div class="text-input-intg">
-                    <label for="lwcAcceptOrNotIdDocument">Identification Document</label>
-                    <select id="lwcAcceptOrNotIdDocument" formControlName="lwcAcceptOrNotIdDocument">
+                    <label for="lwcAcceptOrNot">Please select</label>
+                    <select id="lwcAcceptOrNot" formControlName="lwcAcceptOrNot">
                         <option></option>
                         <option>I consent</option>
                         <option>I do not consent to being contacted for marketing information</option>
                     </select>
-                    <div *ngIf="submitted && f['lwcAcceptOrNotIdDocument'].errors" class="invalid-input">
-                        <div *ngIf="f['lwcAcceptOrNotIdDocument'].errors['required']">
+                    <div *ngIf="submitted && f['lwcAcceptOrNot'].errors" class="invalid-input">
+                        <div *ngIf="f['lwcAcceptOrNot'].errors['required']">
                             Required
                         </div>
                     </div>

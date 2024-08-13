@@ -9,7 +9,7 @@ import { FormStateService } from '@app/_services/form-state.service'
   templateUrl: './life-wrapper.component.html',
   styleUrls: ['./life-wrapper.component.css']
 })
-export class LifeWrapperComponent {
+export class LifeWrapperComponent implements OnInit {
   submitted: boolean = false
   journey = ''
   pageTitle = 'Life Wrapper'
@@ -23,6 +23,7 @@ export class LifeWrapperComponent {
     lwBNPostalAddress: new FormControl(''),
     lwBNMobileNo: new FormControl(''),
     lwBNEMail: new FormControl(''),
+    lwIsMinor: new FormControl(''),
     lwGuardianFirstName: new FormControl(''),
     lwGuardianSurname: new FormControl(''),
     lwGuardianIDorPassportNo: new FormControl(''),
@@ -44,13 +45,14 @@ export class LifeWrapperComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      lwBNFirstName: [''],
-      lwBNSurname: [''],
+      lwBNFirstName: ['', Validators.required],
+      lwBNSurname: ['', Validators.required],
       lwBNIDorPassportNo: [''],
-      lwBNRelationship: [''],
+      lwBNRelationship: ['', Validators.required],
       lwBNPostalAddress: [''],
       lwBNMobileNo: [''],
       lwBNEMail: [''],
+      lwIsMinor: ['', Validators.required],
       lwGuardianFirstName: [''],
       lwGuardianSurname: [''],
       lwGuardianIDorPassportNo: [''],
@@ -79,6 +81,61 @@ export class LifeWrapperComponent {
       return
     }
 
+    var minorErr = false
+    if (this.f['lwIsMinor'].value === 'No') {
+      // adult
+      if (!this.f['lwBNIDorPassportNo'].value) {
+        this.f['lwBNIDorPassportNo'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwBNPostalAddress'].value) {
+        this.f['lwBNPostalAddress'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwBNMobileNo'].value) {
+        this.f['lwBNMobileNo'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwBNEMail'].value) {
+        this.f['lwBNEMail'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+
+      if (minorErr) return
+    }
+
+    if (this.f['lwIsMinor'].value === 'Yes') {
+      if (!this.f['lwGuardianFirstName'].value) {
+        this.f['lwGuardianFirstName'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwGuardianSurname'].value) {
+        this.f['lwGuardianSurname'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwGuardianIDorPassportNo'].value) {
+        this.f['lwGuardianIDorPassportNo'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwGuardianRelationship'].value) {
+        this.f['lwGuardianRelationship'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwGuardianPostalAddress'].value) {
+        this.f['lwGuardianPostalAddress'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwGuardianMobileNo'].value) {
+        this.f['lwGuardianMobileNo'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (!this.f['lwGuardianEMail'].value) {
+        this.f['lwGuardianEMail'].setErrors({ 'conditionalRequired': true })
+        minorErr = true
+      }
+      if (minorErr) return
+    } 
+    
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate(['/portal/unit-trust/life-wrapper-consent'])
   }

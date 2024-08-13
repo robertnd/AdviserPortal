@@ -14,35 +14,43 @@
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row">
-                <div class="checkBoxGroup">
-                    <input type="checkbox" id="salary" value="salary" formControlName="salary" />
-                    <label for="salary">Salary</label>
-                    <input type="checkbox" id="businessIncome" value="businessIncome" formControlName="businessIncome" />
-                    <label for="salary">Business Income</label>
-                    <input type="checkbox" id="gifts" value="gifts" formControlName="gifts" />
-                    <label for="salary">Gift(s)</label>
-                    <input type="checkbox" id="saleOfProperty" value="saleOfProperty" formControlName="saleOfProperty" />
-                    <label for="salary">Sale of Property</label>
-                    <input type="checkbox" id="savings" value="savings" formControlName="savings" />
-                    <label for="salary">Savings</label>
-                    <input type="checkbox" id="other" value="other" formControlName="other" />
-                    <label for="salary">Other (please specify)</label>
-                </div>
-            </div>
-
-            <div class="form-row">
                 <p class="form-paragraph1">
                     I do hereby declare that the source of funds I/We shall be depositing is/are (tick as applicable)
                 </p>
             </div>
 
             <div class="form-row">
+                <div class="checkBoxGroup">
+                    <input type="checkbox" id="salary" value="salary" formControlName="salary" (click)="selectionCheck()"/>
+                    <label for="salary">Salary</label>
+                    <input type="checkbox" id="businessIncome" value="businessIncome" formControlName="businessIncome" (click)="selectionCheck()"/>
+                    <label for="businessIncome">Business Income</label>
+                    <input type="checkbox" id="gifts" value="gifts" formControlName="gifts" />
+                    <label for="gifts">Gift(s)</label>
+                    <input type="checkbox" id="saleOfProperty" value="saleOfProperty" formControlName="saleOfProperty" (click)="selectionCheck()"/>
+                    <label for="saleOfProperty">Sale of Property</label>
+                    <input type="checkbox" id="savings" value="savings" formControlName="savings" (click)="selectionCheck()"/>
+                    <label for="savings">Savings</label>
+                    <input type="checkbox" id="other" value="other" formControlName="other" (click)="selectionCheck()"/>
+                    <label for="other">Other (please specify)</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div *ngIf="submitted && form.errors && form.errors['mustHaveSourceOfFunds']" class="invalid-input data-table-error">
+                    <div *ngIf="form.errors && form.errors['mustHaveSourceOfFunds']">
+                        At least one source of funds required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
-                    <label for="natureOfBusiness">(Details of other source of funds)</label>
-                    <textarea rows="3" id="otherSourceOfFunds" formControlName="otherSourceOfFunds"></textarea>
+                    <label for="natureOfBusiness">Details of other source of funds</label>
+                    <textarea rows="1" id="otherSourceOfFunds" formControlName="otherSourceOfFunds"></textarea>
                     <div *ngIf="submitted && f['otherSourceOfFunds'].errors" class="invalid-input">
                         <div *ngIf="f['otherSourceOfFunds'].errors['conditionalRequired']">
-                            Please provide (Details of other source of funds)
+                            Required
                         </div>
                     </div>
                 </div>

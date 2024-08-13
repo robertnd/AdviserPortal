@@ -25,12 +25,14 @@ export class UnitTrustSummaryComponent {
   sourceOfFunds: any = null
   bankInfo: any = null
   mpesaActivation: any = null
+  mpesaNums: any = null
   numbers: Map<string, Mpesa> = new Map<string, Mpesa>()
   incomeDistribution: any = null
   riskAssessment: any = null
   
-  form: FormGroup = new FormGroup({
-  })
+  form1: FormGroup = new FormGroup({ })
+  form2: FormGroup = new FormGroup({ })
+  form3: FormGroup = new FormGroup({ })
 
   constructor(
     private fb: FormBuilder,
@@ -50,39 +52,66 @@ export class UnitTrustSummaryComponent {
     this.nextOfKin = JSON.parse(this.fs.getPageData('Next of Kin'))
     this.lifeWrapper = JSON.parse(this.fs.getPageData('Life Wrapper'))
     this.lifeWrapperConsent = JSON.parse(this.fs.getPageData('Life Wrapper Consent'))
-    this.sourceOfFunds = JSON.parse(this.fs.getPageData('Unit Trust Source of Funds'))
-    this.bankInfo = JSON.parse(this.fs.getPageData('Bank Details'))
+    this.sourceOfFunds = JSON.parse(this.fs.getPageData('Source of Funds'))
+    this.bankInfo = JSON.parse(this.fs.getPageData('Bank Info'))
     this.mpesaActivation = JSON.parse(this.fs.getPageData('Mpesa Activation'))
+    this.mpesaNums = this.fs.getPageData('Mpesa Activation_mpesaNums') || '{}'
     this.incomeDistribution = JSON.parse(this.fs.getPageData('Income Distribution'))
     this.riskAssessment = JSON.parse(this.fs.getPageData('Risk Assessment'))
-    
-    this.form = this.fb.group({
 
+    this.mpesaNums = this.fs.getPageData('Mpesa Activation_mpesaNums') || '{}'
+    var mpesaNumsObj = JSON.parse(this.mpesaNums)
+    Object.keys(mpesaNumsObj).forEach(
+      (key: string) => {
+        var mn = mpesaNumsObj[key]
+        this.numbers.set( mn.name, new Mpesa(mn.name, mn.nationalId, mn.mpesaNo) )
+      }
+    )
+    
+    this.form1 = this.fb.group({
+      salary: new FormControl(''),
+      businessIncome: new FormControl(''),
+      gifts: new FormControl(''),
+      saleOfProperty: new FormControl(''),
+      savings: new FormControl(''),
+      other: new FormControl(''),
+      otherSourceOfFunds: new FormControl(''),
+    })
+
+    this.form2 = this.fb.group({
+      moneyMarket: new FormControl(''),
+      equityFund: new FormControl(''),
+      balancedFund: new FormControl(''),
+      bondFund: new FormControl('')
+    })
+
+    this.form3 = this.fb.group({
+      cheque: new FormControl(''),
+      directCash: new FormControl(''),
+      eftRtgs: new FormControl(''),
+      internationalTransfer: new FormControl(''),
+      postaPay: new FormControl(''),
+      totalInvested: new FormControl(''),
+      totalInvestedWords: new FormControl('')
     })
 
     var pageData = this.fs.getPageData(this.pageTitle)
-    this.form.patchValue(JSON.parse(pageData))
+    this.form1.patchValue(this.sourceOfFunds)
+    this.form2.patchValue(this.incomeDistribution)
+    this.form3.patchValue(this.incomeDistribution)
   }
 
   onSubmit() {
-    this.submitted = true;
-    if (this.form.invalid) {
-      return
-    }
-
-    // this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-    // this.router.navigate(['/portal//privacy-notice'])
   }
 
   previous() {
     this.router.navigate(['/portal/unit-trust/risk-assessment'])
-
   }
 
   navigate(link: string) {
     this.router.navigate([link])
   }
 
-  get f() { return this.form.controls }
+  get f1() { return this.form1.controls }
 
 }

@@ -10,7 +10,7 @@ import { FormStateService } from '@app/_services/form-state.service'
   templateUrl: './mpesa.component.html',
   styleUrls: ['./mpesa.component.css']
 })
-export class MpesaComponent {
+export class MpesaComponent implements OnInit {
   submitted: boolean = false
   journey = ''
   pageTitle = 'Mpesa Activation'
@@ -40,6 +40,14 @@ export class MpesaComponent {
 
     var pageData = this.fs.getPageData(this.pageTitle)
     this.form.patchValue(JSON.parse(pageData))
+    var mpesaNumsJSON = this.fs.getPageData(`${this.pageTitle}_mpesaNums`) || '{}'
+    var mpesaNumsObj = JSON.parse(mpesaNumsJSON)
+    Object.keys(mpesaNumsObj).forEach(
+      (key: string) => {
+        var mn = mpesaNumsObj[key]
+        this.numbers.set( mn.name, new Mpesa(mn.name, mn.nationalId, mn.mpesaNo) )
+      }
+    )
   }
 
   addNumber() {
@@ -74,14 +82,14 @@ export class MpesaComponent {
   }
 
   onSubmit() {
-    this.router.navigate(['/portal/select-plan'])
-    
     this.submitted = true;
     if (this.form.invalid) {
       return
     }
 
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
+    var mpesaNumsSerialized = Object.fromEntries(this.numbers)
+    this.fs.addOrUpdatePageData(`${this.pageTitle}_mpesaNums`, JSON.stringify(mpesaNumsSerialized))
     this.router.navigate(['/portal/unit-trust/income-distribution'])
   }
 
@@ -90,6 +98,4 @@ export class MpesaComponent {
   }
 
   get f() { return this.form.controls }
-
-
 }

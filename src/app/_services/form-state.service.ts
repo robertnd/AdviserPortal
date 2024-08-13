@@ -16,4 +16,8 @@ export class FormStateService {
     return this.formData.get(pageTitle) || '{}'
   }
 
+  unset() {
+    this.formData.clear()
+  }
+
 }

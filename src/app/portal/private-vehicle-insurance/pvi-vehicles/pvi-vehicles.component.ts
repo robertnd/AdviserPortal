@@ -12,7 +12,7 @@ import { Vehicle } from '@app/_models'
   templateUrl: './pvi-vehicles.component.html',
   styleUrls: ['./pvi-vehicles.component.css']
 })
-export class PviVehiclesComponent {
+export class PviVehiclesComponent implements OnInit {
   journey = ''
   pageTitle = 'Vehicles'
   vehicles: Map<string, Vehicle> = new Map<string, Vehicle>()
@@ -94,7 +94,6 @@ export class PviVehiclesComponent {
         )
       }
     )
-
   }
 
   removeVehicle(key: string) {
