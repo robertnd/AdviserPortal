@@ -53,7 +53,7 @@
         <div class="text-input-intg">
           <label for="natureOfBusiness">(If self-employed, kindly state the nature of business activity including the
             source of funds for permiums)</label>
-          <textarea rows="3" id="natureOfBusiness" formControlName="natureOfBusiness"></textarea>
+          <textarea rows="1" id="natureOfBusiness" formControlName="natureOfBusiness"></textarea>
           <div *ngIf="submitted && f['natureOfBusiness'].errors" class="invalid-input">
             <div *ngIf="f['natureOfBusiness'].errors['conditionalRequired']">
               Please provide nature of business activity

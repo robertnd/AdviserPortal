@@ -52,6 +52,10 @@ export class SiSummaryComponent {
     this.details = JSON.parse(this.fs.getPageData('Details'))
 
     this.form.patchValue(this.details)
+
+    // TODO: Dump the Map ...
+    var stateObj = this.fs.dump()
+    console.log('State for Student Insurance', JSON.stringify(Object.fromEntries(stateObj)))
   }
 
   onSubmit() {

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { Router } from '@angular/router'
+import { v4 as uuidv4 } from 'uuid'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 import { Beneficiary, Child } from '@app/_models'
+import { getContacts, getOccupation, getPersonalInfo } from '@app/_helpers/utils'
 
 @Component({
   selector: 'app-pension-summary',
@@ -25,12 +27,21 @@ export class PensionSummaryComponent implements OnInit {
   nok: any = null
   beneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
 
+  form: FormGroup = new FormGroup({
+    employment: new FormControl(false),
+    savings: new FormControl(false),
+    gifts: new FormControl(false),
+    inheritance: new FormControl(false),
+    disposalOfProperty: new FormControl(false),
+    other: new FormControl('')
+  })
+
   constructor(
-    private fb: FormBuilder,
-    private alertService: AlertService,
     private utilService: UtilService,
     private fs: FormStateService,
     private router: Router) { }
+
+  get f() { return this.form.controls }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
@@ -44,21 +55,41 @@ export class PensionSummaryComponent implements OnInit {
     this.dependant = JSON.parse(this.fs.getPageData('Dependants'))
     var childrenJSON = this.fs.getPageData('Dependants_children') || '{}'
     var childrenObj = JSON.parse(childrenJSON)
-    Object.keys(childrenObj).forEach((key: string) => {
-      var c = childrenObj[key]
-      this.dependant_children.set(key, new Child(c.names, c.gender, c.dob))
-    }
+    Object.keys(childrenObj).forEach(
+      (key: string) => {
+        var c = childrenObj[key]
+        this.dependant_children.set(key, new Child(c.names, c.gender, c.dob))
+      }
     )
     this.nok = JSON.parse(this.fs.getPageData('Next of Kin'))
     var beneficiariesJSON = this.fs.getPageData('Beneficiaries_ppBeneficiaries') || '{}'
     var beneficiariesObj = JSON.parse(beneficiariesJSON)
-    Object.keys(beneficiariesObj).forEach((key: string) => {
-      var b = beneficiariesObj[key]
-      this.beneficiaries.set(key,
-        new Beneficiary(b.fullname, b.relationship, b.addressAndCode, b.phoneNo, b.dob, b.benefitShare)
-      )
-    }
+    this.form.patchValue(this.sof)
+    Object.keys(beneficiariesObj).forEach(
+      (key: string) => {
+        var b = beneficiariesObj[key]
+        this.beneficiaries.set(key,
+          new Beneficiary(b.fullname, b.relationship, b.addressAndCode, b.phoneNo, b.dob, b.benefitShare)
+        )
+      }
     )
+
+    // TODO: Dump the Map ...
+    var stateObj = this.fs.dump()
+    console.log('State for Personal Pension', JSON.stringify(Object.fromEntries(stateObj)))
+    console.log('PAYLOAD DUMP', JSON.stringify(this.transform()))
+  }
+
+  sofValues() {
+    var values = []
+    if (this.f['employment'].value) values.push('Employment')
+    if (this.f['savings'].value) values.push('Savings')
+    if (this.f['gifts'].value) values.push('Gift(s)')
+    if (this.f['inheritance'].value) values.push('Inheritance')
+    if (this.f['disposalOfProperty'].value) values.push('Disposal Of Property')
+    if (this.f['other'].value) values.push(this.sof.sourceOfFundsOther)
+
+    return values
   }
 
   navigate(link: string) {
@@ -67,6 +98,71 @@ export class PensionSummaryComponent implements OnInit {
 
   previous() {
     this.router.navigate(['/portal/personal-pension/beneficiaries'])
+  }
+
+  transform() {
+    return {
+      "personalInfo": getPersonalInfo(this.personalInfo),
+      "contacts": getContacts(this.contacts),
+      "occupation": getOccupation(this.occupation),
+      "onboardTrackingNo": uuidv4(),
+      "pensionInfo": {
+        "sourceOfFunds": [...this.sofValues()],
+        "otherSourceOfFundsDesc": this.sof.sourceOfFundsOther,
+        "remittanceSelfEmployed": {
+          "contribution": this.sof.selfEmployed_Contribution,
+          "modeOfRemittance": this.sof.selfEmployed_MoR,
+          "frequency": this.sof.selfEmployed_Frequency,
+          "bank": this.sof.selfEmployed_Bank,
+          "branch": this.sof.selfEmployed_Branch,
+          "accountName": this.sof.selfEmployed_AccName,
+          "accountNumber": this.sof.selfEmployed_AccNo
+        },
+        "remittanceFromEmployment": {
+          "contributionByEmployer": this.sof.employed_B1Contribution,
+          "contributionByMember": this.sof.employed_A1Contribution,
+          "sharePercentOfMemberSalary": this.sof.employed_A2Contribution,
+          "modeOfRemittance": this.sof.employed_MoR,
+          "bank": this.sof.employed_Bank,
+          "branch": this.sof.employed_Branch,
+          "accountName": this.sof.employed_AccName,
+          "accountNumber": this.sof.employed_AccNo,
+          "designation": this.sof.employed_Designation,
+          "remitDate": this.sof.employed_Date,
+        },
+        "residentialAddress": {
+          "LRNumber": this.sof.lrNumber,
+          "estate": this.sof.estate,
+          "houseNumber": this.sof.houseNo,
+          "road": this.sof.road,
+          "townOrArea": this.sof.townArea
+        },
+        "spousalDependant": {
+          "surname": this.sof.dependantSurname,
+          "foreNames": this.sof.dependantForenames,
+          "idDocumentType": this.sof.dependantIdDocument,
+          "idDocumentValue": this.sof.dependantDocNumber,
+          "mobileNo": this.sof.dependantMobileNo,
+          "email": this.sof.dependantEmail,
+          "spouse": this.sof.dependantSpouse
+        },
+        "children": [...this.dependant_children.values()],
+        "nextOfKin": {
+          "surname": this.nok.nokSurname,
+          "foreNames": this.nok.nokForenames,
+          "dateOfBirth": this.nok.nokDoB,
+          "idDocumentType": this.nok.nokIdDocument,
+          "idDocumentValue": this.nok.nokDocNumber,
+          "mobileNo": this.nok.nokMobileNo,
+          "email": this.nok.nokEmail,
+        }
+      },
+      "individualRetirementScheme": {},
+      "maxpacPersonalAccident": {},
+      "privateVehicleInsurance": {},
+      "studentInternship": {},
+      "unitTrust": {}
+    }
   }
 
 }

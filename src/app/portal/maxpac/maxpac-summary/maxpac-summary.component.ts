@@ -24,7 +24,7 @@ export class MaxpacSummaryComponent {
   spouse: any = null
   declarations: any = null
   children: Map<string, MaxpacChildren> = new Map<string, MaxpacChildren>()
-  
+
   form: FormGroup = new FormGroup({
     // firstName: new FormControl(''),
   })
@@ -52,17 +52,22 @@ export class MaxpacSummaryComponent {
     this.declarations = JSON.parse(this.fs.getPageData('Declarations'))
     var childrenJSON = this.fs.getPageData('Children_children') || '{}'
     var childrenObj = JSON.parse(childrenJSON)
-    Object.keys(childrenObj).forEach((key: string) => {
-      var c = childrenObj[key]
-      var child: MaxpacChildren = {
-        fullName: c.fullName,
-        dateOfBirth: c.dateOfBirth,
-        cover: c.cover,
-        premiumAmount: c.premiumAmount
+    Object.keys(childrenObj).forEach(
+      (key: string) => {
+        var c = childrenObj[key]
+        var child: MaxpacChildren = {
+          fullName: c.fullName,
+          dateOfBirth: c.dateOfBirth,
+          cover: c.cover,
+          premiumAmount: c.premiumAmount
+        }
+        this.children.set(key, child)
       }
-      this.children.set(key, child)
-    }
     )
+
+    // TODO: Dump the Map ...
+    var stateObj = this.fs.dump()
+    console.log('State for Maxpac', JSON.stringify(Object.fromEntries(stateObj)))
   }
 
   onSubmit() {

@@ -99,6 +99,10 @@ export class UnitTrustSummaryComponent {
     this.form1.patchValue(this.sourceOfFunds)
     this.form2.patchValue(this.incomeDistribution)
     this.form3.patchValue(this.incomeDistribution)
+
+    // TODO: Dump the Map ...
+    var stateObj = this.fs.dump()
+    console.log('State for Unit Trust', JSON.stringify(Object.fromEntries(stateObj)))
   }
 
   onSubmit() {

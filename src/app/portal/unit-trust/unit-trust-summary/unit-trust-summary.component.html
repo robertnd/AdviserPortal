@@ -204,9 +204,9 @@
                 </div>
             </div>
             <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>(If self-employed, kindly state the nature of business activity including the source of funds
-                        for permiums)</label>
+                <div class="text-intg-summary" *ngIf="occupation.natureOfBusiness">
+                    <label>If self-employed, kindly state the nature of business activity including the source of funds
+                        for permiums</label>
                     {{ occupation.natureOfBusiness }}
                 </div>
             </div>

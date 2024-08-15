@@ -16,7 +16,7 @@
                 <h1 class="functional__heading">{{ journey }} Summary</h1>
             </div>
         </div>
-        
+
         <div id="personalInfoSummary">
             <div class="form-row">
                 <div class="overview">
@@ -200,9 +200,9 @@
                 </div>
             </div>
             <div class="summary-row">
-                <div class="text-intg-summary">
-                    <label>(If self-employed, kindly state the nature of business activity including the source of funds
-                        for permiums)</label>
+                <div class="text-intg-summary" *ngIf="occupation.natureOfBusiness">
+                    <label>If self-employed, kindly state the nature of business activity including the source of funds
+                        for permiums</label>
                     {{ occupation.natureOfBusiness }}
                 </div>
             </div>
@@ -269,8 +269,28 @@
                 <div class="text-intg-summary"></div>
                 <div class="text-intg-summary"></div>
             </div>
+
+            <div class="form-row">
+                <form [formGroup]="form">
+                    <div class="checkBoxGroup">
+                        <input type="checkbox" id="employment" value="employment" formControlName="employment" readonly />
+                        <label for="employment">Employment</label>
+                        <input type="checkbox" id="savings" value="savings" formControlName="savings" readonly />
+                        <label for="savings">Savings</label>
+                        <input type="checkbox" id="gifts" value="gifts" formControlName="gifts" readonly />
+                        <label for="gifts">Gift(s)</label>
+                        <input type="checkbox" id="inheritance" value="inheritance" formControlName="inheritance" readonly />
+                        <label for="inheritance">Inheritance</label>
+                        <input type="checkbox" id="disposalOfProperty" value="disposalOfProperty" formControlName="disposalOfProperty" readonly />
+                        <label for="disposalOfProperty">Disposal of Property</label>
+                        <input type="checkbox" id="other" value="other" formControlName="other" readonly />
+                        <label for="other">Other (please specify)</label>
+                    </div>
+                </form>
+            </div>
+
             <div class="summary-row">
-                <div class="text-intg-summary">
+                <div class="text-intg-summary" *ngIf="sof.sourceOfFundsOther">
                     <label>If "Other", please specify</label>
                     {{ sof.sourceOfFundsOther }}
                 </div>
@@ -397,12 +417,13 @@
                     <!-- for :last-child css directive  -->
                 </div>
             </div>
-            
+
             <div class="summary-row">
                 <div class="text-intg-summary"></div>
                 <div class="text-intg-summary"></div>
                 <div class="text-intg-summary">
-                    <button class="ombutton-link" type="button" (click)="navigate('/portal/personal-pension/pension-source-of-funds')">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/personal-pension/pension-source-of-funds')">
                         Edit Source of Funds
                     </button>
                 </div>
@@ -688,6 +709,6 @@
             <div class="summary-row">
             </div>
         </div>
-        
+
     </div>
 </div>

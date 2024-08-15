@@ -14,7 +14,40 @@
 
       <div class="form-row">
         <div class="text-input-intg">
-          <label for="firstName">Source of Funds</label>
+          <label>Source of Funds</label>
+        </div>
+        <div class="text-input-intg"></div>
+        <div class="text-input-intg"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="checkBoxGroup">
+          <input type="checkbox" id="employment" value="employment" formControlName="employment" (click)="selectionCheck()" />
+          <label for="employment">Employment</label>
+          <input type="checkbox" id="savings" value="savings" formControlName="savings" (click)="selectionCheck()" />
+          <label for="savings">Savings</label>
+          <input type="checkbox" id="gifts" value="gifts" formControlName="gifts" (click)="selectionCheck()" />
+          <label for="gifts">Gift(s)</label>
+          <input type="checkbox" id="inheritance" value="inheritance" formControlName="inheritance" (click)="selectionCheck()" />
+          <label for="inheritance">Inheritance</label>
+          <input type="checkbox" id="disposalOfProperty" value="disposalOfProperty" formControlName="disposalOfProperty" (click)="selectionCheck()" />
+          <label for="disposalOfProperty">Disposal of Property</label>
+          <input type="checkbox" id="other" value="other" formControlName="other" (click)="selectionCheck()" />
+          <label for="other">Other (please specify)</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div *ngIf="submitted && form.errors && form.errors['mustHaveSourceOfFunds']" class="invalid-input data-table-error">
+          <div *ngIf="form.errors && form.errors['mustHaveSourceOfFunds']">
+            At least one source of funds is required
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="form-row">
+        <div class="text-input-intg">
+          <label for="sourceOfFunds">Source of Funds</label>
           <select id="sourceOfFunds" formControlName="sourceOfFunds">
             <option></option>
             <option>Employment</option>
@@ -32,7 +65,7 @@
         </div>
         <div class="text-input-intg"></div>
         <div class="text-input-intg"></div>
-      </div>
+      </div> -->
 
       <div class="form-row">
         <div class="text-input-intg">

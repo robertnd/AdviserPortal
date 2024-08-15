@@ -51,20 +51,21 @@ export class ContactsComponent implements OnInit {
   }
 
   onSubmit() {
-
-    this.router.navigate(['/portal/occupation'])
-    
     this.submitted = true;
     if (this.form.invalid) {
       return
     }
 
+    console.log(this.pageTitle, JSON.stringify(this.form.value))
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate(['/portal/occupation'])
-    
   }
 
   previous() {
     this.router.navigate(['/portal/personal-info'])
+  }
+
+  mock() {
+    return 
   }
 }

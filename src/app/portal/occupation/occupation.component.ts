@@ -60,8 +60,22 @@ export class OccupationComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true
+    if (this.form.invalid) {
+      return
+    }
 
-    // short circuit
+    if (this.f['typeOfEmployment'].value === 'Self Employed' && !this.f['natureOfBusiness'].value) {
+      this.f['natureOfBusiness'].setErrors({ 'conditionalRequired': true })
+      return
+    }
+
+    this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
+
+    if (this.journey == 'Personal Pension Plan') {
+      this.router.navigate(['/portal/personal-pension/sof'])
+    }
+    this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     let journey = this.utilService.getCurrentJourney()
     var destination = ''
     switch (journey) {
@@ -94,26 +108,8 @@ export class OccupationComponent implements OnInit {
         break
       }
     }
+    console.log(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate([destination])
-
-    this.submitted = true
-    if (this.form.invalid) {
-      return
-    }
-
-    if (this.f['typeOfEmployment'].value === 'Self Employed' && !this.f['natureOfBusiness'].value) {
-      this.f['natureOfBusiness'].setErrors({ 'conditionalRequired': true })
-      return
-    }
-
-    this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-
-    if (this.journey == 'Personal Pension Plan') {
-      this.router.navigate(['/portal/personal-pension/sof'])
-    }
-    this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-
-    
   }
 
   previous() {

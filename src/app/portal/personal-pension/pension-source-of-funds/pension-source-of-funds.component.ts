@@ -18,7 +18,13 @@ export class PensionSourceOfFundsComponent implements OnInit {
   showSelf = false
   showEmployed = false
   form: FormGroup = new FormGroup({
-    sourceOfFunds: new FormControl(''),
+    // sourceOfFunds: new FormControl(''),
+    employment: new FormControl(false),
+    savings: new FormControl(false),
+    gifts: new FormControl(false),
+    inheritance: new FormControl(false),
+    disposalOfProperty: new FormControl(false),
+    other: new FormControl(''),
     sourceOfFundsOther: new FormControl(''),
     remittance: new FormControl(''),
     selfEmployed_Contribution: new FormControl(''),
@@ -47,7 +53,6 @@ export class PensionSourceOfFundsComponent implements OnInit {
     'employed_A2Contribution', 'employed_B1Contribution', 'employed_MoR', 'employed_Bank', 'employed_Branch',
     'employed_AccName', 'employed_AccNo', 'employed_Designation']
 
-
   constructor(
     private fb: FormBuilder,
     private alertService: AlertService,
@@ -62,9 +67,13 @@ export class PensionSourceOfFundsComponent implements OnInit {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
-    // sourceOfFunds: ['', Validators.required],
     this.form = this.fb.group({
-      sourceOfFunds: ['', Validators.required],
+      employment: [false],
+      savings: [false],
+      gifts: [false],
+      inheritance: [false],
+      disposalOfProperty: [false],
+      other: [false],
       sourceOfFundsOther: [''],
       remittance: ['', Validators.required],
       selfEmployed_Contribution: [''],
@@ -124,11 +133,27 @@ export class PensionSourceOfFundsComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true
-    if (this.form.invalid) {
+    // if (this.form.invalid) {
+    //   return
+    // }
+
+    // if (this.f['sourceOfFunds'].value === 'Other' && !this.f['sourceOfFundsOther'].value) {
+    //   this.f['sourceOfFundsOther'].setErrors({ 'conditionalRequired': true })
+    //   return
+    // }
+
+    if (
+      !this.f['employment'].value &&
+      !this.f['savings'].value &&
+      !this.f['gifts'].value &&
+      !this.f['inheritance'].value &&
+      !this.f['disposalOfProperty'].value &&
+      !this.f['other'].value) {
+      this.form.setErrors({ 'mustHaveSourceOfFunds': true })
       return
     }
 
-    if (this.f['sourceOfFunds'].value === 'Other' && !this.f['sourceOfFundsOther'].value) {
+    if (this.f['other'].value && !this.f['sourceOfFundsOther'].value) {
       this.f['sourceOfFundsOther'].setErrors({ 'conditionalRequired': true })
       return
     }
@@ -189,7 +214,7 @@ export class PensionSourceOfFundsComponent implements OnInit {
         hasErrors = true
       }
     }
-    
+
     if (hasErrors) return
     // TODO: if the user changes their mind between Self and Employment, any earlier captured information
     // remains cached in the state, and hence it is important to unset any unrequired data before sending it across to the
@@ -198,9 +223,29 @@ export class PensionSourceOfFundsComponent implements OnInit {
     this.router.navigate(['/portal/personal-pension/residential-address'])
   }
 
+  selectionCheck() {
+    if (!this.f['other'].value && this.f['sourceOfFundsOther'].errors) {
+      // unset this error
+      this.f['sourceOfFundsOther'].setErrors({ 'conditionalRequired': null })
+      this.form.updateValueAndValidity()
+    }
+
+    if (
+      this.f['employment'].value ||
+      this.f['savings'].value ||
+      this.f['gifts'].value ||
+      this.f['inheritance'].value ||
+      this.f['disposalOfProperty'].value ||
+      this.f['other'].value) {
+      if (this.form.hasError('mustHaveSourceOfFunds')) {
+        this.form.setErrors({ 'mustHaveSourceOfFunds': null })
+        // delete this.form.errors!['mustHavePaymentMethod']
+        this.form.updateValueAndValidity()
+      }
+    }
+  }
+
   previous() {
     this.router.navigate(['/portal/occupation'])
   }
-
-
 }

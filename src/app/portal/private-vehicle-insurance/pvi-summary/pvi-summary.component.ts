@@ -83,6 +83,10 @@ export class PviSummaryComponent {
     )
 
     this.form.patchValue(this.claims)
+
+    // TODO: Dump the Map ...
+    var stateObj = this.fs.dump()
+    console.log('State for Private Vehicle Insurance', JSON.stringify(Object.fromEntries(stateObj)))
   }
 
   onSubmit() {

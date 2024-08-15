@@ -62,7 +62,6 @@ export class PviConsentComponent {
 
   onSubmit() {
     this.submitted = true
-    this.router.navigate(['/portal/private-vehicle-insurance/pvi-vehicles'])
     if (this.form.invalid) {
       return
     }

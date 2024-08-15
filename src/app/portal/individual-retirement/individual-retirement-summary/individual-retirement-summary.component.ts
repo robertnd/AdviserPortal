@@ -58,20 +58,25 @@ export class IndividualRetirementSummaryComponent {
 
     var beneficiariesJSON = this.fs.getPageData('Beneficiaries_irBeneficiaries') || '{}'
     var beneficiariesObj = JSON.parse(beneficiariesJSON)
-    Object.keys(beneficiariesObj).forEach((key: string) => {
-      var b = beneficiariesObj[key]
-      this.beneficiaries.set(
-        key,
-        new Beneficiary(
-          b.fullname,
-          b.relationship,
-          b.dob,
-          b.addressAndCode,
-          b.addressAndCode,
-          b.benefitShare
-        ))
-    }
+    Object.keys(beneficiariesObj).forEach(
+      (key: string) => {
+        var b = beneficiariesObj[key]
+        this.beneficiaries.set(
+          key,
+          new Beneficiary(
+            b.fullname,
+            b.relationship,
+            b.dob,
+            b.addressAndCode,
+            b.addressAndCode,
+            b.benefitShare
+          ))
+      }
     )
+
+    // TODO: Dump the Map ...
+    var stateObj = this.fs.dump()
+    console.log('State for Individual Retirement', JSON.stringify(Object.fromEntries(stateObj)))
   }
 
   onSubmit() {

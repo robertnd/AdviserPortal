@@ -199,7 +199,7 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['ownerOfVehicles'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['ownerOfVehicles'].errors" class="invalid-input">
                         <div *ngIf="f['ownerOfVehicles'].errors['required']">
                             Required
                         </div>
@@ -212,7 +212,7 @@
                     <label for="otherOwner">If you are not the owner, state the name of the owner and his/her
                         address. (Attach a copy of the log book)</label>
                     <textarea rows="1" id="otherOwner" formControlName="otherOwner"></textarea>
-                    <div *ngIf="f['otherOwner'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['otherOwner'].errors" class="invalid-input">
                         <div *ngIf="f['otherOwner'].errors['conditionalRequired']">
                             Required
                         </div>
@@ -228,7 +228,7 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['otherPartyInterest'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['otherPartyInterest'].errors" class="invalid-input">
                         <div *ngIf="f['otherPartyInterest'].errors['required']">
                             Required
                         </div>
@@ -256,7 +256,7 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['leftHandDrive'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['leftHandDrive'].errors" class="invalid-input">
                         <div *ngIf="f['leftHandDrive'].errors['required']">
                             Required
                         </div>
@@ -272,7 +272,7 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['dutyPaid'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['dutyPaid'].errors" class="invalid-input">
                         <div *ngIf="f['dutyPaid'].errors['required']">
                             Required
                         </div>
@@ -288,7 +288,7 @@
                         <option>Yes</option>
                         <option>No</option>
                     </select>
-                    <div *ngIf="f['fittedWithAntiTheft'].errors" class="invalid-input">
+                    <div *ngIf="submitted && f['fittedWithAntiTheft'].errors" class="invalid-input">
                         <div *ngIf="f['fittedWithAntiTheft'].errors['required']">
                             Required
                         </div>

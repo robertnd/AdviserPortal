@@ -35,7 +35,8 @@ export class SelectPlanComponent implements OnInit {
       return
     }
     let selectedOption = this.form.value["planselector"] || ''
-    this.fs.unset() // clear the state map
+    // clear the state map
+    // this.fs.unset() 
     this.utilService.setCurrentJourney(selectedOption)
     this.router.navigate(['/portal/personal-info'])
   }
