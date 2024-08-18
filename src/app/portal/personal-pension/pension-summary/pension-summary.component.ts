@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl } from '@angular/forms'
 import { Router } from '@angular/router'
-import { v4 as uuidv4 } from 'uuid'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 import { Beneficiary, Child } from '@app/_models'
-import { getContacts, getOccupation, getPersonalInfo } from '@app/_helpers/utils'
+import { getContacts, getOccupation, getPersonalInfo, pickleError, removeSpinner, showSpinner } from '@app/_helpers/utils'
+import { BizService } from '@app/_services/biz.service'
 
 @Component({
   selector: 'app-pension-summary',
@@ -26,6 +26,7 @@ export class PensionSummaryComponent implements OnInit {
   dependant_children: Map<string, Child> = new Map<string, Child>()
   nok: any = null
   beneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
+  upstreamServerErrorMsg = ''
 
   form: FormGroup = new FormGroup({
     employment: new FormControl(false),
@@ -39,6 +40,8 @@ export class PensionSummaryComponent implements OnInit {
   constructor(
     private utilService: UtilService,
     private fs: FormStateService,
+    private bizService: BizService,
+    private alertService: AlertService,
     private router: Router) { }
 
   get f() { return this.form.controls }
@@ -77,7 +80,7 @@ export class PensionSummaryComponent implements OnInit {
     // TODO: Dump the Map ...
     var stateObj = this.fs.dump()
     console.log('State for Personal Pension', JSON.stringify(Object.fromEntries(stateObj)))
-    console.log('PAYLOAD DUMP', JSON.stringify(this.transform()))
+    // console.log('PAYLOAD DUMP', JSON.stringify(this.transform()))
   }
 
   sofValues() {
@@ -100,12 +103,39 @@ export class PensionSummaryComponent implements OnInit {
     this.router.navigate(['/portal/personal-pension/beneficiaries'])
   }
 
+  upstreamSubmit() {
+    this.upstreamServerErrorMsg = ''
+    showSpinner()
+    let requestObj = this.transform()
+    let BIZ_API = 'http://localhost:19090/api/v1/onboard/motorvehicle'
+    // let BIZ_API = '	https://webhook.site/73e9969d-dcc3-41d9-81f4-41d418392722'
+    let WIP_API = 'https://oldmutual.vergeinteractivelabs.com:19090/api/v1/onboard/other/'
+    
+    this.bizService.testRequest(requestObj, BIZ_API).subscribe({
+      next: result => {
+        if (result.statusCode === "0" || result.statusCode === "200") {
+          removeSpinner()
+        } else {
+          removeSpinner()
+          this.upstreamServerErrorMsg = `Unknown condition : ${pickleError(result)}`
+          this.alertService.error(this.upstreamServerErrorMsg)
+        }
+      },
+      error: err => {
+        removeSpinner()
+        this.upstreamServerErrorMsg = `An error occurred : ${pickleError(err)}`
+        this.alertService.error(this.upstreamServerErrorMsg)
+      }
+    }
+    )
+  }
+
   transform() {
     return {
       "personalInfo": getPersonalInfo(this.personalInfo),
       "contacts": getContacts(this.contacts),
       "occupation": getOccupation(this.occupation),
-      "onboardTrackingNo": uuidv4(),
+      "onboardTrackingNo": this.utilService.getTrackingID(),
       "pensionInfo": {
         "sourceOfFunds": [...this.sofValues()],
         "otherSourceOfFundsDesc": this.sof.sourceOfFundsOther,

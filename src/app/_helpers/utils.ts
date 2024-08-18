@@ -17,7 +17,7 @@ export function getPersonalInfo(personalInfo: any) {
     }
 }
 
-export function getContacts(contacts: any) { 
+export function getContacts(contacts: any) {
     return {
         "postalAddress": contacts.postalAddress,
         "postalCode": contacts.postalCode,
@@ -42,5 +42,48 @@ export function getOccupation(occupation: any) {
         "workPhoneNo": occupation.workPhone,
         "workEmail": occupation.workEmail
     }
+}
+
+export type KeyMapping = {
+    [oldKey: string]: string
+}
+
+export function renameKeys<T extends object>(array: T[], keyMapping: KeyMapping): Array<{ [key: string]: any }> {
+    return array.map(item => {
+        const newItem: { [key: string]: any } = {}
+        for (const key in item) {
+            if (item.hasOwnProperty(key)) {
+                const newKey = keyMapping[key] || key
+                newItem[newKey] = item[key]
+            }
+        }
+        return newItem
+    })
+}
+
+export function showSpinner() {
+    // var node = document.createElement("li")
+    var node = document.createElement("div")
+    var imgNode = document.createElement("img")
+    imgNode.src = "../../assets/img/spinner.gif"
+    node.appendChild(imgNode)
+    // document.getElementById('spinnerList')!.appendChild(node)
+    document.getElementById('spinnerDiv')!.appendChild(node)
+}
+
+export function removeSpinner() {
+    // const spinner = document.getElementById('spinnerList')!
+    const spinner = document.getElementById('spinnerDiv')!
+    while (spinner.hasChildNodes()) {
+        spinner.removeChild(spinner.firstChild!)
+    }
+}
+
+export function pickleError(obj: any) {
+    var msg = 'Unknown condition'
+    if (obj && obj.error && obj.error.message) msg = obj.error.message
+    else if (obj && obj.message) msg = obj.message
+    else msg = JSON.stringify(obj)
+    return msg
 }
 

@@ -3,9 +3,10 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { getContacts, getOccupation, getPersonalInfo, KeyMapping, pickleError, removeSpinner, renameKeys, showSpinner } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 import { MaxpacChildren } from '@app/_models'
+import { BizService } from '@app/_services/biz.service'
 
 @Component({
   selector: 'app-maxpac-summary',
@@ -24,9 +25,9 @@ export class MaxpacSummaryComponent {
   spouse: any = null
   declarations: any = null
   children: Map<string, MaxpacChildren> = new Map<string, MaxpacChildren>()
+  upstreamServerErrorMsg = ''
 
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
   })
 
   constructor(
@@ -34,6 +35,7 @@ export class MaxpacSummaryComponent {
     private alertService: AlertService,
     private utilService: UtilService,
     private fs: FormStateService,
+    private bizService: BizService,
     private router: Router) {
   }
 
@@ -66,8 +68,10 @@ export class MaxpacSummaryComponent {
     )
 
     // TODO: Dump the Map ...
-    var stateObj = this.fs.dump()
-    console.log('State for Maxpac', JSON.stringify(Object.fromEntries(stateObj)))
+    // var stateObj = this.fs.dump()
+    // console.log('State for Maxpac', JSON.stringify(Object.fromEntries(stateObj)))
+
+    console.log('PAYLOAD DUMP', JSON.stringify(this.transform()))
   }
 
   onSubmit() {
@@ -88,4 +92,114 @@ export class MaxpacSummaryComponent {
     this.router.navigate([link])
   }
 
+  upstreamSubmit() {
+    this.upstreamServerErrorMsg = ''
+    showSpinner()
+    let requestObj = this.transform()
+    let BIZ_API = 'http://localhost:19090/api/v1/onboard/motorvehicle'
+    // let BIZ_API = '	https://webhook.site/73e9969d-dcc3-41d9-81f4-41d418392722'
+    let WIP_API = 'https://oldmutual.vergeinteractivelabs.com:19090/api/v1/onboard/other/'
+    
+    this.bizService.testRequest(requestObj, BIZ_API).subscribe({
+      next: result => {
+        if (result.statusCode === "0" || result.statusCode === "200") {
+          removeSpinner()
+        } else {
+          removeSpinner()
+          this.upstreamServerErrorMsg = `Unknown condition : ${pickleError(result)}`
+          this.alertService.error(this.upstreamServerErrorMsg)
+        }
+      },
+      error: err => {
+        removeSpinner()
+        this.upstreamServerErrorMsg = `An error occurred : ${pickleError(err)}`
+        this.alertService.error(this.upstreamServerErrorMsg)
+      }
+    }
+    )
+  }
+
+  transform() {
+    const keyMapping: KeyMapping = {
+      fullName: 'names',
+      dateOfBirth: 'dob'
+    }
+
+    return {
+      "personalInfo": getPersonalInfo(this.personalInfo),
+      "contacts": getContacts(this.contacts),
+      "occupation": getOccupation(this.occupation),
+      "onboardTrackingNo": this.utilService.getTrackingID(),
+      "individualRetirementScheme": {},
+      "pensionInfo": {},
+      "maxpacPersonalAccident": {
+        "beneficiary": {
+          "postalAddress": this.beneficiary.pobox,
+          "town": this.beneficiary.town,
+          "telephoneNo": this.beneficiary.telephoneNo,
+          "cellphoneNo": this.beneficiary.mobileNo,
+          "idDocumentType": this.beneficiary.idDocument,
+          "idDocumentValue": this.beneficiary.docNumber,
+          "periodOfInsuranceFrom": this.beneficiary.insuredFrom,
+          "periodOfInsuranceTo": this.beneficiary.insuredTo,
+          "email": this.beneficiary.email,
+          "accountNo": this.beneficiary.accountNo
+        },
+        "spouse": {
+          "idDocumentType": this.spouse.idDocument,
+          "idDocumentValue": this.spouse.docNumber,
+          "PINNo": this.spouse.pinNo,
+          "occupation": this.spouse.occupation,
+          "mobileNo": this.spouse.mobileNo,
+          "dateOfBirth": this.spouse.dateOfBirth,
+          "selectedCoverForInsured": this.spouse.coverOptionForInsured,
+          "insuredPremiumAmount": this.spouse.premiumAmountInsured,
+          "selectedCoverForSpouse": this.spouse.coverOptionForSpouse,
+          "spousePremiumAmount": this.spouse.premiumAmountSpouse
+        },
+        "children": renameKeys([...this.children.values()], keyMapping),
+        "paymentMode": this.declarations.paymentMode,
+        "otherInformation": {
+          "have_you_previously_held_a_personal_accident_policy": {
+            "answer": this.declarations.hasHeldAccidentPolicy,
+            "answerDetails": {
+              "nameOfInsurance": this.declarations.insurance,
+              "branch": this.declarations.branch,
+              "address": this.declarations.address,
+              "policyNumber": this.declarations.policyNo
+            }
+          },
+          "has_any_insurer_in_connection_with_the_person_to_be_insured": {
+            "deferred_or_declined_a_proposal": this.declarations.deferredOrDeclined,
+            "refused_renewal": this.declarations.refusedRenewal,
+            "terminated_an_insurance": this.declarations.terminated,
+            "required_an_increased_premium": this.declarations.increasedPremium,
+            "imposed_special_conditions": this.declarations.specialConditions,
+            "answerDetails": this.declarations.detailsOnYes
+          },
+          "will_this_insurance_be_additional_to_any_other_personal_accident_policy": {
+            "answer": this.declarations.additionalInsurance,
+            "answerDetails": {
+              "numberOfOtherPersonalAccidentPolicies": this.declarations.noOfOtherPolicies,
+              "totalBenefitOfOtherPoliciesKshs": this.declarations.totalDeathBenefit
+            }
+          }
+        },
+        "totalPremium": this.declarations.totalPremium,
+        "are_you_dealing_with_OM": this.declarations.directOrIntermediaries,
+        "consentToProcessMarketingData": {
+          "consentDetails": this.declarations.marketingConsent,
+          "dateOfConsent": this.declarations.dateOfEntry
+        },
+        "declaration": {
+          "dateOfDeclaration": this.declarations.dateOfEntry
+        }
+      },
+      "privateVehicleInsurance": {},
+      "studentInternship": {},
+      "unitTrust": {}
+    }
+  }
+
 }
+

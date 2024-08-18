@@ -491,17 +491,23 @@
             </div>
 
             <div class="summary-row">
+                <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
+                    {{ upstreamServerErrorMsg }}
+                </div>
             </div>
+
+            <div class="summary-row"></div>
 
             <div class="summary-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev
                 </button>
-                <!-- <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
-                    next
+                <button class="ombutton lefted with-icon" type="submit" (click)="upstreamSubmit()">
+                    submit
                     <img src="../../assets/img/arrow-right-light.svg" alt="" />
-                </button> -->
+                </button>
+                <div id="spinnerDiv"></div>
             </div>
 
             <div class="summary-row">

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
-
-import { Page } from '@app/_models';
+import { v4 as uuidv4 } from 'uuid'
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +10,7 @@ export class UtilService {
   private currPageSubject = new Subject<string>()
   private journeyDataSubject = new Subject<Map<string, string>>()
   journey?: string
+  trackingID: string = ''
 
   // onPageLoad(): Observable<string> {
   //   return this.pagesSubject.asObservable()
@@ -38,11 +37,21 @@ export class UtilService {
   setCurrentJourney(journey: string) {
     this.journey = journey 
     this.pagesSubject.next(journey)
+    this.trackingID = uuidv4()
+  }
+
+  getTrackingID() {
+    return this.trackingID
   }
 
   unsetJourney() {
     this.setCurrentJourney('')
+    this.trackingID = ''
   }
 
   constructor() { }
 }
+function uuid(): string {
+  throw new Error('Function not implemented.');
+}
+

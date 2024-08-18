@@ -53,28 +53,31 @@ export class BeneficiariesForProceedsComponent {
     this.form.patchValue(JSON.parse(pageData))
     var beneficiariesJSON = this.fs.getPageData(`${this.pageTitle}_irBeneficiaries`) || '{}'
     var beneficiariesObj = JSON.parse(beneficiariesJSON)
-    Object.keys(beneficiariesObj).forEach((key: string) => {
+
+    // fullname, relationship, addressAndCode, phoneNo, dob, benefitShare
+    Object.keys(beneficiariesObj).forEach(
+      (key: string) => {
       var b = beneficiariesObj[key]
       this.irBeneficiaries.set(
         key,
         new Beneficiary(
           b.fullname,
           b.relationship,
+          b.addressAndCode,
+          '',
           b.dob,
-          b.addressAndCode,
-          b.addressAndCode,
           b.benefitShare
         ))
-    }
+      }
     )
-    
+
   }
 
   onSubmit() {
     this.submitted = true
-    if (this.form.invalid) {
-      return
-    }
+    // if (this.form.invalid) {
+    //   return
+    // }
 
     if (this.irBeneficiaries.size == 0) {
       this.form.setErrors({ 'mustHaveBeneficiary': true })
@@ -142,7 +145,7 @@ export class BeneficiariesForProceedsComponent {
     } else {
       // remove error if it was present
       if (this.form.hasError('allMustBeLessThan100')) {
-        this.form.setErrors({'allMustBeLessThan100': null})
+        this.form.setErrors({ 'allMustBeLessThan100': null })
         this.form.updateValueAndValidity()
       }
     }
@@ -155,9 +158,9 @@ export class BeneficiariesForProceedsComponent {
         new Beneficiary(
           this.f['beneficiariesNames'].value,
           this.f['beneficiariesRelationship'].value,
+          this.f['phoneAndAddress'].value,
+          '',
           this.f['beneficiariesDoB'].value,
-          this.f['phoneAndAddress'].value,
-          this.f['phoneAndAddress'].value,
           this.f['beneficiariesShare'].value)
       )
       // if user clicks "next" before adding a beneficiary the page is stuck by the error flag

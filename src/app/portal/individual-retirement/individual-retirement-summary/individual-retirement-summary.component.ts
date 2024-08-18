@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core'
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
-import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { getContacts, getOccupation, getPersonalInfo, KeyMapping, pickleError, removeSpinner, renameKeys, showSpinner } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 import { Beneficiary } from '@app/_models'
+import { BizService } from '@app/_services/biz.service'
 
 @Component({
   selector: 'app-individual-retirement-summary',
@@ -25,6 +25,7 @@ export class IndividualRetirementSummaryComponent {
   modeOfPayment: any = null
   benefitsBreakdownText: string = ''
   beneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
+  upstreamServerErrorMsg = ''
   form: FormGroup = new FormGroup({
     standingOrder: new FormControl(''),
     debitOrder: new FormControl(''),
@@ -33,9 +34,10 @@ export class IndividualRetirementSummaryComponent {
 
   constructor(
     private fb: FormBuilder,
-    private alertService: AlertService,
     private utilService: UtilService,
     private fs: FormStateService,
+    private alertService: AlertService,
+    private bizService: BizService,
     private router: Router) {
   }
 
@@ -66,17 +68,19 @@ export class IndividualRetirementSummaryComponent {
           new Beneficiary(
             b.fullname,
             b.relationship,
+            b.addressAndCode,
+            '',
             b.dob,
-            b.addressAndCode,
-            b.addressAndCode,
             b.benefitShare
           ))
       }
     )
 
     // TODO: Dump the Map ...
-    var stateObj = this.fs.dump()
-    console.log('State for Individual Retirement', JSON.stringify(Object.fromEntries(stateObj)))
+    // var stateObj = this.fs.dump()
+    // console.log('State for Individual Retirement', JSON.stringify(Object.fromEntries(stateObj)))
+
+    console.log('PAYLOAD DUMP', JSON.stringify(this.transform()))
   }
 
   onSubmit() {
@@ -90,12 +94,90 @@ export class IndividualRetirementSummaryComponent {
     this.router.navigate(['/portal/contacts'])
   }
 
+  modeOfPaymentValues() {
+    var values = []
+    if (this.f['standingOrder'].value) values.push('Standing Order')
+    if (this.f['debitOrder'].value) values.push('Debit Order')
+    if (this.f['employerCheckOff'].value) values.push('Employer Check Off')
+    return values
+  }
+
   previous() {
     this.router.navigate(['/portal/individual-retirement/consent'])
   }
 
   navigate(link: string) {
     this.router.navigate([link])
+  }
+
+  upstreamSubmit() {
+    this.upstreamServerErrorMsg = ''
+    showSpinner()
+    let requestObj = this.transform()
+    let BIZ_API = 'http://localhost:19090/api/v1/onboard/motorvehicle'
+    // let BIZ_API = '	https://webhook.site/73e9969d-dcc3-41d9-81f4-41d418392722'
+    let WIP_API = 'https://oldmutual.vergeinteractivelabs.com:19090/api/v1/onboard/other/'
+    
+    this.bizService.testRequest(requestObj, BIZ_API).subscribe({
+      next: result => {
+        if (result.statusCode === "0" || result.statusCode === "200") {
+          removeSpinner()
+        } else {
+          removeSpinner()
+          this.upstreamServerErrorMsg = `Unknown condition : ${pickleError(result)}`
+          this.alertService.error(this.upstreamServerErrorMsg)
+        }
+      },
+      error: err => {
+        removeSpinner()
+        this.upstreamServerErrorMsg = `An error occurred : ${pickleError(err)}`
+        this.alertService.error(this.upstreamServerErrorMsg)
+      }
+    }
+    )
+  }
+
+  transform() {
+    const keyMapping: KeyMapping = {
+      fullname: 'names',
+      addressAndCode: 'address',
+      phoneNo: 'phone',
+      benefitShare: 'share'
+    }
+
+    return {
+      "personalInfo": getPersonalInfo(this.personalInfo),
+      "contacts": getContacts(this.contacts),
+      "occupation": getOccupation(this.occupation),
+      "onboardTrackingNo": this.utilService.getTrackingID(),
+      "individualRetirementScheme": {
+          "beneficiaries": renameKeys([...this.beneficiaries.values()], keyMapping),
+          "modeOfPayment": [...this.modeOfPaymentValues()],
+          "fundsBreakdown": this.benefitsBreakdownText,
+          "consentToProcessDataOutsideKenya": {
+            "consentGrantedBy": this.consent.personalDataConsentName,
+            "dateOfConsent": this.consent.childDataConsentDate
+          },
+          "consentToProcessChildData": {
+            "consentGrantedBy": this.consent.childDataConsentName,
+            "dateOfConsent": this.consent.childDataConsentDate
+          },
+          "consentToProcessMarketingData": {
+            "choice":  this.consent.consentChoice,
+            "name": this.consent.marketingDataConsentName,
+            "date": this.consent.marketingDataConsentDate
+          },
+          "declaration": {
+            "personMakingDeclaration": this.consent.declarationName,
+            "dateOfDeclaration":  this.consent.declarationDate
+          }
+        },
+      "pensionInfo": {},
+      "maxpacPersonalAccident": {},
+      "privateVehicleInsurance": {},
+      "studentInternship": {},
+      "unitTrust": {}
+    }
   }
 
 }

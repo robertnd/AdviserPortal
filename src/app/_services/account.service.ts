@@ -11,15 +11,15 @@ const AUTH_API = 'http://localhost:9085/api/v1/user/'
 
 const dummyUser: User = {
     "message": "Login successful",
-    "profileName": "Mildred Vusha Olindo",
+    "profileName": "Angela Melani",
     "authenticated": true,
     "token": {
         "issuedAt": "2024-07-26T07:16:31.744+00:00",
         "expiresAt": "2024-07-26T10:16:31.744+00:00",
         "durationInSeconds": 10800,
         "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtdm9saW5kb0BvbGRtdXR1YWwuY28ua2UiLCJhdWQiOlsiUk9MRV9JTlRFUk1FRCJdLCJuYmYiOjE3MjE5NzgxOTEsImlzcyI6ImFwaS5pc3N1ZXIudmVyZ2VpbnRlcmFjdGl2ZS5jby5rZSIsImV4cCI6MTcyMTk4ODk5MSwidXNlcmlkIjoibXZvbGluZG9Ab2xkbXV0dWFsLmNvLmtlIiwiaWF0IjoxNzIxOTc4MTkxfQ.FQYMU2EE10fWWYUGVrRRwiXssE2D4-APnTTgoHxHF3x9ntxEtxmIbDG3eBbWJKi0xckwRKzuIbX2omqzf3_KDg",
-        "userName": "mvolindo@oldmutual.co.ke",
-        "email": "mvolindo@oldmutual.co.ke",
+        "userName": "amelani@adviser.oldmutual.co.ke",
+        "email": "amelani@adviser.oldmutual.co.ke",
         "roles": [
             "ROLE_INTERMED"
         ],
@@ -45,8 +45,8 @@ export class AccountService {
   public user: Observable<User | null>
 
   constructor(private router: Router, private http: HttpClient) {
-    this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('omuser')!));
-    this.user = this.userSubject.asObservable();
+    this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('omuser')!))
+    this.user = this.userSubject.asObservable()
   }
 
   public get userValue() {
@@ -57,11 +57,11 @@ export class AccountService {
     return new Observable<User>((observer) => { observer.next(dummyUser) })
     .pipe(map(user => {
       if (user.authenticated) {
-        localStorage.setItem('omuser', JSON.stringify(user));
-        this.userSubject.next(user);
+        localStorage.setItem('omuser', JSON.stringify(user))
+        this.userSubject.next(user)
       } 
-      return user;
-    }));
+      return user
+    }))
   }
 
   login__0(username: string, password: string) {
@@ -71,17 +71,17 @@ export class AccountService {
       httpOptions
     ).pipe(map(user => {
       if (user.authenticated) {
-        localStorage.setItem('omuser', JSON.stringify(user));
-        this.userSubject.next(user);
+        localStorage.setItem('omuser', JSON.stringify(user))
+        this.userSubject.next(user)
       } 
-      return user;
-    }));
+      return user
+    }))
   }
 
   logout() {
     // remove user from local storage and set current user to null
-    localStorage.removeItem('omuser');
-    this.userSubject.next(null);
-    this.router.navigate(['/account/login']);
+    localStorage.removeItem('omuser')
+    this.userSubject.next(null)
+    this.router.navigate(['/account/login'])
   }
 }

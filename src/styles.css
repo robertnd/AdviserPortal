@@ -129,6 +129,11 @@ body {
   padding-right: 2.5rem;
 }
 
+.line-row img {
+  margin-right: 2.5rem;
+  margin-left: 8rem;
+}
+
 .line-row .text-intg-summary {
   border-bottom: 1px solid var(--color-om-darkblue);
   padding-top: 0.1em;
@@ -382,6 +387,12 @@ input[type="checkbox"][readonly] {
   font-weight: 500;
   font-size: 130%;
   padding-top: 0.6rem;
+}
+
+.blurb-home {
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .overview__heading {
@@ -876,6 +887,7 @@ input[type="checkbox"][readonly] {
 .data-table-error {
   width: 90%;
   margin-left: 5rem;
+  margin-bottom: 1.5rem;
 }
 
 th,
@@ -896,4 +908,14 @@ tr:hover {
 
 small {
   margin-right: 2rem;
+}
+
+#spinnerDiv {
+}
+
+#spinnerDiv img {
+  margin-left: 2rem;
+  margin-top: 0.6rem;
+  max-width: 40%;
+  max-height: 40%
 }
