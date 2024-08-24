@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, inject, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { getPersonalInfo, getContacts, getOccupation, removeSpinner, showSpinner, pickleError } from '@app/_helpers'
+import { getPersonalInfo, getContacts, getOccupation, removeSpinner, showSpinner, pickleError, getStyleMap, getLogo, cloneDoc, reformatForPrint, addFnBarItem } from '@app/_helpers'
 import { Mpesa } from '@app/_models/mpesa'
 import { AlertService, UtilService } from '@app/_services'
 import { BizService } from '@app/_services/biz.service'
 import { FormStateService } from '@app/_services/form-state.service'
+import { saveAs } from 'file-saver'
 
 @Component({
   selector: 'app-unit-trust-summary',
@@ -108,7 +109,7 @@ export class UnitTrustSummaryComponent {
     // var stateObj = this.fs.dump()
     // console.log('State for Unit Trust', JSON.stringify(Object.fromEntries(stateObj)))
 
-    console.log('PAYLOAD DUMP', JSON.stringify(this.transform()))
+    // console.log('PAYLOAD DUMP', JSON.stringify(this.transform()))
   }
 
   onSubmit() {
@@ -157,7 +158,7 @@ export class UnitTrustSummaryComponent {
     if (this.f1['gifts'].value) sof.push('Gift(s)')
     if (this.f1['saleOfProperty'].value) sof.push('Sale Of Property')
     if (this.f1['savings'].value) sof.push('Savings')
-
+    if (this.f1['other'].value) sof.push(this.sourceOfFunds.otherSourceOfFunds)
     return sof
   }
 
@@ -173,14 +174,70 @@ export class UnitTrustSummaryComponent {
     return pm
   }
 
+  print() {
+    const journey = this.utilService.getCurrentJourney()?.replaceAll(' ', '_') || ''
+    const requestInfo = {
+      firstName: this.personalInfo.firstName,
+      lastName: this.personalInfo.lastName,
+      plan: journey,
+      trackingNo: this.utilService.getTrackingID(),
+      date: this.utilService.getDate('yyyyMMddhhmmss') || ''
+    }
+
+    showSpinner()
+    var htmlPayload = reformatForPrint()
+    // var htmlPayload = '<html><body><h1>Hello, world!</h1></body></html>'
+    console.log('print(): ', htmlPayload)
+    let trackingID = this.utilService.getTrackingID() || 'none'
+    let PRINT_API = 'http://localhost:3000/convert'
+    this.bizService.pdfRequest(htmlPayload, PRINT_API, requestInfo).subscribe({
+      next: response => {
+        removeSpinner()
+        if (response.status == 'Success') {
+          addFnBarItem('pdf-download-link', this.getPDF, [response.fileName], this.bizService)
+        } else {
+          this.upstreamServerErrorMsg = `Detached : ${JSON.stringify(response)}`
+        }
+      },
+      error: err => {
+        removeSpinner()
+        this.upstreamServerErrorMsg = `Detached : ${JSON.stringify(err)}`
+      }
+    })
+  }
+
+  getPDF(fileName: string, service: BizService) {
+    // alert(`Called with ${fileName}`)
+    const DOWNLOAD_API = `http://localhost:3000/download/${fileName}`
+
+    // closure issues,...requires manual injection
+    service.download(DOWNLOAD_API, fileName).subscribe({
+      next: fileObj => {
+        const url = window.URL.createObjectURL(fileObj)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = fileName
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+        window.URL.revokeObjectURL(url)
+      },
+      error: err => {
+
+        alert(`Error downloading document: ${JSON.stringify(err)}`)
+        // this.upstreamServerErrorMsg = `Detached : ${JSON.stringify(err)}`
+      }
+    }
+      
+    )
+  }
+
   upstreamSubmit() {
     this.upstreamServerErrorMsg = ''
     showSpinner()
     let requestObj = this.transform()
     let BIZ_API = 'http://localhost:19090/api/v1/onboard/motorvehicle'
-    // let BIZ_API = '	https://webhook.site/73e9969d-dcc3-41d9-81f4-41d418392722'
-    let WIP_API = 'https://oldmutual.vergeinteractivelabs.com:19090/api/v1/onboard/other/'
-    
+
     this.bizService.testRequest(requestObj, BIZ_API).subscribe({
       next: result => {
         if (result.statusCode === "0" || result.statusCode === "200") {
@@ -339,3 +396,5 @@ export class UnitTrustSummaryComponent {
   }
 
 }
+
+

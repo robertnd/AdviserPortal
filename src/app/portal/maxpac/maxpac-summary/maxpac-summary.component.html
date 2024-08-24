@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div id="personalInfoSummary">
+        <div id="personalInfoSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -33,15 +33,15 @@
 
             <div class="summary-row">
                 <div class="text-intg-summary">
-                    <label for="firstName">First Name</label>
+                    <label>First Name</label>
                     {{ personalInfo.firstName }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="middlenames">Middle Name(s)</label>
+                    <label>Middle Name(s)</label>
                     {{ personalInfo.middleNames }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="lastName">Last Name</label>
+                    <label>Last Name</label>
                     {{ personalInfo.lastName }}
                 </div>
             </div>
@@ -109,7 +109,7 @@
             </div>
         </div>
 
-        <div id="contactsSummary">
+        <div id="contactsSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -125,35 +125,35 @@
 
             <div class="summary-row">
                 <div class="text-intg-summary">
-                    <label for="firstName">Postal Address</label>
+                    <label>Postal Address</label>
                     {{ contacts.postalAddress }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="middlenames">Postal Code</label>
+                    <label>Postal Code</label>
                     {{ contacts.postalCode }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="lastName">Last Name</label>
+                    <label>Town / City</label>
                     {{ contacts.townCity }}
                 </div>
             </div>
             <div class="summary-row">
                 <div class="text-intg-summary">
-                    <label for="firstName">Town / City</label>
+                    <label>Town / City</label>
                     {{ contacts.physicalAddress }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="middlenames">Mobile Number</label>
+                    <label>Mobile Number</label>
                     {{ contacts.mobile }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="lastName">Home Number</label>
+                    <label>Home Number</label>
                     {{ contacts.homeNumber }}
                 </div>
             </div>
             <div class="summary-row">
                 <div class="text-intg-summary">
-                    <label for="firstName">Email</label>
+                    <label>Email</label>
                     {{ contacts.email }}
                 </div>
                 <div class="text-intg-summary"></div>
@@ -173,7 +173,7 @@
             </div>
         </div>
 
-        <div id="occupationSummary">
+        <div id="occupationSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -249,7 +249,7 @@
             </div>
         </div>
 
-        <div id="beneficiarySummary">
+        <div id="beneficiarySummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -336,7 +336,7 @@
             </div>
         </div>
 
-        <div id="spouseSummary">
+        <div id="spouseSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -424,7 +424,7 @@
 
         </div>
 
-        <div id="childrenSummary">
+        <div id="childrenSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -474,7 +474,7 @@
             </div>
         </div>
 
-        <div id="declarationsSummary">
+        <div id="declarationsSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -640,6 +640,8 @@
                 </div>
             </div>
 
+            <div id="functionBar" class="summary-row"></div>
+
             <div class="summary-row">
                 <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
                     {{ upstreamServerErrorMsg }}
@@ -658,6 +660,10 @@
                     <img src="../../assets/img/arrow-right-light.svg" alt="" />
                 </button>
                 <div id="spinnerDiv"></div>
+                <button class="ombutton lefted with-icon" type="submit" (click)="print()">
+                    &nbsp;pdf (beta)&nbsp;
+                    <img src="../../assets/img/SVG/map2.svg" alt="" />
+                </button>
             </div>
 
             <div class="summary-row">

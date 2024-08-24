@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid'
@@ -11,7 +12,8 @@ export class UtilService {
   private journeyDataSubject = new Subject<Map<string, string>>()
   journey?: string
   trackingID: string = ''
-
+  dp = new DatePipe('en-US')
+ 
   // onPageLoad(): Observable<string> {
   //   return this.pagesSubject.asObservable()
   // }
@@ -47,6 +49,11 @@ export class UtilService {
   unsetJourney() {
     this.setCurrentJourney('')
     this.trackingID = ''
+  }
+
+  getDate(format: string) {
+    // 'yyyy-MM-ddThh:mm:ss.SSSZ'
+    return this.dp.transform(new Date(), format)
   }
 
   constructor() { }

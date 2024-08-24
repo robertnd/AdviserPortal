@@ -76,7 +76,6 @@ export class PersonalInfoComponent implements OnInit {
       this.f['titleOther'].setErrors({ 'conditionalRequired': true })
       return
     }
-    console.log(this.pageTitle, JSON.stringify(this.form.value))
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate(['/portal/contacts'])
   }

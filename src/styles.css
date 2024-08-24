@@ -84,12 +84,19 @@ body {
   padding-left: 5rem;
 }
 
+/* Special print processing case */
+.summary-row-other {
+  display: flex;
+  padding-left: 5rem;
+}
+
 .summary-row .input-for-display {
   border-bottom: none;
 }
 
 .summary-row .overview__subheading2_ital {
   padding-left: 0.5em;
+  font-size: 1.3em;
 } 
 
 .summary-row:last-child {
@@ -434,8 +441,6 @@ input[type="checkbox"][readonly] {
   padding-top: 1em;
   /* padding-bottom: -1.5em; */
 }
-
-
 
 .form-paragraph1 {
   font-size: 1em;
@@ -883,6 +888,13 @@ input[type="checkbox"][readonly] {
   margin-top: 2.5rem;
   margin-bottom: 0.5rem;
 }
+/* Another print special case */
+.data-table-noprint {
+  width: 90%;
+  margin-left: 5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
 
 .data-table-error {
   width: 90%;
@@ -906,11 +918,43 @@ tr:hover {
   padding-top: 1em;
 }
 
+.checkBoxGroupPrint {
+  padding-left: 3.5em;
+  display: none;
+}
+
+.summaryInfoGroup {
+  border-bottom: 1px dotted gray;
+}
+
+.fnBarIcon {
+  width: 25px;
+  height: 30px;
+}
+
+.fnBarItemCols {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align:center;
+}
+
+.fnBarItemCols a {
+  display: inline-block;
+}
+
+.fnBarItemCols img {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
 small {
   margin-right: 2rem;
 }
 
 #spinnerDiv {
+  padding: 0.1rem;
 }
 
 #spinnerDiv img {

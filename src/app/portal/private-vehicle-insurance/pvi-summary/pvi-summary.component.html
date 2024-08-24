@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div id="personalInfoSummary">
+        <div id="personalInfoSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -33,15 +33,15 @@
 
             <div class="summary-row">
                 <div class="text-intg-summary">
-                    <label for="firstName">First Name</label>
+                    <label>First Name</label>
                     {{ personalInfo.firstName }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="middlenames">Middle Name(s)</label>
+                    <label>Middle Name(s)</label>
                     {{ personalInfo.middleNames }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="lastName">Last Name</label>
+                    <label>Last Name</label>
                     {{ personalInfo.lastName }}
                 </div>
             </div>
@@ -109,7 +109,7 @@
             </div>
         </div>
 
-        <div id="contactsSummary">
+        <div id="contactsSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -133,7 +133,7 @@
                     {{ contacts.postalCode }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="lastName">Last Name</label>
+                    <label for="lastName">Town / City</label>
                     {{ contacts.townCity }}
                 </div>
             </div>
@@ -173,7 +173,7 @@
             </div>
         </div>
 
-        <div id="occupationSummary">
+        <div id="occupationSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -249,7 +249,7 @@
             </div>
         </div>
 
-        <div id="consentSummary">
+        <div id="consentSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -387,7 +387,7 @@
             </div>
         </div>
 
-        <div id="vehiclesSummary">
+        <div id="vehiclesSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -499,7 +499,7 @@
             </div>
         </div>
 
-        <div id="drivingAndClaimsSummary">
+        <div id="drivingAndClaimsSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -598,7 +598,7 @@
         
             <div class="summary-row">
                 <form [formGroup]="form">
-                    <table class="data-table">
+                    <table class="data-table-noprint">
                         <thead>
                             <tr>
                                 <th></th>
@@ -671,6 +671,14 @@
                     </table>
                 </form>
             </div>
+
+            <div class="form-row">
+                <div class="checkBoxGroupPrint">
+                    <ul *ngFor="let item of extraVehicleCover()">
+                        <li>{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
         
             <div class="summary-row">
                 <h1 class="overview__subheading">DECLARATION</h1>
@@ -715,7 +723,7 @@
             </div>
         </div>
 
-        <div id="policySummary">
+        <div id="policySummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -776,6 +784,8 @@
                 </div>
             </div>
 
+            <div id="functionBar" class="summary-row"></div>
+
             <div class="summary-row">
                 <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
                     {{ upstreamServerErrorMsg }}
@@ -795,6 +805,10 @@
                     <img src="../../assets/img/arrow-right-light.svg" alt="" />
                 </button>
                 <div id="spinnerDiv"></div>
+                <button class="ombutton lefted with-icon" type="submit" (click)="print()">
+                    &nbsp;pdf (beta)&nbsp;
+                    <img src="../../assets/img/SVG/map2.svg" alt="" />
+                </button>
             </div>
 
             <div class="summary-row">

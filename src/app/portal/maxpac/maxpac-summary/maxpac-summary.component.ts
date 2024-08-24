@@ -3,7 +3,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { getContacts, getOccupation, getPersonalInfo, KeyMapping, pickleError, removeSpinner, renameKeys, showSpinner } from '@app/_helpers'
+import { addFnBarItem, getContacts, getOccupation, getPersonalInfo, pickleError, reformatForPrint, removeSpinner, renameKeys, showSpinner } from '@app/_helpers'
+import { KeyMapping } from "@app/_types/types"
 import { FormStateService } from '@app/_services/form-state.service'
 import { MaxpacChildren } from '@app/_models'
 import { BizService } from '@app/_services/biz.service'
@@ -114,6 +115,63 @@ export class MaxpacSummaryComponent {
         removeSpinner()
         this.upstreamServerErrorMsg = `An error occurred : ${pickleError(err)}`
         this.alertService.error(this.upstreamServerErrorMsg)
+      }
+    }
+    )
+  }
+
+  print() {
+    const journey = this.utilService.getCurrentJourney()?.replaceAll(' ', '_') || ''
+    const requestInfo = {
+      firstName: this.personalInfo.firstName,
+      lastName: this.personalInfo.lastName,
+      plan: journey,
+      trackingNo: this.utilService.getTrackingID(),
+      date: this.utilService.getDate('yyyyMMddhhmmss') || ''
+    }
+
+    showSpinner()
+    var htmlPayload = reformatForPrint()
+    // var htmlPayload = '<html><body><h1>Hello, world!</h1></body></html>'
+    console.log('print(): ', htmlPayload)
+    let trackingID = this.utilService.getTrackingID() || 'none'
+    let PRINT_API = 'http://localhost:3000/convert'
+    this.bizService.pdfRequest(htmlPayload, PRINT_API, requestInfo).subscribe({
+      next: response => {
+        removeSpinner()
+        if (response.status == 'Success') {
+          addFnBarItem('pdf-download-link', this.getPDF, [response.fileName], this.bizService)
+        } else {
+          this.upstreamServerErrorMsg = `Detached : ${JSON.stringify(response)}`
+        }
+      },
+      error: err => {
+        removeSpinner()
+        this.upstreamServerErrorMsg = `Detached : ${JSON.stringify(err)}`
+      }
+    })
+  }
+
+getPDF(fileName: string, service: BizService) {
+    // alert(`Called with ${fileName}`)
+    const DOWNLOAD_API = `http://localhost:3000/download/${fileName}`
+
+    // closure issues,...requires manual injection
+    service.download(DOWNLOAD_API, fileName).subscribe({
+      next: fileObj => {
+        const url = window.URL.createObjectURL(fileObj)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = fileName
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+        window.URL.revokeObjectURL(url)
+      },
+      error: err => {
+
+        alert(`Error downloading document: ${JSON.stringify(err)}`)
+        // this.upstreamServerErrorMsg = `Detached : ${JSON.stringify(err)}`
       }
     }
     )

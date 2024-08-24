@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div id="personalInfoSummary">
+        <div id="personalInfoSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <div id="contactsSummary">
+        <div id="contactsSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -135,7 +135,7 @@
                     {{ contacts.postalCode }}
                 </div>
                 <div class="text-intg-summary">
-                    <label>Last Name</label>
+                    <label>Town / City</label>
                     {{ contacts.townCity }}
                 </div>
             </div>
@@ -175,7 +175,7 @@
             </div>
         </div>
 
-        <div id="occupationSummary">
+        <div id="occupationSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -251,7 +251,7 @@
             </div>
         </div>
 
-        <div id="jointApplicantSummary">
+        <div id="jointApplicantSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -422,7 +422,7 @@
             </div>
         </div>
 
-        <div id="nextOfKinSummary">
+        <div id="nextOfKinSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -558,7 +558,7 @@
             </div>
         </div>
 
-        <div id="lifeWrapperSummary">
+        <div id="lifeWrapperSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -735,7 +735,7 @@
             </div>
         </div>
 
-        <div id="lifeWrapperConsentSummary">
+        <div id="lifeWrapperConsentSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -841,8 +841,8 @@
 
             <div class="summary-row">
                 <div class="text-intg-summary">
-                    <label>Identification Document</label>
-                    {{ lifeWrapperConsent.lwcAcceptOrNotIdDocument }}
+                    <label>Consent</label>
+                    {{ lifeWrapperConsent.lwcAcceptOrNot }}
                 </div>
                 <div class="text-intg-summary">
                     <label>Date</label>
@@ -914,7 +914,7 @@
             </div>
         </div>
 
-        <div id="sourceOfFundsSummary">
+        <div id="sourceOfFundsSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -947,13 +947,21 @@
                 </div>
             </form>
 
+            <div class="form-row">
+                <div class="checkBoxGroupPrint">
+                    <ul *ngFor="let item of unitTrustSourcesOfFunds()">
+                        <li>{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- <div class="summary-row">
                 <p class="form-paragraph1">
                     I do hereby declare that the source of funds I/We shall be depositing is/are (tick as applicable)
                 </p>
             </div> -->
 
-            <div class="summary-row">
+            <div class="summary-row-other">
                 <div class="text-intg-summary" *ngIf="sourceOfFunds.other">
                     <label>Details of other source of funds</label>
                     {{ sourceOfFunds.otherSourceOfFunds }}
@@ -987,7 +995,7 @@
             </div>
         </div>
 
-        <div id="bankInfoSummary">
+        <div id="bankInfoSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -1047,7 +1055,7 @@
             </div>
         </div>
 
-        <div id="mpesaActivationSummary">
+        <div id="mpesaActivationSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -1115,7 +1123,7 @@
             </div>
         </div>
 
-        <div id="incomeDistributionSummary">
+        <div id="incomeDistributionSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -1150,6 +1158,14 @@
                     </div>
                 </div>
             </form>
+
+            <div class="form-row">
+                <div class="checkBoxGroupPrint">
+                    <ul *ngFor="let item of incomeDistOptions()">
+                        <li>{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="summary-row">
                 <p class="form-paragraph1 collapsible">FUND DETAILS </p>
@@ -1224,7 +1240,7 @@
 
             <div class="summary-row">
                 <p class="form-paragraph1">
-                    The Toboa investmetn plan is a facility that allows investors to make monthly contributions /
+                    The Toboa investment plan is a facility that allows investors to make monthly contributions /
                     investments of Kshs 1,000 into the Balanced Fund. The fund is suitable for the medium risk investor
                     who
                     is looking for a mixture of safety, income and capital appreciation. The recommended investment
@@ -1373,6 +1389,14 @@
                     </div>
                 </div>
             </form>
+
+            <div class="form-row">
+                <div class="checkBoxGroupPrint">
+                    <ul *ngFor="let item of paymentMethod()">
+                        <li>{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="summary-row">
                 <p class="form-paragraph1">
@@ -1694,7 +1718,7 @@
             </div>
         </div>
 
-        <div id="riskAssessmentSummary">
+        <div id="riskAssessmentSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -1937,6 +1961,8 @@
             </div>
         </div>
 
+        <div id="functionBar" class="summary-row"></div>
+
         <div class="summary-row">
             <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
                 {{ upstreamServerErrorMsg }}
@@ -1955,6 +1981,10 @@
                 <img src="../../assets/img/arrow-right-light.svg" alt="" />
             </button>
             <div id="spinnerDiv"></div>
+            <button class="ombutton lefted with-icon" type="submit" (click)="print()">
+                &nbsp;pdf (beta)&nbsp;
+                <img src="../../assets/img/SVG/map2.svg" alt="" />
+            </button>
         </div>
 
         <div class="summary-row">

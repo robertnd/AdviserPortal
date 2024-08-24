@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div id="personalInfoSummary">
+        <div id="personalInfoSummary" class="summaryInfoGroup">
             <div class="form-row">
                 <div class="overview">
                     <h1 class="overview__subheading">Personal Information</h1>
@@ -32,15 +32,15 @@
 
             <div class="summary-row">
                 <div class="text-intg-summary">
-                    <label for="firstName">First Name</label>
+                    <label>First Name</label>
                     {{ personalInfo.firstName }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="middlenames">Middle Name(s)</label>
+                    <label>Middle Name(s)</label>
                     {{ personalInfo.middleNames }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="lastName">Last Name</label>
+                    <label>Last Name</label>
                     {{ personalInfo.lastName }}
                 </div>
             </div>
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <div id="contactsSummary">
+        <div id="contactsSummary" class="summaryInfoGroup">
             <div class="form-row">
                 <div class="overview">
                     <h1 class="overview__subheading">Contacts</h1>
@@ -131,7 +131,7 @@
                     {{ contacts.postalCode }}
                 </div>
                 <div class="text-intg-summary">
-                    <label for="lastName">Last Name</label>
+                    <label for="lastName">Town / City</label>
                     {{ contacts.townCity }}
                 </div>
             </div>
@@ -171,7 +171,7 @@
             </div>
         </div>
 
-        <div id="occupationSummary">
+        <div id="occupationSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -247,7 +247,7 @@
             </div>
         </div>
 
-        <div id="sofSummary">
+        <div id="sofSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -289,10 +289,18 @@
                 </form>
             </div>
 
-            <div class="summary-row">
+            <div class="summary-row-other">
                 <div class="text-intg-summary" *ngIf="sof.sourceOfFundsOther">
                     <label>If "Other", please specify</label>
                     {{ sof.sourceOfFundsOther }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="checkBoxGroupPrint">
+                    <ul *ngFor="let item of sofValues()">
+                        <li>{{ item }}</li>
+                    </ul>
                 </div>
             </div>
 
@@ -432,7 +440,7 @@
             </div>
         </div>
 
-        <div id="residentialSummary">
+        <div id="residentialSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -486,7 +494,7 @@
             </div>
         </div>
 
-        <div id="dependantsSummary">
+        <div id="dependantsSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -580,7 +588,7 @@
             </div>
         </div>
 
-        <div id="nokSummary">
+        <div id="nokSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -644,7 +652,7 @@
             </div>
         </div>
 
-        <div id="beneficariesSummary">
+        <div id="beneficariesSummary" class="summaryInfoGroup">
 
             <div class="form-row">
                 <div class="overview">
@@ -696,6 +704,8 @@
                 </div>
             </div>
 
+            <div id="functionBar" class="summary-row"></div>
+
             <div class="summary-row">
                 <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
                     {{ upstreamServerErrorMsg }}
@@ -712,6 +722,10 @@
                     <img src="../../assets/img/arrow-right-light.svg" alt="" />
                 </button>
                 <div id="spinnerDiv"></div>
+                <button class="ombutton lefted with-icon" type="submit" (click)="print()">
+                    &nbsp;pdf (beta)&nbsp;
+                    <img src="../../assets/img/SVG/map2.svg" alt="" />
+                </button>
             </div>
 
             <div class="summary-row">
