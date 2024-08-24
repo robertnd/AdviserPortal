@@ -495,64 +495,6 @@ input[type="checkbox"][readonly] {
   display: flex;
 }
 
-.overview__icon-star,
-.overview__icon-location {
-  width: 1.75rem;
-  height: 1.75rem;
-  fill: var(--color-primary);
-}
-
-.overview__location {
-  font-size: 1.2rem;
-  display: flex;
-  vertical-align: center;
-}
-
-.overview__icon-location {
-  margin-right: 0.5rem;
-}
-
-.overview__rating {
-  background-color: var(--color-primary);
-  color: #fff;
-  margin-left: 3rem;
-  padding: 0 2.25rem;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-@media only screen and (max-width: 37.5em) {
-  .overview__rating {
-    padding: 0 1.5rem;
-  }
-}
-
-.overview__rating-average {
-  font-size: 2.25rem;
-  font-weight: 300;
-  margin-bottom: -3px;
-}
-
-@media only screen and (max-width: 37.5em) {
-  .overview__rating-average {
-    font-size: 1.8rem;
-  }
-}
-
-.overview__rating-count {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-@media only screen and (max-width: 37.5em) {
-  .overview__rating-count {
-    font-size: 0.5rem;
-  }
-}
-
 @keyframes pulsate {
   0% {
     transform: scale(1);
@@ -638,18 +580,6 @@ input[type="checkbox"][readonly] {
   border: none;
   text-decoration: underline;
   cursor: pointer;
-}
-
-.ombuttonb {
-  font-size: 130%;
-  letter-spacing: 1.5px;
-  color: #fff;
-  border: 0;
-  border-radius: 15px;
-  background: linear-gradient(to right, #106125, #50b848);
-  transition: all 0.3s ease 0s;
-  padding: 0.5rem 2rem 0.5rem 2.2rem;
-  transition: all 0.15s ease;
 }
 
 .flippy {
@@ -838,7 +768,6 @@ input[type="checkbox"][readonly] {
   flex-direction: column;
   text-align: center; 
   color: #6c757d;
-  /* font-size: 80%; */
 }
 
 .breadcrumbs-text.active {
@@ -863,7 +792,6 @@ input[type="checkbox"][readonly] {
 
 .breadcrumbs-circle.active {
   background-color: #218838;
-  /* font-size: 120%; */
   font-weight: 500;
 }
 
@@ -918,6 +846,7 @@ tr:hover {
   padding-top: 1em;
 }
 
+/* print special case */
 .checkBoxGroupPrint {
   padding-left: 3.5em;
   display: none;
