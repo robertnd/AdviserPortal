@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
+import { validateDate } from '@app/_helpers'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 
@@ -19,7 +20,7 @@ export class LifeWrapperConsentComponent {
     lwcDataForChildDate: new FormControl(''),
     lwc3rdPartyName: new FormControl(''),
     lwc3rdPartyDate: new FormControl(''),
-    lwcAcceptOrNotIdDocument: new FormControl(''),
+    lwcAcceptOrNot: new FormControl(''),
     lwcAcceptOrNotDate: new FormControl(''),
     lwcDeclName: new FormControl(''),
     lwcDeclNameDate: new FormControl('')
@@ -37,14 +38,14 @@ export class LifeWrapperConsentComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      lwcDataForChildName: [''],
-      lwcDataForChildDate: [''],
-      lwc3rdPartyName: [''],
-      lwc3rdPartyDate: [''],
-      lwcAcceptOrNotIdDocument: [''],
-      lwcAcceptOrNotDate: [''],
-      lwcDeclName: [''],
-      lwcDeclNameDate: [''],
+      lwcDataForChildName: ['', Validators.required],
+      lwcDataForChildDate: ['', [Validators.required, validateDate()]],
+      lwc3rdPartyName: ['', Validators.required],
+      lwc3rdPartyDate: ['', [Validators.required, validateDate()]],
+      lwcAcceptOrNot: ['', Validators.required],
+      lwcAcceptOrNotDate: ['', [Validators.required, validateDate()]],
+      lwcDeclName: ['', Validators.required],
+      lwcDeclNameDate: ['', [Validators.required, validateDate()]]
     })
 
     var pageData = this.fs.getPageData(this.pageTitle)
@@ -56,7 +57,6 @@ export class LifeWrapperConsentComponent {
   }
 
   onSubmit() {
-    
     this.submitted = true;
     if (this.form.invalid) {
       return

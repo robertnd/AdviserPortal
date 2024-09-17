@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { mustBePositiveNumber, validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 
 @Component({
@@ -15,9 +15,20 @@ export class MaxpacSpouseComponent {
 
   journey = ''
   pageTitle = 'Spouse'
-  submitted = false;
+  submitted = false
+  displayed = true
+  displayText ='Hide Options'
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    idDocument: new FormControl(''),
+    docNumber: new FormControl(''),
+    pinNo: new FormControl(''),
+    occupation: new FormControl(''),
+    mobileNo: new FormControl(''),
+    dateOfBirth: new FormControl(''),
+    coverOptionForInsured: new FormControl(''),
+    premiumAmountInsured: new FormControl(''),
+    coverOptionForSpouse: new FormControl(''),
+    premiumAmountSpouse: new FormControl('')
   })
 
   constructor(
@@ -36,8 +47,16 @@ export class MaxpacSpouseComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+      idDocument: ['', Validators.required],
+      docNumber: ['', Validators.required],
+      pinNo: ['', Validators.required],
+      occupation: ['', Validators.required],
+      mobileNo: ['', Validators.required],
+      dateOfBirth: ['', [Validators.required, validateDate()]],
+      coverOptionForInsured: ['', Validators.required],
+      premiumAmountInsured: ['', [Validators.required, mustBePositiveNumber()]],
+      coverOptionForSpouse: ['', Validators.required],
+      premiumAmountSpouse: ['', [Validators.required, mustBePositiveNumber()]]
       })
 
     // this will load entries on back navigation or prefill
@@ -57,6 +76,15 @@ export class MaxpacSpouseComponent {
 
   previous() {
     this.router.navigate(['/portal/maxpac/maxpac-beneficiaries'])
+  }
+
+  toggle() {
+    this.displayed = !this.displayed
+    if (this.displayText === 'Hide Options') {
+      this.displayText = 'Show Options'
+    } else {
+      this.displayText = 'Hide Options'
+    }
   }
 
 }

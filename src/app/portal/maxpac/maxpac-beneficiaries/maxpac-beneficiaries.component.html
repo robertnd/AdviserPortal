@@ -13,6 +13,131 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="pobox">P.O Box</label>
+                    <input type="text" id="pobox" formControlName="pobox" />
+                    <div *ngIf="submitted && f['pobox'].errors" class="invalid-input">
+                        <div *ngIf="f['pobox'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="town">Town</label>
+                    <input type="text" id="town" formControlName="town" />
+                    <div *ngIf="submitted && f['town'].errors" class="invalid-input">
+                        <div *ngIf="f['town'].errors['required']">
+                            Town required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="telephoneNo">Telephone No</label>
+                    <input type="text" id="telephoneNo" formControlName="telephoneNo" />
+                    <div *ngIf="submitted && f['telephoneNo'].errors" class="invalid-input">
+                        <div *ngIf="f['telephoneNo'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="mobileNo">Mobile No</label>
+                    <input type="text" id="mobileNo" formControlName="mobileNo" />
+                    <div *ngIf="submitted && f['mobileNo'].errors" class="invalid-input">
+                        <div *ngIf="f['mobileNo'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="idDocument">Identification Document</label>
+                    <select id="idDocument" formControlName="idDocument">
+                        <option></option>
+                        <option>National ID</option>
+                        <option>Passport</option>
+                        <option>Foreign ID</option>
+                        <option>Military ID</option>
+                    </select>
+                    <div *ngIf="submitted && f['idDocument'].errors" class="invalid-input">
+                        <div *ngIf="f['idDocument'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="docNumber">Document Number</label>
+                    <input type="text" id="docNumber" formControlName="docNumber" />
+                    <div *ngIf="submitted && f['docNumber'].errors" class="invalid-input">
+                        <div *ngIf="f['docNumber'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="email">EMail</label>
+                    <input type="text" id="email" formControlName="email" />
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-input">
+                        <div *ngIf="f['email'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="accountNo">Account No</label>
+                    <input type="text" id="accountNo" formControlName="accountNo" />
+                    <div *ngIf="submitted && f['accountNo'].errors" class="invalid-input">
+                        <div *ngIf="f['accountNo'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="insuredFrom">Period of Insurance From</label>
+                    <input type="date" id="insuredFrom" formControlName="insuredFrom" />
+                    <div *ngIf="submitted && f['insuredFrom'].errors" class="invalid-input">
+                        <div *ngIf="f['insuredFrom'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['insuredFrom'].errors['futureDate']">
+                            Period of Insurance From is not valid
+                        </div>
+                        <div *ngIf="f['insuredFrom'].errors['invalidValue']">
+                            Period of Insurance From is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="insuredTo">To</label>
+                    <input type="date" id="insuredTo" formControlName="insuredTo" />
+                    <div *ngIf="submitted && f['insuredTo'].errors" class="invalid-input">
+                        <div *ngIf="f['insuredTo'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['insuredTo'].errors['invalidValue']">
+                            Insured To value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

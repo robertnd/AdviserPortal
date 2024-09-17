@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Beneficiary } from '@app/_models';
-import { AlertService, UtilService } from '@app/_services';
-import { FormStateService } from '@app/_services/form-state.service';
-import { validateDate } from '@app/_helpers';
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router'
+import { Beneficiary } from '@app/_models'
+import { AlertService, UtilService } from '@app/_services'
+import { FormStateService } from '@app/_services/form-state.service'
+import { validateDate } from '@app/_helpers'
 
 @Component({
   selector: 'app-beneficiaries',
@@ -24,7 +24,7 @@ export class BeneficiariesComponent implements OnInit {
     beneficiariesBenefitShare: new FormControl('')
   })
 
-  beneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
+  ppBeneficiaries: Map<string, Beneficiary> = new Map<string, Beneficiary>()
 
   constructor(
     private fb: FormBuilder,
@@ -48,14 +48,13 @@ export class BeneficiariesComponent implements OnInit {
       beneficiariesBenefitShare: ['']
     })
 
-    // var pageData = this.fs.getPageData(this.pageTitle)
-    // this.form.patchValue(JSON.parse(pageData))
-
-    var beneficiariesJSON = this.fs.getPageData(this.pageTitle) || '{}'
+    var pageData = this.fs.getPageData(this.pageTitle)
+    this.form.patchValue(JSON.parse(pageData))
+    var beneficiariesJSON = this.fs.getPageData(`${this.pageTitle}_ppBeneficiaries`) || '{}'
     var beneficiariesObj = JSON.parse(beneficiariesJSON)
     Object.keys(beneficiariesObj).forEach((key: string) => {
       var b = beneficiariesObj[key]
-      this.beneficiaries.set(key,
+      this.ppBeneficiaries.set(key,
         new Beneficiary(b.fullname, b.relationship, b.addressAndCode, b.phoneNo, b.dob, b.benefitShare)
       )
     }
@@ -112,13 +111,20 @@ export class BeneficiariesComponent implements OnInit {
 
     if ( this.calculateShareSum() >= 100 || ( this.calculateShareSum() + Number(this.f['beneficiariesBenefitShare'].value)) > 100) {
       fErrors = true
-      this.alertService.error('The sum of share benefits cannot exceed 100%')
+      this.form.setErrors({ 'allMustBeLessThan100': true })
+      return
+    } else {
+      // remove error if it was present
+      if (this.form.hasError('allMustBeLessThan100')) {
+        this.form.setErrors({'allMustBeLessThan100': null})
+        this.form.updateValueAndValidity()
+      }
     }
 
     if (fErrors) {
       return
     } else {
-      this.beneficiaries.set(
+      this.ppBeneficiaries.set(
         this.f['beneficiariesFullname'].value,
         new Beneficiary(
           this.f['beneficiariesFullname'].value,
@@ -128,20 +134,24 @@ export class BeneficiariesComponent implements OnInit {
           this.f['beneficiariesDoB'].value,
           this.f['beneficiariesBenefitShare'].value)
       )
+      if (this.form.hasError('mustHaveBeneficiary')) {
+        this.form.setErrors({'mustHaveBeneficiary': null})
+        this.form.updateValueAndValidity()
+      }
     }
   }
 
   calculateShareSum() {
     var total = 0
-    for (let [key, value] of this.beneficiaries) {
+    for (let [key, value] of this.ppBeneficiaries) {
       total += Number(value.benefitShare)
     } 
     return total
   }
 
   removeBeneficiary(key: string) {
-    if (this.beneficiaries.has(key)) {
-      this.beneficiaries.delete(key)
+    if (this.ppBeneficiaries.has(key)) {
+      this.ppBeneficiaries.delete(key)
     }
   }
 
@@ -151,14 +161,18 @@ export class BeneficiariesComponent implements OnInit {
       return
     }
 
-    var beneficiariesSerialized = Object.fromEntries(this.beneficiaries)
-    this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(beneficiariesSerialized))
+    if (this.ppBeneficiaries.size == 0) {
+      this.form.setErrors({ 'mustHaveBeneficiary': true })
+      return
+    }
 
+    var ppBeneficiariesSerialized = Object.fromEntries(this.ppBeneficiaries)
+    this.fs.addOrUpdatePageData(`${this.pageTitle}_ppBeneficiaries`, JSON.stringify(ppBeneficiariesSerialized))
     this.router.navigate(['/portal/personal-pension/pension-summary'])
   }
 
   previous() {
-    this.router.navigate(['/portal/personal-info'])
+    this.router.navigate(['/portal/personal-pension/next-of-kin'])
   }
 
 }

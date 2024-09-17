@@ -13,6 +13,344 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="paymentMode">Payment Mode</label>
+                    <select id="paymentMode" formControlName="paymentMode">
+                        <option></option>
+                        <option>Mobile Money</option>
+                        <option>Cheque</option>
+                        <option>Credit Card</option>
+                        <option>Premium Financing</option>
+                    </select>
+                    <div *ngIf="submitted && f['paymentMode'].errors" class="invalid-input">
+                        <div *ngIf="f['paymentMode'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="hasHeldAccidentPolicy">Have you previously held a Personal Accident Policy?</label>
+                    <select id="hasHeldAccidentPolicy" formControlName="hasHeldAccidentPolicy">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['hasHeldAccidentPolicy'].errors" class="invalid-input">
+                        <div *ngIf="f['hasHeldAccidentPolicy'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <h1 class="overview__subheading2_ital">If yes, give details</h1>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="insurance">Name of the insurance</label>
+                    <input type="text" id="insurance" formControlName="insurance" />
+                    <div *ngIf="f['insurance'].errors" class="invalid-input">
+                        <div *ngIf="f['insurance'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="branch">Branch</label>
+                    <input type="text" id="branch" formControlName="branch" />
+                    <div *ngIf="f['branch'].errors" class="invalid-input">
+                        <div *ngIf="f['branch'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" formControlName="address" />
+                    <div *ngIf="f['address'].errors" class="invalid-input">
+                        <div *ngIf="f['address'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="policyNo">Policy Number</label>
+                    <input type="text" id="policyNo" formControlName="policyNo" />
+                    <div *ngIf="f['policyNo'].errors" class="invalid-input">
+                        <div *ngIf="f['policyNo'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <h1 class="overview__subheading2_ital">Has any insurer,in connection with the person to be insured</h1>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="deferredOrDeclined">Deferred or declined a proposal?</label>
+                    <select id="deferredOrDeclined" formControlName="deferredOrDeclined">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['deferredOrDeclined'].errors" class="invalid-input">
+                        <div *ngIf="f['deferredOrDeclined'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="refusedRenewal">Refused renewal?</label>
+                    <select id="refusedRenewal" formControlName="refusedRenewal">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['refusedRenewal'].errors" class="invalid-input">
+                        <div *ngIf="f['refusedRenewal'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="terminated">Terminated an insurance?</label>
+                    <select id="terminated" formControlName="terminated">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['terminated'].errors" class="invalid-input">
+                        <div *ngIf="f['terminated'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="increasedPremium">Required an increased premium?</label>
+                    <select id="increasedPremium" formControlName="increasedPremium">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['increasedPremium'].errors" class="invalid-input">
+                        <div *ngIf="f['increasedPremium'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="specialConditions">Imposed special conditions?</label>
+                    <select id="specialConditions" formControlName="specialConditions">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['specialConditions'].errors" class="invalid-input">
+                        <div *ngIf="f['specialConditions'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <h1 class="overview__subheading2_ital">If yes, give details</h1>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <!-- <label for="detailsOnYes">If "yes", give details</label> -->
+                    <textarea rows="1" id="detailsOnYes" formControlName="detailsOnYes"></textarea>
+                    <div *ngIf="submitted && f['detailsOnYes'].errors" class="invalid-input">
+                        <div *ngIf="f['detailsOnYes'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="additionalInsurance">Will this insurance be additional to any other Personal Accident
+                        Policy?</label>
+                    <select id="additionalInsurance" formControlName="additionalInsurance">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['additionalInsurance'].errors" class="invalid-input">
+                        <div *ngIf="f['additionalInsurance'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <h1 class="overview__subheading2_ital"> If "Yes", please state:</h1>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="noOfOtherPolicies">No of other personal accident policies</label>
+                    <input type="text" id="noOfOtherPolicies" formControlName="noOfOtherPolicies" />
+                    <div *ngIf="submitted && f['noOfOtherPolicies'].errors" class="invalid-input">
+                        <div *ngIf="f['noOfOtherPolicies'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                        <div *ngIf="f['noOfOtherPolicies'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['noOfOtherPolicies'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="totalDeathBenefit">Total death benefit of the other policies (Kshs)</label>
+                    <input type="text" id="totalDeathBenefit" formControlName="totalDeathBenefit" />
+                    <div *ngIf="submitted && f['totalDeathBenefit'].errors" class="invalid-input">
+                        <div *ngIf="f['totalDeathBenefit'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                        <div *ngIf="f['totalDeathBenefit'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['totalDeathBenefit'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="totalPremium">Total Premium (Kshs)</label>
+                    <input type="text" id="totalPremium" formControlName="totalPremium" />
+                    <div *ngIf="submitted && f['totalPremium'].errors" class="invalid-input">
+                        <div *ngIf="f['totalPremium'].errors['conditionalRequired']">
+                            Total Premium Required
+                        </div>
+                        <div *ngIf="f['totalPremium'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['totalPremium'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="directOrIntermediaries">Are dealing with Old Mutual</label>
+                    <select id="directOrIntermediaries" formControlName="directOrIntermediaries">
+                        <option></option>
+                        <option>Directly</option>
+                        <option>Intermediaries</option>
+                    </select>
+                    <div *ngIf="submitted && f['directOrIntermediaries'].errors" class="invalid-input">
+                        <div *ngIf="f['directOrIntermediaries'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for Marketing Purposes</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    We would like to use your details to provide you with information about insurance products, services
+                    and special offers from us or our affiliates. Please note that if you do not want to receive our
+                    marketing information you may opt-out by contacting us at any time.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <h1 class="overview__subheading2_ital">Please select the relevant choice below if you agree to receive marketing information from us</h1>
+            </div>
+
+            <div class="form-row"></div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="marketingConsent">Consent</label>
+                    <select id="marketingConsent" formControlName="marketingConsent">
+                        <option></option>
+                        <option>I consent</option>
+                        <option>I do not consent to receiving marketing information</option>
+                    </select>
+                    <div *ngIf="submitted && f['marketingConsent'].errors" class="invalid-input">
+                        <div *ngIf="f['marketingConsent'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">DECLARATION</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    I warrant that the above statements made by me or on my behalf are true and complete to the best of
+                    my knowledge and belief and I agree that this proposal shall be the basis of the contract between me
+                    and the Company. I agree to accept a policy in the Company's usual form forthis class of insurance.
+                    I/we confirm that I/we have read and understood the above Privacy Notice and the Privacy Policy and
+                    that any queries/ concerns I/we have with regard to the nature and purpose of the processing of
+                    personal data have been adequately addressed.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="dateOfEntry">Date</label>
+                    <input type="date" id="dateOfEntry" formControlName="dateOfEntry" />
+                    <div *ngIf="submitted && f['dateOfEntry'].errors" class="invalid-input">
+                        <div *ngIf="f['dateOfEntry'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['dateOfEntry'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['dateOfEntry'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

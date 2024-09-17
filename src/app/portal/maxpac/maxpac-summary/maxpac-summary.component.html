@@ -1,27 +1,674 @@
 <div class="detail">
-    <div class="form-container">
-        <div class="form-row">
+    <div class="summary-container">
+        <div class="summary-row">
+            <img src="../../assets/img/OMformLogo.png" alt="">
+        </div>
+        <div class="summary-row">
+            <div class="address-items">
+                <p>Old Mutual Life Assurance Kenya Limited</p>
+                <p>Old Mutual Tower, Upper Hill Road, Upper Hill, Nairobi | P.O. Box 23842 00100, Nairobi, Kenya</p>
+                <p>Tel: +254 711 010 000, +254 711 065 000 | Email: life@oldmutual.co.ke</p>
+                <p>oldmutual.co.ke</p>
+            </div>
+        </div>
+        <div class="summary-row">
             <div class="overview" id="formTitle">
-                <h1 class="functional__heading">{{ journey }}</h1>
+                <h1 class="functional__heading">{{ journey }} Summary</h1>
             </div>
         </div>
-        <div class="form-row">
-            <div class="overview">
-                <h1 class="overview__subheading">Maxpac Personal Accident Cover Summary</h1>
-            </div>
-        </div>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div id="personalInfoSummary" class="summaryInfoGroup">
 
             <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Personal Information</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>First Name</label>
+                    {{ personalInfo.firstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Middle Name(s)</label>
+                    {{ personalInfo.middleNames }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Last Name</label>
+                    {{ personalInfo.lastName }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date of Birth</label>
+                    {{ personalInfo.dateOfBirth }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ personalInfo.idDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ personalInfo.docNumber }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Gender</label>
+                    {{ personalInfo.gender }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Marital Status</label>
+                    {{ personalInfo.maritalStatus }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title</label>
+                    {{ personalInfo.title }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title (if other)</label>
+                    {{ personalInfo.titleOther }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>PIN</label>
+                    {{ personalInfo.PIN }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Nationality</label>
+                    {{ personalInfo.nationality }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Country of Residence</label>
+                    {{ personalInfo.countryOfResidence }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/personal-info')">
+                        Edit Personal Information
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+
+            </div>
+        </div>
+
+        <div id="contactsSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Contacts</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Postal Address</label>
+                    {{ contacts.postalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Code</label>
+                    {{ contacts.postalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Town / City</label>
+                    {{ contacts.townCity }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Town / City</label>
+                    {{ contacts.physicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Mobile Number</label>
+                    {{ contacts.mobile }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Home Number</label>
+                    {{ contacts.homeNumber }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Email</label>
+                    {{ contacts.email }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/contacts')">
+                        Edit Contacts
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="occupationSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Occupation</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Occupation</label>
+                    {{ occupation.typeOfEmployment }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Name of Business or Employer</label>
+                    {{ occupation.nameOfBusiness }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Role</label>
+                    {{ occupation.role }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary" *ngIf="occupation.natureOfBusiness">
+                    <label>If self-employed, kindly state the nature of business activity including the source of funds
+                        for permiums</label>
+                    {{ occupation.natureOfBusiness }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Postal Address (Work)</label>
+                    {{ occupation.workPostalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Code</label>
+                    {{ occupation.workPostalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Town / City</label>
+                    {{ occupation.workTownOrCity }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Physical Address (Work)</label>
+                    {{ occupation.workPhysicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Phone (Work)</label>
+                    {{ occupation.workPhone }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Email (Work)</label>
+                    {{ occupation.workEmail }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/occupation')">
+                        Edit Occupation
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="beneficiarySummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Beneficiary</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>P.O Box</label>
+                    {{ beneficiary.pobox }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Town</label>
+                    {{ beneficiary.town }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Telephone No</label>
+                    {{ beneficiary.telephoneNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Mobile No</label>
+                    {{ beneficiary.mobileNo }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ beneficiary.idDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ beneficiary.docNumber }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>EMail</label>
+                    {{ beneficiary.email }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Account No</label>
+                    {{ beneficiary.accountNo }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Period of Insurance From</label>
+                    {{ beneficiary.insuredFrom }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>To</label>
+                    {{ beneficiary.insuredTo }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/maxpac/maxpac-beneficiaries')">
+                        Edit Beneficiary
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="spouseSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Spouse</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ spouse.idDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ spouse.docNumber }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>PIN No</label>
+                    {{ spouse.pinNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Occupation</label>
+                    {{ spouse.occupation }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Mobile No</label>
+                    {{ spouse.mobileNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date of Birth</label>
+                    {{ spouse.dateOfBirth }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Indicate Selected Cover Option for Insured</label>
+                    {{ spouse.coverOptionForInsured }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Premium Amount</label>
+                    {{ spouse.premiumAmountInsured }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Indicate Selected Cover Option for Spouse</label>
+                    {{ spouse.coverOptionForSpouse }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Premium Amount</label>
+                    {{ spouse.premiumAmountSpouse }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/maxpac/maxpac-spouse')">
+                        Edit Spouse
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+
+        </div>
+
+        <div id="childrenSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Children</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <table class="data-table" *ngIf="children.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Child's Full Name</th>
+                            <th>Date of Birth</th>
+                            <th>Cover Option For Child</th>
+                            <th>Premium Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of children | keyvalue">
+                            <td><i class="fa fa-child fa-lg m-3"></i></td>
+                            <td>{{c.value.fullName}}</td>
+                            <td>{{c.value.dateOfBirth}}</td>
+                            <td>{{c.value.cover}}</td>
+                            <td>{{c.value.premiumAmount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/maxpac/maxpac-children')">
+                        Edit Children
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="declarationsSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Declarations</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Payment Mode</label>
+                    {{ declarations.paymentMode }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Have you previously held a Personal Accident Policy?</label>
+                    {{ declarations.hasHeldAccidentPolicy }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <h1 class="overview__subheading2_ital">If yes, give details</h1>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name of the insurance</label>
+                    {{ declarations.insurance }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Branch</label>
+                    {{ declarations.branch }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Address</label>
+                    {{ declarations.address }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Policy Number</label>
+                    {{ declarations.policyNo }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <h1 class="overview__subheading2_ital">Has any insurer,in connection with the person to be insured</h1>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Deferred or declined a proposal?</label>
+                    {{ declarations.deferredOrDeclined }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Refused renewal?</label>
+                    {{ declarations.refusedRenewal }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Terminated an insurance?</label>
+                    {{ declarations.terminated }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Required an increased premium?</label>
+                    {{ declarations.increasedPremium }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Imposed special conditions?</label>
+                    {{ declarations.specialConditions }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>If "yes", give details</label>
+                    {{ declarations.detailsOnYes }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Will this insurance be additional to any other Personal Accident
+                        Policy?</label>
+                    {{ declarations.additionalInsurance }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <h1 class="overview__subheading2_ital"> If "Yes", please state:</h1>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>No of other personal accident policies</label>
+                    {{ declarations.noOfOtherPolicies }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Total death benefit of the other policies (Kshs)</label>
+                    {{ declarations.totalDeathBenefit }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Total Premium (Kshs)</label>
+                    {{ declarations.totalPremium }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Are dealing with Old Mutual</label>
+                    {{ declarations.directOrIntermediaries }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <h1 class="overview__subheading2_ital">Consent for Marketing Purposes:</h1>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Consent</label>
+                    {{ declarations.marketingConsent }}
+                </div>
+            </div>
+
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ declarations.dateOfEntry }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/maxpac/maxpac-declarations')">
+                        Edit Declarations
+                    </button>
+                </div>
+            </div>
+
+            <div id="functionBar" class="summary-row"></div>
+
+            <div class="summary-row">
+                <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
+                    {{ upstreamServerErrorMsg }}
+                </div>
+            </div>
+
+            <div class="summary-row"></div>
+
+            <div class="summary-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev
                 </button>
-                <!-- <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
-                    next
+                <button class="ombutton lefted with-icon" type="submit" (click)="upstreamSubmit()">
+                    submit
                     <img src="../../assets/img/arrow-right-light.svg" alt="" />
-                </button> -->
+                </button>
+                <div id="spinnerDiv"></div>
+                <button class="ombutton lefted with-icon" type="submit" (click)="print()">
+                    &nbsp;pdf (beta)&nbsp;
+                    <img src="../../assets/img/SVG/map2.svg" alt="" />
+                </button>
             </div>
-        </form>
+
+            <div class="summary-row">
+            </div>
+        </div>
+
     </div>
 </div>

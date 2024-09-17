@@ -13,6 +13,290 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="regNo">Registration Number</label>
+                    <input type="text" id="regNo" formControlName="regNo" />
+                    <div *ngIf="f['regNo'].errors" class="invalid-input">
+                        <div *ngIf="f['regNo'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="chassisNo">Chassis Number</label>
+                    <input type="text" id="chassisNo" formControlName="chassisNo" />
+                    <div *ngIf="f['chassisNo'].errors" class="invalid-input">
+                        <div *ngIf="f['chassisNo'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="engineNo">Engine Number</label>
+                    <input type="text" id="engineNo" formControlName="engineNo" />
+                    <div *ngIf="f['engineNo'].errors" class="invalid-input">
+                        <div *ngIf="f['engineNo'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="vehicleMake">Make of Vehicle</label>
+                    <input type="text" id="vehicleMake" formControlName="vehicleMake" />
+                    <div *ngIf="f['vehicleMake'].errors" class="invalid-input">
+                        <div *ngIf="f['vehicleMake'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="bodyType">Type of Body</label>
+                    <input type="text" id="bodyType" formControlName="bodyType" />
+                    <div *ngIf="f['bodyType'].errors" class="invalid-input">
+                        <div *ngIf="f['bodyType'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="cc">Cubic Capacity</label>
+                    <input type="text" id="cc" formControlName="cc" />
+                    <div *ngIf="f['cc'].errors" class="invalid-input">
+                        <div *ngIf="f['cc'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                        <div *ngIf="f['cc'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['cc'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="yom">Year of Manufacture</label>
+                    <input type="text" id="cc" formControlName="yom" />
+                    <div *ngIf="f['yom'].errors" class="invalid-input">
+                        <div *ngIf="f['yom'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                        <div *ngIf="f['yom'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['yom'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="estimatedValue">Estimate of present value (incl duty)</label>
+                    <input type="text" id="estimatedValue" formControlName="estimatedValue" />
+                    <div *ngIf="f['estimatedValue'].errors" class="invalid-input">
+                        <div *ngIf="f['estimatedValue'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                        <div *ngIf="f['estimatedValue'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['estimatedValue'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="purposeOfVehicle">For what purpose will the vehicle be used?</label>
+                    <select id="purposeOfVehicle" formControlName="purposeOfVehicle">
+                        <option></option>
+                        <option>Social, Domestic, Pleasure and Own business</option>
+                        <option>For carriage of goods for hire and reward</option>
+                        <option>For carriage of passengers for hire and reward</option>
+                        <option>For any other purpose - please specify</option>
+                    </select>
+                    <div *ngIf="f['purposeOfVehicle'].errors" class="invalid-input">
+                        <div *ngIf="f['purposeOfVehicle'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="otherPurpose">Other purpose (Details)</label>
+                    <input type="text" id="otherPurpose" formControlName="otherPurpose" />
+                    <div *ngIf="f['otherPurpose'].errors" class="invalid-input">
+                        <div *ngIf="f['otherPurpose'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <button class="ombutton ombutton-sm with-icon" type="button" (click)="addVehicle()">
+                        <i class="fas fa-plus"></i>Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <table class="data-table" *ngIf="vehicles.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Reg. No</th>
+                            <th>Chassis No</th>
+                            <th>Engine No</th>
+                            <th>Make</th>
+                            <th>Body</th>
+                            <th>CC</th>
+                            <th>YoM</th>
+                            <th>Estimate Value</th>
+                            <th>Purpose</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let v of vehicles | keyvalue">
+                            <td><i class="fa fa-bus fa-lg m-3"></i></td>
+                            <td>{{ v.value.regNo }}</td>
+                            <td>{{ v.value.chassisNo}}</td>
+                            <td>{{ v.value.engineNo}}</td>
+                            <td>{{ v.value.make}}</td>
+                            <td>{{ v.value.bodyType}}</td>
+                            <td>{{ v.value.cc}}</td>
+                            <td>{{ v.value.yom}}</td>
+                            <td>{{ v.value.estValue}}</td>
+                            <td>{{ v.value.purpose}}</td>
+                            <td>
+                                <button class="ombutton-link" type="button" (click)="removeVehicle(v.key)">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-row">
+                <div *ngIf="submitted && form.errors && form.errors['mustHaveVehicle']" class="invalid-input data-table-error">
+                    <div *ngIf="form.errors && form.errors['mustHaveVehicle']">
+                        At least one vehicle required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="ownerOfVehicles">Are you the owner of the above vehicle(s)?</label>
+                    <select id="ownerOfVehicles" formControlName="ownerOfVehicles">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['ownerOfVehicles'].errors" class="invalid-input">
+                        <div *ngIf="f['ownerOfVehicles'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="otherOwner">If you are not the owner, state the name of the owner and his/her
+                        address. (Attach a copy of the log book)</label>
+                    <textarea rows="1" id="otherOwner" formControlName="otherOwner"></textarea>
+                    <div *ngIf="submitted && f['otherOwner'].errors" class="invalid-input">
+                        <div *ngIf="f['otherOwner'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="otherPartyInterest">Is any Financial Institution or any other party financially interested in the vehicle?</label>
+                    <select id="otherPartyInterest" formControlName="otherPartyInterest">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['otherPartyInterest'].errors" class="invalid-input">
+                        <div *ngIf="f['otherPartyInterest'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="otherPartyInterestDetails">If "Yes" please state name and address</label>
+                    <textarea rows="1" id="otherPartyInterestDetails" formControlName="otherPartyInterestDetails"></textarea>
+                    <div *ngIf="submitted && f['otherPartyInterestDetails'].errors" class="invalid-input">
+                        <div *ngIf="f['otherPartyInterestDetails'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="leftHandDrive">Is any of the vehicles left-hand drive? (An additional premium of 25% is applicable for left hand drive cars)</label>
+                    <select id="leftHandDrive" formControlName="leftHandDrive">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['leftHandDrive'].errors" class="invalid-input">
+                        <div *ngIf="f['leftHandDrive'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="dutyPaid">Has customs duty been paid in full in respect of the above vehicle? (Duty Clause is applicable if Custom Duty has not been paid in full)</label>
+                    <select id="dutyPaid" formControlName="dutyPaid">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['dutyPaid'].errors" class="invalid-input">
+                        <div *ngIf="f['dutyPaid'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="fittedWithAntiTheft">Is/are the vehicle(s) fitted with anti-theft devices? (Provide copy of Installation certificate) (Theft excess of 25% of vehicle)</label>
+                    <select id="fittedWithAntiTheft" formControlName="fittedWithAntiTheft">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div *ngIf="submitted && f['fittedWithAntiTheft'].errors" class="invalid-input">
+                        <div *ngIf="f['fittedWithAntiTheft'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

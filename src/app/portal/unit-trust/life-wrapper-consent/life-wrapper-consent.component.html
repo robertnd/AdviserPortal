@@ -11,11 +11,11 @@
             </div>
         </div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
             <div class="form-row">
-                <p class="overview__subheading2 collapsible">
-                    CONSENT FOR PROCESSING PERSONAL DATA RELATING TO A CHILD
-                    <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true" (click)="toggle()"></i>
-                </p>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for processing personal data relating to a child</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -42,7 +42,7 @@
                     <input type="text" id="lwcDataForChildName" formControlName="lwcDataForChildName" />
                     <div *ngIf="submitted && f['lwcDataForChildName'].errors" class="invalid-input">
                         <div *ngIf="f['lwcDataForChildName'].errors['required']">
-                            Name is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     <input type="date" id="lwcDataForChildDate" formControlName="lwcDataForChildDate" />
                     <div *ngIf="submitted && f['lwcDataForChildDate'].errors" class="invalid-input">
                         <div *ngIf="f['lwcDataForChildDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['lwcDataForChildDate'].errors['futureDate']">
                             Future date is not valid
@@ -65,10 +65,9 @@
             </div>
 
             <div class="form-row">
-                <p class="overview__subheading2 collapsible">
-                    CONSENT FOR OBTAINING YOUR INFORMATION FROM THIRD PARTIES
-                    <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true" (click)="toggle()"></i>
-                </p>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for obtaining your information from third parties</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -95,7 +94,7 @@
                     <input type="text" id="lwc3rdPartyName" formControlName="lwc3rdPartyName" />
                     <div *ngIf="submitted && f['lwc3rdPartyName'].errors" class="invalid-input">
                         <div *ngIf="f['lwc3rdPartyName'].errors['required']">
-                            Name is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -104,7 +103,7 @@
                     <input type="date" id="lwc3rdPartyDate" formControlName="lwc3rdPartyDate" />
                     <div *ngIf="submitted && f['lwc3rdPartyDate'].errors" class="invalid-input">
                         <div *ngIf="f['lwc3rdPartyDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['lwc3rdPartyDate'].errors['futureDate']">
                             Future date is not valid
@@ -118,10 +117,9 @@
             </div>
 
             <div class="form-row">
-                <p class="overview__subheading2 collapsible">
-                    CONSENT FOR COMMERCIAL USE OF DATA
-                    <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true" (click)="toggle()"></i>
-                </p>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for commercial use of data</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -138,15 +136,15 @@
 
             <div class="form-row">
                 <div class="text-input-intg">
-                    <label for="lwcAcceptOrNotIdDocument">Identification Document</label>
-                    <select id="lwcAcceptOrNotIdDocument" formControlName="lwcAcceptOrNotIdDocument">
+                    <label for="lwcAcceptOrNot">Please select</label>
+                    <select id="lwcAcceptOrNot" formControlName="lwcAcceptOrNot">
                         <option></option>
                         <option>I consent</option>
                         <option>I do not consent to being contacted for marketing information</option>
                     </select>
-                    <div *ngIf="submitted && f['lwcAcceptOrNotIdDocument'].errors" class="invalid-input">
-                        <div *ngIf="f['lwcAcceptOrNotIdDocument'].errors['required']">
-                            Identification Document is required
+                    <div *ngIf="submitted && f['lwcAcceptOrNot'].errors" class="invalid-input">
+                        <div *ngIf="f['lwcAcceptOrNot'].errors['required']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -155,7 +153,7 @@
                     <input type="date" id="lwcAcceptOrNotDate" formControlName="lwcAcceptOrNotDate" />
                     <div *ngIf="submitted && f['lwcAcceptOrNotDate'].errors" class="invalid-input">
                         <div *ngIf="f['lwcAcceptOrNotDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['lwcAcceptOrNotDate'].errors['futureDate']">
                             Future date is not valid
@@ -182,7 +180,7 @@
                     <input type="text" id="lwcDeclName" formControlName="lwcDeclName" />
                     <div *ngIf="submitted && f['lwcDeclName'].errors" class="invalid-input">
                         <div *ngIf="f['lwcDeclName'].errors['required']">
-                            Name is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -191,10 +189,9 @@
             </div>
 
             <div class="form-row">
-                <p class="overview__subheading2 collapsible">
-                    DECLARATION
-                    <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true" (click)="toggle()"></i>
-                </p>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">DECLARATION</div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -220,7 +217,7 @@
                     <input type="date" id="lwcDeclNameDate" formControlName="lwcDeclNameDate" />
                     <div *ngIf="submitted && f['lwcDeclNameDate'].errors" class="invalid-input">
                         <div *ngIf="f['lwcDeclNameDate'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['lwcDeclNameDate'].errors['futureDate']">
                             Future date is not valid

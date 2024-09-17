@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { nowOrFutureDate, validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 
 @Component({
@@ -17,6 +17,16 @@ export class MaxpacBeneficiariesComponent {
   pageTitle = 'Beneficiary'
   submitted = false;
   form: FormGroup = new FormGroup({
+      pobox: new FormControl(''),
+      town: new FormControl(''),
+      telephoneNo: new FormControl(''),
+      mobileNo: new FormControl(''),
+      idDocument: new FormControl(''),
+      docNumber: new FormControl(''),
+      email: new FormControl(''),
+      accountNo: new FormControl(''),
+      insuredFrom: new FormControl(''),
+      insuredTo: new FormControl('')
     // firstName: new FormControl(''),
   })
 
@@ -29,15 +39,22 @@ export class MaxpacBeneficiariesComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+        pobox: ['', Validators.required],
+        town: ['', Validators.required],
+        telephoneNo: [''],
+        mobileNo: ['', Validators.required],
+        idDocument: ['', Validators.required],
+        docNumber: ['', Validators.required],
+        email: [''],
+        accountNo: ['', Validators.required],
+        insuredFrom: ['', [Validators.required, validateDate()]],
+        insuredTo: ['', [Validators.required, nowOrFutureDate()]],
       })
 
     // this will load entries on back navigation or prefill

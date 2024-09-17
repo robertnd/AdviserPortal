@@ -12,6 +12,7 @@ export class LeftbarComponent {
     private router: Router) { }
 
   ngOnInit(): void {
+    
     //this.router.navigate(['/portal/test'])
   }
 }

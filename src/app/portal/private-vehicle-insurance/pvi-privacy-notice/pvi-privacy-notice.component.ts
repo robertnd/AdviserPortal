@@ -17,7 +17,6 @@ export class PviPrivacyNoticeComponent {
   pageTitle = 'Privacy Notice'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
   })
 
   constructor(
@@ -29,15 +28,12 @@ export class PviPrivacyNoticeComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
       })
 
     // this will load entries on back navigation or prefill

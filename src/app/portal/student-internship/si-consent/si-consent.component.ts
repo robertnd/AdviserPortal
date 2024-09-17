@@ -11,12 +11,20 @@ import { FormStateService } from '@app/_services/form-state.service'
   templateUrl: './si-consent.component.html',
   styleUrls: ['./si-consent.component.css']
 })
-export class SiConsentComponent {
+export class SiConsentComponent implements OnInit {
   journey = ''
   pageTitle = 'Consent'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    personalDataConsentName: new FormControl(''),
+    personalDataConsentDate: new FormControl(''),
+    childDataConsentName: new FormControl(''),
+    childDataConsentDate: new FormControl(''),
+    marketingDataConsentName: new FormControl(''),
+    marketingDataConsentDate: new FormControl(''),
+    consentChoice: new FormControl(''),
+    declarationName: new FormControl(''),
+    declarationDate: new FormControl('')
   })
 
   constructor(
@@ -28,15 +36,21 @@ export class SiConsentComponent {
   }
 
   get f() { return this.form.controls }
-  // get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+        personalDataConsentName: ['', Validators.required],
+        personalDataConsentDate: ['', [Validators.required, validateDate()]],
+        childDataConsentName: ['', Validators.required],
+        childDataConsentDate: ['', [Validators.required, validateDate()]],
+        marketingDataConsentName: ['', Validators.required],
+        marketingDataConsentDate: ['', [Validators.required, validateDate()]],
+        consentChoice: ['', Validators.required],
+        declarationName: ['', Validators.required],
+        declarationDate: ['', [Validators.required, validateDate()]]
       })
 
     // this will load entries on back navigation or prefill
@@ -57,5 +71,4 @@ export class SiConsentComponent {
   previous() {
     this.router.navigate(['/portal/student-internship/si-privacy-notice'])
   }
-
 }

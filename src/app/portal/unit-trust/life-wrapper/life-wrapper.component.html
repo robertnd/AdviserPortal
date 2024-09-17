@@ -22,10 +22,18 @@
                 </p>
             </div>
 
-            <div class="form-row">
+            <!-- <div class="form-row">
                 <p class="overview__subheading2 collapsible">
                     Terms and conditions <i [ngClass]="displayed ? 'fa fa-minus' : 'fa fa-plus'" aria-hidden="true" (click)="toggle()"></i>
                 </p>
+            </div> -->
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="collapsible highlight-1" (click)="toggle()">
+                        {{ displayText }}
+                    </div>
+                </div>
             </div>
 
             <div class="form-row">
@@ -58,8 +66,8 @@
             </div>
 
             <div class="form-row">
-                <div class="overview">
-                    <h1 class="overview__subheading">Beneficiary Nomination</h1>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Beneficiary Nomination</div>
                 </div>
             </div>
 
@@ -69,7 +77,7 @@
                     <input type="text" id="lwBNFirstName" formControlName="lwBNFirstName" />
                     <div *ngIf="submitted && f['lwBNFirstName'].errors" class="invalid-input">
                         <div *ngIf="f['lwBNFirstName'].errors['required']">
-                            First Name is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -78,7 +86,7 @@
                     <input type="text" id="lwBNSurname" formControlName="lwBNSurname" />
                     <div *ngIf="submitted && f['lwBNSurname'].errors" class="invalid-input">
                         <div *ngIf="f['lwBNSurname'].errors['required']">
-                            Surname is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -86,8 +94,8 @@
                     <label for="lwBNIDorPassportNo">ID / Passport Number</label>
                     <input type="text" id="lwBNIDorPassportNo" formControlName="lwBNIDorPassportNo" />
                     <div *ngIf="submitted && f['lwBNIDorPassportNo'].errors" class="invalid-input">
-                        <div *ngIf="f['lwBNIDorPassportNo'].errors['required']">
-                            ID / Passport Number is required
+                        <div *ngIf="f['lwBNIDorPassportNo'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -99,7 +107,7 @@
                     <input type="text" id="lwBNRelationship" formControlName="lwBNRelationship" />
                     <div *ngIf="submitted && f['lwBNRelationship'].errors" class="invalid-input">
                         <div *ngIf="f['lwBNRelationship'].errors['required']">
-                            Relationship is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -107,8 +115,8 @@
                     <label for="lwBNPostalAddress">Postal Address</label>
                     <input type="text" id="lwBNPostalAddress" formControlName="lwBNPostalAddress" />
                     <div *ngIf="submitted && f['lwBNPostalAddress'].errors" class="invalid-input">
-                        <div *ngIf="f['lwBNPostalAddress'].errors['required']">
-                            Postal Address is required
+                        <div *ngIf="f['lwBNPostalAddress'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -116,8 +124,8 @@
                     <label for="lwBNMobileNo">Mobile Number</label>
                     <input type="text" id="lwBNMobileNo" formControlName="lwBNMobileNo" />
                     <div *ngIf="submitted && f['lwBNMobileNo'].errors" class="invalid-input">
-                        <div *ngIf="f['lwBNMobileNo'].errors['required']">
-                            Mobile Number is required
+                        <div *ngIf="f['lwBNMobileNo'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -128,12 +136,24 @@
                     <label for="lwBNEMail">EMail</label>
                     <input type="text" id="lwBNEMail" formControlName="lwBNEMail" />
                     <div *ngIf="submitted && f['lwBNEMail'].errors" class="invalid-input">
-                        <div *ngIf="f['lwBNEMail'].errors['required']">
-                            EMail is required
+                        <div *ngIf="f['lwBNEMail'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
-                <div class="text-input-intg"></div>
+                <div class="text-input-intg">
+                    <label for="lwIsMinor">Is the beneficiary a minor?</label>
+                    <select id="lwIsMinor" formControlName="lwIsMinor">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                      </select>
+                    <div *ngIf="submitted && f['lwIsMinor'].errors" class="invalid-input">
+                        <div *ngIf="f['lwIsMinor'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
                 <div class="text-input-intg"></div>
             </div>
 
@@ -145,8 +165,8 @@
             </div>
 
             <div class="form-row">
-                <div class="overview">
-                    <h1 class="overview__subheading">Guardian</h1>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Guardian</div>
                 </div>
             </div>
 
@@ -155,8 +175,8 @@
                     <label for="lwGuardianFirstName">First Name</label>
                     <input type="text" id="lwGuardianFirstName" formControlName="lwGuardianFirstName" />
                     <div *ngIf="submitted && f['lwGuardianFirstName'].errors" class="invalid-input">
-                        <div *ngIf="f['lwGuardianFirstName'].errors['required']">
-                            First Name is required
+                        <div *ngIf="f['lwGuardianFirstName'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -164,8 +184,8 @@
                     <label for="lwGuardianSurname">Surname</label>
                     <input type="text" id="lwGuardianSurname" formControlName="lwGuardianSurname" />
                     <div *ngIf="submitted && f['lwGuardianSurname'].errors" class="invalid-input">
-                        <div *ngIf="f['lwGuardianSurname'].errors['required']">
-                            Surname is required
+                        <div *ngIf="f['lwGuardianSurname'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -173,8 +193,8 @@
                     <label for="lwGuardianIDorPassportNo">ID / Passport Number</label>
                     <input type="text" id="lwGuardianIDorPassportNo" formControlName="lwGuardianIDorPassportNo" />
                     <div *ngIf="submitted && f['lwGuardianIDorPassportNo'].errors" class="invalid-input">
-                        <div *ngIf="f['lwGuardianIDorPassportNo'].errors['required']">
-                            ID / Passport Number is required
+                        <div *ngIf="f['lwGuardianIDorPassportNo'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -185,8 +205,8 @@
                     <label for="lwGuardianRelationship">Relationship</label>
                     <input type="text" id="lwGuardianRelationship" formControlName="lwGuardianRelationship" />
                     <div *ngIf="submitted && f['lwGuardianRelationship'].errors" class="invalid-input">
-                        <div *ngIf="f['lwGuardianRelationship'].errors['required']">
-                            Relationship is required
+                        <div *ngIf="f['lwGuardianRelationship'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -194,8 +214,8 @@
                     <label for="lwGuardianPostalAddress">Postal Address</label>
                     <input type="text" id="lwGuardianPostalAddress" formControlName="lwGuardianPostalAddress" />
                     <div *ngIf="submitted && f['lwGuardianPostalAddress'].errors" class="invalid-input">
-                        <div *ngIf="f['lwGuardianPostalAddress'].errors['required']">
-                            Postal Address is required
+                        <div *ngIf="f['lwGuardianPostalAddress'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -203,8 +223,8 @@
                     <label for="lwGuardianMobileNo">Mobile Number</label>
                     <input type="text" id="lwGuardianMobileNo" formControlName="lwGuardianMobileNo" />
                     <div *ngIf="submitted && f['lwGuardianMobileNo'].errors" class="invalid-input">
-                        <div *ngIf="f['lwGuardianMobileNo'].errors['required']">
-                            Mobile Number is required
+                        <div *ngIf="f['lwGuardianMobileNo'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>
@@ -215,8 +235,8 @@
                     <label for="lwGuardianEMail">EMail</label>
                     <input type="text" id="lwGuardianEMail" formControlName="lwGuardianEMail" />
                     <div *ngIf="submitted && f['lwGuardianEMail'].errors" class="invalid-input">
-                        <div *ngIf="f['lwGuardianEMail'].errors['required']">
-                            EMail is required
+                        <div *ngIf="f['lwGuardianEMail'].errors['conditionalRequired']">
+                            Required
                         </div>
                     </div>
                 </div>

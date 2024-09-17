@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
+import { validateDate } from '@app/_helpers'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 
@@ -21,9 +22,6 @@ export class NextOfKinComponent implements OnInit {
     nokDocNumber: new FormControl(''),
     nokMobileNo: new FormControl(''),
     nokEmail: new FormControl(''),
-    nokSpouse: new FormControl(''),
-    nokChildNames: new FormControl(''),
-    nokChildGender: new FormControl('')
   })
 
   constructor(
@@ -40,16 +38,13 @@ export class NextOfKinComponent implements OnInit {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      nokSurname: [''],
-      nokForenames: [''],
-      nokDoB: [''],
-      nokIdDocument: [''],
-      nokDocNumber: [''],
-      nokMobileNo: [''],
+      nokSurname: ['', Validators.required],
+      nokForenames: ['', Validators.required],
+      nokDoB: ['', [Validators.required, validateDate()]],
+      nokIdDocument: ['', Validators.required],
+      nokDocNumber: ['', Validators.required],
+      nokMobileNo: ['', Validators.required],
       nokEmail: [''],
-      nokSpouse: [''],
-      nokChildNames: [''],
-      nokChildGender: ['']
     })
 
     var pageData = this.fs.getPageData(this.pageTitle)

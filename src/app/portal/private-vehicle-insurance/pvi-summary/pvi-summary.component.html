@@ -1,27 +1,819 @@
 <div class="detail">
-    <div class="form-container">
-        <div class="form-row">
+    <div class="summary-container">
+        <div class="summary-row">
+            <img src="../../assets/img/OMformLogo.png" alt="">
+        </div>
+        <div class="summary-row">
+            <div class="address-items">
+                <p>Old Mutual Life Assurance Kenya Limited</p>
+                <p>Old Mutual Tower, Upper Hill Road, Upper Hill, Nairobi | P.O. Box 23842 00100, Nairobi, Kenya</p>
+                <p>Tel: +254 711 010 000, +254 711 065 000 | Email: life@oldmutual.co.ke</p>
+                <p>oldmutual.co.ke</p>
+            </div>
+        </div>
+        <div class="summary-row">
             <div class="overview" id="formTitle">
-                <h1 class="functional__heading">{{ journey }}</h1>
+                <h1 class="functional__heading">{{ journey }} Summary</h1>
             </div>
         </div>
-        <div class="form-row">
-            <div class="overview">
-                <h1 class="overview__subheading">Private Vehicle Insurance Summary</h1>
-            </div>
-        </div>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div id="personalInfoSummary" class="summaryInfoGroup">
 
             <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Personal Information</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>First Name</label>
+                    {{ personalInfo.firstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Middle Name(s)</label>
+                    {{ personalInfo.middleNames }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Last Name</label>
+                    {{ personalInfo.lastName }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date of Birth</label>
+                    {{ personalInfo.dateOfBirth }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ personalInfo.idDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ personalInfo.docNumber }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Gender</label>
+                    {{ personalInfo.gender }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Marital Status</label>
+                    {{ personalInfo.maritalStatus }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title</label>
+                    {{ personalInfo.title }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title (if other)</label>
+                    {{ personalInfo.titleOther }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>PIN</label>
+                    {{ personalInfo.PIN }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Nationality</label>
+                    {{ personalInfo.nationality }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Country of Residence</label>
+                    {{ personalInfo.countryOfResidence }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/personal-info')">
+                        Edit Personal Information
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+
+            </div>
+        </div>
+
+        <div id="contactsSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Contacts</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label for="firstName">Postal Address</label>
+                    {{ contacts.postalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label for="middlenames">Postal Code</label>
+                    {{ contacts.postalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label for="lastName">Town / City</label>
+                    {{ contacts.townCity }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label for="firstName">Town / City</label>
+                    {{ contacts.physicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label for="middlenames">Mobile Number</label>
+                    {{ contacts.mobile }}
+                </div>
+                <div class="text-intg-summary">
+                    <label for="lastName">Home Number</label>
+                    {{ contacts.homeNumber }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label for="firstName">Email</label>
+                    {{ contacts.email }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/contacts')">
+                        Edit Contacts
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="occupationSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Occupation</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Occupation</label>
+                    {{ occupation.typeOfEmployment }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Name of Business or Employer</label>
+                    {{ occupation.nameOfBusiness }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Role</label>
+                    {{ occupation.role }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary" *ngIf="occupation.natureOfBusiness">
+                    <label>If self-employed, kindly state the nature of business activity including the source of funds
+                        for permiums</label>
+                    {{ occupation.natureOfBusiness }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Postal Address (Work)</label>
+                    {{ occupation.workPostalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Code</label>
+                    {{ occupation.workPostalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Town / City</label>
+                    {{ occupation.workTownOrCity }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Physical Address (Work)</label>
+                    {{ occupation.workPhysicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Phone (Work)</label>
+                    {{ occupation.workPhone }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Email (Work)</label>
+                    {{ occupation.workEmail }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/occupation')">
+                        Edit Occupation
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="consentSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Consent</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <h1 class="overview__subheading2">CONSENT FOR PROCESSING SENSITIVE PERSONAL DATA OUTSIDE KENYA</h1>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    Sensitive personal data means data revealing your race, health status, ethnic social origin,
+                    conscience, belief, genetic data, biometric data, property details, marital status, family details
+                    including names of your children, parents, spouse or spouses, sex or your sexual orientation. In
+                    some instances, it may be necessary that we process your sensitive personal data outside Kenya in
+                    connection of which we are required to obtain your consent
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name</label>
+                    {{ consent.personalDataConsentName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ consent.personalDataConsentDate }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <h1 class="overview__subheading2">CONSENT FOR PROCESSING PERSONAL DATA RELATING TO A CHILD</h1>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    In completing this section, you may be required to provide personal data relating to a child for
+                    instance where providing details of your beneficiaries/next of kin. Please note that a child is a
+                    person under the age of 18 years. In order for us to process any personal data relating to a child,
+                    we require your consent as the child's parent or legal guardian and proof of the child's age
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name</label>
+                    {{ consent.childDataConsentName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ consent.childDataConsentDate }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <h1 class="overview__subheading2">CONSENT FOR MARKETING PURPOSES / COMMERCIAL USE OF DATA</h1>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    We would like to use your details to provide you with information about insurance products, services
+                    and special offers from us or our affiliates. Please note that if you do not want to receive our
+                    marketing information you may opt-out by contacting us at any time
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name</label>
+                    {{ consent.marketingDataConsentName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ consent.marketingDataConsentDate }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Consent: Please Select</label>
+                    {{ consent.consentChoice }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+
+            <div class="summary-row">
+                <h1 class="overview__subheading2">DECLARATION</h1>
+            </div>
+
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    I confirm that I have read and understood the Privacy Notice and the Privacy Policy and that any
+                    queries/concerns I have with regard to the nature and purpose of the processing of personal data
+                    have been adequately addressed
+                </p>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Name</label>
+                    {{ consent.declarationName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date</label>
+                    {{ consent.declarationDate }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/private-vehicle-insurance/pvi-consent')">
+                        Edit Consent
+                    </button>
+                </div>
+            </div>
+            
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="vehiclesSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Vehicles</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <table class="data-table" *ngIf="vehicles.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Reg. No</th>
+                            <th>Chassis No</th>
+                            <th>Engine No</th>
+                            <th>Make</th>
+                            <th>Body</th>
+                            <th>CC</th>
+                            <th>YoM</th>
+                            <th>Estimate Value</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let v of vehicles | keyvalue">
+                            <td><i class="fa fa-bus fa-lg m-3"></i></td>
+                            <td>{{ v.value.regNo }}</td>
+                            <td>{{ v.value.chassisNo}}</td>
+                            <td>{{ v.value.engineNo}}</td>
+                            <td>{{ v.value.make}}</td>
+                            <td>{{ v.value.bodyType}}</td>
+                            <td>{{ v.value.cc}}</td>
+                            <td>{{ v.value.yom}}</td>
+                            <td>{{ v.value.estValue}}</td>
+                            <td>{{ v.value.purpose}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Are you the owner of the above vehicle(s)?</label>
+                    {{ vehiclesInfo.ownerOfVehicles }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary" *ngIf="vehiclesInfo.ownerOfVehicles === 'No' ">
+                    <label>If you are not the owner, state the name of the owner and his/her
+                        address. (Attach a copy of the log book)</label>
+                    {{ vehiclesInfo.otherOwner }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Is any Financial Institution or any other party financially interested in the vehicle?</label>
+                    {{ vehiclesInfo.otherPartyInterest }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary" *ngIf="vehiclesInfo.otherPartyInterest === 'Yes' ">
+                    <label>If "Yes" please state name and address</label>
+                    {{ vehiclesInfo.otherPartyInterestDetails }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Is any of the vehicles left-hand drive? (An additional premium of 25% is applicable for left hand drive cars)</label>
+                    {{ vehiclesInfo.leftHandDrive }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Has customs duty been paid in full in respect of the above vehicle? (Duty Clause is applicable if Custom Duty has not been paid in full)</label>
+                    {{ vehiclesInfo.dutyPaid }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Is/are the vehicle(s) fitted with anti-theft devices? (Provide copy of Installation certificate) (Theft excess of 25% of vehicle)</label>
+                    {{ vehiclesInfo.fittedWithAntiTheft }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/private-vehicle-insurance/pvi-vehicles')">
+                        Edit Vehicles
+                    </button>
+                </div>
+            </div>
+            
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="drivingAndClaimsSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Driving and Claims</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Do you hold a driving license?</label>
+                    {{ claims.hasDrivingLicense }}
+                </div>
+            </div>
+        
+            <div class="summary-row" *ngIf=" claims.hasDrivingLicense === 'Yes' ">
+                <div class="text-intg-summary">
+                    <label>Which class of license?</label>
+                    {{ claims.classOfLicense }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Year license was attained</label>
+                    {{ claims.licenseYear }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Have you ever had a motor vehicle accident or loss during the
+                        past five years?</label>
+                    {{ claims.hasHadAccidentLast5Years }}
+                </div>
+            </div>
+        
+            <div class="summary-row" *ngIf=" claims.hasHadAccidentLast5Years === 'Yes' ">
+                <div class="text-intg-summary">
+                    <label>When?</label>
+                    {{ claims.dateOfAccident }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Nature of Accident</label>
+                    {{ claims.natureOfAccident }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Estimated amount of loss</label>
+                    {{ claims.lossEstimate }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Have you ever been convicted of any motoring offence?</label>
+                    {{ claims.hasOffenceConviction }}
+                </div>
+            </div>
+        
+            <div class="summary-row" *ngIf="claims.hasOffenceConviction === 'Yes'">
+                <div class="text-intg-summary">
+                    <label>If "yes", provide details</label>
+                    {{ claims.hasOffenceConvictionDetails }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Have you been insured in respect of the above vehicle(s)?</label>
+                    {{ claims.vehiclesInsured }}
+                </div>
+            </div>
+        
+            <div class="summary-row" *ngIf="claims.vehiclesInsured === 'Yes'">
+                <div class="text-intg-summary">
+                    <label>If "yes", by which company?</label>
+                    {{ claims.vehiclesInsuredDetails }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>What type of cover do you require?</label>
+                    {{ claims.coverRequired }}
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <p class="overview__subheading2_ital">
+                    Extra Benefits available at an additional premium (Comprehensive Vehicles only)
+                </p>
+            </div>
+        
+            <div class="summary-row">
+                <form [formGroup]="form">
+                    <table class="data-table-noprint">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Extra Windscreen Cover above Kshs 30,000</td>
+                                <td><input type="checkbox" id="extraWindscreenCover" value="extraWindscreenCover"
+                                        formControlName="extraWindscreenCover" readonly></td>
+                                <td>Limit 10% of the extra limit</td>
+                            </tr>
+                            <tr>
+                                <td>2. Extra Radio Cassette Limit above Kshs 30,000</td>
+                                <td><input type="checkbox" id="extraRadioCassetteLimit" value="extraRadioCassetteLimit"
+                                        formControlName="extraRadioCassetteLimit" readonly></td>
+                                <td>Limit 10% of the extra limit</td>
+                            </tr>
+                            <tr>
+                                <td>3. Riot, Strike & Political violence</td>
+                                <td><input type="checkbox" id="riotStrikePoliticalViolence"
+                                        value="riotStrikePoliticalViolence" formControlName="riotStrikePoliticalViolence" readonly>
+                                </td>
+                                <td>Additional premium of 0.25% of vehicle value</td>
+                            </tr>
+                            <tr>
+                                <td>4. Car Hire - Cash Benefit up to Kshs 30,000 (Vehicles above Kshs. 1 million only)</td>
+                                <td><input type="checkbox" id="carHire" value="carHire" formControlName="carHire" readonly></td>
+                                <td>Additional premium of Kshs 3,000 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>5. Forced ATM withdrawal - Up to Kshs 10,000</td>
+                                <td><input type="checkbox" id="forcedATMWithdrawal10K" value="forcedATMWithdrawal10K"
+                                        formControlName="forcedATMWithdrawal10K" readonly></td>
+                                <td>Additional premium of Kshs 1,000 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>5. Forced ATM withdrawal - Up to Kshs 7,500</td>
+                                <td><input type="checkbox" id="forcedATMWithdrawal7500" value="forcedATMWithdrawal7500"
+                                        formControlName="forcedATMWithdrawal7500" readonly></td>
+                                <td>Additional premium of Kshs 750 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>7. Loss of spare wheel (vehicles above Kshs 1 million only)</td>
+                                <td><input type="checkbox" id="lossOfSpareWheel10K" value="lossOfSpareWheel10K"
+                                        formControlName="lossOfSpareWheel10K" readonly></td>
+                                <td>Additional premium of Kshs 1,000 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>8. Loss of spare wheel (vehicles above Kshs 1 million only)</td>
+                                <td><input type="checkbox" id="lossOfSpareWheel7500" value="lossOfSpareWheel7500"
+                                        formControlName="lossOfSpareWheel7500" readonly></td>
+                                <td>Additional premium of Kshs 750 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>9. Tracking Devices</td>
+                                <td><input type="checkbox" id="trackingDevices" value="trackingDevices"
+                                        formControlName="trackingDevices" readonly></td>
+                                <td>Additional premium of Kshs 25,000 per vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>10. Excess Waiver</td>
+                                <td><input type="checkbox" id="excessWaiver" value="excessWaiver"
+                                        formControlName="excessWaiver" readonly></td>
+                                <td>Additional premium of 0.25% of vehicle value</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            <div class="form-row">
+                <div class="checkBoxGroupPrint">
+                    <ul *ngFor="let item of extraVehicleCover()">
+                        <li>{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="summary-row">
+                <h1 class="overview__subheading">DECLARATION</h1>
+            </div>
+        
+            <div class="summary-row">
+                <p class="form-paragraph1">
+                    I/we declare that to my/our knowledge the answers and particulars given in this proposal are true
+                    and complete that I/we have not withheld any material information and that the vehicle(s) described
+                    is/are in good condition. I/we further agree that this proposal and declaration shall be the basis
+                    of the contract between me/us and Old Mutual whose policy is applicable to this insurance, I/we
+                    agree to accept. I/we confirm that I/we have read and understood the above Privacy Notice and the
+                    Privacy Policy and that any queries/concerns I/we have with regard to the nature and purpose of the
+                    processing of personal data have been adequately addressed
+                </p>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date of completion of proposal</label>
+                    {{ claims.dateOfCompletion }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Name of person completing proposal</label>
+                    {{ claims.personCompletingProposal }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/private-vehicle-insurance/pvi-driving-and-claim-experience')">
+                        Edit Driving & Claim Experience
+                    </button>
+                </div>
+            </div>
+            
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="policySummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Policy Summary</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Policy Type</label>
+                    {{ policy.policyType }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Product</label>
+                    {{ policy.product }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Premium</label>
+                    {{ policy.premium }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Sum Insured</label>
+                    {{ policy.sumInsured }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+        
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Period From</label>
+                    {{ policy.periodFrom }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Period To</label>
+                    {{ policy.periodTo }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/private-vehicle-insurance/pvi-policy-summary')">
+                        Edit Policy Summary
+                    </button>
+                </div>
+            </div>
+
+            <div id="functionBar" class="summary-row"></div>
+
+            <div class="summary-row">
+                <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
+                    {{ upstreamServerErrorMsg }}
+                </div>
+            </div>
+            
+            <div class="summary-row">
+            </div>
+
+            <div class="summary-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev
                 </button>
-                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
-                    next
+                <button class="ombutton lefted with-icon" type="submit" (click)="upstreamSubmit()">
+                    submit
                     <img src="../../assets/img/arrow-right-light.svg" alt="" />
                 </button>
+                <div id="spinnerDiv"></div>
+                <button class="ombutton lefted with-icon" type="submit" (click)="print()">
+                    &nbsp;pdf (beta)&nbsp;
+                    <img src="../../assets/img/SVG/map2.svg" alt="" />
+                </button>
             </div>
-        </form>
+
+            <div class="summary-row">
+            </div>
+
+        </div>
     </div>
 </div>

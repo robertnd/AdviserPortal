@@ -36,8 +36,10 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+NOTES.txt
+/BKP
+
 
 # System files
 .DS_Store
 Thumbs.db
-NOTES.txt

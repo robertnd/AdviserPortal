@@ -344,8 +344,8 @@
             </div>
 
             <div class="form-row">
-                <div class="text-input-intg">
-                    <label>DECLARATION</label>
+                <div class="text-input-highlight">
+                    <div class="highlight-1">DECLARATION</div>
                 </div>
             </div>
 
@@ -367,7 +367,7 @@
                     <input type="date" id="dateOfDecl" formControlName="dateOfDecl" />
                     <div *ngIf="submitted && f['dateOfDecl'].errors" class="invalid-input">
                         <div *ngIf="f['dateOfDecl'].errors['required']">
-                            Date is required
+                            Required
                         </div>
                         <div *ngIf="f['dateOfDecl'].errors['futureDate']">
                             Future date is not valid

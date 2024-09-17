@@ -38,7 +38,6 @@ export class PrivacyNoticeComponent {
   }
 
   onSubmit() {
-
     this.submitted = true;
     if (this.form.invalid) {
       return

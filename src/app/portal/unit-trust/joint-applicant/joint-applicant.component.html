@@ -25,16 +25,22 @@
                         <option></option>
                         <option>Spouses</option>
                         <option>Business Partners</option>
+                        <option>Other</option>
                     </select>
                     <div *ngIf="submitted && f['jahRelationship'].errors" class="invalid-input">
                         <div *ngIf="f['jahRelationship'].errors['required']">
-                            Account holder relationship is required
+                            Required
                         </div>
                     </div>
                 </div>
                 <div class="text-input-intg">
                     <label for="jahRelationshipOther">Other (specify)</label>
                     <input type="text" id="jahRelationshipOther" formControlName="jahRelationshipOther" />
+                    <div *ngIf="submitted && f['jahRelationshipOther'].errors" class="invalid-input">
+                        <div *ngIf="f['jahRelationshipOther'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
                 </div>
                 <div class="text-input-intg">
                 </div>
@@ -53,10 +59,12 @@
                     </select>
                     <div *ngIf="submitted && f['jahCanGetBeneficialOwnership'].errors" class="invalid-input">
                         <div *ngIf="f['jahCanGetBeneficialOwnership'].errors['required']">
-                            Beneficial ownership information is required
+                            Required
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">
@@ -66,16 +74,22 @@
                         <option></option>
                         <option>Either holder</option>
                         <option>All holders</option>
+                        <option>Other</option>
                     </select>
                     <div *ngIf="submitted && f['jahSignatories'].errors" class="invalid-input">
                         <div *ngIf="f['jahSignatories'].errors['required']">
-                            Signatory information is required
+                            Required
                         </div>
                     </div>
                 </div>
                 <div class="text-input-intg">
                     <label for="jahSignatoriesOther">Other (specify)</label>
                     <input type="text" id="jahSignatoriesOther" formControlName="jahSignatoriesOther" />
+                    <div *ngIf="submitted && f['jahSignatoriesOther'].errors" class="invalid-input">
+                        <div *ngIf="f['jahSignatoriesOther'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
                 </div>
                 <div class="text-input-intg">
                 </div>
@@ -87,7 +101,7 @@
                     <input type="text" id="jahFirstName" formControlName="jahFirstName" />
                     <div *ngIf="submitted && f['jahFirstName'].errors" class="invalid-input">
                         <div *ngIf="f['jahFirstName'].errors['required']">
-                            First Name is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -96,7 +110,7 @@
                     <input type="text" id="jahSurname" formControlName="jahSurname" />
                     <div *ngIf="submitted && f['jahSurname'].errors" class="invalid-input">
                         <div *ngIf="f['jahSurname'].errors['required']">
-                            Surname is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -130,7 +144,7 @@
                     <input type="text" id="jahTitleOther" formControlName="jahTitleOther" />
                     <div *ngIf="submitted && f['jahTitleOther'].errors" class="invalid-input">
                         <div *ngIf="f['jahTitleOther'].errors['conditionalRequired']">
-                            Please provide a Title description
+                            Required
                         </div>
                     </div>
                 </div>
@@ -149,7 +163,7 @@
                     </select>
                     <div *ngIf="submitted && f['jahIdDocument'].errors" class="invalid-input">
                         <div *ngIf="f['jahIdDocument'].errors['required']">
-                            Identification Document is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -158,16 +172,20 @@
                     <input type="text" id="jahDocNumber" formControlName="jahDocNumber" />
                     <div *ngIf="submitted && f['jahDocNumber'].errors" class="invalid-input">
                         <div *ngIf="f['jahDocNumber'].errors['required']">
-                            Document Number is required
+                            Required
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="jahDateOfBirth">Date of Birth</label>
                     <input type="date" id="jahDateOfBirth" formControlName="jahDateOfBirth" />
                     <div *ngIf="submitted && f['jahDateOfBirth'].errors" class="invalid-input">
                         <div *ngIf="f['jahDateOfBirth'].errors['required']">
-                            Date of Birth is required
+                            Required
                         </div>
                         <div *ngIf="f['jahDateOfBirth'].errors['futureDate']">
                             Future date is not valid
@@ -177,6 +195,8 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">
@@ -193,7 +213,7 @@
                     </select>
                     <div *ngIf="submitted && f['jahMaritalStatus'].errors" class="invalid-input">
                         <div *ngIf="f['jahMaritalStatus'].errors['required']">
-                            Marital Status is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -201,12 +221,10 @@
                     <label for="jahPIN">PIN</label>
                     <input type="text" id="jahPIN" formControlName="jahPIN" />
                     <div *ngIf="submitted && f['jahPIN'].errors" class="invalid-input">
-                        <div *ngIf="f['jahPIN'].errors['required']">PIN is required</div>
+                        <div *ngIf="f['jahPIN'].errors['required']">Required</div>
                     </div>
                 </div>
-                <div class="text-input-intg">
-
-                </div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">
@@ -214,23 +232,29 @@
                     <label for="jahPostalAddress">Postal Address</label>
                     <input type="text" id="jahPostalAddress" formControlName="jahPostalAddress" />
                     <div *ngIf="submitted && f['jahPostalAddress'].errors" class="invalid-input">
-                        <div *ngIf="f['jahPostalAddress'].errors['required']">Postal Address is required</div>
+                        <div *ngIf="f['jahPostalAddress'].errors['required']">Required</div>
                     </div>
                 </div>
                 <div class="text-input-intg">
                     <label for="jahPostalCode">Postal Code</label>
                     <input type="text" id="jahPostalCode" formControlName="jahPostalCode" />
                     <div *ngIf="submitted && f['jahPostalCode'].errors" class="invalid-input">
-                        <div *ngIf="f['jahPostalCode'].errors['required']">PostalCode is required</div>
+                        <div *ngIf="f['jahPostalCode'].errors['required']">Required</div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="jahCityOrTown">City / Town</label>
                     <input type="text" id="jahCityOrTown" formControlName="jahCityOrTown" />
                     <div *ngIf="submitted && f['jahCityOrTown'].errors" class="invalid-input">
-                        <div *ngIf="f['jahCityOrTown'].errors['required']">City / Town is required</div>
+                        <div *ngIf="f['jahCityOrTown'].errors['required']">Required</div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">
@@ -238,7 +262,7 @@
                     <label for="jahPhysicalAddress">Physical Address</label>
                     <input type="text" id="jahPhysicalAddress" formControlName="jahPhysicalAddress" />
                     <div *ngIf="submitted && f['jahPhysicalAddress'].errors" class="invalid-input">
-                        <div *ngIf="f['jahPhysicalAddress'].errors['required']">Physical Address is required</div>
+                        <div *ngIf="f['jahPhysicalAddress'].errors['required']">Required</div>
                     </div>
                 </div>
                 <div class="text-input-intg">
@@ -251,7 +275,7 @@
                     </select>
                     <div *ngIf="submitted && f['jahCountryOfResidence'].errors" class="invalid-input">
                         <div *ngIf="f['jahCountryOfResidence'].errors['required']">
-                            Country of Residence is required
+                            Required
                         </div>
                     </div>
                 </div>
@@ -263,7 +287,7 @@
                     <label for="jahOccupationOrBusiness">Occupation/Business</label>
                     <input type="text" id="jahOccupationOrBusiness" formControlName="jahOccupationOrBusiness" />
                     <div *ngIf="submitted && f['jahOccupationOrBusiness'].errors" class="invalid-input">
-                        <div *ngIf="f['jahOccupationOrBusiness'].errors['required']">Occupation / Business is required
+                        <div *ngIf="f['jahOccupationOrBusiness'].errors['required']">Required
                         </div>
                     </div>
                 </div>
@@ -271,7 +295,7 @@
                     <label for="jahPlaceOfWork">Place of Work</label>
                     <input type="text" id="jahPlaceOfWork" formControlName="jahPlaceOfWork" />
                     <div *ngIf="submitted && f['jahPlaceOfWork'].errors" class="invalid-input">
-                        <div *ngIf="f['jahPlaceOfWork'].errors['required']">Place Of Work is required</div>
+                        <div *ngIf="f['jahPlaceOfWork'].errors['required']">Required</div>
                     </div>
                 </div>
                 <div class="text-input-intg"></div>
@@ -282,7 +306,7 @@
                     <label for="jahPhoneNo">Telephone Number (Work)</label>
                     <input type="text" id="jahPhoneNo" formControlName="jahPhoneNo" />
                     <div *ngIf="submitted && f['jahPhoneNo'].errors" class="invalid-input">
-                        <div *ngIf="f['jahPhoneNo'].errors['required']">Telephone Number (Work) is required
+                        <div *ngIf="f['jahPhoneNo'].errors['required']">Required
                         </div>
                     </div>
                 </div>
@@ -290,18 +314,24 @@
                     <label for="jahMobileNo">Mobile Number</label>
                     <input type="text" id="jahMobileNo" formControlName="jahMobileNo" />
                     <div *ngIf="submitted && f['jahMobileNo'].errors" class="invalid-input">
-                        <div *ngIf="f['jahMobileNo'].errors['required']">Mobile Number is required
+                        <div *ngIf="f['jahMobileNo'].errors['required']">Required
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <div class="text-input-intg">
                     <label for="jahEMail">EMail</label>
                     <input type="text" id="jahEMail" formControlName="jahEMail" />
                     <div *ngIf="submitted && f['jahEMail'].errors" class="invalid-input">
-                        <div *ngIf="f['jahEMail'].errors['required']">EMail is required
+                        <div *ngIf="f['jahEMail'].errors['required']">Required
                         </div>
                     </div>
                 </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
             </div>
 
             <div class="form-row">

@@ -11,7 +11,7 @@ import { FormStateService } from '@app/_services/form-state.service'
   templateUrl: './si-privacy-notice.component.html',
   styleUrls: ['./si-privacy-notice.component.css']
 })
-export class SiPrivacyNoticeComponent {
+export class SiPrivacyNoticeComponent implements OnInit {
   journey = ''
   pageTitle = 'Privacy Notice'
   submitted = false;

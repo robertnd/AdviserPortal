@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
+import { validateDate } from '@app/_helpers/validation'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 
@@ -42,20 +43,20 @@ export class RiskAssessmentComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      ageGroup: [''],
-      investedPicks: [''],
-      holdings: [''],
-      projectedIncome: [''],
-      portion: [''],
-      knowledge: [''],
-      returns: [''],
-      onLoss: [''],
-      attracts: [''],
-      savings: [''],
-      projectedWithdrawal: [''],
-      monthlyIncomeRange: [''],
-      monthlyIncomeSource: [''],
-      dateOfDecl: ['']
+      ageGroup: ['', Validators.required],
+      investedPicks: ['', Validators.required],
+      holdings: ['', Validators.required],
+      projectedIncome: ['', Validators.required],
+      portion: ['', Validators.required],
+      knowledge: ['', Validators.required],
+      returns: ['', Validators.required],
+      onLoss: ['', Validators.required],
+      attracts: ['', Validators.required],
+      savings: ['', Validators.required],
+      projectedWithdrawal: ['', Validators.required],
+      monthlyIncomeRange: ['', Validators.required],
+      monthlyIncomeSource: ['', Validators.required],
+      dateOfDecl: ['', [Validators.required, validateDate()]]
     })
 
     var pageData = this.fs.getPageData(this.pageTitle)

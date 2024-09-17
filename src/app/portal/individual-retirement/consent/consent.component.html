@@ -13,6 +13,195 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for processing sensitive personal data outside Kenya</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    Sensitive personal data means data revealing your race, health status, ethnic social origin,
+                    conscience, belief, genetic data, biometric data, property details, marital status, family details
+                    including names of your children, parents, spouse or spouses, sex or your sexual orientation. In
+                    some instances, it may be necessary that we process your sensitive personal data outside Kenya in
+                    connection of which we are required to obtain your consent
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="personalDataConsentName">Name</label>
+                    <input type="text" id="personalDataConsentName" formControlName="personalDataConsentName" />
+                    <div *ngIf="submitted && f['personalDataConsentName'].errors" class="invalid-input">
+                        <div *ngIf="f['personalDataConsentName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="personalDataConsentDate">Date</label>
+                    <input type="date" id="personalDataConsentDate" formControlName="personalDataConsentDate" />
+                    <div *ngIf="submitted && f['personalDataConsentDate'].errors" class="invalid-input">
+                        <div *ngIf="f['personalDataConsentDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['personalDataConsentDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['personalDataConsentDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for processing personal data relating to a child</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    In completing this section, you may be required to provide personal data relating to a child for
+                    instance where providing details of your beneficiaries/next of kin. Please note that a child is a
+                    person under the age of 18 years. In order for us to process any personal data relating to a child,
+                    we require your consent as the child's parent or legal guardian and proof of the child's age
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="childDataConsentName">Name</label>
+                    <input type="text" id="childDataConsentName" formControlName="childDataConsentName" />
+                    <div *ngIf="submitted && f['childDataConsentName'].errors" class="invalid-input">
+                        <div *ngIf="f['childDataConsentName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="childDataConsentDate">Date</label>
+                    <input type="date" id="childDataConsentDate" formControlName="childDataConsentDate" />
+                    <div *ngIf="submitted && f['childDataConsentDate'].errors" class="invalid-input">
+                        <div *ngIf="f['childDataConsentDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['childDataConsentDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['childDataConsentDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for marketing purposes / commercial use of data</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    We would like to use your details to provide you with information about insurance products, services
+                    and special offers from us or our affiliates. Please note that if you do not want to receive our
+                    marketing information you may opt-out by contacting us at any time
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="marketingDataConsentName">Name</label>
+                    <input type="text" id="marketingDataConsentName" formControlName="marketingDataConsentName" />
+                    <div *ngIf="submitted && f['marketingDataConsentName'].errors" class="invalid-input">
+                        <div *ngIf="f['marketingDataConsentName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="marketingDataConsentDate">Date</label>
+                    <input type="date" id="marketingDataConsentDate" formControlName="marketingDataConsentDate" />
+                    <div *ngIf="submitted && f['marketingDataConsentDate'].errors" class="invalid-input">
+                        <div *ngIf="f['marketingDataConsentDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['marketingDataConsentDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['marketingDataConsentDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="consentChoice">Consent: Please Select</label>
+                    <select id="consentChoice" formControlName="consentChoice">
+                        <option></option>
+                        <option>Yes, I consent to receiving all marketing information and communications about all new products and services</option>
+                        <option>Yes, I consent to receiving all marketing information and communications about all new products and services which relate to my current</option>
+                        <option>I do not wish to receive any marketing information</option>
+                    </select>
+                    <div *ngIf="submitted && f['consentChoice'].errors" class="invalid-input">
+                        <div *ngIf="f['consentChoice'].errors['required']">Required</div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">DECLARATION</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    I confirm that I have read and understood the Privacy Notice and the Privacy Policy and that any
+                    queries/concerns I have with regard to the nature and purpose of the processing of personal data
+                    have been adequately addressed
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="declarationName">Name</label>
+                    <input type="text" id="declarationName" formControlName="declarationName" />
+                    <div *ngIf="submitted && f['declarationName'].errors" class="invalid-input">
+                        <div *ngIf="f['declarationName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="declarationDate">Date</label>
+                    <input type="date" id="declarationDate" formControlName="declarationDate" />
+                    <div *ngIf="submitted && f['declarationDate'].errors" class="invalid-input">
+                        <div *ngIf="f['declarationDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['declarationDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['declarationDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

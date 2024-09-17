@@ -13,6 +13,99 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="policyType">Policy Type</label>
+                    <select id="policyType" formControlName="policyType">
+                        <option></option>
+                        <option>NEW/RENEWAL</option>
+                    </select>
+                    <div *ngIf="f['policyType'].errors" class="invalid-input">
+                        <div *ngIf="f['policyType'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="product">Product</label>
+                    <select id="product" formControlName="product">
+                        <option></option>
+                        <option>Motor Private</option>
+                    </select>
+                    <div *ngIf="f['product'].errors" class="invalid-input">
+                        <div *ngIf="f['product'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="premium">Premium</label>
+                    <input type="text" id="premium" formControlName="premium" />
+                    <div *ngIf="f['premium'].errors" class="invalid-input">
+                        <div *ngIf="f['premium'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['premium'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['premium'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="sumInsured">Sum Insured</label>
+                    <input type="text" id="sumInsured" formControlName="sumInsured" />
+                    <div *ngIf="f['sumInsured'].errors" class="invalid-input">
+                        <div *ngIf="f['sumInsured'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['sumInsured'].errors['mustBeNumber']">
+                            Must be a valid number
+                        </div>
+                        <div *ngIf="f['sumInsured'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="periodFrom">Period From</label>
+                    <input type="date" id="periodFrom" formControlName="periodFrom" />
+                    <div *ngIf="submitted && f['periodFrom'].errors" class="invalid-input">
+                        <div *ngIf="f['periodFrom'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['periodFrom'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['periodFrom'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="periodTo">Period To</label>
+                    <input type="date" id="periodTo" formControlName="periodTo" />
+                    <div *ngIf="submitted && f['periodTo'].errors" class="invalid-input">
+                        <div *ngIf="f['periodTo'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['periodTo'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

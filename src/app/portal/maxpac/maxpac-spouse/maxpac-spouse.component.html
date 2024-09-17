@@ -13,6 +13,229 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <div class="form-row">
+                <div class="form-paragraph1">
+                    <a href="#" (click)="toggle()">{{ displayText }}</a>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div [hidden]="!displayed">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Opt A</th>
+                                <th>Opt B</th>
+                                <th>Opt C</th>
+                                <th>Opt D</th>
+                                <th>Opt E</th>
+                                <th>Opt F</th>
+                                <th>Opt G</th>
+                                <th>Opt H</th>
+                                <th>Opt I</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Death</td>
+                                <td>250,000</td>
+                                <td>500,000</td>
+                                <td>800,000</td>
+                                <td>1,000,000</td>
+                                <td>2,000,000</td>
+                                <td>3,000,000</td>
+                                <td>5,000,000</td>
+                                <td>8,000,000</td>
+                                <td>10,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>Permanent total disability</td>
+                                <td>250,000</td>
+                                <td>500,000</td>
+                                <td>800,000</td>
+                                <td>1,000,000</td>
+                                <td>2,000,000</td>
+                                <td>3,000,000</td>
+                                <td>5,000,000</td>
+                                <td>8,000,000</td>
+                                <td>10,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>Temporary total disability</td>
+                                <td>1,500</td>
+                                <td>5,000</td>
+                                <td>8,000</td>
+                                <td>10,000</td>
+                                <td>12,500</td>
+                                <td>15,000</td>
+                                <td>30,000</td>
+                                <td>40,000</td>
+                                <td>50,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="idDocument">Identification Document</label>
+                    <select id="idDocument" formControlName="idDocument">
+                        <option></option>
+                        <option>National ID</option>
+                        <option>Passport</option>
+                        <option>Foreign ID</option>
+                        <option>Military ID</option>
+                    </select>
+                    <div *ngIf="submitted && f['idDocument'].errors" class="invalid-input">
+                        <div *ngIf="f['idDocument'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="docNumber">Document Number</label>
+                    <input type="text" id="docNumber" formControlName="docNumber" />
+                    <div *ngIf="submitted && f['docNumber'].errors" class="invalid-input">
+                        <div *ngIf="f['docNumber'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="pinNo">PIN No</label>
+                    <input type="text" id="pinNo" formControlName="pinNo" />
+                    <div *ngIf="submitted && f['pinNo'].errors" class="invalid-input">
+                        <div *ngIf="f['pinNo'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" formControlName="occupation" />
+                    <div *ngIf="submitted && f['occupation'].errors" class="invalid-input">
+                        <div *ngIf="f['occupation'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="mobileNo">Mobile No</label>
+                    <input type="text" id="mobileNo" formControlName="mobileNo" />
+                    <div *ngIf="submitted && f['mobileNo'].errors" class="invalid-input">
+                        <div *ngIf="f['mobileNo'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="dateOfBirth">Date of Birth</label>
+                    <input type="date" id="dateOfBirth" formControlName="dateOfBirth" />
+                    <div *ngIf="submitted && f['dateOfBirth'].errors" class="invalid-input">
+                        <div *ngIf="f['dateOfBirth'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['dateOfBirth'].errors['futureDate']">
+                            Date of Birth is not valid
+                        </div>
+                        <div *ngIf="f['dateOfBirth'].errors['invalidValue']">
+                            Date of Birth is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="coverOptionForInsured">Indicate Selected Cover Option for Insured</label>
+                    <select id="coverOptionForInsured" formControlName="coverOptionForInsured">
+                        <option></option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                    </select>
+                    <!-- <input type="text" id="coverOptionForInsured" formControlName="coverOptionForInsured" /> -->
+                    <div *ngIf="submitted && f['coverOptionForInsured'].errors" class="invalid-input">
+                        <div *ngIf="f['coverOptionForInsured'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="premiumAmountInsured">Premium Amount</label>
+                    <input type="text" id="premiumAmountInsured" formControlName="premiumAmountInsured" />
+                    <div *ngIf="submitted && f['premiumAmountInsured'].errors" class="invalid-input">
+                        <div *ngIf="submitted && f['premiumAmountInsured'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['premiumAmountInsured'].errors['mustBeNumber']">
+                            Must be a valid number
+                          </div>
+                          <div *ngIf="f['premiumAmountInsured'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                          </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="coverOptionForSpouse">Indicate Selected Cover Option for Spouse</label>
+                    <!-- <input type="text" id="coverOptionForSpouse" formControlName="coverOptionForSpouse" /> -->
+                    <select id="coverOptionForSpouse" formControlName="coverOptionForSpouse">
+                        <option></option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                    </select>
+                    <div *ngIf="submitted && f['coverOptionForSpouse'].errors" class="invalid-input">
+                        <div *ngIf="f['coverOptionForSpouse'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="premiumAmountSpouse">Premium Amount</label>
+                    <input type="text" id="premiumAmountSpouse" formControlName="premiumAmountSpouse" />
+                    <div *ngIf="submitted && f['premiumAmountSpouse'].errors" class="invalid-input">
+                        <div *ngIf="f['premiumAmountSpouse'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['premiumAmountSpouse'].errors['mustBeNumber']">
+                            Must be a valid number
+                          </div>
+                          <div *ngIf="f['premiumAmountSpouse'].errors['mustBePositiveNumber']">
+                            Must be a positive number
+                          </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
                 <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
                     <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
                     prev

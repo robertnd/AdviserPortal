@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { AlertService, UtilService } from '@app/_services'
-import { validateDate } from '@app/_helpers'
+import { mustBePositiveNumber, nowOrFutureDate, validateDate } from '@app/_helpers'
 import { FormStateService } from '@app/_services/form-state.service'
 
 @Component({
@@ -17,7 +17,12 @@ export class PviPolicySummaryComponent {
   pageTitle = 'Policy'
   submitted = false;
   form: FormGroup = new FormGroup({
-    // firstName: new FormControl(''),
+    policyType: new FormControl(''),
+    product: new FormControl(''),
+    premium: new FormControl(''),
+    sumInsured: new FormControl(''),
+    periodFrom: new FormControl(''),
+    periodTo: new FormControl('')
   })
 
   constructor(
@@ -36,8 +41,12 @@ export class PviPolicySummaryComponent {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-        // firstName: ['', Validators.required],
-        // dateOfBirth: ['', [Validators.required, validateDate()]],
+          policyType: ['', Validators.required],
+          product: ['', Validators.required],
+          premium: ['', [Validators.required, mustBePositiveNumber()]],
+          sumInsured: ['', [Validators.required, mustBePositiveNumber()]],
+          periodFrom: ['', [Validators.required, validateDate()]],
+          periodTo: ['', [Validators.required, nowOrFutureDate()]]
       })
 
     // this will load entries on back navigation or prefill
