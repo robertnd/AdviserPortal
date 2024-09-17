@@ -11,3 +11,15 @@ export type PdfRequestInfo = {
 export type KeyMapping = {
     [oldKey: string]: string
 }
+
+/* Fakes */
+export type FAdviserExt = {
+    id: number,
+    firstName: string,
+    middleNames: string,
+    surname: string,
+    gender: string,
+    email: string,
+    address: string,
+    role: string
+}

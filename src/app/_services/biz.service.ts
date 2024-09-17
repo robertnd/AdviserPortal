@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, timeout } from 'rxjs';
-import { saveAs } from 'file-saver'
+// import { saveAs } from 'file-saver'
 import { PdfRequestInfo } from '@app/_types/types';
 // const BIZ_API = 'https://oldmutual.vergeinteractivelabs.com:19090/api/v1/onboard/motorvehicle/'
 
@@ -36,10 +36,10 @@ export class BizService {
     return this.http.post(dest, request, httpOptions)
   }
 
-  saveFile(blob: Blob, fileName: string): void {
-    const pdfblob = new Blob([blob], { type: 'application/pdf' })
-    saveAs(pdfblob, fileName)
-  }
+  // saveFile(blob: Blob, fileName: string): void {
+  //   const pdfblob = new Blob([blob], { type: 'application/pdf' })
+  //   saveAs(pdfblob, fileName)
+  // }
 
   pdfRequest(
     htmlPayload: string, 

@@ -108,7 +108,7 @@ export class OccupationComponent implements OnInit {
         break
       }
     }
-    console.log(this.pageTitle, JSON.stringify(this.form.value))
+    // console.log(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate([destination])
   }
 
