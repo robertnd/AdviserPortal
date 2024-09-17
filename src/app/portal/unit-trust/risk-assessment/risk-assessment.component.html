@@ -1,0 +1,397 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Risk Assessment</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="ageGroup">What is your current age?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="ageGroup" formControlName="ageGroup">
+                        <option></option>
+                        <option>18 to 35 years (3)</option>
+                        <option>16 to 55 years (2)</option>
+                        <option>Over 55 years (1)</option>
+                    </select>
+                    <div *ngIf="submitted && f['ageGroup'].errors" class="invalid-input">
+                        <div *ngIf="f['ageGroup'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="investedPicks">Have you ever invested in any of the following? (Shares / Treasury Bills and
+                        Bonds / Offshores / Property)</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="investedPicks" formControlName="investedPicks">
+                        <option></option>
+                        <option>More than 3 investment categories (3)</option>
+                        <option>More than 2 investment categories (2)</option>
+                        <option>None of the above (1)</option>
+                        <option>Other</option>
+                    </select>
+                    <div *ngIf="submitted && f['investedPicks'].errors" class="invalid-input">
+                        <div *ngIf="f['investedPicks'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="holdings">What type of savings / investments do you currently hold? (Unit Trust /
+                        Business / Shares / Offshore / Property)?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="holdings" formControlName="holdings">
+                        <option></option>
+                        <option>More than 3 of the above (3)</option>
+                        <option>Unit trusts more than 3 of the above (2)</option>
+                        <option>Other e.g Business,Bank Savings / T Bills and T Bonds (1)</option>
+                        <option>Other</option>
+                    </select>
+                    <div *ngIf="submitted && f['holdings'].errors" class="invalid-input">
+                        <div *ngIf="f['holdings'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="projectedIncome">What do you expect of your income in the next 3-5 years?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="projectedIncome" formControlName="projectedIncome">
+                        <option></option>
+                        <option>Decline / Stop (1)</option>
+                        <option>Stay about the same (2)</option>
+                        <option>Increase (3)</option>
+                    </select>
+                    <div *ngIf="submitted && f['projectedIncome'].errors" class="invalid-input">
+                        <div *ngIf="f['projectedIncome'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="portion">Approximately what portion of your total investment portfolio will this
+                        investment represent (please exclude your permanent residence)</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="portion" formControlName="portion">
+                        <option></option>
+                        <option>0 - 40% (3)</option>
+                        <option>41 - 80% (2)</option>
+                        <option>51 - 100% (1)</option>
+                    </select>
+                    <div *ngIf="submitted && f['portion'].errors" class="invalid-input">
+                        <div *ngIf="f['portion'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="knowledge">How familiar are you with the investment markets and the concept of Risk vs
+                        Return?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="knowledge" formControlName="knowledge">
+                        <option></option>
+                        <option>No knowledge at all (1)</option>
+                        <option>Reasonable knowledge (2)</option>
+                        <option>Knowledgeable (3)</option>
+                    </select>
+                    <div *ngIf="submitted && f['knowledge'].errors" class="invalid-input">
+                        <div *ngIf="f['knowledge'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="returns">What returns would you reasonably expect to achieve from your investment
+                        compared to the current returns from the bank deposits</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="returns" formControlName="returns">
+                        <option></option>
+                        <option>Same as bank (1)</option>
+                        <option>Twice the bank rate (2)</option>
+                        <option>Thrice the bank rate and above (3)</option>
+
+                    </select>
+                    <div *ngIf="submitted && f['returns'].errors" class="invalid-input">
+                        <div *ngIf="f['returns'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="onLoss">If you took a loss of 25% or above from your investment, how would you
+                        handle it?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="onLoss" formControlName="onLoss">
+                        <option></option>
+                        <option>It would not bother me, I would give it whatever timeframe it requires to grow and
+                            probably invest more(3)</option>
+                        <option>I will be slightly concerned, but I will be fine (2)</option>
+                        <option>I can't imagine it, it would give me sleepless nights and I am likely to sell and invest
+                            elsewhere (1 )</option>
+
+                    </select>
+                    <div *ngIf="submitted && f['onLoss'].errors" class="invalid-input">
+                        <div *ngIf="f['onLoss'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="attracts">What attracts me to an investment?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="attracts" formControlName="attracts">
+                        <option></option>
+                        <option>Its good return, regardless of the risk (3)</option>
+                        <option>A combination of security and income (2)</option>
+                        <option>Purely security (1)</option>
+
+                    </select>
+                    <div *ngIf="submitted && f['attracts'].errors" class="invalid-input">
+                        <div *ngIf="f['attracts'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="savings">Do you have savings set aside to provide for an unexpected
+                        emergency?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="savings" formControlName="savings">
+                        <option></option>
+                        <option>None (1)</option>
+                        <option>Some (2)</option>
+                        <option>Adequate (3)</option>
+
+                    </select>
+                    <div *ngIf="submitted && f['savings'].errors" class="invalid-input">
+                        <div *ngIf="f['savings'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="projectedWithdrawal">When do you expect to need most of your money from this investment?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="projectedWithdrawal" formControlName="projectedWithdrawal">
+                        <option></option>
+                        <option>Less than a year (1)</option>
+                        <option>2 to 5 years (2)</option>
+                        <option>Above 6 years (3)</option>
+
+                    </select>
+                    <div *ngIf="submitted && f['projectedWithdrawal'].errors" class="invalid-input">
+                        <div *ngIf="f['projectedWithdrawal'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="monthlyIncomeRange">What is your monthly range of income?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="monthlyIncomeRange" formControlName="monthlyIncomeRange">
+                        <option></option>
+                        <option>Below Kshs 50000 (1)</option>
+                        <option>Kshs 50,000 to 100,000 (2)</option>
+                        <option>Above Kshs 100,000 (3)</option>
+
+                    </select>
+                    <div *ngIf="submitted && f['monthlyIncomeRange'].errors" class="invalid-input">
+                        <div *ngIf="f['monthlyIncomeRange'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="monthlyIncomeSource">What are your monthly sources of income?</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <select id="monthlyIncomeSource" formControlName="monthlyIncomeSource">
+                        <option></option>
+                        <option>Salary plus business income (3)</option>
+                        <option>Business income (2)</option>
+                        <option>Salary only</option>
+                        <option>Other</option>
+
+                    </select>
+                    <div *ngIf="submitted && f['monthlyIncomeSource'].errors" class="invalid-input">
+                        <div *ngIf="f['monthlyIncomeSource'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">DECLARATION</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label>I warrant that the above statements made by me or on my behalf are true and
+                        complete to the best of my knowledge and belief and I agree that this proposal shall be the
+                        basis of the contract between me and the Company. I agree to accept a policy in the Company’s
+                        usual form forthis class of insurance. I/we confirm that I/we have read and understood the above
+                        Privacy Notice and the Privacy Policy and that any queries/ concerns I/we have with regard to
+                        the nature and purpose of the processing of personal data have been adequately
+                        addressed.</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="dateOfDecl">Date</label>
+                    <input type="date" id="dateOfDecl" formControlName="dateOfDecl" />
+                    <div *ngIf="submitted && f['dateOfDecl'].errors" class="invalid-input">
+                        <div *ngIf="f['dateOfDecl'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['dateOfDecl'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['dateOfDecl'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

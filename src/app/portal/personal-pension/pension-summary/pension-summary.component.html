@@ -1,0 +1,736 @@
+<div class="detail">
+    <div class="summary-container">
+        <div class="summary-row">
+            <img src="../../assets/img/OMformLogo.png" alt="">
+        </div>
+        <div class="summary-row">
+            <div class="address-items">
+                <p>Old Mutual Life Assurance Kenya Limited</p>
+                <p>Old Mutual Tower, Upper Hill Road, Upper Hill, Nairobi | P.O. Box 23842 00100, Nairobi, Kenya</p>
+                <p>Tel: +254 711 010 000, +254 711 065 000 | Email: life@oldmutual.co.ke</p>
+                <p>oldmutual.co.ke</p>
+            </div>
+        </div>
+        <div class="summary-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }} Summary</h1>
+            </div>
+        </div>
+
+        <div id="personalInfoSummary" class="summaryInfoGroup">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Personal Information</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>First Name</label>
+                    {{ personalInfo.firstName }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Middle Name(s)</label>
+                    {{ personalInfo.middleNames }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Last Name</label>
+                    {{ personalInfo.lastName }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Date of Birth</label>
+                    {{ personalInfo.dateOfBirth }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ personalInfo.idDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ personalInfo.docNumber }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Gender</label>
+                    {{ personalInfo.gender }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Marital Status</label>
+                    {{ personalInfo.maritalStatus }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title</label>
+                    {{ personalInfo.title }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Title (if other)</label>
+                    {{ personalInfo.titleOther }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>PIN</label>
+                    {{ personalInfo.PIN }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Nationality</label>
+                    {{ personalInfo.nationality }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Country of Residence</label>
+                    {{ personalInfo.countryOfResidence }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/personal-info')">
+                        Edit Personal Information
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+
+            </div>
+        </div>
+
+        <div id="contactsSummary" class="summaryInfoGroup">
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Contacts</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label for="firstName">Postal Address</label>
+                    {{ contacts.postalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label for="middlenames">Postal Code</label>
+                    {{ contacts.postalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label for="lastName">Town / City</label>
+                    {{ contacts.townCity }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label for="firstName">Town / City</label>
+                    {{ contacts.physicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label for="middlenames">Mobile Number</label>
+                    {{ contacts.mobile }}
+                </div>
+                <div class="text-intg-summary">
+                    <label for="lastName">Home Number</label>
+                    {{ contacts.homeNumber }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label for="firstName">Email</label>
+                    {{ contacts.email }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/contacts')">
+                        Edit Contacts
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="occupationSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Occupation</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Occupation</label>
+                    {{ occupation.typeOfEmployment }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Name of Business or Employer</label>
+                    {{ occupation.nameOfBusiness }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Role</label>
+                    {{ occupation.role }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary" *ngIf="occupation.natureOfBusiness">
+                    <label>If self-employed, kindly state the nature of business activity including the source of funds
+                        for permiums</label>
+                    {{ occupation.natureOfBusiness }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Postal Address (Work)</label>
+                    {{ occupation.workPostalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Postal Code</label>
+                    {{ occupation.workPostalCode }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Town / City</label>
+                    {{ occupation.workTownOrCity }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Physical Address (Work)</label>
+                    {{ occupation.workPhysicalAddress }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Phone (Work)</label>
+                    {{ occupation.workPhone }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Email (Work)</label>
+                    {{ occupation.workEmail }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button" (click)="navigate('/portal/occupation')">
+                        Edit Occupation
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="sofSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Source of Funds</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Source of Funds</label>
+                    {{ sof.sourceOfFunds }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="form-row">
+                <form [formGroup]="form">
+                    <div class="checkBoxGroup">
+                        <input type="checkbox" id="employment" value="employment" formControlName="employment" readonly />
+                        <label for="employment">Employment</label>
+                        <input type="checkbox" id="savings" value="savings" formControlName="savings" readonly />
+                        <label for="savings">Savings</label>
+                        <input type="checkbox" id="gifts" value="gifts" formControlName="gifts" readonly />
+                        <label for="gifts">Gift(s)</label>
+                        <input type="checkbox" id="inheritance" value="inheritance" formControlName="inheritance" readonly />
+                        <label for="inheritance">Inheritance</label>
+                        <input type="checkbox" id="disposalOfProperty" value="disposalOfProperty" formControlName="disposalOfProperty" readonly />
+                        <label for="disposalOfProperty">Disposal of Property</label>
+                        <input type="checkbox" id="other" value="other" formControlName="other" readonly />
+                        <label for="other">Other (please specify)</label>
+                    </div>
+                </form>
+            </div>
+
+            <div class="summary-row-other">
+                <div class="text-intg-summary" *ngIf="sof.sourceOfFundsOther">
+                    <label>If "Other", please specify</label>
+                    {{ sof.sourceOfFundsOther }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="checkBoxGroupPrint">
+                    <ul *ngFor="let item of sofValues()">
+                        <li>{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Remittance</label>
+                    {{ sof.remittance }}
+                </div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div *ngIf="sof.remittance === 'Self' || sof.remittance === 'Self & Employment'">
+                <div class="form-row">
+                    <div class="text-input-highlight">
+                        <div class="highlight-1">Self</div>
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Contribution (Kshs)</label>
+                        {{ sof.selfEmployed_Contribution }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Mode of Remittance</label>
+                        {{ sof.selfEmployed_MoR }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Frequency</label>
+                        {{ sof.selfEmployed_Frequency }}
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Name of Bank</label>
+                        {{ sof.selfEmployed_Bank }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Branch</label>
+                        {{ sof.selfEmployed_Branch }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Account Name</label>
+                        {{ sof.selfEmployed_AccName }}
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Account Number</label>
+                        {{ sof.selfEmployed_AccNo }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <!-- for :last-child css directive  -->
+                </div>
+            </div>
+
+            <div *ngIf="sof.remittance === 'Employment' || sof.remittance === 'Self & Employment'">
+                <div class="form-row">
+                    <div class="text-input-highlight">
+                        <div class="highlight-1">Employed Member</div>
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>(A1) Contribution</label>
+                        {{ sof.employed_A1Contribution }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>or (A2) Conitribution (% of salary)</label>
+                        {{ sof.employed_A2Contribution }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>(B1) Contribution</label>
+                        {{ sof.employed_B1Contribution }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Mode of Remittance</label>
+                        {{ sof.employed_MoR }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Name of Bank</label>
+                        {{ sof.employed_Bank }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Branch</label>
+                        {{ sof.employed_Branch }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Account Name</label>
+                        {{ sof.employed_AccName }}
+                    </div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Account Number</label>
+                        {{ sof.employed_AccNo }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <div class="text-intg-summary">
+                        <label>Designation</label>
+                        {{ sof.employed_Designation }}
+                    </div>
+                    <div class="text-intg-summary">
+                        <label>Date</label>
+                        {{ sof.employed_Date }}
+                    </div>
+                    <div class="text-intg-summary"></div>
+                </div>
+                <div class="summary-row">
+                    <!-- for :last-child css directive  -->
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/personal-pension/pension-source-of-funds')">
+                        Edit Source of Funds
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="residentialSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Residential Address Enquiry</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Land Registration (LR) number</label>
+                    {{ residential.lrNumber }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Estate</label>
+                    {{ residential.estate }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>House Number</label>
+                    {{ residential.houseNo }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Road</label>
+                    {{ residential.road }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Town / Area</label>
+                    {{ residential.townArea }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/personal-pension/residential-address')">
+                        Edit Residential Address Enquiry
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="dependantsSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Dependant's Particulars</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Dependant</div>
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Surname</label>
+                    {{ dependant.dependantSurname }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Forenames</label>
+                    {{ dependant.dependantForenames }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ dependant.dependantIdDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ dependant.dependantDocNumber }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Mobile No</label>
+                    {{ dependant.dependantMobileNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Email</label>
+                    {{ dependant.dependantEmail }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Spouse</label>
+                    {{ dependant.dependantSpouse }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="text-input-highlight" *ngIf="dependant_children.size > 0">
+                    <div class="highlight-1">Children</div>
+                </div>
+            </div>
+            <div class="summary-row">
+                <table class="data-table" *ngIf="dependant_children.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Names</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of dependant_children | keyvalue">
+                            <td><i class="fa fa-child fa-lg m-3"></i></td>
+                            <td>{{c.value.names}}</td>
+                            <td>{{c.value.gender}}</td>
+                            <td>{{c.value.dob}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/personal-pension/dependants')">
+                        Edit Dependant's Particulars
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="nokSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Next of Kin</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Surname</label>
+                    {{ nok.nokSurname }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Forenames</label>
+                    {{ nok.nokForenames }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Date of Birth</label>
+                    {{ nok.nokDoB }}
+                </div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Identification Document</label>
+                    {{ nok.nokIdDocument }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Document Number</label>
+                    {{ nok.nokDocNumber }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary">
+                    <label>Mobile No</label>
+                    {{ nok.nokMobileNo }}
+                </div>
+                <div class="text-intg-summary">
+                    <label>Email</label>
+                    {{ nok.nokEmail }}
+                </div>
+                <div class="text-intg-summary"></div>
+            </div>
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/personal-pension/next-of-kin')">
+                        Edit Next of Kin
+                    </button>
+                </div>
+            </div>
+            <div class="summary-row">
+            </div>
+        </div>
+
+        <div id="beneficariesSummary" class="summaryInfoGroup">
+
+            <div class="form-row">
+                <div class="overview">
+                    <h1 class="overview__subheading">Nomination of Beneficiaries</h1>
+                </div>
+            </div>
+
+            <div class="line-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+            </div>
+
+            <div class="form-row">
+                <table class="data-table" *ngIf="beneficiaries.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Full Name</th>
+                            <th>Relationship</th>
+                            <th>Address & Code</th>
+                            <th>PhoneNo</th>
+                            <th>Date of Birth</th>
+                            <th>Beneficiary Share(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let b of beneficiaries | keyvalue">
+                            <td><i class="fa fa-users fa-lg m-3"></i></td>
+                            <td>{{b.value.fullname}}</td>
+                            <td>{{b.value.relationship}}</td>
+                            <td>{{b.value.addressAndCode}}</td>
+                            <td>{{b.value.phoneNo}}</td>
+                            <td>{{b.value.dob}}</td>
+                            <td>{{b.value.benefitShare}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="summary-row">
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary"></div>
+                <div class="text-intg-summary">
+                    <button class="ombutton-link" type="button"
+                        (click)="navigate('/portal/personal-pension/beneficiaries')">
+                        Edit Beneficiaries
+                    </button>
+                </div>
+            </div>
+
+            <div id="functionBar" class="summary-row"></div>
+
+            <div class="summary-row">
+                <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
+                    {{ upstreamServerErrorMsg }}
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="upstreamSubmit()">
+                    submit
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+                <div id="spinnerDiv"></div>
+                <button class="ombutton lefted with-icon" type="submit" (click)="print()">
+                    &nbsp;pdf (beta)&nbsp;
+                    <img src="../../assets/img/SVG/map2.svg" alt="" />
+                </button>
+            </div>
+
+            <div class="summary-row">
+            </div>
+        </div>
+
+    </div>
+</div>

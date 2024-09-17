@@ -1,0 +1,246 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Life Wrapper Consent</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for processing personal data relating to a child</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    In completing this section, you may be required to provide personal data relating to a child for
+                    instance where providing details of your beneficiaries/next of kin. Please note that a child is a
+                    person under the age of 18 years. In order for us to process any personal data relating to a child,
+                    we require your consent as the child's parent or legal guardian and proof of the child's age.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    By signing below, you confirm that you are the parent or legal guardian of the child whose personal
+                    data is being provided to us and that you have read and understood the Privacy Notice above and our
+                    Privacy Policy and you hereby consent to our processing of the child's personal data in or outside
+                    Kenya.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="lwcDataForChildName">Name</label>
+                    <input type="text" id="lwcDataForChildName" formControlName="lwcDataForChildName" />
+                    <div *ngIf="submitted && f['lwcDataForChildName'].errors" class="invalid-input">
+                        <div *ngIf="f['lwcDataForChildName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="lwcDataForChildDate">Date</label>
+                    <input type="date" id="lwcDataForChildDate" formControlName="lwcDataForChildDate" />
+                    <div *ngIf="submitted && f['lwcDataForChildDate'].errors" class="invalid-input">
+                        <div *ngIf="f['lwcDataForChildDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['lwcDataForChildDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['lwcDataForChildDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for obtaining your information from third parties</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    In some instances, it may be necessay that we obtain your personal data from third parties or
+                    publicly available sources. The reasons for this include verifying the information you have provided
+                    to us, assessing whether you are eligible for our products and services, complying with our legal or
+                    regulatory obligations or where it is necessary for our legitimate interests and for such other
+                    purposes as set out in our Privacy Policy. Where you seel to obtain an insurabce/lofe assurance
+                    policy from us, we may require your medical information from your medical practitioner in order to
+                    effect your policy and/or process your claim
+                    Please note that if you do not provide us with your consent for our processing of your personal data
+                    or if you withdraw your conset for such processing, we may not be able to provide our products and
+                    services to you. Such withdrawal of consent will not however affect the lawfulness of our processing
+                    of your personal data prior to the withdrawal.
+                    By signing below, you authorise us to obtain and process your personal data from third parties in
+                    accordance with our Privacy Policy
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="lwc3rdPartyName">Name</label>
+                    <input type="text" id="lwc3rdPartyName" formControlName="lwc3rdPartyName" />
+                    <div *ngIf="submitted && f['lwc3rdPartyName'].errors" class="invalid-input">
+                        <div *ngIf="f['lwc3rdPartyName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="lwc3rdPartyDate">Date</label>
+                    <input type="date" id="lwc3rdPartyDate" formControlName="lwc3rdPartyDate" />
+                    <div *ngIf="submitted && f['lwc3rdPartyDate'].errors" class="invalid-input">
+                        <div *ngIf="f['lwc3rdPartyDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['lwc3rdPartyDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['lwc3rdPartyDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">Consent for commercial use of data</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    We may use your information for commercial purposes such as carrying out analytics/market research
+                    about our products and services. Where we use your personal data for such commercial purposes, we
+                    will anonymise the data where possible in such a manner as to ensure that you are no longer
+                    identifiable.
+                    We may advertise and market to you our latest products and services. Please note that if you do not
+                    wish to receive marketing information you may opt-out by contacting us at any time
+                    Please select the relevant option below if you agree to receive marketing information from us:
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="lwcAcceptOrNot">Please select</label>
+                    <select id="lwcAcceptOrNot" formControlName="lwcAcceptOrNot">
+                        <option></option>
+                        <option>I consent</option>
+                        <option>I do not consent to being contacted for marketing information</option>
+                    </select>
+                    <div *ngIf="submitted && f['lwcAcceptOrNot'].errors" class="invalid-input">
+                        <div *ngIf="f['lwcAcceptOrNot'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="lwcAcceptOrNotDate">Date</label>
+                    <input type="date" id="lwcAcceptOrNotDate" formControlName="lwcAcceptOrNotDate" />
+                    <div *ngIf="submitted && f['lwcAcceptOrNotDate'].errors" class="invalid-input">
+                        <div *ngIf="f['lwcAcceptOrNotDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['lwcAcceptOrNotDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['lwcAcceptOrNotDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    By signing below, you confirm that you are the parent or legal guardian of the child whose personal
+                    data is being provided to us and that you consent to our processing the child's personal data in
+                    accordance with our Privacy Policy
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="lwcDeclName">Name</label>
+                    <input type="text" id="lwcDeclName" formControlName="lwcDeclName" />
+                    <div *ngIf="submitted && f['lwcDeclName'].errors" class="invalid-input">
+                        <div *ngIf="f['lwcDeclName'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-highlight">
+                    <div class="highlight-1">DECLARATION</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed"> 
+                    I have read and understood the terms and conditions set out in the Application form and I hereby
+                    apply for admission to the Life Wrapper Scheme and agree to be bound by the rules of the scheme. I
+                    acknowledge that Old Mutual Investment Group Limited has the option to accept or refuse my
+                    application following its assessments.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1" [hidden]="!displayed">
+                    I confirm that I have read and understood the Privacy Notice and the Privacy Policy and that any
+                    queries/concerns I have with regard to the nature and purpose of the processing of personal data
+                    have been adequately addressed
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="lwcDeclNameDate">Date</label>
+                    <input type="date" id="lwcDeclNameDate" formControlName="lwcDeclNameDate" />
+                    <div *ngIf="submitted && f['lwcDeclNameDate'].errors" class="invalid-input">
+                        <div *ngIf="f['lwcDeclNameDate'].errors['required']">
+                            Required
+                        </div>
+                        <div *ngIf="f['lwcDeclNameDate'].errors['futureDate']">
+                            Future date is not valid
+                        </div>
+                        <div *ngIf="f['lwcDeclNameDate'].errors['invalidValue']">
+                            Date value is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

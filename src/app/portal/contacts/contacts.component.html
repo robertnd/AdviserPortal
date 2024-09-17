@@ -1,0 +1,95 @@
+<div class="detail">
+  <div class="form-container">
+    <div class="form-row">
+      <div class="overview" id="formTitle">
+        <h1 class="functional__heading">{{ journey }}</h1>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="overview">
+        <h1 class="overview__subheading">Contacts</h1>
+      </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="postalAddress">Postal Address</label>
+          <input type="text" id="postalAddress" formControlName="postalAddress" />
+          <div *ngIf="submitted && f['postalAddress'].errors" class="invalid-input">
+            <div *ngIf="f['postalAddress'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="postalCode">Postal Code</label>
+          <input type="text" id="postalCode" formControlName="postalCode" />
+          <div *ngIf="submitted && f['postalCode'].errors" class="invalid-input">
+            <div *ngIf="f['postalCode'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="townCity">Town / City</label>
+          <input type="text" id="townCity" formControlName="townCity" />
+          <div *ngIf="submitted && f['townCity'].errors" class="invalid-input">
+            <div *ngIf="f['townCity'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="physicalAddress">Physical Address</label>
+          <input type="text" id="physicalAddress" formControlName="physicalAddress" />
+          <div *ngIf="submitted && f['physicalAddress'].errors" class="invalid-input">
+            <div *ngIf="f['physicalAddress'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="mobile">Mobile Number</label>
+          <input type="text" id="mobile" formControlName="mobile" />
+          <div *ngIf="submitted && f['mobile'].errors" class="invalid-input">
+            <div *ngIf="f['mobile'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="homeNumber">Home Number</label>
+          <input type="text" id="homeNumber" formControlName="homeNumber" />
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="email">Email</label>
+          <input type="text" id="email" formControlName="email" />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-input">
+            <div *ngIf="f['email'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg"></div>
+        <div class="text-input-intg"></div>
+      </div>
+      <div class="form-row">
+        <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+          <img class="flippy" src="../assets/img/arrow-right-light.svg" alt="" />
+          prev
+        </button>
+        <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+          next
+          <img src="../assets/img/arrow-right-light.svg" alt="" />
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

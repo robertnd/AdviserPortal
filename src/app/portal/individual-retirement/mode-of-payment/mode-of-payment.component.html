@@ -1,0 +1,56 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Mode of Payment</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="checkBoxGroup">
+                    <input type="checkbox" id="standingOrder" value="standingOrder" formControlName="standingOrder" (click)="selectionCheck()"/>
+                    <label for="standingOrder">Standing Order</label>
+                    <input type="checkbox" id="debitOrder" value="debitOrder" formControlName="debitOrder" (click)="selectionCheck()"/>
+                    <label for="debitOrder">Debit Order</label>
+                    <input type="checkbox" id="employerCheckOff" value="employerCheckOff"
+                        formControlName="employerCheckOff" (click)="selectionCheck()"/>
+                    <label for="employerCheckOff">Employer Check Off</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div *ngIf="submitted && form.errors && form.errors['mustHavePaymentMethod']" class="invalid-input data-table-error">
+                    <div *ngIf="form.errors && form.errors['mustHavePaymentMethod']">
+                        At least one payment method is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="benefitsBreakdown">Please indicate the breakdown between benefits secured by employee
+                        and employer contributions, if any</label>
+                    <textarea rows="2" id="benefitsBreakdown" formControlName="benefitsBreakdown"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

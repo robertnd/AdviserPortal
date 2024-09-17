@@ -1,0 +1,109 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Mpesa Activation</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="mpesaName">Name</label>
+                    <input type="text" id="mpesaName" formControlName="mpesaName" />
+                    <div *ngIf="f['mpesaName'].errors" class="invalid-input">
+                        <div *ngIf="f['mpesaName'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="nationalId">National ID</label>
+                    <input type="text" id="nationalId" formControlName="nationalId" />
+                    <div *ngIf="f['nationalId'].errors" class="invalid-input">
+                        <div *ngIf="f['nationalId'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg">
+                    <label for="mpesaNumber">Mpesa Registered Number</label>
+                    <input type="text" id="mpesaNumber" formControlName="mpesaNumber" />
+                    <div *ngIf="f['mpesaNumber'].errors" class="invalid-input">
+                        <div *ngIf="f['mpesaNumber'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg"></div>
+                <div class="text-input-intg">
+                    <button class="ombutton ombutton-sm with-icon" type="button" (click)="addNumber()">
+                        <i class="fas fa-plus"></i>
+                        Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <table class="data-table" *ngIf="numbers.size > 0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>National ID</th>
+                            <th>Mpesa Number</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let n of numbers | keyvalue">
+                            <td><i class="fa fa-child fa-lg m-3"></i></td>
+                            <td>{{n.value.name}}</td>
+                            <td>{{n.value.nationalId}}</td>
+                            <td>{{n.value.mpesaNo}}</td>
+                            <td>
+                                <button class="ombutton-link" type="button" (click)="removeNumber(n.key)">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    NOTE
+                </p>
+            </div>
+
+            <div class="form-row">
+                <ul class="form-list1">
+                    <li>In case of a joint account, all holders must sign the MPESA activation section above. However, the signing mandate on the account applies for future withdrawal instructions to the above stated mobile number(s)</li>
+                    <li>When making future withdrawal requests, the specific mobile number to which the MPESA payment is to be made, must be quoted and it should match either of the registered numbers given above</li>
+                    <li>MPESA payment option does not apply to corporate account</li>
+                </ul>
+            </div>
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

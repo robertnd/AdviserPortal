@@ -1,0 +1,9 @@
+<div class="breadcrumbs">
+    <div *ngFor="let page of pages" >
+        <div class="item-stack">
+            <div class="{{ page.pgclassIndex }}">{{ page.index }}</div>
+             <!-- <div class="{{ page.pgclassTitle }}" [innerHTML]="page.title"></div> -->
+             <div class="{{ page.pgclassTitle }}">{{ page.title }}</div>
+        </div>
+    </div>
+</div>

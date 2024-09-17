@@ -1,0 +1,137 @@
+<div class="detail">
+  <div class="form-container">
+
+    <div class="form-row">
+      <div class="overview" id="formTitle">
+        <h1 class="functional__heading">{{ journey }}</h1>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="overview">
+        <h1 class="overview__subheading">Occupation</h1>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="typeOfEmployment">Occupation</label>
+          <select id="typeOfEmployment" formControlName="typeOfEmployment">
+            <option></option>
+            <option>Employed</option>
+            <option>Self Employed</option>
+          </select>
+          <div *ngIf="submitted && f['typeOfEmployment'].errors" class="invalid-input">
+            <div *ngIf="f['typeOfEmployment'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="nameOfBusiness">Name of Business or Employer</label>
+          <input type="text" id="nameOfBusiness" formControlName="nameOfBusiness" />
+          <div *ngIf="submitted && f['nameOfBusiness'].errors" class="invalid-input">
+            <div *ngIf="f['nameOfBusiness'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="lastname">Role</label>
+          <input type="text" id="role" formControlName="role" />
+          <div *ngIf="submitted && f['role'].errors" class="invalid-input">
+            <div *ngIf="f['role'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="natureOfBusiness">(If self-employed, kindly state the nature of business activity including the
+            source of funds for permiums)</label>
+          <textarea rows="1" id="natureOfBusiness" formControlName="natureOfBusiness"></textarea>
+          <div *ngIf="submitted && f['natureOfBusiness'].errors" class="invalid-input">
+            <div *ngIf="f['natureOfBusiness'].errors['conditionalRequired']">
+              Please provide nature of business activity
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="workPostalAddress">Postal Address (Work)</label>
+          <input type="text" id="workPostalAddress" formControlName="workPostalAddress" />
+          <div *ngIf="submitted && f['workPostalAddress'].errors" class="invalid-input">
+            <div *ngIf="f['workPostalAddress'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="workPostalCode">Postal Code</label>
+          <input type="text" id="workPostalCode" formControlName="workPostalCode" />
+          <div *ngIf="submitted && f['workPostalCode'].errors" class="invalid-input">
+            <div *ngIf="f['workPostalCode'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="workTownOrCity">Town / City</label>
+          <input type="text" id="workTownOrCity" formControlName="workTownOrCity" />
+          <div *ngIf="submitted && f['workTownOrCity'].errors" class="invalid-input">
+            <div *ngIf="f['workTownOrCity'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="workPhysicalAddress">Physical Address (Work)</label>
+          <input type="text" id="workPhysicalAddress" formControlName="workPhysicalAddress" />
+          <div *ngIf="submitted && f['workPhysicalAddress'].errors" class="invalid-input">
+            <div *ngIf="f['workPhysicalAddress'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="workPhone">Phone (Work)</label>
+          <input type="text" id="workPhone" formControlName="workPhone" />
+          <div *ngIf="submitted && f['workPhone'].errors" class="invalid-input">
+            <div *ngIf="f['workPhone'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="workEmail">Email (Work)</label>
+          <input type="text" id="workEmail" formControlName="workEmail" />
+          <div *ngIf="submitted && f['workEmail'].errors" class="invalid-input">
+            <div *ngIf="f['workEmail'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+          <img class="flippy" src="../assets/img/arrow-right-light.svg" alt="" />
+          prev
+        </button>
+        <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+          next
+          <img src="../assets/img/arrow-right-light.svg" alt="" />
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

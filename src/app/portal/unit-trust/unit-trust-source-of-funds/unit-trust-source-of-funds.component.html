@@ -1,0 +1,84 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div class="overview" id="formTitle">
+                <h1 class="functional__heading">{{ journey }}</h1>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Sources of Funds</h1>
+            </div>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    I do hereby declare that the source of funds I/We shall be depositing is/are (tick as applicable)
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="checkBoxGroup">
+                    <input type="checkbox" id="salary" value="salary" formControlName="salary" (click)="selectionCheck()"/>
+                    <label for="salary">Salary</label>
+                    <input type="checkbox" id="businessIncome" value="businessIncome" formControlName="businessIncome" (click)="selectionCheck()"/>
+                    <label for="businessIncome">Business Income</label>
+                    <input type="checkbox" id="gifts" value="gifts" formControlName="gifts" />
+                    <label for="gifts">Gift(s)</label>
+                    <input type="checkbox" id="saleOfProperty" value="saleOfProperty" formControlName="saleOfProperty" (click)="selectionCheck()"/>
+                    <label for="saleOfProperty">Sale of Property</label>
+                    <input type="checkbox" id="savings" value="savings" formControlName="savings" (click)="selectionCheck()"/>
+                    <label for="savings">Savings</label>
+                    <input type="checkbox" id="other" value="other" formControlName="other" (click)="selectionCheck()"/>
+                    <label for="other">Other (please specify)</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div *ngIf="submitted && form.errors && form.errors['mustHaveSourceOfFunds']" class="invalid-input data-table-error">
+                    <div *ngIf="form.errors && form.errors['mustHaveSourceOfFunds']">
+                        At least one source of funds required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="natureOfBusiness">Details of other source of funds</label>
+                    <textarea rows="1" id="otherSourceOfFunds" formControlName="otherSourceOfFunds"></textarea>
+                    <div *ngIf="submitted && f['otherSourceOfFunds'].errors" class="invalid-input">
+                        <div *ngIf="f['otherSourceOfFunds'].errors['conditionalRequired']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    I/We further confirm that these funds are derived from legitimate sources as stated and that I/we
+                    also provide evidence of the source of funds when required.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <p class="form-paragraph1">
+                    I/We declare that the above information is true and correct
+                </p>
+            </div>
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

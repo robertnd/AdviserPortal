@@ -1,0 +1,88 @@
+<div class="detail">
+    <div class="form-container">
+      <div class="form-row">
+        <div class="overview" id="formTitle">
+          <h1 class="functional__heading">{{ journey }}</h1>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="overview">
+          <h1 class="overview__subheading">Residential Address Enquiry</h1>
+        </div>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="lrNumber">Land Registration (LR) Number</label>
+            <input type="text" id="lrNumber" formControlName="lrNumber"/>
+            <div *ngIf="submitted && f['lrNumber'].errors" class="invalid-input">
+              <div *ngIf="f['lrNumber'].errors['conditionalRequired']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="estate">Estate</label>
+            <input type="text" id="estate" formControlName="estate"/>
+            <div *ngIf="submitted && f['estate'].errors" class="invalid-input">
+              <div *ngIf="f['estate'].errors['conditionalRequired']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="houseNo">House Number</label>
+            <input type="text" id="houseNo" formControlName="houseNo"/>
+            <div *ngIf="submitted && f['houseNo'].errors" class="invalid-input">
+              <div *ngIf="f['houseNo'].errors['conditionalRequired']">
+                Required
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="road">Road</label>
+            <input type="text" id="road" formControlName="road"/>
+            <div *ngIf="submitted && f['road'].errors" class="invalid-input">
+              <div *ngIf="f['road'].errors['conditionalRequired']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="townArea">Town / Area</label>
+            <input type="text" id="townArea" formControlName="townArea"/>
+            <div *ngIf="submitted && f['townArea'].errors" class="invalid-input">
+              <div *ngIf="f['townArea'].errors['conditionalRequired']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg"></div>
+        </div>
+        <div class="form-row">
+          
+        </div>
+        <div class="form-row">
+          <button
+            class="ombutton lefted with-icon"
+            type="submit"
+            (click)="previous()">
+            <img class="flippy" src="../../assets/img/arrow-right-light.svg" alt=""/>
+            prev
+          </button>
+          <button
+            class="ombutton lefted with-icon"
+            type="submit"
+            (click)="onSubmit()">
+            next
+            <img src="../../assets/img/arrow-right-light.svg" alt=""/>
+          </button>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+  
