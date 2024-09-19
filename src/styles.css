@@ -799,6 +799,10 @@ input[type="checkbox"][readonly] {
   color: red;
 }
 
+.success-input {
+  color: green;
+}
+
 .highlight-1 {
   display: flex;
   justify-content: center;
