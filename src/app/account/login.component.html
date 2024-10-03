@@ -5,6 +5,11 @@
         style="margin-left: 15px" />
       <!-- <img src="../assets/img/logo.png" alt="trillo logo" class="logo" /> -->
     </div>
+    <div>
+      <button class="ombutton-link2" type="button" (click)="navigate('/account/verify-id')">
+        Apply to join
+      </button>
+    </div>
     <div class="tab-wrap">
 
       <!-- active tab on page load gets checked attribute -->
@@ -90,13 +95,16 @@
           <tbody>
             <tr>
               <td>Names</td>
-              <td>{{ (adviser$ | async)?.full_names || ''  }}</td>
+              <td>{{ (adviser$ | async)?.full_names || '' }}</td>
             </tr>
             <tr>
               <td>Contacts</td>
               <td>
-                <i class="fa fa-envelope fa-lg " aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ (adviser$ | async)?.primary_email || '' }} <br>
-                <i class="fa fa-phone fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ (adviser$ | async)?.mobile_no || '' }}</td>
+                <i class="fa fa-envelope fa-lg " aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ (adviser$ |
+                async)?.primary_email || '' }} <br>
+                <i class="fa fa-phone fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ (adviser$ | async)?.mobile_no
+                || '' }}
+              </td>
             </tr>
             <tr>
               <td>ID Number</td>
@@ -108,10 +116,11 @@
         <form [formGroup]="form3" (ngSubmit)="onSubmitForCreds()" [hidden]="form2Displayed">
 
           <div class="input-group">
-            <label class="login-input centered"><b>Username:</b>&nbsp;&nbsp;{{ (adviser$ | async)?.primary_email || '' }}</label>
+            <label class="login-input centered"><b>Username:</b>&nbsp;&nbsp;{{ (adviser$ | async)?.primary_email || ''
+              }}</label>
             <!-- <input class="login-input centered" type="text" formControlName="newUsername" placeholder="New Username"/> -->
           </div>
-          
+
           <div class="input-group">
             <input class="login-input centered" type="text" formControlName="otp" placeholder="OTP" />
           </div>

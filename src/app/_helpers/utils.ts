@@ -117,6 +117,16 @@ export function addStyles0(elem: any, styles: any) {
     Object.assign(elem.style, styles)
 }
 
+export function getControlCompliantDateFmt(date: Date) {
+    // 1990-08-01
+    var year = date.getFullYear()
+    var month = (1 + date.getMonth()).toString()
+    month = month.length > 1 ? month : '0' + month
+    var day = date.getDate().toString()
+    day = day.length > 1 ? day : '0' + day
+    return `${year}-${month}-${day}`
+  }
+
 export function cloneDoc(toInject: string) {
 
     var docTemplate = `<!DOCTYPE html>

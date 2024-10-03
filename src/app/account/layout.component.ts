@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { AccountService } from '@app/_services'
+import { BreadcrumbComponent } from '@app/_components/breadcrumb';
 
 @Component({ templateUrl: 'layout.component.html' })
 export class LayoutComponent {

@@ -1,0 +1,84 @@
+<div class="detail">
+
+    <div class="form-container">
+        <div class="form-row">
+            <div id="bannerLogo">
+                <img src="../assets/img/adviserPortal.png" width="212" height="47" alt="Advisers portal logo"
+                    style="margin-left: 15px" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Contacts</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="user_id">User ID</label>
+                    <input type="text" id="user_id" formControlName="user_id" />
+                    <div *ngIf="submitted && f['user_id'].errors" class="invalid-input">
+                        <div *ngIf="f['user_id'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="otp">One-Time Password</label>
+                    <a href="#" (click)="requestOTP()">Request OTP</a>
+                    <div id="spinnerDiv"></div>
+                    <input type="text" id="otp" formControlName="otp" />
+                    <div *ngIf="submitted && f['otp'].errors" class="invalid-input">
+                        <div *ngIf="f['otp'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="newPassphrase">New Password</label>
+                    <input type="text" id="newPassphrase" formControlName="newPassphrase" />
+                    <div *ngIf="submitted && f['newPassphrase'].errors" class="invalid-input">
+                        <div *ngIf="f['newPassphrase'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="confirmPassphrase">Confirm Password</label>
+                    <input type="text" id="confirmPassphrase" formControlName="confirmPassphrase" />
+                    <div *ngIf="submitted && f['confirmPassphrase'].errors" class="invalid-input">
+                        <div *ngIf="f['confirmPassphrase'].errors['confirmPassphrase']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    submit
+                    <img src="../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

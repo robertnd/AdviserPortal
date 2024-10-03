@@ -1,0 +1,60 @@
+<div class="detail">
+    <div class="form-container">
+        <div class="form-row">
+            <div id="bannerLogo">
+                <img src="../assets/img/adviserPortal.png" width="212" height="47" alt="Advisers portal logo"
+                    style="margin-left: 15px" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Attach File</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="upload-row">
+                <div class="text-input-intg">
+                    <!-- <label for="idDoc">Attach File</label> -->
+                    <input type="file" id="idDoc" formControlName="idDoc" (change)="onFileSelectedIDdoc($event)"/>
+                </div>
+                <div class="text-input-intg">
+                    <label for="idDoc">Attach Scanned ID document</label>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="upload-row">
+                <div class="text-input-intg">
+                    <!-- <label for="idDoc">Attach File</label> -->
+                    <input type="file" id="pinDoc" formControlName="pinDoc" (change)="onFileSelectedKRAdoc($event)"/>
+                </div>
+                <div class="text-input-intg">
+                    <label for="pinDoc">Attach Scanned KRA PIN document</label>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div id="functionBar" class="summary-row"></div>
+            <div class="summary-row">
+                <div *ngIf="upstreamServerSuccessMsg" class="success-input">
+                    {{ upstreamServerSuccessMsg }}
+                </div>
+                <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
+                    {{ upstreamServerErrorMsg }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    next
+                    <img src="../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

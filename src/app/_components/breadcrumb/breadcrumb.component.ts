@@ -64,7 +64,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       case 'Personal Pension Plan':
         this.pages.push(new Page('1', 'Personal Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('2', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
-        this.pages.push(new Page('3', 'Occupation', 'breadcrum9s-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('3', 'Occupation', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('4', 'Source of Funds', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('5', 'Residential Address', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('6', 'Dependants', 'breadcrumbs-circle', 'breadcrumbs-text'))
@@ -75,7 +75,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       case 'Unit Trusts':
         this.pages.push(new Page('1', 'Personal Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('2', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
-        this.pages.push(new Page('3', 'Occupation', 'breadcrum9s-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('3', 'Occupation', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('4', 'Joint Account Holder', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('5', 'Next of Kin', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('6', 'Life Wrapper', 'breadcrumbs-circle', 'breadcrumbs-text'))
@@ -127,6 +127,14 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
           this.pages.push(new Page('6', 'Details', 'breadcrumbs-circle', 'breadcrumbs-text'))
           this.pages.push(new Page('7', 'Summary', 'breadcrumbs-circle', 'breadcrumbs-text'))
           break
+        case 'Adviser Onboarding':
+            this.pages.push(new Page('1', 'Verify ID', 'breadcrumbs-circle', 'breadcrumbs-text'))
+            this.pages.push(new Page('2', 'Applicant Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
+            this.pages.push(new Page('3', 'Attach Docs', 'breadcrumbs-circle', 'breadcrumbs-text'))
+            this.pages.push(new Page('4', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
+            this.pages.push(new Page('5', 'Set Password', 'breadcrumbs-circle', 'breadcrumbs-text'))
+            this.pages.push(new Page('6', 'Ack', 'breadcrumbs-circle', 'breadcrumbs-text'))
+            break
       default:
         this.pages = this.pages = [] as Page[]
         break

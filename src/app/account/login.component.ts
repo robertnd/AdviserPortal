@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 import { DataPlatformAdviser } from '@app/_dto/data_platform/data-platform.adviser.dto'
 import { RegistrationDto } from '@app/_dto/register.existing.dto'
-import { AccountService, AlertService } from '@app/_services'
+import { AccountService, AlertService, UtilService } from '@app/_services'
 import { RegistrationService } from '@app/_services/registration.service'
 import { Observable, Subject } from 'rxjs'
 
@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private accountService: AccountService,
         private registrationService: RegistrationService,
+        private utilService: UtilService,
         private alertService: AlertService
     ) {
 
@@ -52,7 +53,7 @@ export class LoginComponent implements OnInit {
         this.form2 = this.fb.group({
             idNumber: [''],
             kraPin: [''],
-            mobileNo: ['', Validators.required ]
+            mobileNo: ['', Validators.required]
         })
         this.form3 = this.fb.group({
             otp: ['', Validators.required],
@@ -88,11 +89,11 @@ export class LoginComponent implements OnInit {
         }
 
         var searchTag, searchVal = ''
-        if ( !this.validateNumber(this.f2['mobileNo'].value )) {
+        if (!this.validateNumber(this.f2['mobileNo'].value)) {
             this.upstreamServerErrorMsg = 'Try a mobile no in the format 254xxxxxxxxx'
             return
         }
-        searchTag = 'mobile_no' 
+        searchTag = 'mobile_no'
         searchVal = this.f2['mobileNo'].value.trim()
 
         this.form2Displayed = false
@@ -199,5 +200,15 @@ export class LoginComponent implements OnInit {
                     this.loading = false
                 }
             })
+    }
+
+    navigate(link: string) {
+        try {
+            // this.router.navigate([link])
+            this.utilService.setCurrentJourney('Adviser Onboarding')
+            this.router.navigate([link])
+        } catch (err) {
+            console.log(err)
+        }
     }
 }
