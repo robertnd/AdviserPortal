@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
-import { AccountService, UtilService } from '@app/_services'
+import { showSpinner, removeSpinner } from '@app/_helpers'
+import { hasher } from '@app/_helpers/hasher'
+import { UtilService, AccountService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 import { Router } from '@angular/router'
-import { removeSpinner, showSpinner } from '@app/_helpers'
-import { hasher } from '@app/_helpers/hasher'
 
 @Component({
-  selector: 'app-applicant-set-creds',
-  templateUrl: './applicant-set-creds.component.html',
-  styleUrls: ['./applicant-set-creds.component.css']
+  selector: 'app-intermediary-creds',
+  templateUrl: './intermediary-creds.component.html',
+  styleUrls: ['./intermediary-creds.component.css']
 })
-export class ApplicantSetCredsComponent implements OnInit {
+export class IntermediaryCredsComponent {
   journey = ''
   pageTitle = 'Set Password'
   otpHash = ''
@@ -99,12 +99,13 @@ export class ApplicantSetCredsComponent implements OnInit {
       return
     }
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify({ password: passwd1 }))
-    this.router.navigate(['/account/ack'])
+    this.router.navigate(['/account/i-ack'])
     // this.utilService.unsetJourney()
   }
 
   previous() {
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-    this.router.navigate(['/account/adviser-contacts'])
+    this.router.navigate(['/account/intermediary-contacts'])
   }
+
 }

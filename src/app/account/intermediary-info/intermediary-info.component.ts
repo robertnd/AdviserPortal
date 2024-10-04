@@ -1,30 +1,32 @@
 import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
-import { validateDate } from '@app/_helpers'
 import { AlertService, UtilService } from '@app/_services'
 import { FormStateService } from '@app/_services/form-state.service'
 import { Router } from '@angular/router'
 
 @Component({
-  selector: 'app-adviser-personal-info',
-  templateUrl: './adviser-personal-info.component.html',
-  styleUrls: ['./adviser-personal-info.component.css']
+  selector: 'app-intermediary-info',
+  templateUrl: './intermediary-info.component.html',
+  styleUrls: ['./intermediary-info.component.css']
 })
-export class AdviserPersonalInfoComponent implements OnInit {
+export class IntermediaryInfoComponent implements OnInit {
 
-  nations = ['Kenya', 'Rwanda', 'South Sudan', 'Uganda']
+  nations = ['Kenya', 'Rwanda', 'South Sudan', 'Uganda' ]
   journey = ''
-  pageTitle = 'Applicant Info'
+  pageTitle = 'DP Info'
   submitted = false;
   form: FormGroup = new FormGroup({
     first_name: new FormControl(''),
     other_names: new FormControl(''),
-    sulast_namername: new FormControl(''),
+    last_name: new FormControl(''),
     date_of_birth: new FormControl(''),
     id_type: new FormControl(''),
     id_number: new FormControl(''),
     kra_pin: new FormControl(''),
-    country: new FormControl('')
+    account_no: new FormControl(''),
+    partner_number: new FormControl(''),
+    intermediary_type: new FormControl(''),
+    intermediary_code: new FormControl('')
   })
 
   constructor(
@@ -42,15 +44,19 @@ export class AdviserPersonalInfoComponent implements OnInit {
     this.utilService.setCurrentPage(this.pageTitle)
 
     this.form = this.fb.group({
-      first_name: ['', Validators.required],
+      first_name: [''],
       other_names: [''],
-      last_name: ['', Validators.required],
-      gender: ['', Validators.required],
-      date_of_birth: ['', Validators.required],
-      id_type: ['', Validators.required],
-      id_number: ['', Validators.required],
-      kra_pin: ['', Validators.required],
-      country: ['', Validators.required]
+      last_name: [''],
+      gender: [''],
+      date_of_birth: [''],
+      id_type: [''],
+      id_number: [''],
+      kra_pin: [''],
+      country: [''],
+      account_no: [''],
+      partner_number: [''],
+      intermediary_type: [''],
+      intermediary_code: ['']
     })
 
     var pageData = this.fs.getPageData(this.pageTitle)
@@ -64,7 +70,7 @@ export class AdviserPersonalInfoComponent implements OnInit {
 
   previous() {
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-    this.router.navigate(['/account/verify-id'])
+    this.router.navigate(['/account/verify-details'])
   }
 
   onSubmit() {
@@ -74,6 +80,7 @@ export class AdviserPersonalInfoComponent implements OnInit {
     }
 
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-    this.router.navigate(['/account/attach-doc'])
+    this.router.navigate(['/account/intermediary-contacts'])
   }
+
 }

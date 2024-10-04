@@ -9,23 +9,31 @@ import { ApiResponse } from '@app/_dto'
 import { PartnerNoRequestDto } from '@app/_dto/ihub/partner-no.request.dto'
 import { Applicant } from '@app/_dto/applicant.dto'
 import { FileDataDto } from '@app/_dto/applicant.file.dto'
+import { DataPlatformAdviser } from '@app/_dto/data_platform'
 
-// const AUTH_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/sign-in'
-const AUTH_API = 'http://localhost:19090/api/v1/adviser/sign-in'
+const AUTH_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/sign-in'
+// const AUTH_API = 'http://localhost:19090/api/v1/adviser/sign-in'
 
-const VERIFY_API = 'http://localhost:19090/api/v1/admin/query-iprs'
-// const VERIFY_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/admin/query-iprs'
+const VERIFY_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/admin/query-iprs'
+// const VERIFY_API = 'http://localhost:19090/api/v1/admin/query-iprs'
 
-// const PARTNERNO_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/admin/query-partner-number'
-const PARTNERNO_API = 'http://localhost:19090/api/v1/admin/query-partner-number'
+const PARTNERNO_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/admin/query-partner-number'
+// const PARTNERNO_API = 'http://localhost:19090/api/v1/admin/query-partner-number'
 
-// const FILEUPLOAD_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/adviser-application-file'
-const FILEUPLOAD_API = 'http://localhost:19090/api/v1/adviser/adviser-application-file'
+const FILEUPLOAD_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/adviser-application-file'
+// const FILEUPLOAD_API = 'http://localhost:19090/api/v1/adviser/adviser-application-file'
 
-// const ADVISER_APPLICATION_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/adviser-application'
-const ADVISER_APPLICATION_API = 'http://localhost:19090/api/v1/adviser/adviser-application'
+const ADVISER_APPLICATION_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/adviser-application'
+// const ADVISER_APPLICATION_API = 'http://localhost:19090/api/v1/adviser/adviser-application'
 
-const OTP_API = 'http://localhost:19090/api/v1/adviser/get-otp'
+const ADVISER_MIGRATION_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/adviser-migration'
+// const ADVISER_MIGRATION_API = 'http://localhost:19090/api/v1/adviser/adviser-migration'
+
+const OTP_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/get-otp'
+// const OTP_API = 'http://localhost:19090/api/v1/adviser/get-otp'
+
+const SEARCH_ADVISER_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/search-adviser'
+// const SEARCH_ADVISER_API = 'http://localhost:19090/api/v1/adviser/search-adviser'
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -109,13 +117,28 @@ export class AccountService {
       .pipe(catchError((error) => of(error)))
   }
 
+  setPassword(user_id: string, password: string, otp_digest: string): Observable<ApiResponse<any, any>> {
+    return this.http.post<any>(OTP_API, { user_id, password, otp_digest }, httpOptions)
+      .pipe(catchError((error) => of(error)))
+  }
+
   getPartnerNo(partnerNoReq: PartnerNoRequestDto): Observable<ApiResponse<any, any>> {
     return this.http.post<any>(PARTNERNO_API, partnerNoReq, httpOptions)
       .pipe(catchError((error) => of(error)))
   }
 
-  createAdviserApplication(applicant: Applicant): Observable<ApiResponse<any, any>> {
+  newAdviserApplication(applicant: Applicant): Observable<ApiResponse<any, any>> {
     return this.http.post<any>(ADVISER_APPLICATION_API, applicant, httpOptions)
+      .pipe(catchError((error) => of(error)))
+  }
+
+  adviserMigration(applicant: DataPlatformAdviser): Observable<ApiResponse<any, any>> {
+    return this.http.post<any>(ADVISER_MIGRATION_API, applicant, httpOptions)
+      .pipe(catchError((error) => of(error)))
+  }
+
+  searchAdviser(column: string, param: string): Observable<ApiResponse<any, any>> {
+    return this.http.post<any>(SEARCH_ADVISER_API, { column, param }, httpOptions)
       .pipe(catchError((error) => of(error)))
   }
 

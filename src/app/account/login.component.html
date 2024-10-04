@@ -6,173 +6,39 @@
       <!-- <img src="../assets/img/logo.png" alt="trillo logo" class="logo" /> -->
     </div>
     <div>
-      <button class="ombutton-link2" type="button" (click)="navigate('/account/verify-id')">
+      <button class="ombutton-link2" type="button" (click)="navigate('/account/verify-id', 'Adviser Onboarding')">
         Apply to join
       </button>
+      <button class="ombutton-link2" type="button" (click)="navigate('/account/verify-details', 'Adviser Migration')">
+        Move to Portal
+      </button>
     </div>
-    <div class="tab-wrap">
-
-      <!-- active tab on page load gets checked attribute -->
-      <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
-      <label for="tab1">Sign In</label>
-
-      <input type="radio" id="tab2" name="tabGroup1" class="tab">
-      <label for="tab2">Get Credentials</label>
-
-      <div class="tab__content">
-        <form [formGroup]="form1" (ngSubmit)="onSubmit()">
-          <div class="input-group">
-            <input class="login-input centered" type="text" formControlName="username" placeholder="Username"
-              value="supervisor@nosuchmail.org" />
-          </div>
-          <div *ngIf="submitted1 && f1.username.errors">
-            <p class="ctrl-notification" *ngIf="f1.username.errors.required">
-              Username is required
-            </p>
-          </div>
-          <div class="input-group">
-            <input class="login-input centered" type="password" formControlName="password" placeholder="Password"
-              value="supervisor" />
-          </div>
-          <div *ngIf="submitted1 && f1.password.errors">
-            <p class="ctrl-notification" *ngIf="f1.password.errors.required">
-              Password is required
-            </p>
-          </div>
-          <div class="input-group">
-            <button class="ombutton centered with-icon" type="submit">
-              Sign In
-              <img src="../assets/img/arrow-right-light.svg" alt="" />
-            </button>
-          </div>
-        </form>
+    <form [formGroup]="form1" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input class="login-input centered" type="text" formControlName="username" placeholder="Username"
+          value="supervisor@nosuchmail.org" />
       </div>
-
-      <div class="tab__content">
-        <form [formGroup]="form2" (ngSubmit)="onSubmitForOTP()" [hidden]="!form2Displayed">
-          <div class="input-group">
-            <input class="login-input centered" type="text" formControlName="idNumber" placeholder="ID Number" />
-          </div>
-          <div *ngIf="submitted2 && f2.idNumber.errors">
-            <p class="ctrl-notification" *ngIf="f2.idNumber.errors.required">
-              Required
-            </p>
-          </div>
-
-          <div class="input-group">
-            <input class="login-input centered" type="text" formControlName="kraPin" placeholder="KRA PIN" />
-          </div>
-          <div *ngIf="submitted2 && f2.kraPin.errors">
-            <p class="ctrl-notification" *ngIf="f2.kraPin.errors.required">
-              Required
-            </p>
-          </div>
-
-          <div class="input-group">
-            <input class="login-input centered" type="text" formControlName="mobileNo" placeholder="Mobile Number" />
-          </div>
-          <div *ngIf="submitted2 && f2.mobileNo.errors">
-            <p class="ctrl-notification" *ngIf="f2.mobileNo.errors.required">
-              Required
-            </p>
-          </div>
-
-          <div class="input-group">
-            <button class="ombutton centered with-icon" type="submit">
-              Request OTP
-              <img src="../assets/img/arrow-right-light.svg" alt="" />
-            </button>
-          </div>
-        </form>
-
-        <table class="data-table" [hidden]="form2Displayed" *ngIf="adviser$">
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Names</td>
-              <td>{{ (adviser$ | async)?.full_names || '' }}</td>
-            </tr>
-            <tr>
-              <td>Contacts</td>
-              <td>
-                <i class="fa fa-envelope fa-lg " aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ (adviser$ |
-                async)?.primary_email || '' }} <br>
-                <i class="fa fa-phone fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ (adviser$ | async)?.mobile_no
-                || '' }}
-              </td>
-            </tr>
-            <tr>
-              <td>ID Number</td>
-              <td>{{ (adviser$ | async)?.id_number || '' }}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <form [formGroup]="form3" (ngSubmit)="onSubmitForCreds()" [hidden]="form2Displayed">
-
-          <div class="input-group">
-            <label class="login-input centered"><b>Username:</b>&nbsp;&nbsp;{{ (adviser$ | async)?.primary_email || ''
-              }}</label>
-            <!-- <input class="login-input centered" type="text" formControlName="newUsername" placeholder="New Username"/> -->
-          </div>
-
-          <div class="input-group">
-            <input class="login-input centered" type="text" formControlName="otp" placeholder="OTP" />
-          </div>
-          <div *ngIf="submitted3 && f3.otp.errors">
-            <p class="ctrl-notification" *ngIf="f3.otp.errors.required">
-              Required
-            </p>
-          </div>
-
-          <div class="input-group">
-            <input class="login-input centered" type="password" formControlName="newPassword"
-              placeholder="New Password" />
-          </div>
-          <div *ngIf="submitted3 && f3.newPassword.errors">
-            <p class="ctrl-notification" *ngIf="f3.newPassword.errors.required">
-              Required
-            </p>
-          </div>
-
-          <div class="input-group">
-            <input class="login-input centered" type="password" formControlName="confirmPassword"
-              placeholder="Confirm Password" />
-          </div>
-          <div *ngIf="submitted3 && f3.confirmPassword.errors">
-            <p class="ctrl-notification" *ngIf="f3.confirmPassword.errors.required">
-              Required
-            </p>
-            <p class="ctrl-notification" *ngIf="f3.confirmPassword.errors.passwordMismatch">
-              Password mismatch
-            </p>
-          </div>
-
-          <div class="input-group">
-            <button class="ombutton centered with-icon" type="submit">
-              Set Password
-              <img src="../assets/img/arrow-right-light.svg" alt="" />
-            </button>
-          </div>
-        </form>
-
-        <div id="functionBar" class="summary-row"></div>
-        <div class="summary-row">
-          <div *ngIf="upstreamServerSuccessMsg" class="success-input">
-            {{ upstreamServerSuccessMsg }}
-          </div>
-          <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
-            {{ upstreamServerErrorMsg }}
-          </div>
-        </div>
+      <div *ngIf="submitted1 && f1.username.errors">
+        <p class="ctrl-notification" *ngIf="f1.username.errors.required">
+          Username is required
+        </p>
       </div>
-
-    </div>
+      <div class="input-group">
+        <input class="login-input centered" type="password" formControlName="password" placeholder="Password"
+          value="supervisor" />
+      </div>
+      <div *ngIf="submitted1 && f1.password.errors">
+        <p class="ctrl-notification" *ngIf="f1.password.errors.required">
+          Password is required
+        </p>
+      </div>
+      <div class="input-group">
+        <button class="ombutton centered with-icon" type="submit">
+          Sign In
+          <img src="../assets/img/arrow-right-light.svg" alt="" />
+        </button>
+      </div>
+    </form>
 
   </div>
 </div>

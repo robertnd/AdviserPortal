@@ -50,124 +50,14 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         })
-        this.form2 = this.fb.group({
-            idNumber: [''],
-            kraPin: [''],
-            mobileNo: ['', Validators.required]
-        })
-        this.form3 = this.fb.group({
-            otp: ['', Validators.required],
-            newUsername: ['', Validators.required],
-            newPassword: ['', Validators.required],
-            confirmPassword: ['', Validators.required]
-        })
+        
     }
 
     get f1() { return this.form1.controls }
-    get f2() { return this.form2.controls }
-    get f3() { return this.form3.controls }
 
     validateNumber(mobile_no: string): boolean {
         const regex = /^254\d{9}$/
         return regex.test(mobile_no)
-    }
-
-    onSubmitForOTP() {
-        this.upstreamServerErrorMsg = ''
-        this.upstreamServerSuccessMsg = ''
-        this.submitted2 = true
-        this.adviserInstance_isStale = true
-        this.alertService.clear();
-        if (this.form2.invalid) {
-            return
-        }
-
-        if (!this.f2['idNumber'].value && !this.f2['mobileNo'].value && !this.f2['kraPin'].value) {
-            // this.f['phoneAndAddress'].setErrors({ 'conditionalRequired': true })
-            this.upstreamServerErrorMsg = 'IdNumber, MobileNo or KRA Pin must be provided'
-            return
-        }
-
-        var searchTag, searchVal = ''
-        if (!this.validateNumber(this.f2['mobileNo'].value)) {
-            this.upstreamServerErrorMsg = 'Try a mobile no in the format 254xxxxxxxxx'
-            return
-        }
-        searchTag = 'mobile_no'
-        searchVal = this.f2['mobileNo'].value.trim()
-
-        this.form2Displayed = false
-        this.registrationService
-            .getAdviserDetails(searchTag, searchVal)
-            .subscribe({
-                next: dataResponse => {
-                    // narrowing
-                    if (dataResponse.status === 'success') {
-                        this.adviserSubject.next(dataResponse.data!)
-                        this.adviserInstance = dataResponse.data!
-                        this.adviserInstance_isStale = false
-                    } else {
-                        this.alertService.error(dataResponse.message)
-                        this.loading = false
-                    }
-                },
-                error: error => {
-                    console.log(`Error: ${JSON.stringify(error)}`)
-                    this.alertService.error(JSON.stringify(error))
-                    this.loading = false
-                }
-            })
-    }
-
-    onSubmitForCreds() {
-        this.submitted3 = true
-        this.upstreamServerErrorMsg = ''
-        this.upstreamServerSuccessMsg = ''
-        // this.form3.setErrors({ 'passwordMismatch': null })
-        this.f3['confirmPassword'].setErrors({ 'passwordMismatch': null })
-        this.alertService.clear()
-
-        let pMatch = this.f3.newPassword.value.valueOf() === this.f3.confirmPassword.value.valueOf()
-        console.log(`Password Match? : ${pMatch}`)
-        if (pMatch === false) {
-            this.f3['confirmPassword'].setErrors({ 'passwordMismatch': true })
-            return
-        }
-
-        if (this.adviserInstance_isStale) {
-            this.alertService.error(`Adviser record is stale. Please request a new OTP`)
-            return
-        }
-
-        if (this.adviserInstance) {
-            let regDto = {
-                user_id: this.adviserInstance.primary_email,
-                password: this.f3.newPassword.value,
-                otp: this.f3.otp.value,
-                dpAdviser: this.adviserInstance
-            }
-            // console.log('RegDTO: ', JSON.stringify(regDto))
-            this.registrationService
-                .registerAdviser(regDto)
-                .subscribe({
-                    next: resp => {
-                        // console.log(resp)
-                        // this.upstreamServerSuccessMsg = `${resp.data.action || ''} Successful`
-                        this.alertService.success(`${resp.data.action || ''} Successful`)
-                    },
-                    error: error => {
-                        console.log(`Error: ${JSON.stringify(error)}`)
-                        // this.alertService.error(JSON.stringify(error))
-                        this.upstreamServerErrorMsg = `Error: ${JSON.stringify(error)}`
-                        this.loading = false
-                    }
-                })
-
-        } else {
-            this.alertService.error(`Data platform query failed`)
-        }
-
-        // this.router.navigateByUrl('/')
     }
 
     onSubmit() {
@@ -202,10 +92,10 @@ export class LoginComponent implements OnInit {
             })
     }
 
-    navigate(link: string) {
+    navigate(link: string, journey: string) {
         try {
             // this.router.navigate([link])
-            this.utilService.setCurrentJourney('Adviser Onboarding')
+            this.utilService.setCurrentJourney(journey)
             this.router.navigate([link])
         } catch (err) {
             console.log(err)

@@ -15,6 +15,7 @@ export class AckComponent implements OnInit {
   pageTitle = 'Ack'
   applicantInfo: any = null
   contacts: any = null
+  passwordObj: any = null
   patnerNumber = ''
   upstreamServerSuccessMsg = ''
   upstreamServerErrorMsg = ''
@@ -33,6 +34,7 @@ export class AckComponent implements OnInit {
 
     this.applicantInfo = JSON.parse(this.fs.getPageData('Applicant Info'))
     this.contacts = JSON.parse(this.fs.getPageData('Contacts'))
+    this.passwordObj = JSON.parse(this.fs.getPageData('Set Password'))
 
     // 1990-08-01 (for date control, should be 01-08-1980 for partner API)
     var tmp = this.applicantInfo.date_of_birth.split('-')
@@ -57,7 +59,7 @@ export class AckComponent implements OnInit {
     this.contacts.primary_address = address
     var names = [ this.applicantInfo.first_name, this.applicantInfo.other_names, this.applicantInfo.last_name].join(' ')
     this.applicantInfo.full_names = names
-    const applicationObj = { ...this.applicantInfo, ...this.contacts }
+    const applicationObj = { ...this.passwordObj, ...this.applicantInfo, ...this.contacts }
     console.log(`this.applicantInfo: ${JSON.stringify(this.applicantInfo)}`)
     console.log(`this.contacts: ${JSON.stringify(this.contacts)}`)
     console.log(`applicationObj: ${JSON.stringify(applicationObj)}`)
@@ -68,7 +70,7 @@ export class AckComponent implements OnInit {
         switchMap(partnerResp => {
           if (partnerResp.status == 'success') {
             applicationObj.partnerNumber = partnerResp.data.partnerNumber
-            return this.accountService.createAdviserApplication(applicationObj)
+            return this.accountService.newAdviserApplication(applicationObj)
               .pipe(
                 switchMap(applResp => {
                   if (applResp.status == 'success') {
@@ -135,30 +137,6 @@ export class AckComponent implements OnInit {
           }
         }
       )
-
-    /*
-    this.accountService.getPartnerNo(pRequest)
-      .subscribe({
-        next: resp => {
-          if (resp && resp.status == 'success' && resp.data) {
-            this.patnerNumber = resp.data.partnerNumber
-            this.applicantInfo.partnerNumber = resp.data.partnerNumber
-            this.fs.addOrUpdatePageData('PartnerNumber', resp.data.partnerNumber)
-            this.fs.addOrUpdatePageData('Applicant Info', JSON.stringify(this.applicantInfo))
-            this.ackMessage = `Your application has been received. Partner Ref: ${resp.data.partnerNumber}`
-          } else {
-            this.ackMessage = `There was an error processing your application`
-            if (typeof resp === 'object' && 'errorData' in resp) {
-              this.upstreamServerErrorMsg = JSON.stringify(resp.errorData)
-            }
-          }
-        },
-        error: err => {
-          this.upstreamServerErrorMsg = JSON.stringify(err)
-        }
-      }
-    // )
-      */
 
     // TODO: Dump the Map ...
     var stateObj = this.fs.dump()

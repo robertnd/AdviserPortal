@@ -17,7 +17,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   currentPageSubscription!: Subscription
   routeSubscription!: Subscription
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
     private utilService: UtilService) { }
 
   ngOnInit() {
@@ -107,34 +107,41 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
         this.pages.push(new Page('7', 'Declarations', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('8', 'Summary', 'breadcrumbs-circle', 'breadcrumbs-text'))
         break
-        case 'Private Vehicle Insurance':
-          this.pages.push(new Page('1', 'Personal Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('2', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('3', 'Occupation', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('4', 'Privacy Notice', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('5', 'Consent', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('6', 'Vehicles', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('7', 'Driving and Claims', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('8', 'Policy', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('9', 'Summary', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          break
-        case 'Student Internship':
-          this.pages.push(new Page('1', 'Personal Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('2', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('3', 'Occupation', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('4', 'Privacy Notice', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('5', 'Consent', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('6', 'Details', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          this.pages.push(new Page('7', 'Summary', 'breadcrumbs-circle', 'breadcrumbs-text'))
-          break
-        case 'Adviser Onboarding':
-            this.pages.push(new Page('1', 'Verify ID', 'breadcrumbs-circle', 'breadcrumbs-text'))
-            this.pages.push(new Page('2', 'Applicant Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
-            this.pages.push(new Page('3', 'Attach Docs', 'breadcrumbs-circle', 'breadcrumbs-text'))
-            this.pages.push(new Page('4', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
-            this.pages.push(new Page('5', 'Set Password', 'breadcrumbs-circle', 'breadcrumbs-text'))
-            this.pages.push(new Page('6', 'Ack', 'breadcrumbs-circle', 'breadcrumbs-text'))
-            break
+      case 'Private Vehicle Insurance':
+        this.pages.push(new Page('1', 'Personal Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('2', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('3', 'Occupation', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('4', 'Privacy Notice', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('5', 'Consent', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('6', 'Vehicles', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('7', 'Driving and Claims', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('8', 'Policy', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('9', 'Summary', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        break
+      case 'Student Internship':
+        this.pages.push(new Page('1', 'Personal Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('2', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('3', 'Occupation', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('4', 'Privacy Notice', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('5', 'Consent', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('6', 'Details', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('7', 'Summary', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        break
+      case 'Adviser Onboarding':
+        this.pages.push(new Page('1', 'Verify ID', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('2', 'Applicant Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('3', 'Attach Docs', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('4', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('5', 'Set Password', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('6', 'Ack', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        break
+      case 'Adviser Migration':
+        this.pages.push(new Page('1', 'Verify Details', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('2', 'DP Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('3', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('4', 'Set Password', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('5', 'Ack', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        break
       default:
         this.pages = this.pages = [] as Page[]
         break

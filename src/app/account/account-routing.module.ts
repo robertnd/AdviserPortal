@@ -8,6 +8,11 @@ import { AckComponent } from './ack/ack.component';
 import { VerifyIdComponent } from './verify-id/verify-id.component';
 import { AttachDocComponent } from './attach-doc/attach-doc.component';
 import { ApplicantSetCredsComponent } from './applicant-set-creds/applicant-set-creds.component';
+import { VerifyDetailsComponent } from './verify-details/verify-details.component';
+import { IntermediaryInfoComponent } from './intermediary-info/intermediary-info.component';
+import { IntermediaryContactsComponent } from './intermediary-contacts/intermediary-contacts.component';
+import { IntermediaryCredsComponent } from './intermediary-creds/intermediary-creds.component';
+import { IntermediaryAckComponent } from './intermediary-ack/intermediary-ack.component';
 
 const routes: Routes = [
   {
@@ -19,7 +24,12 @@ const routes: Routes = [
           { path: 'adviser-contacts', component: AdviserContactsComponent },
           { path: 'attach-doc', component: AttachDocComponent },
           { path: 'applicant-creds', component: ApplicantSetCredsComponent },
-          { path: 'ack', component: AckComponent }
+          { path: 'ack', component: AckComponent },
+          { path: 'verify-details', component: VerifyDetailsComponent },
+          { path: 'intermediary-info', component: IntermediaryInfoComponent },
+          { path: 'intermediary-contacts', component: IntermediaryContactsComponent },
+          { path: 'intermediary-creds', component: IntermediaryCredsComponent },
+          { path: 'i-ack', component: IntermediaryAckComponent }
       ]
   }
 ]

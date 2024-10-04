@@ -1,0 +1,167 @@
+<div class="detail">
+    <div class="form-container">
+      <div class="form-row">
+        <div id="bannerLogo">
+          <img src="../assets/img/adviserPortal.png" width="212" height="47" alt="Advisers portal logo"
+            style="margin-left: 15px" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="overview">
+          <h1 class="overview__subheading">Applicant's Information</h1>
+        </div>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" formControlName="first_name" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['first_name'].errors" class="invalid-input">
+              <div *ngIf="f['first_name'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="other_names">Other Name(s)</label>
+            <input type="text" id="other_names" formControlName="other_names" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['other_names'].errors" class="invalid-input">
+              <div *ngIf="f['other_names'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="last_name">Surname</label>
+            <input type="text" id="last_name" formControlName="last_name" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['last_name'].errors" class="invalid-input">
+              <div *ngIf="f['last_name'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="date_of_birth">Date of Birth</label>
+            <input type="date" id="date_of_birth" formControlName="date_of_birth" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['date_of_birth'].errors" class="invalid-input">
+              <div *ngIf="f['date_of_birth'].errors['required']">
+                Required
+              </div>
+              <div *ngIf="f['date_of_birth'].errors['futureDate']">
+                Future date is not valid
+              </div>
+              <div *ngIf="f['date_of_birth'].errors['invalidValue']">
+                Date value is not valid
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="id_type">Identification Document</label>
+            <select id="id_type" formControlName="id_type" [ngClass]="roClassDef">
+              <option></option>
+              <option>National ID</option>
+              <option>Passport</option>
+              <option>Driver License</option>
+            </select>
+            <div *ngIf="submitted && f['id_type'].errors" class="invalid-input">
+              <div *ngIf="f['id_type'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="id_number">Document Number</label>
+            <input type="text" id="id_number" formControlName="id_number" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['id_number'].errors" class="invalid-input">
+              <div *ngIf="f['id_number'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="kra_pin">PIN</label>
+            <input type="text" id="kra_pin" formControlName="kra_pin" />
+            <div *ngIf="submitted && f['kra_pin'].errors" class="invalid-input">
+              <div *ngIf="f['kra_pin'].errors['required']">Required</div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="gender">Gender</label>
+            <select id="gender" formControlName="gender" [ngClass]="roClassDef">
+              <option></option>
+              <option>Female</option>
+              <option>Male</option>
+            </select>
+            <div *ngIf="f['gender'].errors" class="invalid-input">
+              <div *ngIf="f['gender'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="account_no">Account No</label>
+            <input type="text" id="account_no" formControlName="account_no" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['account_no'].errors" class="invalid-input">
+              <div *ngIf="f['account_no'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="partner_number">Partner Number</label>
+            <input type="text" id="partner_number" formControlName="partner_number" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['partner_number'].errors" class="invalid-input">
+              <div *ngIf="f['partner_number'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="intermediary_code">Intermediary Code</label>
+            <input type="text" id="intermediary_code" formControlName="intermediary_code" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['intermediary_code'].errors" class="invalid-input">
+              <div *ngIf="f['intermediary_code'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="intermediary_type">Intermediary Type</label>
+            <input type="text" id="intermediary_type" formControlName="intermediary_type" [ngClass]="roClassDef" />
+            <div *ngIf="submitted && f['intermediary_type'].errors" class="invalid-input">
+              <div *ngIf="f['intermediary_type'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+            <img class="flippy" src="../assets/img/arrow-right-light.svg" alt="" />
+            prev
+          </button>
+          <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+            next
+            <img src="../assets/img/arrow-right-light.svg" alt="" />
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

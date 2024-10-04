@@ -9,7 +9,12 @@ import { AdviserPersonalInfoComponent } from './adviser-personal-info/adviser-pe
 import { AckComponent } from './ack/ack.component';
 import { VerifyIdComponent } from './verify-id/verify-id.component';
 import { AttachDocComponent } from './attach-doc/attach-doc.component';
-import { ApplicantSetCredsComponent } from './applicant-set-creds/applicant-set-creds.component'
+import { ApplicantSetCredsComponent } from './applicant-set-creds/applicant-set-creds.component';
+import { VerifyDetailsComponent } from './verify-details/verify-details.component';
+import { IntermediaryInfoComponent } from './intermediary-info/intermediary-info.component';
+import { IntermediaryContactsComponent } from './intermediary-contacts/intermediary-contacts.component';
+import { IntermediaryCredsComponent } from './intermediary-creds/intermediary-creds.component';
+import { IntermediaryAckComponent } from './intermediary-ack/intermediary-ack.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +25,12 @@ import { ApplicantSetCredsComponent } from './applicant-set-creds/applicant-set-
     AckComponent,
     VerifyIdComponent,
     AttachDocComponent,
-    ApplicantSetCredsComponent
+    ApplicantSetCredsComponent,
+    VerifyDetailsComponent,
+    IntermediaryInfoComponent,
+    IntermediaryContactsComponent,
+    IntermediaryCredsComponent,
+    IntermediaryAckComponent
   ],
   imports: [
     CommonModule,
