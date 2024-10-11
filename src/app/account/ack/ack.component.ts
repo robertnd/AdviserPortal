@@ -48,8 +48,8 @@ export class AckComponent implements OnInit {
       pin_ke: this.applicantInfo.kra_pin
     }
 
-    var fileToUploadIDdoc = this.fs.getPageData('Attach Doc_ID_Document')
-    var fileToUploadKRAdoc = this.fs.getPageData('Attach Doc_KRAPin_Document')
+    var fileToUploadIDdoc
+    var fileToUploadKRAdoc
     var address = [ 
       this.contacts.postal_address || '', 
        this.contacts.postal_code || '',
@@ -74,6 +74,7 @@ export class AckComponent implements OnInit {
               .pipe(
                 switchMap(applResp => {
                   if (applResp.status == 'success') {
+                    fileToUploadIDdoc = this.fs.getPageData('Attach Docs_ID_Document')
                     const fileObj_id = {
                       user_id: applicationObj.primary_email,
                       file_desc: 'ID_document',
@@ -83,6 +84,7 @@ export class AckComponent implements OnInit {
                       .pipe(
                         switchMap(fileIDResp => {
                           if (fileIDResp.status == 'success') {
+                            fileToUploadKRAdoc = this.fs.getPageData('Attach Docs_KRAPin_Document')
                             const fileObj_kra = {
                               user_id: applicationObj.primary_email,
                               file_desc: 'KRA_PIN_document',
@@ -136,7 +138,7 @@ export class AckComponent implements OnInit {
             console.log(`End of Chain with ERROR:: ${this.ackMessage}`)
           }
         }
-      )
+    )
 
     // TODO: Dump the Map ...
     var stateObj = this.fs.dump()

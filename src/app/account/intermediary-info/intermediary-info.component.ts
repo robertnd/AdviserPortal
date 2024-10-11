@@ -11,10 +11,11 @@ import { Router } from '@angular/router'
 })
 export class IntermediaryInfoComponent implements OnInit {
 
-  nations = ['Kenya', 'Rwanda', 'South Sudan', 'Uganda' ]
+  nations = ['Kenya', 'Rwanda', 'South Sudan', 'Uganda']
   journey = ''
   pageTitle = 'DP Info'
-  submitted = false;
+  submitted = false
+  entityKind = ''
   form: FormGroup = new FormGroup({
     first_name: new FormControl(''),
     other_names: new FormControl(''),
@@ -42,30 +43,46 @@ export class IntermediaryInfoComponent implements OnInit {
   ngOnInit() {
     this.journey = this.utilService.getCurrentJourney() || ''
     this.utilService.setCurrentPage(this.pageTitle)
+    this.entityKind = this.fs.getValue('EntityKind')
+
+    // date_of_birth: ['', [Validators.required, validateDate()] ],
 
     this.form = this.fb.group({
-      first_name: [''],
+      first_name: ['', Validators.required],
       other_names: [''],
-      last_name: [''],
-      gender: [''],
-      date_of_birth: [''],
-      id_type: [''],
-      id_number: [''],
-      kra_pin: [''],
+      last_name: ['', Validators.required],
+      gender: ['', Validators.required],
+      date_of_birth: ['', Validators.required],
+      id_type: ['', Validators.required],
+      id_number: ['', Validators.required],
+      kra_pin: ['', Validators.required],
       country: [''],
       account_no: [''],
       partner_number: [''],
       intermediary_type: [''],
       intermediary_code: ['']
     })
-
     var pageData = this.fs.getPageData(this.pageTitle)
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     this.form.patchValue(JSON.parse(pageData))
   }
 
-  get roClassDef() {
-    return this.fs.getValue('ApplicantInfo_Class')
+  roClassDef(iprs_available: boolean) {
+    var process = this.fs.getValue('EntityKind') || ''
+    // always editable
+    if ( process == 'Manual Entry' ) {
+      return 'noreadonly-input'
+    }
+    // always locked
+    if ( process == 'Data Platform' ) {
+      return 'readonly-input'
+    }
+    // value available - locked
+    if ( iprs_available && process == 'IPRS' ) {
+      return 'readonly-input'
+    }
+    // default 
+    return 'noreadonly-input'
   }
 
   previous() {
@@ -78,9 +95,7 @@ export class IntermediaryInfoComponent implements OnInit {
     if (this.form.invalid) {
       return
     }
-
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     this.router.navigate(['/account/intermediary-contacts'])
   }
-
 }

@@ -105,7 +105,12 @@ export class IntermediaryCredsComponent {
 
   previous() {
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-    this.router.navigate(['/account/intermediary-contacts'])
+    var entityKind = this.fs.getValue('EntityKind')
+    if ( entityKind == 'Manual Entry') {
+      this.router.navigate(['/account/attach-doc'])
+    } else {
+      this.router.navigate(['/account/intermediary-contacts'])
+    }
   }
 
 }

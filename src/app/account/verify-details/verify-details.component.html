@@ -1,69 +1,96 @@
 <div class="detail">
-    <div class="form-container">
-      <div class="form-row">
-        <div id="bannerLogo">
-          <img src="../assets/img/adviserPortal.png" width="212" height="47" alt="Advisers portal logo"
-              style="margin-left: 15px" />
-        </div>
+  <div class="form-container">
+    <div class="form-row">
+      <div id="bannerLogo">
+        <img src="../assets/img/adviserPortal.png" width="212" height="47" alt="Advisers portal logo"
+          style="margin-left: 15px" />
       </div>
-      <div class="form-row">
-        <div class="overview">
-          <h1 class="overview__subheading">Verify Details</h1>
-        </div>
-      </div>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  
-        <div class="form-row">
-          <div class="text-input-intg">
-            <label for="skey">Search Key</label>
-            <select id="skey" formControlName="skey">
-              <option></option>
-              <option>KRA Pin</option>
-              <option>Mobile No</option>
-              <option>ID Number</option>
-            </select>
-            <div *ngIf="f['skey'].errors" class="invalid-input">
-              <div *ngIf="f['skey'].errors['required']">
-                Required
-              </div>
-            </div>
-          </div>
-          <div class="text-input-intg">
-            <label for="svalue">Value</label>
-            <input type="text" id="svalue" formControlName="svalue" />
-            <div *ngIf="f['svalue'].errors" class="invalid-input">
-              <div *ngIf="f['svalue'].errors['required']">
-                Required
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="text-input-intg"></div>
-          <div class="text-input-intg"></div>
-        </div>
-
-        <div id="functionBar" class="summary-row"></div>
-        <div class="summary-row">
-          <div *ngIf="upstreamServerSuccessMsg" class="success-input">
-            {{ upstreamServerSuccessMsg }}
-          </div>
-          <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
-            {{ upstreamServerErrorMsg }}
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <button class="ombutton lefted with-icon" type="button" (click)="verify()">
-            verify
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
-          <button id="verifyIdNext" *ngIf="personFound === true" class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
-            next
-            <img src="../assets/img/arrow-right-light.svg" alt="" />
-          </button>
-        </div>
-      </form>
     </div>
+    <div class="form-row">
+      <div class="overview">
+        <h1 class="overview__subheading">Verify Details</h1>
+      </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="full_names">Full Names</label>
+          <input type="text" id="full_names" formControlName="full_names" />
+          <div *ngIf="submitted && f['full_names'].errors" class="invalid-input">
+            <div *ngIf="f['full_names'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="mobile_no">Mobile No</label>
+          <input type="text" id="mobile_no" formControlName="mobile_no" />
+          <div *ngIf="submitted && f['mobile_no'].errors" class="invalid-input">
+            <div *ngIf="f['mobile_no'].errors['required']">
+              Required
+            </div>
+            <div *ngIf="f['mobile_no'].errors['mustBeKenyanMobileNo']">
+              Invalid format. Required (254xxxxxxxxx)
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg">
+          <label for="id_number">Id Number</label>
+          <input type="text" id="id_number" formControlName="id_number" />
+          <div *ngIf="submitted &&  f['id_number'].errors" class="invalid-input">
+            <div *ngIf="f['id_number'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="text-input-intg">
+          <label for="kra_pin">KRA Pin</label>
+          <input type="text" id="kra_pin" formControlName="kra_pin" />
+          <div *ngIf="submitted && f['kra_pin'].errors" class="invalid-input">
+            <div *ngIf="f['kra_pin'].errors['required']">
+              Required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="text-input-intg"></div>
+        <div class="text-input-intg"></div>
+      </div>
+
+      <div id="functionBar" class="summary-row"></div>
+      <div class="summary-row">
+        <div *ngIf="upstreamServerSuccessMsg" class="success-input">
+          {{ upstreamServerSuccessMsg }}
+        </div>
+        <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
+          {{ upstreamServerErrorMsg }}
+        </div>
+      </div>
+
+      <div class="summary-row" *ngIf="showLoginLink === true">
+        <button class="ombutton-link2" type="button" (click)="unsetJourney();navigate('/account/login')">
+          Log In
+        </button>
+      </div>
+
+      <div class="form-row">
+        <button class="ombutton lefted with-icon" type="button" (click)="verify()">
+          verify
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        <button id="verifyIdNext" *ngIf="searchComplete" class="ombutton lefted with-icon" type="submit"
+          (click)="onSubmit()">
+          next
+          <img src="../assets/img/arrow-right-light.svg" alt="" />
+        </button>
+      </div>
+    </form>
   </div>
+</div>

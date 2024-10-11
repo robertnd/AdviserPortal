@@ -139,8 +139,9 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
         this.pages.push(new Page('1', 'Verify Details', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('2', 'DP Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('3', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
-        this.pages.push(new Page('4', 'Set Password', 'breadcrumbs-circle', 'breadcrumbs-text'))
-        this.pages.push(new Page('5', 'Ack', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('4', 'Attach Docs', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('5', 'Set Password', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('6', 'Ack', 'breadcrumbs-circle', 'breadcrumbs-text'))
         break
       default:
         this.pages = this.pages = [] as Page[]

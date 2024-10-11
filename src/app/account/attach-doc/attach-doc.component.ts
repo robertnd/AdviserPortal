@@ -89,17 +89,18 @@ export class AttachDocComponent implements OnInit {
     
     if (this.fileAttached == false) {
       this.upstreamServerErrorMsg = 'No files selected'
-      // return
+      return
     }
 
     // this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
     // this.utilService.unsetJourney()
-    this.router.navigate(['/account/adviser-contacts'])
+    // this.router.navigate(['/account/adviser-contacts'])
+    this.router.navigate(['/account/intermediary-creds'])
   }
 
   previous() {
     this.fs.addOrUpdatePageData(this.pageTitle, JSON.stringify(this.form.value))
-    this.router.navigate(['/account/adviser-info'])
+    this.router.navigate(['/account/intermediary-contacts'])
   }
 
 }

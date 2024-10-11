@@ -11,29 +11,18 @@ import { Applicant } from '@app/_dto/applicant.dto'
 import { FileDataDto } from '@app/_dto/applicant.file.dto'
 import { DataPlatformAdviser } from '@app/_dto/data_platform'
 
-const AUTH_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/sign-in'
-// const AUTH_API = 'http://localhost:19090/api/v1/adviser/sign-in'
+// const SERVING_HOST = 'localhost' 
+const SERVING_HOST =  'server-alb-1574150615.eu-west-1.elb.amazonaws.com'
 
-const VERIFY_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/admin/query-iprs'
-// const VERIFY_API = 'http://localhost:19090/api/v1/admin/query-iprs'
-
-const PARTNERNO_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/admin/query-partner-number'
-// const PARTNERNO_API = 'http://localhost:19090/api/v1/admin/query-partner-number'
-
-const FILEUPLOAD_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/adviser-application-file'
-// const FILEUPLOAD_API = 'http://localhost:19090/api/v1/adviser/adviser-application-file'
-
-const ADVISER_APPLICATION_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/adviser-application'
-// const ADVISER_APPLICATION_API = 'http://localhost:19090/api/v1/adviser/adviser-application'
-
-const ADVISER_MIGRATION_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/adviser-migration'
-// const ADVISER_MIGRATION_API = 'http://localhost:19090/api/v1/adviser/adviser-migration'
-
-const OTP_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/get-otp'
-// const OTP_API = 'http://localhost:19090/api/v1/adviser/get-otp'
-
-const SEARCH_ADVISER_API = 'http://server-alb-1574150615.eu-west-1.elb.amazonaws.com:19090/api/v1/adviser/search-adviser'
-// const SEARCH_ADVISER_API = 'http://localhost:19090/api/v1/adviser/search-adviser'
+const AUTH_API = `http://${SERVING_HOST}:19090/api/v1/adviser/sign-in`
+const VERIFY_API = `http://${SERVING_HOST}:19090/api/v1/admin/query-iprs`
+const PARTNERNO_API = `http://${SERVING_HOST}:19090/api/v1/admin/assign-partner-number`
+const ADVISER_APPLICATION_API = `http://${SERVING_HOST}:19090/api/v1/adviser/new-adviser-application`
+const FILEUPLOAD_API = `http://${SERVING_HOST}:19090/api/v1/adviser/new-adviser-application-file`
+const ADVISER_MIGRATION_API = `http://${SERVING_HOST}:19090/api/v1/adviser/migrate-adviser`
+const OTP_API = `http://${SERVING_HOST}:19090/api/v1/adviser/get-otp`
+const SEARCH_ADVISER_ON_PORTAL_API = `http://${SERVING_HOST}:19090/api/v1/adviser/search-adviser`
+const SEARCH_ADVISER_EXT_API = `http://${SERVING_HOST}:19090/api/v1/adviser/get-adviser-ext`
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -132,13 +121,18 @@ export class AccountService {
       .pipe(catchError((error) => of(error)))
   }
 
-  adviserMigration(applicant: DataPlatformAdviser): Observable<ApiResponse<any, any>> {
+  migrateAdviser(applicant: DataPlatformAdviser): Observable<ApiResponse<any, any>> {
     return this.http.post<any>(ADVISER_MIGRATION_API, applicant, httpOptions)
       .pipe(catchError((error) => of(error)))
   }
 
-  searchAdviser(column: string, param: string): Observable<ApiResponse<any, any>> {
-    return this.http.post<any>(SEARCH_ADVISER_API, { column, param }, httpOptions)
+  getAdviserExternal(filexp: string, filval: string): Observable<ApiResponse<any, any>> {
+    return this.http.post<any>(SEARCH_ADVISER_EXT_API, { filexp, filval }, httpOptions)
+      .pipe(catchError((error) => of(error)))
+  }
+
+  searchAdviserOnPortal(filexp: string, filval: string): Observable<ApiResponse<any, any>> {
+    return this.http.post<any>(SEARCH_ADVISER_ON_PORTAL_API, { filexp, filval }, httpOptions)
       .pipe(catchError((error) => of(error)))
   }
 
@@ -153,5 +147,4 @@ export class AccountService {
     return this.http.post<any>(FILEUPLOAD_API, fileData, httpOptions)
       .pipe(catchError((error) => of(error)))
   }
-
 }
