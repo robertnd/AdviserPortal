@@ -67,8 +67,9 @@ export class IntermediaryCredsComponent {
             console.log(JSON.stringify(resp))
             console.log(`@Else: ${JSON.stringify(resp)}`)
             if (typeof resp === 'object' && 'errorData' in resp) {
-              const { errorData } = resp
-              this.upstreamServerErrorMsg = `Error: ${JSON.stringify(errorData)}`
+              const { errorData, message } = resp
+              // this.upstreamServerErrorMsg = `Error: ${JSON.stringify(errorData)}`
+              this.upstreamServerErrorMsg = message ? message : 'A processing error occurred'
             }
           }
           removeSpinner()

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 import { DataPlatformAdviser } from '@app/_dto/data_platform/data-platform.adviser.dto'
 import { RegistrationDto } from '@app/_dto/register.existing.dto'
+import { pickleError } from '@app/_helpers'
 import { AccountService, AlertService, UtilService } from '@app/_services'
 import { RegistrationService } from '@app/_services/registration.service'
 import { Observable, Subject } from 'rxjs'
@@ -86,7 +87,8 @@ export class LoginComponent implements OnInit {
                 },
                 error: error => {
                     console.log(`Error: ${JSON.stringify(error)}`)
-                    this.alertService.error(JSON.stringify(error))
+                    const errMesg = pickleError(error)
+                    this.alertService.error(errMesg)
                     this.loading = false
                 }
             })

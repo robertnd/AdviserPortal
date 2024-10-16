@@ -34,7 +34,7 @@ export class IntermediaryAckComponent implements OnInit {
     this.utilService.setCurrentPage(this.pageTitle)
     this.entityKind = this.fs.getValue('EntityKind')
 
-    this.applicantInfo = JSON.parse(this.fs.getPageData('DP Info'))
+    this.applicantInfo = JSON.parse(this.fs.getPageData('Information'))
     this.contacts = JSON.parse(this.fs.getPageData('Contacts'))
     this.passwordObj = JSON.parse(this.fs.getPageData('Set Password'))
 
@@ -86,7 +86,8 @@ export class IntermediaryAckComponent implements OnInit {
               console.log(`Error @ getPartnerNo/subscribe for IPRS journey: ${JSON.stringify(data)}`)
               this.ackMessage = `There was an error processing your application`
               if (typeof data === 'object' && 'errorData' in data) {
-                this.upstreamServerErrorMsg = JSON.stringify(data.errorData)
+                this.upstreamServerErrorMsg = data.message ? data.message : 'A processing error occurred'
+                // this.upstreamServerErrorMsg = JSON.stringify(data.errorData)
               }
               console.log(`End of Chain with ERROR:: ${this.ackMessage}`)
             }
@@ -104,7 +105,8 @@ export class IntermediaryAckComponent implements OnInit {
                 console.log(`Error @ migrateAdviser/subscribe for DP journey: ${JSON.stringify(data)}`)
                 this.ackMessage = `There was a processing error`
                 if (typeof data === 'object' && 'errorData' in data) {
-                  this.upstreamServerErrorMsg = JSON.stringify(data.errorData)
+                  this.upstreamServerErrorMsg = data.message ? data.message : 'A processing error occurred'
+                  // this.upstreamServerErrorMsg = JSON.stringify(data.errorData)
                   console.log(`End of Chain with ERROR:: ${JSON.stringify(data.errorData)}`)
                 }
               }
@@ -165,7 +167,8 @@ export class IntermediaryAckComponent implements OnInit {
                   console.log(`Error @ newAdviserApplication/subscribe for Manual journey: ${JSON.stringify(data)}`)
                   this.ackMessage = `There was an error processing your application`
                   if (typeof data === 'object' && 'errorData' in data) {
-                    this.upstreamServerErrorMsg = JSON.stringify(data.errorData)
+                    // this.upstreamServerErrorMsg = JSON.stringify(data.errorData)
+                    this.upstreamServerErrorMsg = data.message ? data.message : 'A processing error occurred'
                   }
                 }
             }

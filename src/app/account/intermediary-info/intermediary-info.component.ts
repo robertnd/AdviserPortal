@@ -13,7 +13,7 @@ export class IntermediaryInfoComponent implements OnInit {
 
   nations = ['Kenya', 'Rwanda', 'South Sudan', 'Uganda']
   journey = ''
-  pageTitle = 'DP Info'
+  pageTitle = 'Information'
   submitted = false
   entityKind = ''
   form: FormGroup = new FormGroup({

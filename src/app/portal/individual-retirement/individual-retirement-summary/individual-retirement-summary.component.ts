@@ -160,7 +160,8 @@ export class IndividualRetirementSummaryComponent {
         if (response.status == 'Success') {
           addFnBarItem('pdf-download-link', this.getPDF, [response.fileName], this.bizService)
         } else {
-          this.upstreamServerErrorMsg = `Detached : ${JSON.stringify(response)}`
+          // this.upstreamServerErrorMsg = `Detached : ${JSON.stringify(response)}`
+          this.upstreamServerErrorMsg = response.message ? response.message : 'A processing error occurred'
         }
       },
       error: err => {

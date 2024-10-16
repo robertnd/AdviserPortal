@@ -99,7 +99,7 @@ export class VerifyDetailsComponent implements OnInit {
             this.searchComplete = false
             this.showLoginLink = true
             this.upstreamServerErrorMsg = `[ ${resp.data.names} - KRA Pin ${resp.data.kra_pin} ] already exists. Click "Log In" to proceed`
-            this.fs.addOrUpdatePageData('DP Info', '{}')
+            this.fs.addOrUpdatePageData('Information', '{}')
           } else if (resp && resp.status == 'success' && resp.data && entityKind != 'Portal') {
             this.searchComplete = true
             this.showLoginLink = false
@@ -117,11 +117,11 @@ export class VerifyDetailsComponent implements OnInit {
               resp.data.gender = gender == 'M' ? 'Male' : 'Female'
               this.fs.addOrUpdatePageData('EntityKind', 'IPRS')
             }
-            this.fs.addOrUpdatePageData('DP Info', JSON.stringify(resp.data))
+            this.fs.addOrUpdatePageData('Information', JSON.stringify(resp.data))
             var lastName = resp.data.last_name ? resp.data.last_name : resp.data.surname
             this.upstreamServerSuccessMsg = `Verified ${resp.data.first_name} ${lastName} on ${entityKind}. Click "next" to proceed`
           } else {
-            this.fs.addOrUpdatePageData('DP Info', '{}')
+            this.fs.addOrUpdatePageData('Information', '{}')
             this.upstreamServerErrorMsg = 'No records found. Click "next" to proceed'
             this.fs.addOrUpdatePageData('EntityKind', 'Manual Entry')
             this.searchComplete = true

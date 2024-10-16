@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { LayoutComponent } from './layout.component'
 import { LoginComponent } from './login.component'
-import { AckComponent } from './ack/ack.component';
 import { AttachDocComponent } from './attach-doc/attach-doc.component';
 import { VerifyDetailsComponent } from './verify-details/verify-details.component'
 import { IntermediaryInfoComponent } from './intermediary-info/intermediary-info.component'
@@ -16,7 +15,6 @@ const routes: Routes = [
       children: [
           { path: 'login', component: LoginComponent },
           { path: 'attach-doc', component: AttachDocComponent },
-          { path: 'ack', component: AckComponent },
           { path: 'verify-details', component: VerifyDetailsComponent },
           { path: 'intermediary-info', component: IntermediaryInfoComponent },
           { path: 'intermediary-contacts', component: IntermediaryContactsComponent },

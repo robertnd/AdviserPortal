@@ -103,7 +103,7 @@
               <option>Male</option>
             </select>
             <div *ngIf="f['gender'].errors" class="invalid-input">
-              <div *ngIf="f['gender'].errors['required']">
+              <div *ngIf="submitted && f['gender'].errors['required']">
                 Required
               </div>
             </div>

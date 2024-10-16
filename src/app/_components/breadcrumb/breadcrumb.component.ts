@@ -137,7 +137,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
         break
       case 'Adviser Migration':
         this.pages.push(new Page('1', 'Verify Details', 'breadcrumbs-circle', 'breadcrumbs-text'))
-        this.pages.push(new Page('2', 'DP Info', 'breadcrumbs-circle', 'breadcrumbs-text'))
+        this.pages.push(new Page('2', 'Information', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('3', 'Contacts', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('4', 'Attach Docs', 'breadcrumbs-circle', 'breadcrumbs-text'))
         this.pages.push(new Page('5', 'Set Password', 'breadcrumbs-circle', 'breadcrumbs-text'))
