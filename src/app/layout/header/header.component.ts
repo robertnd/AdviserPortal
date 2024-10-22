@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { AccountService } from '@app/_services'
+import { AccountService, UtilService } from '@app/_services'
 import { User } from '@app/_models'
 
 @Component({
@@ -10,11 +10,14 @@ import { User } from '@app/_models'
 export class HeaderComponent {
   user: User | null
 
-  constructor(private accountService: AccountService) {
+  constructor(
+    private accountService: AccountService,
+    private utilService: UtilService) {
     this.user = this.accountService.userValue
   }
 
   logout() {
+    this.utilService.unsetJourney()
     this.accountService.logout();
   }
 

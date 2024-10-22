@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core'
+import { IprsPerson } from '@app/_models/iprs.person'
+import { Observable } from 'rxjs'
+import { AccountService } from './account.service'
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +9,7 @@ import { Injectable } from '@angular/core'
 export class FormStateService {
   private formData = new Map<string, string>()
   private mockObj: any
+  
 
   constructor() {
     // this.deepClone(this.mockObj)
@@ -16,8 +20,11 @@ export class FormStateService {
   }
 
   getPageData(pageTitle: string) {
-
     return this.formData.get(pageTitle) || '{}'
+  }
+
+  getValue(key: string) {
+    return this.formData.get(key) || ''
   }
 
   dump() {

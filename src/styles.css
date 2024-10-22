@@ -61,6 +61,14 @@ body {
   min-height: 50rem;
 }
 
+.accountmodule-container {
+  position: absolute;
+  width: 100%;
+  /* left: 25%; */
+  /* top: -30%; */
+  /* margin-top: 15%; */
+}
+
 .collapsible {
   font-size: inherit;
   cursor: pointer;
@@ -124,6 +132,23 @@ body {
 #formTitle {
   flex: 1;
   justify-content: center;
+}
+
+.upload-row {
+  display: flex;
+}
+
+.upload-row .text-intg-summary {
+  flex: 1 1 150px;
+  padding: 0;
+}
+
+.upload-row a {
+  padding: 1rem;
+  font-size: 120%;
+  color: #50b848;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .form-row {
@@ -246,6 +271,13 @@ input[type="checkbox"][readonly] {
   position: relative;
   min-width: 60rem;
   min-height: 25rem;
+}
+
+.login-card-noMinHeight {
+  background-color: #fff;
+  box-shadow: var(--shadow-dark);
+  position: relative;
+  min-width: 60rem;
 }
 
 #bannerLogo {
@@ -566,6 +598,11 @@ input[type="checkbox"][readonly] {
   transition: all 0.15s ease;
 }
 
+.ombutton i {
+  margin-left: .3rem;
+  margin-top: .3rem;
+}
+
 .ombutton:hover {
   padding: 0.5rem 2.5rem 0.5rem 2.7rem;
 }
@@ -579,6 +616,16 @@ input[type="checkbox"][readonly] {
   background: none;
   border: none;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+.ombutton-link2 {
+  padding: 1rem;
+  font-size: 150%;
+  color: #50b848;
+  text-decoration: none;
+  background: none;
+  border: none;
   cursor: pointer;
 }
 
@@ -605,6 +652,14 @@ input[type="checkbox"][readonly] {
 }
 
 .with-icon:hover > img {
+  transform: translateX(4px);
+}
+
+.with-icon > i {
+  transition: transform 0.25s ease;
+}
+
+.with-icon:hover > i {
   transform: translateX(4px);
 }
 
@@ -644,6 +699,29 @@ input[type="checkbox"][readonly] {
 
 .text-input-intg:last-child {
   padding-right: 2.5rem;
+}
+
+/* IPRS results marker classes */
+.readonly-input {
+  border: 0;
+  outline: none;
+  /* border-bottom: 1px solid var(--color-grey-dark-2); */
+  box-shadow: none;
+  padding: 0.5rem;
+  font-size: 1em;
+  background-color: #f0f0f0; 
+  color: #c5c1c1; 
+  cursor: not-allowed; 
+  pointer-events: none;
+}
+
+.noreadonly-input {
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid var(--color-om-darkblue);
+  box-shadow: none;
+  padding: 0.5rem;
+  font-size: 1em;
 }
 
 .text-input-intg input {
@@ -797,6 +875,10 @@ input[type="checkbox"][readonly] {
 
 .invalid-input {
   color: red;
+}
+
+.success-input {
+  color: green;
 }
 
 .highlight-1 {

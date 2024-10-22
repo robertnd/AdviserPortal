@@ -1,0 +1,87 @@
+<div class="detail">
+
+    <div class="form-container">
+      <div class="form-row">
+        <div id="bannerLogo">
+          <img src="../assets/img/adviserPortal.png" width="212" height="47" alt="Advisers portal logo"
+            style="margin-left: 15px" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="overview">
+          <h1 class="overview__subheading">Contacts</h1>
+        </div>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="primary_address">Primary Address</label>
+            <input type="text" id="primary_address" formControlName="primary_address" [ngClass]="roClassDef(false)"/>
+            <div *ngIf="submitted && f['primary_address'].errors" class="invalid-input">
+              <div *ngIf="f['primary_address'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="secondary_address">Secondary Address</label>
+            <input type="text" id="secondary_address" formControlName="secondary_address" [ngClass]="roClassDef(false)" />
+            <div *ngIf="submitted && f['secondary_address'].errors" class="invalid-input">
+              <div *ngIf="f['secondary_address'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="city">City</label>
+            <input type="text" id="city" formControlName="city" [ngClass]="roClassDef(false)"/>
+            <div *ngIf="submitted && f['city'].errors" class="invalid-input">
+              <div *ngIf="f['city'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg"></div>
+        </div>
+  
+        <div class="form-row">
+          <div class="text-input-intg">
+            <label for="mobile_no">Mobile No</label>
+            <input type="text" id="mobile_no" formControlName="mobile_no" />
+            <div *ngIf="submitted && f['mobile_no'].errors" class="invalid-input">
+              <div *ngIf="f['mobile_no'].errors['required']">
+                Required
+              </div>
+              <div *ngIf="f['mobile_no'].errors['mustBeKenyanMobileNo']">
+                Invalid format. Required (254xxxxxxxxx)
+              </div>
+            </div>
+          </div>
+          <div class="text-input-intg">
+            <label for="primary_email">Email</label>
+            <input type="text" id="primary_email" formControlName="primary_email" [ngClass]="roClassDef(false)"/>
+            <div *ngIf="submitted && f['primary_email'].errors" class="invalid-input">
+              <div *ngIf="f['primary_email'].errors['required']">
+                Required
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+            <img class="flippy" src="../assets/img/arrow-right-light.svg" alt="" />
+            prev
+          </button>
+          <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+            next
+            <img src="../assets/img/arrow-right-light.svg" alt="" />
+          </button>
+        </div>
+      </form>
+  
+    </div>
+  </div>

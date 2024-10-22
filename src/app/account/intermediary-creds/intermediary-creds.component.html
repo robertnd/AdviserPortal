@@ -1,0 +1,94 @@
+<div class="detail">
+
+    <div class="form-container">
+        <div class="form-row">
+            <div id="bannerLogo">
+                <img src="../assets/img/adviserPortal.png" width="212" height="47" alt="Advisers portal logo"
+                    style="margin-left: 15px" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="overview">
+                <h1 class="overview__subheading">Set Password</h1>
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="user_id">User ID: </label> {{ inProcUserID }}
+                    <!-- <input type="text" id="user_id" formControlName="user_id" />
+                    <div *ngIf="submitted && f['user_id'].errors" class="invalid-input">
+                        <div *ngIf="f['user_id'].errors['required']">
+                            Required
+                        </div>
+                    </div> -->
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="otp">One-Time Password</label>
+                    <button class="ombutton-link" type="button" (click)="getOTP()">Request OTP</button>
+                    <input type="text" id="otp" formControlName="otp" />
+                    <div *ngIf="submitted && f['otp'].errors" class="invalid-input">
+                        <div *ngIf="f['otp'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="newPassphrase">New Password</label>
+                    <input type="password" id="newPassphrase" formControlName="newPassphrase" />
+                    <div *ngIf="submitted && f['newPassphrase'].errors" class="invalid-input">
+                        <div *ngIf="f['newPassphrase'].errors['required']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="text-input-intg">
+                    <label for="confirmPassphrase">Confirm Password</label>
+                    <input type="password" id="confirmPassphrase" formControlName="confirmPassphrase" />
+                    <div *ngIf="submitted && f['confirmPassphrase'].errors" class="invalid-input">
+                        <div *ngIf="f['confirmPassphrase'].errors['confirmPassphrase']">
+                            Required
+                        </div>
+                    </div>
+                </div>
+                <div class="text-input-intg"></div>
+            </div>
+
+            <div id="functionBar" class="summary-row"></div>
+            <div id="spinnerDiv"></div>
+            <div class="summary-row">
+                <div *ngIf="upstreamServerSuccessMsg" class="success-input">
+                    {{ upstreamServerSuccessMsg }}
+                </div>
+                <div *ngIf="upstreamServerErrorMsg" class="invalid-input data-table-error">
+                    {{ upstreamServerErrorMsg }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <button class="ombutton lefted with-icon" type="submit" (click)="previous()">
+                    <img class="flippy" src="../assets/img/arrow-right-light.svg" alt="" />
+                    prev
+                </button>
+                <button class="ombutton lefted with-icon" type="submit" (click)="onSubmit()">
+                    complete
+                    <img src="../assets/img/arrow-right-light.svg" alt="" />
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
