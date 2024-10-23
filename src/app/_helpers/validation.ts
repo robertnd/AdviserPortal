@@ -59,7 +59,7 @@ export function mustBeLessThan100(): ValidatorFn {
 
 // /^254(11\d{7}|7[0-3]\d{7}|74[0-8]\d{6}|7[5-9]\d{7})$/ - 254749001122 / 254748001122
 export function validateMobileNo_Kenya(): ValidatorFn {
-  const regex = /^254(11\d{7}|7[0-3]\d{7}|74[0-8]\d{6}|7[5-9]\d{7})$/
+  const regex = /^254(1[0-1]\d{7}|7[0-3]\d{7}|74[0-8]\d{6}|7[5-9]\d{7})$/
   return (control: AbstractControl):  ValidationErrors | null => {
     if ( !regex.test(control.value) ) return { mustBeKenyanMobileNo: true }
     return null

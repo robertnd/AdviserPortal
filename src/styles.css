@@ -285,6 +285,44 @@ input[type="checkbox"][readonly] {
   padding-bottom: 1rem;
 }
 
+.chartcard {
+  background-color: #fff;
+  box-shadow: var(--shadow-dark);
+  padding: 1rem;
+  flex: 1 1 95%;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  text-align: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .chartcard {
+    padding: 20.rem;
+    margin-right: 0.75rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .chartcard {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.chartcard p {
+  font-weight: 500;
+  font-size: 170%;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.chartcard table {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.1rem;
+  font-size: 130%;
+  width: 100%;
+}
+
 .description {
   background-color: #fff;
   box-shadow: var(--shadow-light);
@@ -437,7 +475,7 @@ input[type="checkbox"][readonly] {
 .overview__heading {
   font-size: 2.25rem;
   font-weight: 300;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 1px;
   padding: 1.5rem 3rem;
 }

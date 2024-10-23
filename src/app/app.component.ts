@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { AccountService } from '@app/_services'
 import { User } from './_models'
+import Chart from 'chart.js/auto'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { User } from './_models'
 })
 export class AppComponent {
   title = 'AdviserPortal'
-  user?: User | null;
+  user?: User | null
+  chart: any = []
 
   constructor(private accountService: AccountService) {
     this.accountService.user.subscribe(x => this.user = x)
