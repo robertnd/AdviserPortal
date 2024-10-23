@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         }]
       },
       options: {
-        aspectRatio: 3,
+        aspectRatio: 4,
         scales: {
           x: {
             grid: { display: false }
@@ -99,7 +99,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       },
       options: {
         spacing: 5,
-        aspectRatio: 3,
+        aspectRatio: 4,
         responsive: true,
         cutout: '70%',
         plugins: {
@@ -333,7 +333,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         ]
       },
       options: {
-        aspectRatio: 4,
+        aspectRatio: 6,
         responsive: true,
         scales: {
           x: {

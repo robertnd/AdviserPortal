@@ -41,7 +41,7 @@ body {
 }
 
 .container {
-  max-width: 120rem;
+  max-width: 155rem;
   margin: 1rem auto;
   background-color: var(--color-grey-light-1);
   box-shadow: var(--shadow-dark);
@@ -311,8 +311,8 @@ input[type="checkbox"][readonly] {
 .chartcard p {
   font-weight: 500;
   font-size: 170%;
-  padding-top: 1rem;
-  padding-bottom: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .chartcard table {
@@ -476,7 +476,7 @@ input[type="checkbox"][readonly] {
   font-size: 2.25rem;
   font-weight: 300;
   /* text-transform: uppercase; */
-  letter-spacing: 1px;
+  /* letter-spacing: 0.75px; */
   padding: 1.5rem 3rem;
 }
 @media only screen and (max-width: 37.5em) {
@@ -489,7 +489,7 @@ input[type="checkbox"][readonly] {
 .overview__subheading {
   font-size: 1.2em;
   font-weight: 300;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   padding-left: 1.5em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;

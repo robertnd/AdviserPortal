@@ -1,71 +1,77 @@
-<div class="detail">
-  <div class="form-container">
-    <div class="form-row">
-      <div class="overview" id="formTitle">
-        <h1 class="functional__heading"></h1>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="overview">
-        <h1 class="overview__subheading">Please select:</h1>
-      </div>
-    </div>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-      <div class="form-row">
-        <div class="radio-input-plan">
-          <input type="radio" name="planselector" formControlName="planselector" value="Personal Pension Plan"
-            id="personalPensionPlanOpt" />
-          <label for="personalPensionPlanOpt">Personal Pension Plan</label>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="radio-input-plan">
-          <input type="radio" name="planselector" formControlName="planselector" value="Individual Retirement Scheme"
-            id="individualRetirementSchemeOpt" />
-          <label for="individualRetirementSchemeOpt">Individual Retirement Scheme</label>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="radio-input-plan">
-          <input type="radio" name="planselector" formControlName="planselector" value="Maxpac Personal Accident Cover"
-            id="maxpacPersonalAccidentCoverOpt" />
-          <label for="maxpacPersonalAccidentCoverOpt">Maxpac Personal Accident Cover</label>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="radio-input-plan">
-          <input type="radio" name="planselector" formControlName="planselector" value="Private Vehicle Insurance"
-            id="privateVehicleInsuranceOpt" />
-          <label for="privateVehicleInsuranceOpt">Private Vehicle Insurance</label>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="radio-input-plan">
-          <input type="radio" name="planselector" formControlName="planselector" value="Student Internship"
-            id="studentInternshipOpt" />
-          <label for="studentInternshipOpt">Student Internship</label>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="radio-input-plan">
-          <input type="radio" name="planselector" formControlName="planselector" value="Unit Trusts"
-            id="unitTrustOpt" />
-          <label for="unitTrustOpt">Unit Trusts</label>
-        </div>
-      </div>
-    
-      <div class="input-group">
-        <button class="ombutton lefted with-icon" type="submit">
-          select
-          <img src="../assets/img/arrow-right-light.svg" alt="" />
-        </button>
-      </div>
-    </form>
+<main class="main-view">
+  <div class="overview">
+    <h1 class="overview__heading">Onboarding</h1>
   </div>
-</div>
+  
+  <div class="detail">
+    <div class="form-container">
+      <div class="form-row">
+        <div class="overview" id="formTitle">
+          <h1 class="functional__heading"></h1>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="overview">
+          <h1 class="overview__subheading">Please select:</h1>
+        </div>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+        <div class="form-row">
+          <div class="radio-input-plan">
+            <input type="radio" name="planselector" formControlName="planselector" value="Personal Pension Plan"
+              id="personalPensionPlanOpt" />
+            <label for="personalPensionPlanOpt">Personal Pension Plan</label>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="radio-input-plan">
+            <input type="radio" name="planselector" formControlName="planselector" value="Individual Retirement Scheme"
+              id="individualRetirementSchemeOpt" />
+            <label for="individualRetirementSchemeOpt">Individual Retirement Scheme</label>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="radio-input-plan">
+            <input type="radio" name="planselector" formControlName="planselector" value="Maxpac Personal Accident Cover"
+              id="maxpacPersonalAccidentCoverOpt" />
+            <label for="maxpacPersonalAccidentCoverOpt">Maxpac Personal Accident Cover</label>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="radio-input-plan">
+            <input type="radio" name="planselector" formControlName="planselector" value="Private Vehicle Insurance"
+              id="privateVehicleInsuranceOpt" />
+            <label for="privateVehicleInsuranceOpt">Private Vehicle Insurance</label>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="radio-input-plan">
+            <input type="radio" name="planselector" formControlName="planselector" value="Student Internship"
+              id="studentInternshipOpt" />
+            <label for="studentInternshipOpt">Student Internship</label>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="radio-input-plan">
+            <input type="radio" name="planselector" formControlName="planselector" value="Unit Trusts"
+              id="unitTrustOpt" />
+            <label for="unitTrustOpt">Unit Trusts</label>
+          </div>
+        </div>
+      
+        <div class="input-group">
+          <button class="ombutton lefted with-icon" type="submit">
+            select
+            <img src="../assets/img/arrow-right-light.svg" alt="" />
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
